@@ -51,6 +51,18 @@ ThemeData walletikaDefaultTheme = ThemeData(
     color: AppColors.icon,
     size: AppDecoration.iconSize,
   ),
+  inputDecorationTheme: InputDecorationTheme(
+    labelStyle: _secondaryTextStyle,
+    filled: true,
+    fillColor: AppColors.background2,
+    prefixIconColor: AppColors.icon,
+    suffixIconColor: AppColors.icon,
+    border: UnderlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(AppDecoration.radius),
+    ),
+    constraints: const BoxConstraints(maxWidth: 350.0),
+  ),
 );
 
 ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
@@ -72,5 +84,8 @@ ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
     titleSmall: _primaryTextStyleDark,
     bodyLarge: _primaryTextStyleDark,
     bodyMedium: _primaryTextStyleDark,
+  ),
+  inputDecorationTheme: walletikaDefaultTheme.inputDecorationTheme.copyWith(
+    fillColor: AppColors.background2Dark,
   ),
 );
