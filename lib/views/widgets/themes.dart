@@ -22,9 +22,13 @@ ThemeData walletikaDefaultTheme = ThemeData(
   primarySwatch: AppColors.highlightMaterial,
   appBarTheme: const AppBarTheme(
     backgroundColor: AppColors.background,
+    shadowColor: Colors.black38,
     titleSpacing: 5.0,
-    elevation: 0.4,
-    iconTheme: IconThemeData(color: AppColors.icon, size: 24.0),
+    elevation: AppDecoration.elevation,
+    iconTheme: IconThemeData(
+      color: AppColors.icon,
+      size: AppDecoration.iconSize,
+    ),
   ),
   textTheme: TextTheme(
     displayLarge: _primaryTextStyle,
@@ -43,7 +47,10 @@ ThemeData walletikaDefaultTheme = ThemeData(
     labelMedium: _secondaryTextStyle,
     labelSmall: _secondaryTextStyle,
   ),
-  iconTheme: const IconThemeData(color: AppColors.icon, size: 24.0),
+  iconTheme: const IconThemeData(
+    color: AppColors.icon,
+    size: AppDecoration.iconSize,
+  ),
 );
 
 ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
@@ -51,6 +58,7 @@ ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
   scaffoldBackgroundColor: AppColors.backgroundDark,
   appBarTheme: walletikaDefaultTheme.appBarTheme.copyWith(
     backgroundColor: AppColors.backgroundDark,
+    shadowColor: Colors.black,
   ),
   textTheme: walletikaDefaultTheme.textTheme.copyWith(
     displayLarge: _primaryTextStyleDark,

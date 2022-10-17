@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'utils/constants.dart';
 import 'views/home/home.dart';
+import 'views/widgets/themes.dart';
 
 void main() {
   runApp(const WalletikaApp());
@@ -14,10 +15,11 @@ class WalletikaApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       title: AppInfo.name,
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
+      theme: walletikaDefaultTheme,
+      home: const HomeView(),
     );
   }
 }

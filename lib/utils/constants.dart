@@ -10,16 +10,26 @@ class AppInfo {
       '0x9BfDe70BF991697bCD8bAD287D2C46AaD662544d';
 }
 
+class AppDecoration {
+  static const double radius = 10.0;
+  static const double margin = 10.0;
+  static const double padding = 10.0;
+  static const double elevation = 20.0;
+  static const double iconSize = 24.0;
+}
+
 class AppColors {
   static const Color font = Color(0xff141416);
   static const Color font2 = Color(0xff747f8c);
   static const Color fontDark = Color(0xffffffff);
   static const Color background = Color(0xfffcfcfd);
   static const Color background2 = Color(0xfff0f2f5);
+  static const Color background2Dark = Color(0xff23262f);
   static const Color background3 = Color(0xffe4e6eb);
+  static const Color background3Dark = Color(0xff23262f);
   static const Color backgroundDark = Color(0xff141416);
   static const Color line = Color(0xfff0f2f5);
-  static const Color lineDark = Color(0xff252525);
+  static const Color lineDark = Color(0xff23262f);
   static const Color icon = Color(0xff606770);
   static const Color highlight = Color(0xff1652f0);
   static const Color highlightHover = Color(0xff0a46e4);
