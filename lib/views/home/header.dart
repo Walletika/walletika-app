@@ -41,7 +41,12 @@ class HeaderWidget extends StatelessWidget {
         ],
       ),
       actions: [
-        IconButton(onPressed: () {}, icon: const Icon(LineIcons.cog)),
+        IconButton(
+          padding: EdgeInsets.zero,
+          tooltip: "Settings".tr,
+          onPressed: () {},
+          icon: const Icon(LineIcons.cog),
+        ),
         horizontalSpace(),
       ],
       bottom: PreferredSize(
