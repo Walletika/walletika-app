@@ -44,6 +44,7 @@ dependencies:
     git:
       url: https://github.com/Walletika/walletika-sdk.git
       ref: main
+  url_launcher: ^6.1.6
 
 dev_dependencies:
   flutter_test:
