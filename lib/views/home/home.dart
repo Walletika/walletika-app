@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:walletika/utils/constants.dart';
 
-import 'footer.dart';
-import 'header.dart';
+import '../../utils/constants.dart';
+import '../widgets/footer.dart';
+import '../widgets/header.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(headerHeight),
-        child: HeaderWidget(),
+        child: MainHeader(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
         elevation: AppDecoration.elevation,
         child: const Icon(Icons.add),
       ),
-      bottomNavigationBar: const FooterWidget(),
+      bottomNavigationBar: const MainFooter(),
     );
   }
 }

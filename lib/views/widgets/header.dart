@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../../utils/constants.dart';
-import '../widgets/spacer.dart';
+import 'spacer.dart';
 
-const double headerHeight = 160.0;
+const double headerHeight = 80.0;
 
-class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({super.key});
+class MainHeader extends StatelessWidget {
+  const MainHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,18 +49,6 @@ class HeaderWidget extends StatelessWidget {
         ),
         horizontalSpace(),
       ],
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(0),
-        child: Padding(
-          padding: const EdgeInsets.all(AppDecoration.padding),
-          child: TextField(
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.search),
-              label: Text("Search".tr),
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

@@ -24,7 +24,7 @@ ThemeData walletikaDefaultTheme = ThemeData(
     backgroundColor: AppColors.background,
     shadowColor: Colors.black38,
     titleSpacing: 5.0,
-    elevation: AppDecoration.elevation,
+    elevation: 0,
     iconTheme: IconThemeData(
       color: AppColors.icon,
       size: AppDecoration.iconSize,
@@ -51,17 +51,9 @@ ThemeData walletikaDefaultTheme = ThemeData(
     color: AppColors.icon,
     size: AppDecoration.iconSize,
   ),
-  inputDecorationTheme: InputDecorationTheme(
-    labelStyle: _secondaryTextStyle,
-    filled: true,
-    fillColor: AppColors.background2,
-    prefixIconColor: AppColors.icon,
-    suffixIconColor: AppColors.icon,
-    border: UnderlineInputBorder(
-      borderSide: BorderSide.none,
-      borderRadius: BorderRadius.circular(AppDecoration.radius),
-    ),
-    constraints: const BoxConstraints(maxWidth: 350.0),
+  dividerTheme: const DividerThemeData(
+    color: AppColors.line,
+    space: 1.0,
   ),
 );
 
@@ -85,7 +77,12 @@ ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
     bodyLarge: _primaryTextStyleDark,
     bodyMedium: _primaryTextStyleDark,
   ),
-  inputDecorationTheme: walletikaDefaultTheme.inputDecorationTheme.copyWith(
-    fillColor: AppColors.background2Dark,
+  scrollbarTheme: walletikaDefaultTheme.scrollbarTheme.copyWith(
+    thumbColor: MaterialStateProperty.resolveWith(
+      (states) => AppColors.lineDark.withOpacity(0.7),
+    ),
+  ),
+  dividerTheme: walletikaDefaultTheme.dividerTheme.copyWith(
+    color: AppColors.lineDark,
   ),
 );

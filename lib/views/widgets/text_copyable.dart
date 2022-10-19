@@ -59,25 +59,22 @@ class _TextCopyableState extends State<TextCopyable> {
       child: Row(
         children: [
           Flexible(
-            child: Tooltip(
-              message: widget.data,
-              child: Text(
-                widget.data,
-                key: widget.key,
-                style: widget.style,
-                strutStyle: widget.strutStyle,
-                textAlign: widget.textAlign,
-                textDirection: widget.textDirection,
-                locale: widget.locale,
-                softWrap: widget.softWrap,
-                overflow: widget.overflow,
-                textScaleFactor: widget.textScaleFactor,
-                maxLines: widget.maxLines,
-                semanticsLabel: widget.semanticsLabel,
-                textWidthBasis: widget.textWidthBasis,
-                textHeightBehavior: widget.textHeightBehavior,
-                selectionColor: widget.selectionColor,
-              ),
+            child: Text(
+              widget.data,
+              key: widget.key,
+              style: widget.style,
+              strutStyle: widget.strutStyle,
+              textAlign: widget.textAlign,
+              textDirection: widget.textDirection,
+              locale: widget.locale,
+              softWrap: widget.softWrap,
+              overflow: widget.overflow,
+              textScaleFactor: widget.textScaleFactor,
+              maxLines: widget.maxLines,
+              semanticsLabel: widget.semanticsLabel,
+              textWidthBasis: widget.textWidthBasis,
+              textHeightBehavior: widget.textHeightBehavior,
+              selectionColor: widget.selectionColor,
             ),
           ),
           IconButton(
