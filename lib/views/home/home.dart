@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../utils/constants.dart';
 import '../widgets/footer.dart';
 import '../widgets/header.dart';
+import 'body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -15,6 +16,7 @@ class HomeView extends StatelessWidget {
         preferredSize: Size.fromHeight(headerHeight),
         child: MainHeader(),
       ),
+      body: HomeBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: "Create New Wallet".tr,

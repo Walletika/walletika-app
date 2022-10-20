@@ -48,4 +48,5 @@ class AppFonts {
 
 class AppImages {
   static const String logo = 'assets/logos/walletika.png';
+  static const String coinIllustrations = 'assets/illustrations/coin.png';
 }
