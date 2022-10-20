@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'controllers/dependencies.dart';
 import 'utils/constants.dart';
 import 'views/home/home.dart';
 import 'views/widgets/themes.dart';
@@ -21,6 +22,7 @@ class WalletikaApp extends StatelessWidget {
       theme: walletikaDefaultTheme,
       darkTheme: walletikaDarkTheme,
       themeMode: ThemeMode.light,
+      initialBinding: AppBinding(),
       home: const HomeView(),
     );
   }
