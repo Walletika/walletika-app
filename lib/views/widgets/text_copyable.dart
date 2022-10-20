@@ -91,7 +91,7 @@ class _TextCopyableState extends State<TextCopyable> {
                   setState(() {
                     isCopied = false;
                   });
-                });
+                }).onError((error, stackTrace) => null);
               });
             },
             tooltip: isCopied ? "Copied".tr : "Copy".tr,
