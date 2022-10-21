@@ -11,6 +11,7 @@ class WalletManagerController extends GetxController {
 
   // States
   final RxList<WalletItemModel> _wallets = <WalletItemModel>[].obs;
+  final RxBool _isSearching = false.obs;
 
   // Local data
   Map<String, WalletEngine> _engines = {};
@@ -25,6 +26,8 @@ class WalletManagerController extends GetxController {
 
   // Getter methods
   List<WalletItemModel> get wallets => _wallets;
+
+  bool get isSearching => _isSearching.value;
 
   int get count => _count;
 
@@ -46,6 +49,7 @@ class WalletManagerController extends GetxController {
 
   Future<void> walletsUpdate([String search = '']) {
     return Future(() {
+      _isSearching.value = search.isNotEmpty;
       search = search.toLowerCase();
 
       _wallets.value = [

@@ -12,12 +12,12 @@ class WalletFakeRepository extends WalletRepository {
   @override
   Future<List<WalletModel>> getAll() {
     return Future(() async {
-      for (int i = 0; i < 100; i++) {
-        var rng = Random.secure();
-        EthPrivateKey credentials = EthPrivateKey.createRandom(rng);
-        _wallets.add(credentials.address.hexEip55);
-        await Future.delayed(const Duration(milliseconds: 10));
-      }
+      // for (int i = 0; i < 100; i++) {
+      //   var rng = Random.secure();
+      //   EthPrivateKey credentials = EthPrivateKey.createRandom(rng);
+      //   _wallets.add(credentials.address.hexEip55);
+      //   await Future.delayed(const Duration(milliseconds: 1));
+      // }
 
       return [
         for (var i = 0; i < _wallets.length; i++)

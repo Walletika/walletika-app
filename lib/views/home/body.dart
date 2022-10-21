@@ -6,10 +6,15 @@ import '../../controllers/wallet_manager.dart';
 import '../../utils/constants.dart';
 import '../widgets/address.dart';
 import '../widgets/container.dart';
+import '../widgets/spacer.dart';
 
 class HomeBody extends StatelessWidget {
-  HomeBody({super.key});
+  HomeBody({super.key}) {
+    searchInputController.addListener(_searchOnChanged);
+  }
 
+  final TextEditingController searchInputController = TextEditingController();
+  final FocusNode focusController = FocusNode();
   final WalletManagerController walletManagerController =
       Get.find<WalletManagerController>();
 
@@ -23,12 +28,19 @@ class HomeBody extends StatelessWidget {
             children: [
               Flexible(
                 child: TextField(
-                  onChanged: (value) {
-                    walletManagerController.walletsUpdate(value);
-                  },
+                  controller: searchInputController,
+                  focusNode: focusController,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.search_rounded),
                     label: Text("Search".tr),
+                    suffixIcon: Obx(() {
+                      return walletManagerController.isSearching
+                          ? IconButton(
+                              onPressed: () => searchInputController.clear(),
+                              icon: const Icon(Icons.clear_rounded),
+                            )
+                          : zeroSpace();
+                    }),
                   ),
                 ),
               ),
@@ -113,5 +125,11 @@ class HomeBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _searchOnChanged() {
+    String text = searchInputController.text;
+    walletManagerController.walletsUpdate(text);
+    if (text.isEmpty) focusController.unfocus();
   }
 }
