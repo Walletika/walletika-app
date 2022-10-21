@@ -20,7 +20,7 @@ class MainHeader extends StatelessWidget {
           horizontalSpace(),
           Image.asset(
             AppImages.logo,
-            width: 50.0,
+            width: 45.0,
             filterQuality: FilterQuality.medium,
           ),
         ],
