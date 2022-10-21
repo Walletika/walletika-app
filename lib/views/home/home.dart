@@ -24,6 +24,7 @@ class HomeView extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: const MainFooter(),
+      resizeToAvoidBottomInset: false,
     );
   }
 }

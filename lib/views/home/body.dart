@@ -39,9 +39,35 @@ class HomeBody extends StatelessWidget {
           child: Obx(() {
             if (walletManagerController.wallets.isEmpty) {
               if (walletManagerController.count == 0) {
-                return Image.asset(
-                  AppImages.coinIllustrations,
-                  filterQuality: FilterQuality.medium,
+                return Padding(
+                  padding: const EdgeInsets.all(AppDecoration.padding),
+                  child: Column(
+                    children: [
+                      Flexible(
+                        flex: 8,
+                        child: Image.asset(
+                          AppImages.coinIllustrations,
+                          filterQuality: FilterQuality.medium,
+                        ),
+                      ),
+                      Flexible(
+                        child: Text(
+                          "No wallets has been added yet!".tr,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Flexible(
+                        child: Text(
+                          "Let's add your first wallet today, click on \"+\" button. It's easy."
+                              .tr,
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                      ),
+                    ],
+                  ),
                 );
               }
 
