@@ -27,7 +27,7 @@ class HomeBody extends StatelessWidget {
                     walletManagerController.walletsUpdate(value);
                   },
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search_rounded),
                     label: Text("Search".tr),
                   ),
                 ),

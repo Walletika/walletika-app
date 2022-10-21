@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
         onPressed: () {},
         tooltip: "Create New Wallet".tr,
         elevation: AppDecoration.elevation,
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add_rounded),
       ),
       bottomNavigationBar: const MainFooter(),
       resizeToAvoidBottomInset: false,
