@@ -6,14 +6,16 @@ import '../../utils/constants.dart';
 import 'spacer.dart';
 
 class MainHeader extends StatelessWidget {
-  const MainHeader({super.key});
+  const MainHeader({this.backgroundTransparent = false, super.key});
 
   static const double height = 80.0;
+  final bool backgroundTransparent;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: height,
+      backgroundColor: backgroundTransparent ? Colors.transparent : null,
       leadingWidth: AppPages.isHome ? 60.0 : 100.0,
       leading: Row(
         children: [
