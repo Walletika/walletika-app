@@ -14,14 +14,34 @@ class MainHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: height,
-      leadingWidth: 60.0,
+      leadingWidth: AppPages.isHome ? 60.0 : 100.0,
       leading: Row(
         children: [
           horizontalSpace(),
-          Image.asset(
-            AppImages.logo,
-            width: 45.0,
-            filterQuality: FilterQuality.medium,
+          AppPages.isHome
+              ? zeroSpace()
+              : IconButton(
+                  onPressed: Get.back,
+                  tooltip: "Back".tr,
+                  icon: const Icon(
+                    Icons.arrow_back_ios_rounded,
+                    size: AppDecoration.iconSmallSize,
+                  ),
+                ),
+          GestureDetector(
+            onTap: () => Get.until((route) => AppPages.isHome),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Tooltip(
+                message: "Home".tr,
+                child: Image.asset(
+                  AppImages.logo,
+                  width: 45.0,
+                  filterQuality: FilterQuality.medium,
+                  isAntiAlias: true,
+                ),
+              ),
+            ),
           ),
         ],
       ),

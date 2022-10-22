@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'swatching.dart';
 
@@ -50,4 +51,10 @@ class AppFonts {
 class AppImages {
   static const String logo = 'assets/logos/walletika.png';
   static const String coinIllustrations = 'assets/illustrations/coin.png';
+}
+
+class AppPages {
+  static const String home = '/';
+
+  static bool get isHome => Get.currentRoute == AppPages.home;
 }

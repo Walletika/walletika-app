@@ -22,8 +22,12 @@ class WalletikaApp extends StatelessWidget {
       theme: walletikaDefaultTheme,
       darkTheme: walletikaDarkTheme,
       themeMode: ThemeMode.light,
+      defaultTransition: Transition.cupertino,
       initialBinding: AppBinding(),
-      home: const HomeView(),
+      initialRoute: AppPages.home,
+      getPages: [
+        GetPage(name: AppPages.home, page: () => const HomeView()),
+      ],
     );
   }
 }

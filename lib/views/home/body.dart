@@ -60,6 +60,7 @@ class HomeBody extends StatelessWidget {
                         child: Image.asset(
                           AppImages.coinIllustrations,
                           filterQuality: FilterQuality.medium,
+                          isAntiAlias: true,
                         ),
                       ),
                       Flexible(
