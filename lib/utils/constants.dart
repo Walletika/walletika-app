@@ -16,6 +16,7 @@ class AppDecoration {
   static const double padding = 10.0;
   static const double elevation = 20.0;
   static const double iconSize = 24.0;
+  static const double iconSmallSize = 20.0;
 }
 
 class AppColors {

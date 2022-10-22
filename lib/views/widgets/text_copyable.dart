@@ -98,7 +98,7 @@ class _TextCopyableState extends State<TextCopyable> {
             icon: Icon(
               isCopied ? Icons.check_rounded : Icons.copy_rounded,
               color: isCopied ? AppColors.green : null,
-              size: 20.0,
+              size: AppDecoration.iconSmallSize,
             ),
           ),
         ],

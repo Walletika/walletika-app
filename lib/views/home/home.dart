@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(headerHeight),
+        preferredSize: Size.fromHeight(MainHeader.height),
         child: MainHeader(),
       ),
       body: HomeBody(),

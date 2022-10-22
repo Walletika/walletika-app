@@ -5,15 +5,15 @@ import 'package:line_icons/line_icons.dart';
 import '../../utils/constants.dart';
 import 'spacer.dart';
 
-const double headerHeight = 80.0;
-
 class MainHeader extends StatelessWidget {
   const MainHeader({super.key});
+
+  static const double height = 80.0;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: headerHeight,
+      toolbarHeight: height,
       leadingWidth: 60.0,
       leading: Row(
         children: [
