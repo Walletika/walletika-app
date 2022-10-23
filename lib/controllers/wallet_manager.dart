@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 import 'package:walletika_sdk/walletika_sdk.dart';
 
 import '../models/wallet.dart';
-import '../repositories/wallet_fake_repo.dart';
-import '../repositories/wallet_repo.dart';
+import '../repositories/wallet/wallet_fake_repo.dart';
+import '../repositories/wallet/wallet_repo.dart';
 
 class WalletManagerController extends GetxController {
   // Data repository
