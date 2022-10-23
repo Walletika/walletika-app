@@ -6,10 +6,15 @@ import '../../utils/constants.dart';
 import 'spacer.dart';
 
 class MainHeader extends StatelessWidget {
-  const MainHeader({this.backgroundTransparent = false, super.key});
+  const MainHeader({
+    this.backgroundTransparent = false,
+    this.brandVisible = true,
+    super.key,
+  });
 
   static const double height = 80.0;
   final bool backgroundTransparent;
+  final bool brandVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,7 @@ class MainHeader extends StatelessWidget {
       leadingWidth: AppPages.isHome ? 60.0 : 100.0,
       leading: Row(
         children: [
-          horizontalSpace(),
+          horizontalSpace(15.0),
           AppPages.isHome
               ? zeroSpace()
               : IconButton(
@@ -30,38 +35,34 @@ class MainHeader extends StatelessWidget {
                     size: AppDecoration.iconSmallSize,
                   ),
                 ),
-          GestureDetector(
-            onTap: () => Get.until((route) => AppPages.isHome),
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: Tooltip(
-                message: "Home".tr,
-                child: Image.asset(
-                  AppImages.logo,
-                  width: 45.0,
-                  filterQuality: FilterQuality.medium,
-                  isAntiAlias: true,
-                ),
-              ),
-            ),
-          ),
+          brandVisible
+              ? GestureDetector(
+                  onTap: () => Get.until((route) => AppPages.isHome),
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Tooltip(
+                      message: "Home".tr,
+                      child: Image.asset(
+                        AppImages.logo,
+                        width: 40.0,
+                        filterQuality: FilterQuality.medium,
+                        isAntiAlias: true,
+                      ),
+                    ),
+                  ),
+                )
+              : zeroSpace(),
         ],
       ),
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            AppInfo.name,
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          Text(
-            "Decentralized Wallet v${AppInfo.version} ( Beta )",
-            style: Theme.of(context).textTheme.caption,
-          ),
-        ],
-      ),
+      title: brandVisible
+          ? Text(
+              AppInfo.name,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22.0,
+                  ),
+            )
+          : zeroSpace(),
       actions: [
         IconButton(
           padding: EdgeInsets.zero,
