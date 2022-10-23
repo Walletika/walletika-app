@@ -68,7 +68,7 @@ ThemeData walletikaDefaultTheme = ThemeData(
     minVerticalPadding: 15.0,
   ),
   dividerTheme: const DividerThemeData(
-    color: AppColors.line,
+    color: Colors.black12,
     space: 1.0,
   ),
 );
@@ -102,6 +102,6 @@ ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
     ),
   ),
   dividerTheme: walletikaDefaultTheme.dividerTheme.copyWith(
-    color: AppColors.lineDark,
+    color: Colors.white10,
   ),
 );
