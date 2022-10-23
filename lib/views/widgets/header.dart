@@ -21,7 +21,7 @@ class MainHeader extends StatelessWidget {
     return AppBar(
       toolbarHeight: height,
       backgroundColor: backgroundTransparent ? Colors.transparent : null,
-      leadingWidth: AppPages.isHome ? 60.0 : 100.0,
+      leadingWidth: AppPages.isHome ? 60.0 : 105.0,
       leading: Row(
         children: [
           horizontalSpace(15.0),
@@ -64,12 +64,14 @@ class MainHeader extends StatelessWidget {
             )
           : zeroSpace(),
       actions: [
-        IconButton(
-          padding: EdgeInsets.zero,
-          tooltip: "Settings".tr,
-          onPressed: () {},
-          icon: const Icon(LineIcons.cog),
-        ),
+        AppPages.isSettings
+            ? zeroSpace()
+            : IconButton(
+                padding: EdgeInsets.zero,
+                tooltip: "Settings".tr,
+                onPressed: () => Get.toNamed(AppPages.settings),
+                icon: const Icon(LineIcons.cog),
+              ),
         horizontalSpace(),
       ],
     );

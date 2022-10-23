@@ -51,10 +51,14 @@ class AppFonts {
 class AppImages {
   static const String logo = 'assets/logos/walletika.png';
   static const String coinIllustrations = 'assets/illustrations/coin.png';
+  static const String dayIllustrations = 'assets/illustrations/day.jpg';
+  static const String nightIllustrations = 'assets/illustrations/night.jpg';
 }
 
 class AppPages {
   static const String home = '/';
+  static const String settings = '/settings';
 
   static bool get isHome => Get.currentRoute == AppPages.home;
+  static bool get isSettings => Get.currentRoute == AppPages.settings;
 }

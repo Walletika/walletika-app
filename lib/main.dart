@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'controllers/dependencies.dart';
 import 'utils/constants.dart';
 import 'views/home/home.dart';
+import 'views/settings/settings.dart';
 import 'views/widgets/themes.dart';
 
 void main() {
@@ -13,7 +14,6 @@ void main() {
 class WalletikaApp extends StatelessWidget {
   const WalletikaApp({super.key});
 
-  // This widget is the root of the application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -27,6 +27,7 @@ class WalletikaApp extends StatelessWidget {
       initialRoute: AppPages.home,
       getPages: [
         GetPage(name: AppPages.home, page: () => const HomeView()),
+        GetPage(name: AppPages.settings, page: () => const SettingsView()),
       ],
     );
   }
