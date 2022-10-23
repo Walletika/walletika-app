@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'wallet_manager.dart';
+import 'wallet/wallet_manager.dart';
 
 class AppBinding extends Bindings {
   @override

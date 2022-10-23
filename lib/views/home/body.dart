@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../../controllers/wallet_manager.dart';
+import '../../controllers/wallet/wallet_manager.dart';
 import '../../models/wallet.dart';
 import '../../utils/constants.dart';
 import '../widgets/address.dart';
