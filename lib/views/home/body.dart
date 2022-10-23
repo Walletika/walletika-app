@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../../controllers/wallet_manager.dart';
+import '../../models/wallet.dart';
 import '../../utils/constants.dart';
 import '../widgets/address.dart';
 import '../widgets/container.dart';
@@ -22,6 +23,7 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Search input
         ContainerWithShadow(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -47,8 +49,10 @@ class HomeBody extends StatelessWidget {
             ],
           ),
         ),
+        // List view
         Expanded(
           child: Obx(() {
+            // No data view
             if (walletManagerController.wallets.isEmpty) {
               if (walletManagerController.count == 0) {
                 return Padding(
@@ -87,41 +91,46 @@ class HomeBody extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
 
-            return ListView(
-              children: walletManagerController.wallets.map((wallet) {
-                return ListTile(
-                  onTap: () {},
-                  leading: const Icon(
-                    LineIcons.wallet,
-                    size: 50.0,
-                    color: AppColors.highlight,
-                  ),
-                  title: Text(
-                    wallet.username,
-                    softWrap: false,
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          fontWeight: FontWeight.bold,
+            List<WalletItemModel> wallets = walletManagerController.wallets;
+
+            // Data view
+            return ListView.builder(
+                itemCount: wallets.length,
+                itemBuilder: (context, index) {
+                  WalletItemModel wallet = wallets[index];
+
+                  return ListTile(
+                    onTap: () {},
+                    leading: const Icon(
+                      LineIcons.wallet,
+                      size: 50.0,
+                      color: AppColors.highlight,
+                    ),
+                    title: Text(
+                      wallet.username,
+                      softWrap: false,
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    subtitle: TextAddress(wallet.address, height: 30.0),
+                    trailing: Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: Icon(
+                            wallet.isFavorite ? Icons.star : Icons.star_border,
+                            color: wallet.isFavorite ? Colors.orange : null,
+                          ),
                         ),
-                  ),
-                  subtitle: TextAddress(wallet.address, height: 30.0),
-                  trailing: Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Icon(
-                          wallet.isFavorite ? Icons.star : Icons.star_border,
-                          color: wallet.isFavorite ? Colors.orange : null,
+                        Icon(
+                          Icons.online_prediction,
+                          color: wallet.isLogged ? Colors.green : null,
                         ),
-                      ),
-                      Icon(
-                        Icons.online_prediction,
-                        color: wallet.isLogged ? Colors.green : null,
-                      ),
-                    ],
-                  ),
-                );
-              }).toList(),
-            );
+                      ],
+                    ),
+                  );
+                });
           }),
         ),
       ],
