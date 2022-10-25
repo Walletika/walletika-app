@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:walletika_sdk/walletika_sdk.dart';
 import 'package:web3dart/web3dart.dart';
 
-import 'wallet_repo.dart';
+import 'repo.dart';
 
 class WalletFakeRepository extends WalletRepository {
   final List<String> _wallets = [];
