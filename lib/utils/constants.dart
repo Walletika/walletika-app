@@ -62,3 +62,8 @@ class AppPages {
   static bool get isHome => Get.currentRoute == AppPages.home;
   static bool get isSettings => Get.currentRoute == AppPages.settings;
 }
+
+class AppLanguages {
+  static const String en = 'en';
+  static const String ar = 'ar';
+}
