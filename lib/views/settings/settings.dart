@@ -11,7 +11,7 @@ class SettingsView extends StatelessWidget {
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(MainHeader.height),
-        child: MainHeader(),
+        child: MainHeader(actionsVisible: false),
       ),
       body: SettingsBody(),
       resizeToAvoidBottomInset: false,

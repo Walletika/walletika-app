@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(MainHeader.height),
-        child: MainHeader(),
+        child: MainHeader(backButtonVisible: false),
       ),
       body: HomeBody(),
       floatingActionButton: FloatingActionButton(
