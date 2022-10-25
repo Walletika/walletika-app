@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
+import '../../controllers/settings/settings.dart';
 import '../../utils/constants.dart';
+import '../widgets/spacer.dart';
 
 class SettingsBody extends StatelessWidget {
   SettingsBody({super.key});
+
+  final SettingsController settingsController = Get.find<SettingsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +21,16 @@ class SettingsBody extends StatelessWidget {
           borderRadius: const BorderRadius.vertical(
             top: Radius.circular(40.0),
           ),
-          child: Image.asset(
-            AppImages.dayIllustrations,
-            filterQuality: FilterQuality.medium,
-            isAntiAlias: true,
-            fit: BoxFit.cover,
-          ),
+          child: Obx(() {
+            return Image.asset(
+              settingsController.isDarkMode
+                  ? AppImages.nightIllustrations
+                  : AppImages.dayIllustrations,
+              filterQuality: FilterQuality.medium,
+              isAntiAlias: true,
+              fit: BoxFit.cover,
+            );
+          }),
         ),
         // Content
         Column(
@@ -56,31 +64,39 @@ class SettingsBody extends StatelessWidget {
                       ),
                     ),
                     ListTile(
-                      title: Text("Primary language".tr),
-                      trailing: DropdownButton(
-                        icon: const Icon(Icons.arrow_drop_down_rounded),
-                        borderRadius: BorderRadius.circular(
-                          AppDecoration.radius,
-                        ),
-                        dropdownColor: Theme.of(context).backgroundColor,
-                        value: 'engligh',
-                        onChanged: (value) {},
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("English".tr),
-                            value: 'engligh',
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Arabic".tr),
-                            value: 'erabic',
-                          ),
-                        ],
-                      ),
-                    ),
-                    SwitchListTile.adaptive(
                       title: Text("Dark mode theme".tr),
-                      value: false,
-                      onChanged: (value) {},
+                      trailing: Obx(() {
+                        return Switch.adaptive(
+                          value: settingsController.isDarkMode,
+                          onChanged: settingsController.darkModeUpdate,
+                        );
+                      }),
+                    ),
+                    ListTile(
+                      title: Text("Primary language".tr),
+                      trailing: Obx(() {
+                        return DropdownButton(
+                          icon: const Icon(Icons.arrow_drop_down_rounded),
+                          borderRadius: BorderRadius.circular(
+                            AppDecoration.radius,
+                          ),
+                          dropdownColor: Theme.of(context).backgroundColor,
+                          underline: zeroSpace(),
+                          value: settingsController.currentLanguage,
+                          onChanged: settingsController.languageUpdate,
+                          items: settingsController.languages
+                              .map((key, value) {
+                                return MapEntry(
+                                    key,
+                                    DropdownMenuItem(
+                                      value: key,
+                                      child: Text(value),
+                                    ));
+                              })
+                              .values
+                              .toList(),
+                        );
+                      }),
                     ),
                     ListTile(
                       onTap: () {},
