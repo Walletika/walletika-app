@@ -7,20 +7,28 @@ import '../utils/constants.dart';
 
 class SettingsService extends GetxService {
   final GetStorage storage = GetStorage(AppInfo.name);
-  static const String _lanKey = 'language';
   static const String _darkModeKey = 'darkMode';
+  static const String _lanKey = 'language';
+  static const String _networkKey = 'network';
 
-  late String currentLanguage;
   late bool isDarkMode;
+  late String currentLanguage;
+  late String currentNetwork;
 
   ThemeMode get theme => isDarkMode ? ThemeMode.dark : ThemeMode.light;
 
   Locale get locale => Locale(currentLanguage);
 
   Future<SettingsService> init() async {
-    currentLanguage = storage.read(_lanKey) ?? AppTranslator.locales.keys.first;
     isDarkMode = storage.read(_darkModeKey) ?? false;
+    currentLanguage = storage.read(_lanKey) ?? AppTranslator.locales.keys.first;
+    currentNetwork = storage.read(_networkKey) ?? "Ethereum";
     return this;
+  }
+
+  Future<void> darkModeUpdate(bool enabled) async {
+    await storage.write(_darkModeKey, enabled);
+    isDarkMode = enabled;
   }
 
   Future<void> languageUpdate(String lang) async {
@@ -28,8 +36,8 @@ class SettingsService extends GetxService {
     currentLanguage = lang;
   }
 
-  Future<void> darkModeUpdate(bool enabled) async {
-    await storage.write(_darkModeKey, enabled);
-    isDarkMode = enabled;
+  Future<void> networkUpdate(String name) async {
+    await storage.write(_networkKey, name);
+    currentNetwork = name;
   }
 }

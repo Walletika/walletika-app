@@ -9,29 +9,44 @@ class SettingsController extends GetxController {
   final SettingsService _repository = Get.find<SettingsService>();
 
   // States
-  late RxString _currentLanguage;
   late RxBool _isDarkMode;
+  late RxString _currentLanguage;
+  late RxString _currentNetwork;
 
   // Process States
-  final ProcessState _languageUpdateState = ProcessState();
   final ProcessState _darkModeUpdateState = ProcessState();
+  final ProcessState _languageUpdateState = ProcessState();
+  final ProcessState _networkUpdateState = ProcessState();
 
   // Event methods
   @override
   void onInit() {
-    _currentLanguage = _repository.currentLanguage.obs;
     _isDarkMode = _repository.isDarkMode.obs;
+    _currentLanguage = _repository.currentLanguage.obs;
+    _currentNetwork = _repository.currentNetwork.obs;
     super.onInit();
   }
 
   // Getter methods
   Map<String, String> get languages => AppTranslator.locales;
 
-  String get currentLanguage => _currentLanguage.value;
-
   bool get isDarkMode => _isDarkMode.value;
 
+  String get currentLanguage => _currentLanguage.value;
+
+  String get currentNetwork => _currentNetwork.value;
+
   // Setter & Controller methods
+  Future<void> darkModeUpdate(bool enabled) async {
+    if (!_darkModeUpdateState.run()) return;
+
+    await _repository.darkModeUpdate(enabled);
+    Get.changeThemeMode(_repository.theme);
+    _isDarkMode.value = enabled;
+
+    _darkModeUpdateState.finished();
+  }
+
   Future<void> languageUpdate(String? language) async {
     if (!_languageUpdateState.run()) return;
 
@@ -42,13 +57,12 @@ class SettingsController extends GetxController {
     _languageUpdateState.finished();
   }
 
-  Future<void> darkModeUpdate(bool enabled) async {
-    if (!_darkModeUpdateState.run()) return;
+  Future<void> networkUpdate(String name) async {
+    if (!_networkUpdateState.run()) return;
 
-    await _repository.darkModeUpdate(enabled);
-    Get.changeThemeMode(_repository.theme);
-    _isDarkMode.value = enabled;
+    await _repository.networkUpdate(name);
+    _currentLanguage.value = name;
 
-    _darkModeUpdateState.finished();
+    _networkUpdateState.finished();
   }
 }

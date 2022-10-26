@@ -101,7 +101,9 @@ class SettingsBody extends StatelessWidget {
                     ListTile(
                       onTap: () {},
                       title: Text("1003@settings".tr),
-                      subtitle: const Text("Ethereum"),
+                      subtitle: Obx(() => Text(
+                            _settingsController.currentNetwork,
+                          )),
                       trailing: const Icon(
                         Icons.arrow_forward_ios_rounded,
                         size: AppDecoration.iconSmallSize,
