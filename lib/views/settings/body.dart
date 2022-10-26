@@ -9,7 +9,7 @@ import '../widgets/spacer.dart';
 class SettingsBody extends StatelessWidget {
   SettingsBody({super.key});
 
-  final SettingsController settingsController = Get.find<SettingsController>();
+  final SettingsController _settingsController = Get.find<SettingsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class SettingsBody extends StatelessWidget {
           ),
           child: Obx(() {
             return Image.asset(
-              settingsController.isDarkMode
+              _settingsController.isDarkMode
                   ? AppImages.nightIllustrations
                   : AppImages.dayIllustrations,
               filterQuality: FilterQuality.medium,
@@ -67,8 +67,8 @@ class SettingsBody extends StatelessWidget {
                       title: Text("1001@settings".tr),
                       trailing: Obx(() {
                         return Switch.adaptive(
-                          value: settingsController.isDarkMode,
-                          onChanged: settingsController.darkModeUpdate,
+                          value: _settingsController.isDarkMode,
+                          onChanged: _settingsController.darkModeUpdate,
                         );
                       }),
                     ),
@@ -82,9 +82,9 @@ class SettingsBody extends StatelessWidget {
                           ),
                           dropdownColor: Theme.of(context).backgroundColor,
                           underline: zeroSpace(),
-                          value: settingsController.currentLanguage,
-                          onChanged: settingsController.languageUpdate,
-                          items: settingsController.languages
+                          value: _settingsController.currentLanguage,
+                          onChanged: _settingsController.languageUpdate,
+                          items: _settingsController.languages
                               .map((key, value) {
                                 return MapEntry(
                                     key,

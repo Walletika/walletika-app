@@ -11,12 +11,12 @@ import '../widgets/spacer.dart';
 
 class HomeBody extends StatelessWidget {
   HomeBody({super.key}) {
-    searchInputController.addListener(_searchOnChanged);
+    _searchInputController.addListener(_searchOnChanged);
   }
 
-  final TextEditingController searchInputController = TextEditingController();
-  final FocusNode focusController = FocusNode();
-  final WalletManagerController walletManagerController =
+  final TextEditingController _searchInputController = TextEditingController();
+  final FocusNode _focusController = FocusNode();
+  final WalletManagerController _walletManagerController =
       Get.find<WalletManagerController>();
 
   @override
@@ -30,15 +30,15 @@ class HomeBody extends StatelessWidget {
             children: [
               Flexible(
                 child: TextField(
-                  controller: searchInputController,
-                  focusNode: focusController,
+                  controller: _searchInputController,
+                  focusNode: _focusController,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.search_rounded),
                     label: Text("1005@global".tr),
                     suffixIcon: Obx(() {
-                      return walletManagerController.isSearching
+                      return _walletManagerController.isSearching
                           ? IconButton(
-                              onPressed: () => searchInputController.clear(),
+                              onPressed: () => _searchInputController.clear(),
                               icon: const Icon(Icons.clear_rounded),
                             )
                           : zeroSpace();
@@ -53,8 +53,8 @@ class HomeBody extends StatelessWidget {
         Expanded(
           child: Obx(() {
             // No data view
-            if (walletManagerController.wallets.isEmpty) {
-              if (walletManagerController.count == 0) {
+            if (_walletManagerController.wallets.isEmpty) {
+              if (_walletManagerController.count == 0) {
                 return Padding(
                   padding: const EdgeInsets.all(AppDecoration.padding),
                   child: Column(
@@ -90,7 +90,8 @@ class HomeBody extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
 
-            List<WalletItemModel> wallets = walletManagerController.wallets;
+            final List<WalletItemModel> wallets =
+                _walletManagerController.wallets;
 
             // Data view
             return ListView.builder(
@@ -137,8 +138,9 @@ class HomeBody extends StatelessWidget {
   }
 
   void _searchOnChanged() {
-    String text = searchInputController.text;
-    walletManagerController.walletsUpdate(text);
-    if (text.isEmpty) focusController.unfocus();
+    final String text = _searchInputController.text;
+
+    _walletManagerController.walletsUpdate(text);
+    if (text.isEmpty) _focusController.unfocus();
   }
 }
