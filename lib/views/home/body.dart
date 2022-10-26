@@ -97,7 +97,7 @@ class HomeBody extends StatelessWidget {
             return ListView.builder(
                 itemCount: wallets.length,
                 itemBuilder: (context, index) {
-                  WalletItemModel wallet = wallets[index];
+                  final WalletItemModel wallet = wallets[index];
 
                   return ListTile(
                     onTap: () {},

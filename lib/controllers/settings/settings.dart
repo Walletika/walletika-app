@@ -61,7 +61,7 @@ class SettingsController extends GetxController {
     if (!_networkUpdateState.run()) return;
 
     await _repository.networkUpdate(name);
-    _currentLanguage.value = name;
+    _currentNetwork.value = name;
 
     _networkUpdateState.finished();
   }
