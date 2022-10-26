@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../locales/locales.dart';
+import '../utils/constants.dart';
 
 class SettingsService extends GetxService {
-  final GetStorage storage = GetStorage();
+  final GetStorage storage = GetStorage(AppInfo.name);
   static const String _lanKey = 'language';
   static const String _darkModeKey = 'darkMode';
 

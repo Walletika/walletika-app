@@ -17,7 +17,7 @@ void main() async {
 }
 
 Future<void> initServices() async {
-  await GetStorage.init();
+  await GetStorage.init(AppInfo.name);
   await Get.putAsync(() => SettingsService().init());
 }
 
