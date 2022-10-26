@@ -59,12 +59,12 @@ class SettingsBody extends StatelessWidget {
                       leading: const Icon(LineIcons.cog),
                       horizontalTitleGap: 0,
                       title: Text(
-                        "Settings".tr,
+                        "1000@settings".tr,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
                     ListTile(
-                      title: Text("Dark mode theme".tr),
+                      title: Text("1001@settings".tr),
                       trailing: Obx(() {
                         return Switch.adaptive(
                           value: settingsController.isDarkMode,
@@ -73,7 +73,7 @@ class SettingsBody extends StatelessWidget {
                       }),
                     ),
                     ListTile(
-                      title: Text("Primary language".tr),
+                      title: Text("1002@settings".tr),
                       trailing: Obx(() {
                         return DropdownButton(
                           icon: const Icon(Icons.arrow_drop_down_rounded),
@@ -100,7 +100,7 @@ class SettingsBody extends StatelessWidget {
                     ),
                     ListTile(
                       onTap: () {},
-                      title: Text("Current blockchain network".tr),
+                      title: Text("1003@settings".tr),
                       subtitle: const Text("Ethereum"),
                       trailing: const Icon(
                         Icons.arrow_forward_ios_rounded,
@@ -109,24 +109,21 @@ class SettingsBody extends StatelessWidget {
                     ),
                     const Divider(),
                     ListTile(
-                      title: Text(
-                        "Backup all your wallets to specific location on your system."
-                            .tr,
-                      ),
+                      title: Text("1004@settings".tr),
                       subtitle: ButtonBar(
                         children: [
                           ConstrainedBox(
                             constraints: const BoxConstraints(minHeight: 35.0),
                             child: ElevatedButton(
                               onPressed: () {},
-                              child: Text("Backup My Wallets".tr),
+                              child: Text("1005@settings".tr),
                             ),
                           ),
                           ConstrainedBox(
                             constraints: const BoxConstraints(minHeight: 35.0),
                             child: ElevatedButton(
                               onPressed: () {},
-                              child: Text("Import".tr),
+                              child: Text("1006@settings".tr),
                             ),
                           ),
                         ],

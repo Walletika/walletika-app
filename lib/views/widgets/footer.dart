@@ -20,7 +20,7 @@ class MainFooter extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Flexible(child: Text("Donate".tr)),
+                Flexible(child: Text("1004@global".tr)),
                 horizontalSpace(),
                 const Flexible(
                   child: TextAddress(AppInfo.donateAddress),

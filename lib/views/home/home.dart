@@ -18,7 +18,7 @@ class HomeView extends StatelessWidget {
       body: HomeBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        tooltip: "Create New Wallet".tr,
+        tooltip: "1003@home".tr,
         elevation: AppDecoration.elevation,
         child: const Icon(Icons.add_rounded),
       ),

@@ -34,7 +34,7 @@ class MainHeader extends StatelessWidget {
             backButtonVisible
                 ? IconButton(
                     onPressed: Get.back,
-                    tooltip: "Back".tr,
+                    tooltip: "1003@global".tr,
                     icon: const Icon(
                       Icons.arrow_back_ios_rounded,
                       size: AppDecoration.iconSmallSize,
@@ -47,7 +47,7 @@ class MainHeader extends StatelessWidget {
                     child: MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: Tooltip(
-                        message: "Home".tr,
+                        message: "1000@home".tr,
                         child: Image.asset(
                           AppImages.logo,
                           width: 40.0,
@@ -73,7 +73,7 @@ class MainHeader extends StatelessWidget {
             ? [
                 IconButton(
                   padding: EdgeInsets.zero,
-                  tooltip: "Settings".tr,
+                  tooltip: "1000@settings".tr,
                   onPressed: () => Get.toNamed(AppPages.settings),
                   icon: const Icon(LineIcons.cog),
                 ),

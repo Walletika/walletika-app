@@ -94,7 +94,7 @@ class _TextCopyableState extends State<TextCopyable> {
                 }).onError((error, stackTrace) => null);
               });
             },
-            tooltip: isCopied ? "Copied".tr : "Copy".tr,
+            tooltip: isCopied ? "1001@global".tr : "1000@global".tr,
             icon: Icon(
               isCopied ? Icons.check_rounded : Icons.copy_rounded,
               color: isCopied ? AppColors.green : null,

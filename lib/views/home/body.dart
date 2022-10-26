@@ -34,7 +34,7 @@ class HomeBody extends StatelessWidget {
                   focusNode: focusController,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.search_rounded),
-                    label: Text("Search".tr),
+                    label: Text("1005@global".tr),
                     suffixIcon: Obx(() {
                       return walletManagerController.isSearching
                           ? IconButton(
@@ -69,7 +69,7 @@ class HomeBody extends StatelessWidget {
                       ),
                       Flexible(
                         child: Text(
-                          "No wallets has been added yet!".tr,
+                          "1001@home".tr,
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
@@ -78,8 +78,7 @@ class HomeBody extends StatelessWidget {
                       ),
                       Flexible(
                         child: Text(
-                          "Let's add your first wallet today, click on \"+\" button. It's easy."
-                              .tr,
+                          "1002@home".tr,
                           style: Theme.of(context).textTheme.labelMedium,
                         ),
                       ),
