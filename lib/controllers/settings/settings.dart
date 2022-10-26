@@ -12,11 +12,13 @@ class SettingsController extends GetxController {
   late RxBool _isDarkMode;
   late RxString _currentLanguage;
   late RxString _currentNetwork;
+  late RxBool _isTestnetHidden;
 
   // Process States
   final ProcessState _darkModeUpdateState = ProcessState();
   final ProcessState _languageUpdateState = ProcessState();
   final ProcessState _networkUpdateState = ProcessState();
+  final ProcessState _testnetHiddenUpdateState = ProcessState();
 
   // Event methods
   @override
@@ -24,6 +26,7 @@ class SettingsController extends GetxController {
     _isDarkMode = _repository.isDarkMode.obs;
     _currentLanguage = _repository.currentLanguage.obs;
     _currentNetwork = _repository.currentNetwork.obs;
+    _isTestnetHidden = _repository.isTestnetHidden.obs;
     super.onInit();
   }
 
@@ -35,6 +38,8 @@ class SettingsController extends GetxController {
   String get currentLanguage => _currentLanguage.value;
 
   String get currentNetwork => _currentNetwork.value;
+
+  bool get isTestnetHidden => _isTestnetHidden.value;
 
   // Setter & Controller methods
   Future<void> darkModeUpdate(bool enabled) async {
@@ -64,5 +69,14 @@ class SettingsController extends GetxController {
     _currentNetwork.value = name;
 
     _networkUpdateState.finished();
+  }
+
+  Future<void> testnetHiddenUpdate(bool enabled) async {
+    if (!_testnetHiddenUpdateState.run()) return;
+
+    await _repository.testnetHiddenUpdate(enabled);
+    _isTestnetHidden.value = enabled;
+
+    _testnetHiddenUpdateState.finished();
   }
 }

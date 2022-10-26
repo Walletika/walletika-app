@@ -10,10 +10,12 @@ class SettingsService extends GetxService {
   static const String _darkModeKey = 'darkMode';
   static const String _lanKey = 'language';
   static const String _networkKey = 'network';
+  static const String _testnetHiddenKey = 'testnetHidden';
 
   late bool isDarkMode;
   late String currentLanguage;
   late String currentNetwork;
+  late bool isTestnetHidden;
 
   ThemeMode get theme => isDarkMode ? ThemeMode.dark : ThemeMode.light;
 
@@ -23,6 +25,7 @@ class SettingsService extends GetxService {
     isDarkMode = storage.read(_darkModeKey) ?? false;
     currentLanguage = storage.read(_lanKey) ?? AppTranslator.locales.keys.first;
     currentNetwork = storage.read(_networkKey) ?? "Ethereum";
+    isTestnetHidden = storage.read(_testnetHiddenKey) ?? false;
     return this;
   }
 
@@ -39,5 +42,10 @@ class SettingsService extends GetxService {
   Future<void> networkUpdate(String name) async {
     await storage.write(_networkKey, name);
     currentNetwork = name;
+  }
+
+  Future<void> testnetHiddenUpdate(bool enabled) async {
+    await storage.write(_testnetHiddenKey, enabled);
+    isTestnetHidden = enabled;
   }
 }
