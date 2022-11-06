@@ -22,4 +22,9 @@ const Map<String, String> translator = {
       "Backup all your wallets to specific location on your system.",
   "1005@settings": "Backup My Wallets",
   "1006@settings": "Import",
+
+  // Networks
+  "1000@network": "Blockchain Networks",
+  "1001@network": "Add a network",
+  "1002@network": "Hide / Show testnet networks",
 };

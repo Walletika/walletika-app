@@ -60,6 +60,7 @@ class AppImages {
 class AppPages {
   static const String home = '/';
   static const String settings = '/settings';
+  static const String network = '/settings/network';
 
   static bool get isHome => Get.currentRoute == AppPages.home;
 }

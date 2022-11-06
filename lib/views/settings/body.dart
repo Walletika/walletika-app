@@ -99,7 +99,7 @@ class SettingsBody extends StatelessWidget {
                       }),
                     ),
                     ListTile(
-                      onTap: () {},
+                      onTap: () => Get.toNamed(AppPages.network),
                       title: Text("1003@settings".tr),
                       subtitle: Obx(() => Text(
                             _settingsController.currentNetwork,
