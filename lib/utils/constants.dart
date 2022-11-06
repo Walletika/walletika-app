@@ -7,6 +7,7 @@ class AppInfo {
   static const String name = 'Walletika';
   static const String version = '1.0';
   static const String website = 'https://www.walletika.com';
+  static const String network = 'Ethereum';
   static const String donateAddress =
       '0x9BfDe70BF991697bCD8bAD287D2C46AaD662544d';
 }
@@ -18,6 +19,7 @@ class AppDecoration {
   static const double elevation = 20.0;
   static const double iconSize = 24.0;
   static const double iconSmallSize = 20.0;
+  static const double dividerPadding = 20.0;
 }
 
 class AppColors {

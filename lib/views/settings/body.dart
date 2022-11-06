@@ -109,20 +109,23 @@ class SettingsBody extends StatelessWidget {
                         size: AppDecoration.iconSmallSize,
                       ),
                     ),
-                    const Divider(),
+                    const Divider(
+                      indent: AppDecoration.dividerPadding,
+                      endIndent: AppDecoration.dividerPadding,
+                    ),
                     ListTile(
                       title: Text("1004@settings".tr),
                       subtitle: ButtonBar(
                         children: [
-                          ConstrainedBox(
-                            constraints: const BoxConstraints(minHeight: 35.0),
+                          SizedBox(
+                            height: 35.0,
                             child: ElevatedButton(
                               onPressed: () {},
                               child: Text("1005@settings".tr),
                             ),
                           ),
-                          ConstrainedBox(
-                            constraints: const BoxConstraints(minHeight: 35.0),
+                          SizedBox(
+                            height: 35.0,
                             child: ElevatedButton(
                               onPressed: () {},
                               child: Text("1006@settings".tr),

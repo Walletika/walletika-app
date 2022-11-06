@@ -8,10 +8,10 @@ const Map<String, String> translator = {
 
   // Home
   "1000@home": "Home",
-  "1001@home": "No wallets has been added yet!",
+  "1001@home": "No wallets have been added yet!",
   "1002@home":
       "Let's add your first wallet today, click on \"+\" button. It's easy.",
-  "1003@home": "Add a Wallet",
+  "1003@home": "Add a wallet",
 
   // Settings
   "1000@settings": "Settings",

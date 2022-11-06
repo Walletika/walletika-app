@@ -65,7 +65,7 @@ ThemeData walletikaDefaultTheme = ThemeData(
   ),
   listTileTheme: const ListTileThemeData(
     iconColor: AppColors.icon,
-    minVerticalPadding: 15.0,
+    minVerticalPadding: 20.0,
   ),
   dividerTheme: const DividerThemeData(
     color: Colors.black12,

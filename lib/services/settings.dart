@@ -24,8 +24,8 @@ class SettingsService extends GetxService {
   Future<SettingsService> init() async {
     isDarkMode = storage.read(_darkModeKey) ?? false;
     currentLanguage = storage.read(_lanKey) ?? AppTranslator.locales.keys.first;
-    currentNetwork = storage.read(_networkKey) ?? "Ethereum";
-    isTestnetHidden = storage.read(_testnetHiddenKey) ?? false;
+    currentNetwork = storage.read(_networkKey) ?? AppInfo.network;
+    isTestnetHidden = storage.read(_testnetHiddenKey) ?? true;
     return this;
   }
 
