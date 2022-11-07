@@ -8,7 +8,7 @@
 PRODUCT_NAME = walletika
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.walletika.walletika
+PRODUCT_BUNDLE_IDENTIFIER = com.walletika
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2022 com.walletika. All rights reserved.

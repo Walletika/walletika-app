@@ -1,4 +1,4 @@
-package com.walletika.walletika
+package com.walletika
 
 import io.flutter.embedding.android.FlutterActivity
 
