@@ -4,7 +4,6 @@ import 'package:walletika_sdk/walletika_sdk.dart';
 import '../../models/network.dart';
 import '../../repositories/network/fake_repo.dart';
 import '../../repositories/network/repo.dart';
-import '../../utils/assetlogo.dart';
 import '../../utils/constants.dart';
 import '../settings/settings.dart';
 
@@ -44,7 +43,7 @@ class NetworkManagerController extends GetxController {
 
       result.add(
         NetworkItemModel(
-          icon: await assetLogo(network.symbol),
+          icon: 'assets/coins/${network.symbol.toLowerCase()}.png',
           symbol: network.symbol,
           name: network.name,
           isLocked: network.name == AppInfo.network,

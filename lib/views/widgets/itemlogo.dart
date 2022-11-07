@@ -7,11 +7,15 @@ class ItemLogo extends StatelessWidget {
   const ItemLogo({
     required this.path,
     required this.isActive,
+    this.size = 50.0,
+    this.errorPath = 'assets/coins/unknown.png',
     super.key,
   });
 
   final String path;
   final bool isActive;
+  final double? size;
+  final String? errorPath;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +24,21 @@ class ItemLogo extends StatelessWidget {
       children: [
         Image.asset(
           path,
-          width: 50.0,
-          height: 50.0,
+          width: size,
+          height: size,
           isAntiAlias: true,
           filterQuality: FilterQuality.medium,
+          errorBuilder: errorPath != null
+              ? (context, error, stackTrace) {
+                  return Image.asset(
+                    errorPath!,
+                    width: size,
+                    height: size,
+                    isAntiAlias: true,
+                    filterQuality: FilterQuality.medium,
+                  );
+                }
+              : null,
         ),
         isActive
             ? SizedBox(
