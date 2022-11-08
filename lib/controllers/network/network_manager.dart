@@ -57,4 +57,24 @@ class NetworkManagerController extends GetxController {
 
     _networks.value = result;
   }
+
+  Future<bool> remove(NetworkItemModel item) async {
+    NetworkModel? networkModel;
+
+    await for (NetworkModel network in _repository.getAll()) {
+      if (item.name == network.name) {
+        networkModel = network;
+        break;
+      }
+    }
+
+    if (networkModel is NetworkModel) {
+      return await _repository.remove(networkModel).then((value) async {
+        if (value) await networksUpdate();
+        return value;
+      });
+    }
+
+    return false;
+  }
 }

@@ -24,4 +24,15 @@ class NetworkFakeRepository extends NetworkRepository {
       );
     }
   }
+
+  @override
+  Future<bool> remove(NetworkModel network) async {
+    for (final List<String> i in _networks) {
+      if (i[0] == network.name) {
+        return _networks.remove(i);
+      }
+    }
+
+    return false;
+  }
 }

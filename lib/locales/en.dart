@@ -5,6 +5,8 @@ const Map<String, String> translator = {
   "1003@global": "Back",
   "1004@global": "Donate",
   "1005@global": "Search",
+  "1006@global": "Cancel",
+  "1007@global": "Remove",
 
   // Home
   "1000@home": "Home",
@@ -27,4 +29,8 @@ const Map<String, String> translator = {
   "1000@network": "Blockchain Networks",
   "1001@network": "Add a network",
   "1002@network": "Hide / Show testnet networks",
+  "1003@network": "Network Remove",
+  "1004@network": "Are you sure you want to remove this network?",
+  "1005@network": "netwrok has been removed successfully.",
+  "1006@network": "netwrok removal failed.",
 };

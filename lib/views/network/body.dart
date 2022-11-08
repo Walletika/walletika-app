@@ -1,12 +1,16 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import '../../controllers/network/network_manager.dart';
 import '../../controllers/settings/settings.dart';
 import '../../models/network.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
+import '../widgets/dialog.dart';
 import '../widgets/itemlogo.dart';
+import '../widgets/snackbar.dart';
 
 class NetworkBody extends StatelessWidget {
   NetworkBody({super.key});
@@ -82,12 +86,36 @@ class NetworkBody extends StatelessWidget {
                   trailing: network.isLocked
                       ? const SizedBox(
                           width: 40.0,
-                          child: Icon(Icons.lock),
+                          child: Icon(
+                            LineIcons.lock,
+                            size: AppDecoration.iconSmallSize,
+                          ),
                         )
                       : IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            awesomeDialog(
+                              context: context,
+                              dialogType: DialogType.warning,
+                              title: "1003@network".tr,
+                              desc: "${"1004@network".tr}\n${network.name}",
+                              btnOkText: "1007@global".tr,
+                              btnOkOnPress: () {
+                                _networkManagerController
+                                    .remove(network)
+                                    .then((value) {
+                                  modernSnackBar(
+                                    context: context,
+                                    title: "1003@network".tr,
+                                    message:
+                                        "${network.name} ${value ? "1005@network".tr : "1006@network".tr}",
+                                    isSuccess: value,
+                                  );
+                                });
+                              },
+                            ).show();
+                          },
                           icon: const Icon(
-                            Icons.close,
+                            LineIcons.times,
                             size: AppDecoration.iconSmallSize,
                           ),
                         ),
