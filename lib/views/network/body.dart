@@ -71,6 +71,7 @@ class NetworkBody extends StatelessWidget {
 
                 return ListTile(
                   onTap: () => _settingsController.networkUpdate(network.name),
+                  minVerticalPadding: 20.0,
                   leading: ItemLogo(
                     path: network.icon,
                     isActive: currentNetwork == network.name,
