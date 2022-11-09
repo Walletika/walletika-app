@@ -34,7 +34,8 @@ class AppColors {
   static const Color backgroundDark = Color(0xff141416);
   static const Color line = Color(0xfff0f2f5);
   static const Color lineDark = Color(0xff23262f);
-  static const Color icon = Color(0xff606770);
+  static Color icon = const Color(0xff000000).withOpacity(0.7);
+  static Color iconDark = const Color(0xffffffff).withOpacity(0.7);
   static const Color highlight = Color(0xff1652f0);
   static const Color highlightHover = Color(0xff0a46e4);
   static const Color green = Color(0xff05b169);
