@@ -9,7 +9,7 @@ import '../../models/network.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/dialog.dart';
-import '../widgets/itemlogo.dart';
+import '../widgets/item_logo.dart';
 import '../widgets/snackbar.dart';
 
 class NetworkBody extends StatelessWidget {

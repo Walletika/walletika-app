@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'address.dart';
-import 'itemlogo.dart';
+import 'item_logo.dart';
 
 class WalletItem extends StatelessWidget {
   const WalletItem({
