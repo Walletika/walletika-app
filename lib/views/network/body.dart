@@ -84,16 +84,12 @@ class NetworkBody extends StatelessWidget {
                         ),
                   ),
                   subtitle: Text(network.name, softWrap: false),
-                  trailing: network.isLocked
-                      ? const SizedBox(
-                          width: 40.0,
-                          child: Icon(
-                            LineIcons.lock,
-                            size: AppDecoration.iconSmallSize,
-                          ),
-                        )
-                      : IconButton(
-                          onPressed: () {
+                  trailing: IconButton(
+                    tooltip:
+                        network.isLocked ? "1007@network".tr : "1007@global".tr,
+                    onPressed: network.isLocked
+                        ? null
+                        : () {
                             awesomeDialog(
                               context: context,
                               dialogType: DialogType.warning,
@@ -115,11 +111,12 @@ class NetworkBody extends StatelessWidget {
                               },
                             ).show();
                           },
-                          icon: const Icon(
-                            LineIcons.times,
-                            size: AppDecoration.iconSmallSize,
-                          ),
-                        ),
+                    icon: Icon(
+                      network.isLocked ? LineIcons.lock : LineIcons.times,
+                      size: AppDecoration.iconSmallSize,
+                      color: AppColors.icon,
+                    ),
+                  ),
                 );
               },
             );
