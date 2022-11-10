@@ -90,7 +90,10 @@ class HomeBody extends StatelessWidget {
                   trailing: IconButton(
                     tooltip: "1008@global".tr,
                     onPressed: () {
-                      _walletManagerController.setFavorite(wallet.address);
+                      _walletManagerController.setFavorite(
+                        search: _searchInputController.text,
+                        address: wallet.address,
+                      );
                     },
                     icon: Icon(
                       wallet.isFavorite ? LineIcons.starAlt : LineIcons.star,
