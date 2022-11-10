@@ -19,8 +19,8 @@ class NetworkManagerController extends GetxController {
 
   // Event methods
   @override
-  void onInit() {
-    networksUpdate();
+  void onInit() async {
+    await networksUpdate();
     super.onInit();
   }
 
