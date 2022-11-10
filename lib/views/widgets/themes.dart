@@ -20,7 +20,7 @@ ThemeData walletikaDefaultTheme = ThemeData(
   backgroundColor: AppColors.background,
   scaffoldBackgroundColor: AppColors.background,
   primarySwatch: AppColors.highlightMaterial,
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     backgroundColor: AppColors.background,
     shadowColor: Colors.black38,
     titleSpacing: 5.0,
@@ -47,7 +47,7 @@ ThemeData walletikaDefaultTheme = ThemeData(
     labelMedium: _secondaryTextStyle,
     labelSmall: _secondaryTextStyle,
   ),
-  iconTheme: IconThemeData(
+  iconTheme: const IconThemeData(
     color: AppColors.icon,
     size: AppDecoration.iconSize,
   ),
@@ -63,7 +63,7 @@ ThemeData walletikaDefaultTheme = ThemeData(
     ),
     constraints: const BoxConstraints(maxWidth: 350.0),
   ),
-  listTileTheme: ListTileThemeData(
+  listTileTheme: const ListTileThemeData(
     iconColor: AppColors.icon,
     minVerticalPadding: AppDecoration.padding,
   ),
@@ -79,9 +79,6 @@ ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
   appBarTheme: walletikaDefaultTheme.appBarTheme.copyWith(
     backgroundColor: AppColors.backgroundDark,
     shadowColor: Colors.black,
-    iconTheme: walletikaDefaultTheme.appBarTheme.iconTheme!.copyWith(
-      color: AppColors.iconDark,
-    ),
   ),
   textTheme: walletikaDefaultTheme.textTheme.copyWith(
     displayLarge: _primaryTextStyleDark,
@@ -96,16 +93,8 @@ ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
     bodyLarge: _primaryTextStyleDark,
     bodyMedium: _primaryTextStyleDark,
   ),
-  iconTheme: walletikaDefaultTheme.iconTheme.copyWith(
-    color: AppColors.iconDark,
-  ),
   inputDecorationTheme: walletikaDefaultTheme.inputDecorationTheme.copyWith(
     fillColor: AppColors.background2Dark,
-    prefixIconColor: AppColors.iconDark,
-    suffixIconColor: AppColors.iconDark,
-  ),
-  listTileTheme: walletikaDefaultTheme.listTileTheme.copyWith(
-    iconColor: AppColors.iconDark,
   ),
   scrollbarTheme: walletikaDefaultTheme.scrollbarTheme.copyWith(
     thumbColor: MaterialStateProperty.resolveWith(
