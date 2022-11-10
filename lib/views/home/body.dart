@@ -85,7 +85,9 @@ class HomeBody extends StatelessWidget {
                   isActive: wallet.isLogged,
                   trailing: IconButton(
                     tooltip: "1008@global".tr,
-                    onPressed: () {},
+                    onPressed: () {
+                      _walletManagerController.setFavorite(wallet.address);
+                    },
                     icon: Icon(
                       wallet.isFavorite ? Icons.star : Icons.star_border,
                       color: wallet.isFavorite ? Colors.orange : null,

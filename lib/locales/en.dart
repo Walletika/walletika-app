@@ -7,6 +7,7 @@ const Map<String, String> translator = {
   "1005@global": "Search",
   "1006@global": "Cancel",
   "1007@global": "Remove",
+  "1008@global": "Favorite",
 
   // Home
   "1000@home": "Home",

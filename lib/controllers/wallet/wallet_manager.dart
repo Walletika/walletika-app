@@ -46,4 +46,9 @@ class WalletManagerController extends GetxController {
           )
     ];
   }
+
+  Future<void> setFavorite(String address) async {
+    await _repository.setFavorite(address);
+    await walletsUpdate();
+  }
 }

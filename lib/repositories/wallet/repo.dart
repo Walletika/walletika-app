@@ -6,4 +6,6 @@ abstract class WalletRepository {
   Stream<WalletEngine> getAll();
 
   int count();
+
+  Future<void> setFavorite(String address);
 }

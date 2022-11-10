@@ -45,4 +45,10 @@ class WalletFakeRepository extends WalletRepository {
 
   @override
   int count() => _wallets.length;
+
+  @override
+  Future<void> setFavorite(String address) async {
+    final WalletEngine engine = engines[address]!;
+    engine.wallet.isFavorite = !engine.isFavorite();
+  }
 }
