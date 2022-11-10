@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import '../../controllers/wallet/wallet_manager.dart';
 import '../../models/wallet.dart';
@@ -33,13 +34,16 @@ class HomeBody extends StatelessWidget {
                   controller: _searchInputController,
                   focusNode: _focusController,
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.search_rounded),
+                    prefixIcon: const Icon(LineIcons.search),
                     label: Text("1005@global".tr),
                     suffixIcon: Obx(() {
                       return _walletManagerController.isSearching
                           ? IconButton(
                               onPressed: () => _searchInputController.clear(),
-                              icon: const Icon(Icons.clear_rounded),
+                              icon: const Icon(
+                                LineIcons.times,
+                                size: AppDecoration.iconSmallSize,
+                              ),
                             )
                           : zeroSpace();
                     }),
@@ -89,7 +93,7 @@ class HomeBody extends StatelessWidget {
                       _walletManagerController.setFavorite(wallet.address);
                     },
                     icon: Icon(
-                      wallet.isFavorite ? Icons.star : Icons.star_border,
+                      wallet.isFavorite ? LineIcons.starAlt : LineIcons.star,
                       color: wallet.isFavorite ? Colors.orange : null,
                     ),
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import '../../utils/constants.dart';
 import '../widgets/header.dart';
@@ -20,7 +21,7 @@ class HomeView extends StatelessWidget {
         onPressed: () {},
         tooltip: "1003@home".tr,
         elevation: AppDecoration.elevation,
-        child: const Icon(Icons.add_rounded),
+        child: const Icon(LineIcons.plus),
       ),
       resizeToAvoidBottomInset: false,
     );

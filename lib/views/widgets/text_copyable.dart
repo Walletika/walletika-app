@@ -3,6 +3,7 @@ import 'dart:ui' as ui show TextHeightBehavior;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import '../../utils/constants.dart';
 
@@ -96,7 +97,7 @@ class _TextCopyableState extends State<TextCopyable> {
             },
             tooltip: isCopied ? "1001@global".tr : "1000@global".tr,
             icon: Icon(
-              isCopied ? Icons.check_rounded : Icons.copy_rounded,
+              isCopied ? LineIcons.check : LineIcons.clipboard,
               color: isCopied ? AppColors.green : null,
               size: AppDecoration.iconSmallSize,
             ),

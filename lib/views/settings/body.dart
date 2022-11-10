@@ -54,7 +54,7 @@ class SettingsBody extends StatelessWidget {
                 title: Text("1002@settings".tr),
                 trailing: Obx(() {
                   return DropdownButton(
-                    icon: const Icon(Icons.arrow_drop_down_rounded),
+                    icon: const Icon(LineIcons.angleRight),
                     borderRadius: BorderRadius.circular(AppDecoration.radius),
                     dropdownColor: Theme.of(context).backgroundColor,
                     underline: zeroSpace(),
@@ -76,10 +76,7 @@ class SettingsBody extends StatelessWidget {
                 onTap: () => Get.toNamed(AppPages.network),
                 title: Text("1003@settings".tr),
                 subtitle: Obx(() => Text(_settingsController.currentNetwork)),
-                trailing: const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: AppDecoration.iconSmallSize,
-                ),
+                trailing: const Icon(LineIcons.angleRight),
               ),
               const Divider(
                 indent: AppDecoration.dividerPadding,

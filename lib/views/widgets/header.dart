@@ -35,10 +35,7 @@ class MainHeader extends StatelessWidget {
                 ? IconButton(
                     onPressed: Get.back,
                     tooltip: "1003@global".tr,
-                    icon: const Icon(
-                      Icons.arrow_back_ios_rounded,
-                      size: AppDecoration.iconSmallSize,
-                    ),
+                    icon: const Icon(LineIcons.angleLeft),
                   )
                 : zeroSpace(),
             brandVisible
