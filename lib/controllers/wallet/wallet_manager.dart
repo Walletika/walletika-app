@@ -14,13 +14,11 @@ class WalletManagerController extends GetxController {
   final RxBool _isSearching = false.obs;
 
   // Local data
-  Map<String, WalletEngine> _engines = {};
-  int _count = 1; // Start as available items
 
   // Event methods
   @override
-  void onInit() {
-    enginesUpdate();
+  void onInit() async {
+    await walletsUpdate();
     super.onInit();
   }
 
@@ -29,41 +27,23 @@ class WalletManagerController extends GetxController {
 
   bool get isSearching => _isSearching.value;
 
-  int get count => _count;
+  int count() => _repository.count();
 
-  // Setter & Controller methods
-  Future<void> enginesUpdate() {
-    return _repository.getAll().then((wallets) async {
-      _count = wallets.length;
-      _wallets.clear();
+  Future<void> walletsUpdate([String search = '']) async {
+    _isSearching.value = search.isNotEmpty;
+    search = search.toLowerCase();
 
-      _engines = {
-        for (WalletModel wallet in wallets)
-          wallet.address.hexEip55:
-              _engines[wallet.address.hexEip55] ?? WalletEngine(wallet)
-      };
-
-      await walletsUpdate();
-    });
-  }
-
-  Future<void> walletsUpdate([String search = '']) {
-    return Future(() {
-      _isSearching.value = search.isNotEmpty;
-      search = search.toLowerCase();
-
-      _wallets.value = [
-        for (WalletEngine engine in _engines.values)
-          if (search.isEmpty ||
-              engine.username().toLowerCase().contains(search) ||
-              engine.address().hex.contains(search))
-            WalletItemModel(
-              username: engine.username(),
-              address: engine.address().hexEip55,
-              isFavorite: engine.isFavorite(),
-              isLogged: engine.isLogged(),
-            )
-      ];
-    });
+    _wallets.value = [
+      await for (WalletEngine engine in _repository.getAll())
+        if (search.isEmpty ||
+            engine.username().toLowerCase().contains(search) ||
+            engine.address().hex.contains(search))
+          WalletItemModel(
+            username: engine.username(),
+            address: engine.address().hexEip55,
+            isFavorite: engine.isFavorite(),
+            isLogged: engine.isLogged(),
+          )
+    ];
   }
 }

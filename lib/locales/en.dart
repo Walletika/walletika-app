@@ -11,8 +11,7 @@ const Map<String, String> translator = {
   // Home
   "1000@home": "Home",
   "1001@home": "No wallets have been added yet!",
-  "1002@home":
-      "Let's add your first wallet today, click on \"+\" button. It's easy.",
+  "1002@home": "Let's add your first wallet today, click on \"+\" button.",
   "1003@home": "Add a wallet",
 
   // Settings
