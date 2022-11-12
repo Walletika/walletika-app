@@ -57,11 +57,12 @@ ThemeData walletikaDefaultTheme = ThemeData(
     fillColor: AppColors.background2,
     prefixIconColor: AppColors.icon,
     suffixIconColor: AppColors.icon,
+    counterStyle: _secondaryTextStyle,
     border: UnderlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(AppDecoration.radius),
     ),
-    constraints: const BoxConstraints(maxWidth: 350.0),
+    constraints: const BoxConstraints(maxWidth: AppDecoration.widgetWidth),
   ),
   listTileTheme: const ListTileThemeData(
     iconColor: AppColors.icon,

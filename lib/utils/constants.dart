@@ -16,10 +16,15 @@ class AppDecoration {
   static const double radius = 10.0;
   static const double margin = 10.0;
   static const double padding = 10.0;
+  static const double paddingMedium = 30.0;
+  static const double paddingLarge = 50.0;
   static const double elevation = 20.0;
   static const double iconSize = 24.0;
   static const double iconSmallSize = 20.0;
   static const double dividerPadding = 20.0;
+  static const double widgetWidth = 350.0;
+  static const double buttonHeight = 35.0;
+  static const double buttonHeightLarge = 50.0;
 }
 
 class AppColors {
