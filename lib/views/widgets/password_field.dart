@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pw_validator/Resource/Strings.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import 'custom_text_field.dart';
-import 'spacer.dart';
+
+class PWValidatorStrings implements FlutterPwValidatorStrings {
+  @override
+  final String atLeast = "1000@PWValidator".tr;
+
+  @override
+  final String normalLetters = "1001@PWValidator".tr;
+
+  @override
+  final String uppercaseLetters = "1002@PWValidator".tr;
+
+  @override
+  final String numericCharacters = "1003@PWValidator".tr;
+
+  @override
+  final String specialCharacters = "1004@PWValidator".tr;
+}
 
 class PasswordFormField extends StatefulWidget {
   const PasswordFormField({
@@ -64,7 +81,6 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
         },
         children: widget.enableStrengthBar
             ? [
-                verticalSpace(),
                 FlutterPwValidator(
                   controller: widget.controller,
                   width: widget.strengthBarWidth,
@@ -77,6 +93,7 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
                   numericCharCount: 3,
                   specialCharCount: 1,
                   normalCharCount: 3,
+                  strings: PWValidatorStrings(),
                   onSuccess: () => _isValid = true,
                   onFail: () => _isValid = false,
                 ),
