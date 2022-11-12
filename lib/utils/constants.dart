@@ -66,6 +66,7 @@ class AppPages {
   static const String home = '/';
   static const String settings = '/settings';
   static const String network = '/settings/network';
+  static const String addWallet = '/addWallet';
 
   static bool get isHome => Get.currentRoute == AppPages.home;
 }

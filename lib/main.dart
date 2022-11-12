@@ -9,6 +9,7 @@ import 'utils/constants.dart';
 import 'views/home/home.dart';
 import 'views/network/network.dart';
 import 'views/settings/settings.dart';
+import 'views/add_wallet/add_wallet.dart';
 import 'views/widgets/themes.dart';
 
 void main() async {
@@ -44,6 +45,7 @@ class WalletikaApp extends StatelessWidget {
         GetPage(name: AppPages.home, page: () => const HomeView()),
         GetPage(name: AppPages.settings, page: () => const SettingsView()),
         GetPage(name: AppPages.network, page: () => const NetworkView()),
+        GetPage(name: AppPages.addWallet, page: () => const AddWalletView()),
       ],
     );
   }

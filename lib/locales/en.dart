@@ -8,6 +8,22 @@ const Map<String, String> translator = {
   "1006@global": "Cancel",
   "1007@global": "Remove",
   "1008@global": "Favorite",
+  "1009@global": "Show",
+  "1010@global": "Username",
+  "1011@global": "Password",
+  "1012@global": "Confirm Password",
+  "1013@global": "Recovery Password",
+  "1014@global": "Confirm Recovery Password",
+  "1015@global": "Field is empty",
+  "1016@global": "Password is weak",
+  "1017@global": "Passwords doesn't match",
+
+  // PW validator plugin
+  "1000@PWValidator": "At least - character",
+  "1001@PWValidator": "- Letter",
+  "1002@PWValidator": "- Uppercase letter",
+  "1003@PWValidator": "- Numeric character",
+  "1004@PWValidator": "- Special character",
 
   // Home
   "1000@home": "Home",
@@ -34,4 +50,14 @@ const Map<String, String> translator = {
   "1005@network": "netwrok has been removed successfully.",
   "1006@network": "netwrok removal failed.",
   "1007@network": "This network is locked",
+
+  // AddWallet
+  "1000@AddWallet":
+      "Create a new wallet or add an existing one, your private keys and passwords will not be stored anywhere.",
+  "1001@AddWallet": "Username or email are sensitive to characters.",
+  "1002@AddWallet":
+      "Password must contain uppercase/lowercase letters, symbols and numbers.",
+  "1003@AddWallet":
+      "The recovery password is important to be able to add your wallet to the app later or recover the OTP hash if you lose it.",
+  "1004@AddWallet": "Add Wallet",
 };
