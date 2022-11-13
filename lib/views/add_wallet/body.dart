@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -6,6 +7,7 @@ import '../../controllers/wallet/wallet_manager.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/custom_text_field.dart';
+import '../widgets/dialog.dart';
 import '../widgets/password_field.dart';
 import '../widgets/spacer.dart';
 
@@ -117,7 +119,16 @@ class AddWalletBody extends StatelessWidget {
                       height: AppDecoration.buttonHeightLarge,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (_formController.currentState!.validate()) {}
+                          if (_formController.currentState!.validate()) {
+                            _walletManagerController
+                                .addNew(
+                                  username: _usernameController.text,
+                                  password: _passwordController.text,
+                                  recoveryPassword:
+                                      _recoveryPassController.text,
+                                )
+                                .then((value) => _onSubmit(context, value));
+                          }
                         },
                         child: Text("1004@AddWallet".tr),
                       ),
@@ -130,5 +141,76 @@ class AddWalletBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _onSubmit(BuildContext context, bool isValid) {
+    if (!isValid) {
+      awesomeDialogError(context: context).show();
+      return;
+    }
+
+    const double spaceSize = 5.0;
+
+    awesomeDialog(
+      context: context,
+      dialogType: DialogType.success,
+      body: Padding(
+        padding: const EdgeInsets.only(left: AppDecoration.padding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Text(
+                "1021@global".tr,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(color: Colors.green),
+              ),
+            ),
+            verticalSpace(AppDecoration.paddingMedium),
+            Text(
+              "1005@AddWallet".tr,
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Colors.red,
+                  ),
+            ),
+            verticalSpace(spaceSize),
+            Text(
+              "1006@AddWallet".tr,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            verticalSpace(spaceSize),
+            Text(
+              "1007@AddWallet".tr,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            verticalSpace(spaceSize),
+            Text(
+              "1008@AddWallet".tr,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            verticalSpace(spaceSize),
+            Text(
+              "1009@AddWallet".tr,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            verticalSpace(spaceSize),
+            Text(
+              "1010@AddWallet".tr,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            verticalSpace(spaceSize),
+            Text(
+              "1011@AddWallet".tr,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ],
+        ),
+      ),
+      btnCancelText: "1022@global".tr,
+    ).show().whenComplete(() {
+      Future.delayed(const Duration(milliseconds: 500), Get.back);
+    });
   }
 }

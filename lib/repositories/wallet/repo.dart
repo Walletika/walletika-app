@@ -7,5 +7,11 @@ abstract class WalletRepository {
 
   int count();
 
+  Future<bool> addNew({
+    required String username,
+    required String password,
+    required String recoveryPassword,
+  });
+
   Future<void> setFavorite(String address);
 }

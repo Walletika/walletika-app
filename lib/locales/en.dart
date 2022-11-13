@@ -21,6 +21,8 @@ const Map<String, String> translator = {
   "1019@global":
       "The operation failed, please try again or contact us to help you with this issue.",
   "1020@global": "Support",
+  "1021@global": "Created Successfully",
+  "1022@global": "I Understand",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
@@ -64,4 +66,16 @@ const Map<String, String> translator = {
   "1003@AddWallet":
       "The recovery password is important to be able to add your wallet to the app later or recover the OTP hash if you lose it.",
   "1004@AddWallet": "Add Wallet",
+  "1005@AddWallet": "Please note that:",
+  "1006@AddWallet":
+      "Username, password and recovery password are sensitive to characters.",
+  "1007@AddWallet":
+      "Without recovery password you cannot access your wallet again.",
+  "1008@AddWallet":
+      "Password and recovery password are not changeable or recoverable.",
+  "1009@AddWallet": "Your password and private key are not stored anywhere.",
+  "1010@AddWallet":
+      "Do not share your private key, password or recovery password with anyone.",
+  "1011@AddWallet":
+      "Recommended to backup all your wallets to an external file.",
 };

@@ -49,6 +49,23 @@ class WalletFakeRepository extends WalletRepository {
   int count() => _wallets.length;
 
   @override
+  Future<bool> addNew({
+    required String username,
+    required String password,
+    required String recoveryPassword,
+  }) async {
+    final EthPrivateKey credentials = EthPrivateKey.createRandom(
+      Random.secure(),
+    );
+    if (_wallets[username] == null) {
+      _wallets[username] = credentials.address.hexEip55;
+      return true;
+    }
+
+    return false;
+  }
+
+  @override
   Future<void> setFavorite(String address) async {
     final WalletEngine engine = engines[address]!;
     engine.wallet.isFavorite = !engine.isFavorite();

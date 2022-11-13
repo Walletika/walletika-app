@@ -13,8 +13,6 @@ class WalletManagerController extends GetxController {
   final RxList<WalletItemModel> _wallets = <WalletItemModel>[].obs;
   final RxBool _isSearching = false.obs;
 
-  // Local data
-
   // Event methods
   @override
   void onInit() async {
@@ -49,6 +47,21 @@ class WalletManagerController extends GetxController {
             isLogged: engine.isLogged(),
           )
     ];
+  }
+
+  Future<bool> addNew({
+    required String username,
+    required String password,
+    required String recoveryPassword,
+  }) async {
+    final bool result = await _repository.addNew(
+      username: username,
+      password: password,
+      recoveryPassword: recoveryPassword,
+    );
+    await walletsUpdate();
+
+    return result;
   }
 
   Future<void> setFavorite({
