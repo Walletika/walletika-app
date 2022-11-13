@@ -23,6 +23,7 @@ const Map<String, String> translator = {
   "1020@global": "Support",
   "1021@global": "Added Successfully",
   "1022@global": "I Understand",
+  "1023@global": "Don't use same password for recovery",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",

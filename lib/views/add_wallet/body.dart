@@ -97,6 +97,12 @@ class AddWalletBody extends StatelessWidget {
                 PasswordFormField(
                   controller: _recoveryPassController,
                   placeholderText: "1013@global".tr,
+                  validator: (value) {
+                    if (value != null && value == _passwordController.text) {
+                      return "1023@global".tr;
+                    }
+                    return null;
+                  },
                 ),
                 verticalSpace(),
                 PasswordFormField(
