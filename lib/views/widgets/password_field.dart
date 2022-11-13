@@ -4,6 +4,7 @@ import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
+import '../../utils/constants.dart';
 import 'custom_text_field.dart';
 
 class PWValidatorStrings implements FlutterPwValidatorStrings {
@@ -86,7 +87,7 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
                   width: widget.strengthBarWidth,
                   height: widget.strengthBarHeight,
                   defaultColor: Theme.of(context).iconTheme.color!,
-                  successColor: Colors.green,
+                  successColor: AppColors.green,
                   failureColor: Colors.orange,
                   minLength: 10,
                   uppercaseCharCount: 1,

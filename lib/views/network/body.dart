@@ -114,7 +114,7 @@ class NetworkBody extends StatelessWidget {
                     icon: Icon(
                       network.isLocked ? LineIcons.lock : LineIcons.times,
                       size: AppDecoration.iconSmallSize,
-                      color: AppColors.icon,
+                      color: Theme.of(context).iconTheme.color,
                     ),
                   ),
                 );

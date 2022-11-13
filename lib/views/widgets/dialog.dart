@@ -34,7 +34,7 @@ AwesomeDialog awesomeDialog({
     body: body,
     btnOk: btnOkText is String
         ? SizedBox(
-            height: 35.0,
+            height: AppDecoration.buttonHeight,
             child: ElevatedButton(
               onPressed: () {
                 if (btnOkOnPress != null) btnOkOnPress();
@@ -46,7 +46,7 @@ AwesomeDialog awesomeDialog({
         : null,
     btnCancel: btnCancelText is String
         ? SizedBox(
-            height: 35.0,
+            height: AppDecoration.buttonHeight,
             child: ElevatedButton(
               onPressed: () {
                 if (btnCancelOnPress != null) btnCancelOnPress();

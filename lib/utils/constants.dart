@@ -18,6 +18,10 @@ class AppDecoration {
   static const double padding = 10.0;
   static const double paddingMedium = 30.0;
   static const double paddingLarge = 50.0;
+  static const double spaceSmall = 5.0;
+  static const double space = 10.0;
+  static const double spaceMedium = 30.0;
+  static const double spaceLarge = 50.0;
   static const double elevation = 20.0;
   static const double iconSize = 24.0;
   static const double iconSmallSize = 20.0;
@@ -43,7 +47,6 @@ class AppColors {
   static const Color highlight = Color(0xff1652f0);
   static const Color highlightHover = Color(0xff0a46e4);
   static const Color green = Color(0xff05b169);
-  static const Color red = Color(0xffff0000);
 
   static final MaterialColor highlightMaterial = MaterialColor(
     highlight.value,

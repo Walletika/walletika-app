@@ -44,7 +44,7 @@ class AddWalletBody extends StatelessWidget {
                       ),
                   textAlign: TextAlign.center,
                 ),
-                verticalSpace(AppDecoration.paddingMedium),
+                verticalSpace(AppDecoration.spaceMedium),
                 Text(
                   "1001@AddWallet".tr,
                   style: Theme.of(context).textTheme.bodyMedium,
@@ -64,7 +64,7 @@ class AddWalletBody extends StatelessWidget {
                     return null;
                   },
                 ),
-                verticalSpace(AppDecoration.paddingMedium),
+                verticalSpace(AppDecoration.spaceMedium),
                 Text(
                   "1002@AddWallet".tr,
                   style: Theme.of(context).textTheme.bodyMedium,
@@ -87,7 +87,7 @@ class AddWalletBody extends StatelessWidget {
                     return null;
                   },
                 ),
-                verticalSpace(AppDecoration.paddingMedium),
+                verticalSpace(AppDecoration.spaceMedium),
                 Text(
                   "1003@AddWallet".tr,
                   style: Theme.of(context).textTheme.bodyMedium,
@@ -111,7 +111,7 @@ class AddWalletBody extends StatelessWidget {
                     return null;
                   },
                 ),
-                verticalSpace(AppDecoration.paddingMedium),
+                verticalSpace(AppDecoration.spaceMedium),
                 Column(
                   children: [
                     SizedBox(
@@ -149,8 +149,6 @@ class AddWalletBody extends StatelessWidget {
       return;
     }
 
-    const double spaceSize = 5.0;
-
     awesomeDialog(
       context: context,
       dialogType: DialogType.success,
@@ -165,44 +163,39 @@ class AddWalletBody extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .titleLarge!
-                    .copyWith(color: Colors.green),
+                    .copyWith(color: AppColors.green),
               ),
             ),
-            verticalSpace(AppDecoration.paddingMedium),
+            verticalSpace(AppDecoration.spaceMedium),
             Text(
               "1005@AddWallet".tr,
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     color: Colors.red,
                   ),
             ),
-            verticalSpace(spaceSize),
+            verticalSpace(AppDecoration.spaceSmall),
             Text(
               "1006@AddWallet".tr,
               style: Theme.of(context).textTheme.bodySmall,
             ),
-            verticalSpace(spaceSize),
+            verticalSpace(AppDecoration.spaceSmall),
             Text(
               "1007@AddWallet".tr,
               style: Theme.of(context).textTheme.bodySmall,
             ),
-            verticalSpace(spaceSize),
+            verticalSpace(AppDecoration.spaceSmall),
             Text(
               "1008@AddWallet".tr,
               style: Theme.of(context).textTheme.bodySmall,
             ),
-            verticalSpace(spaceSize),
+            verticalSpace(AppDecoration.spaceSmall),
             Text(
               "1009@AddWallet".tr,
               style: Theme.of(context).textTheme.bodySmall,
             ),
-            verticalSpace(spaceSize),
+            verticalSpace(AppDecoration.spaceSmall),
             Text(
               "1010@AddWallet".tr,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            verticalSpace(spaceSize),
-            Text(
-              "1011@AddWallet".tr,
               style: Theme.of(context).textTheme.bodySmall,
             ),
           ],

@@ -66,16 +66,13 @@ const Map<String, String> translator = {
   "1003@AddWallet":
       "The recovery password is important to be able to add your wallet to the app later or recover the OTP hash if you lose it.",
   "1004@AddWallet": "Add Wallet",
-  "1005@AddWallet": "Please note that:",
+  "1005@AddWallet": "Protect Your Funds",
   "1006@AddWallet":
-      "Username, password and recovery password are sensitive to characters.",
-  "1007@AddWallet":
-      "Without recovery password you cannot access your wallet again.",
-  "1008@AddWallet":
-      "Password and recovery password are not changeable or recoverable.",
-  "1009@AddWallet": "Your password and private key are not stored anywhere.",
+      "You must use the same username, password and recovery password to access your wallet later.",
+  "1007@AddWallet": "Wallet information is unchangeable and unrecoverable.",
+  "1008@AddWallet": "Never share your passwords or private key with anyone.",
+  "1009@AddWallet":
+      "Walletika team will never ask for your passwords or private key",
   "1010@AddWallet":
-      "Do not share your private key, password or recovery password with anyone.",
-  "1011@AddWallet":
       "Recommended to backup all your wallets to an external file.",
 };

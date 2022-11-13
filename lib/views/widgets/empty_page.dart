@@ -35,7 +35,7 @@ class EmptyPage extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
-          verticalSpace(5.0),
+          verticalSpace(AppDecoration.spaceSmall),
           Flexible(
             child: Text(
               desc,

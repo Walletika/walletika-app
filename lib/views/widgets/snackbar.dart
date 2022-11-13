@@ -16,7 +16,7 @@ SnackbarController modernSnackBar({
   if (icon == null && isSuccess is bool) {
     icon = isSuccess
         ? const Icon(LineIcons.check, color: AppColors.green, size: 30.0)
-        : const Icon(LineIcons.times, color: AppColors.red, size: 30.0);
+        : const Icon(LineIcons.times, color: Colors.red, size: 30.0);
   }
 
   return Get.snackbar(

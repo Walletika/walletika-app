@@ -87,14 +87,14 @@ class SettingsBody extends StatelessWidget {
                 subtitle: ButtonBar(
                   children: [
                     SizedBox(
-                      height: 35.0,
+                      height: AppDecoration.buttonHeight,
                       child: ElevatedButton(
                         onPressed: () {},
                         child: Text("1005@settings".tr),
                       ),
                     ),
                     SizedBox(
-                      height: 35.0,
+                      height: AppDecoration.buttonHeight,
                       child: ElevatedButton(
                         onPressed: () {},
                         child: Text("1006@settings".tr),
