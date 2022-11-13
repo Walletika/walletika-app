@@ -54,6 +54,13 @@ class AddWalletBody extends StatelessWidget {
                   placeholderText: "1010@global".tr,
                   prefixIcon: const Icon(LineIcons.user),
                   keyboardType: TextInputType.name,
+                  validator: (value) {
+                    if (value != null &&
+                        _walletManagerController.usernameExists(value)) {
+                      return "1018@global".tr;
+                    }
+                    return null;
+                  },
                 ),
                 verticalSpace(AppDecoration.paddingMedium),
                 Text(

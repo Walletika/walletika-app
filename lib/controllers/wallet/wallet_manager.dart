@@ -29,6 +29,10 @@ class WalletManagerController extends GetxController {
 
   int count() => _repository.count();
 
+  bool usernameExists(String username) => _wallets.any(
+        (wallet) => wallet.username == username,
+      );
+
   Future<void> walletsUpdate([String search = '']) async {
     _isSearching.value = search.isNotEmpty;
     search = search.toLowerCase();
