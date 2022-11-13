@@ -21,7 +21,7 @@ const Map<String, String> translator = {
   "1019@global":
       "The operation failed, please try again or contact us to help you with this issue.",
   "1020@global": "Support",
-  "1021@global": "Created Successfully",
+  "1021@global": "Added Successfully",
   "1022@global": "I Understand",
 
   // PW validator plugin
