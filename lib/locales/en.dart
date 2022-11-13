@@ -59,7 +59,7 @@ const Map<String, String> translator = {
 
   // AddWallet
   "1000@AddWallet":
-      "Create a new wallet or add an existing one, your private keys and passwords will not be stored anywhere.",
+      "Create a new wallet or add an existing one, your private keys and passwords are stored anywhere.",
   "1001@AddWallet": "Username or email are sensitive to characters.",
   "1002@AddWallet":
       "Password must contain uppercase/lowercase letters, symbols and numbers.",
