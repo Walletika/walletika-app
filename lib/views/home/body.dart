@@ -6,8 +6,8 @@ import '../../controllers/wallet/wallet_manager.dart';
 import '../../models/wallet.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
+import '../widgets/custom_text_field.dart';
 import '../widgets/empty_page.dart';
-import '../widgets/spacer.dart';
 import '../widgets/wallet_item.dart';
 
 class HomeBody extends StatelessWidget {
@@ -16,7 +16,6 @@ class HomeBody extends StatelessWidget {
   }
 
   final TextEditingController _searchInputController = TextEditingController();
-  final FocusNode _focusController = FocusNode();
   final WalletManagerController _walletManagerController =
       Get.find<WalletManagerController>();
 
@@ -26,31 +25,15 @@ class HomeBody extends StatelessWidget {
       children: [
         // Search input
         ContainerWithShadow(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: TextField(
-                  controller: _searchInputController,
-                  focusNode: _focusController,
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(LineIcons.search),
-                    label: Text("1005@global".tr),
-                    suffixIcon: Obx(() {
-                      return _walletManagerController.isSearching
-                          ? IconButton(
-                              onPressed: () => _searchInputController.clear(),
-                              icon: const Icon(
-                                LineIcons.times,
-                                size: AppDecoration.iconSmallSize,
-                              ),
-                            )
-                          : zeroSpace();
-                    }),
-                  ),
-                ),
-              ),
-            ],
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppDecoration.paddingMedium,
+            vertical: AppDecoration.padding,
+          ),
+          child: CustomTextFormField(
+            controller: _searchInputController,
+            placeholderText: "1005@global".tr,
+            prefixIcon: const Icon(LineIcons.search),
+            keyboardType: TextInputType.name,
           ),
         ),
         // List view
@@ -111,8 +94,6 @@ class HomeBody extends StatelessWidget {
 
   void _searchOnChanged() {
     final String text = _searchInputController.text;
-
     _walletManagerController.walletsUpdate(text);
-    if (text.isEmpty) _focusController.unfocus();
   }
 }

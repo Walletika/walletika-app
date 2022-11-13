@@ -11,7 +11,6 @@ class WalletManagerController extends GetxController {
 
   // States
   final RxList<WalletItemModel> _wallets = <WalletItemModel>[].obs;
-  final RxBool _isSearching = false.obs;
 
   // Event methods
   @override
@@ -23,8 +22,6 @@ class WalletManagerController extends GetxController {
   // Getter methods
   List<WalletItemModel> get wallets => _wallets;
 
-  bool get isSearching => _isSearching.value;
-
   int count() => _repository.count();
 
   bool usernameExists(String username) => _wallets.any(
@@ -32,7 +29,6 @@ class WalletManagerController extends GetxController {
       );
 
   Future<void> walletsUpdate([String search = '']) async {
-    _isSearching.value = search.isNotEmpty;
     search = search.toLowerCase();
 
     _wallets.value = [
