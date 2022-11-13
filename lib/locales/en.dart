@@ -18,6 +18,9 @@ const Map<String, String> translator = {
   "1016@global": "Password is weak",
   "1017@global": "Passwords doesn't match",
   "1018@global": "Username already exists",
+  "1019@global":
+      "The operation failed, please try again or contact us to help you with this issue.",
+  "1020@global": "Support",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
