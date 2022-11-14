@@ -6,6 +6,7 @@ import 'controllers/dependencies.dart';
 import 'locales/locales.dart';
 import 'services/settings.dart';
 import 'utils/constants.dart';
+import 'views/add_network/add_network.dart';
 import 'views/home/home.dart';
 import 'views/network/network.dart';
 import 'views/settings/settings.dart';
@@ -45,6 +46,7 @@ class WalletikaApp extends StatelessWidget {
         GetPage(name: AppPages.home, page: () => const HomeView()),
         GetPage(name: AppPages.settings, page: () => const SettingsView()),
         GetPage(name: AppPages.network, page: () => const NetworkView()),
+        GetPage(name: AppPages.addNetwork, page: () => const AddNetworkView()),
         GetPage(name: AppPages.addWallet, page: () => const AddWalletView()),
       ],
     );

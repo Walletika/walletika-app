@@ -18,7 +18,7 @@ class NetworkView extends StatelessWidget {
       ),
       body: NetworkBody(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => Get.toNamed(AppPages.addNetwork),
         tooltip: "1001@network".tr,
         elevation: AppDecoration.elevation,
         child: const Icon(LineIcons.plus),

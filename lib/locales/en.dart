@@ -17,13 +17,14 @@ const Map<String, String> translator = {
   "1015@global": "Field is empty",
   "1016@global": "Password is weak",
   "1017@global": "Passwords doesn't match",
-  "1018@global": "Username already exists",
+  "1018@global": "Already exists before",
   "1019@global":
       "The operation failed, please try again or contact us to help you with this issue.",
   "1020@global": "Support",
   "1021@global": "Added Successfully",
   "1022@global": "I Understand",
   "1023@global": "Don't use same password for recovery",
+  "1024@global": "Invalid URL",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
@@ -57,6 +58,19 @@ const Map<String, String> translator = {
   "1005@network": "netwrok has been removed successfully.",
   "1006@network": "netwrok removal failed.",
   "1007@network": "This network is locked",
+
+  // AddNetwork
+  "1000@AddNetwork": "Add a Network of Layer 2",
+  "1001@AddNetwork":
+      "A malicious network provider can lie about the state of the blockchain and record your network activity. Only add custom networks you trust.",
+  "1002@AddNetwork": "Network Name",
+  "1003@AddNetwork": "RPC URL",
+  "1004@AddNetwork": "Chain ID",
+  "1005@AddNetwork": "Currency Symbol",
+  "1006@AddNetwork": "Block Explorer URL",
+  "1007@AddNetwork": "Add Network",
+  "1008@AddNetwork":
+      "The Blockchain network has been added to your list of networks and is ready to connect.",
 
   // AddWallet
   "1000@AddWallet":
