@@ -27,6 +27,11 @@ class NetworkManagerController extends GetxController {
   // Getter methods
   List<NetworkItemModel> get networks => _networks;
 
+  bool networkExists({required String name, required String rpc}) =>
+      _networks.any(
+        (network) => network.name == name || network.rpc == rpc,
+      );
+
   // Setter & Controller methods
   Future<void> networksUpdate() async {
     final List<NetworkItemModel> result = [];
@@ -44,8 +49,11 @@ class NetworkManagerController extends GetxController {
       result.add(
         NetworkItemModel(
           icon: 'assets/coins/${network.symbol.toLowerCase()}.png',
+          rpc: network.rpc,
           symbol: network.symbol,
           name: network.name,
+          chainID: network.chainID,
+          explorer: network.explorer,
           isLocked: network.name == AppInfo.network,
         ),
       );
@@ -56,6 +64,25 @@ class NetworkManagerController extends GetxController {
     }
 
     _networks.value = result;
+  }
+
+  Future<bool> addNew({
+    required String rpc,
+    required String name,
+    required int chainID,
+    required String symbol,
+    required String explorer,
+  }) async {
+    final bool result = await _repository.addNew(
+      rpc: rpc,
+      name: name,
+      chainID: chainID,
+      symbol: symbol,
+      explorer: explorer,
+    );
+    await networksUpdate();
+
+    return result;
   }
 
   Future<bool> remove(NetworkItemModel item) async {

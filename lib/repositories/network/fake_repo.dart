@@ -26,6 +26,18 @@ class NetworkFakeRepository extends NetworkRepository {
   }
 
   @override
+  Future<bool> addNew({
+    required String rpc,
+    required String name,
+    required int chainID,
+    required String symbol,
+    required String explorer,
+  }) async {
+    _networks.add([name, symbol]);
+    return true;
+  }
+
+  @override
   Future<bool> remove(NetworkModel network) async {
     for (final List<String> i in _networks) {
       if (i[0] == network.name) {
