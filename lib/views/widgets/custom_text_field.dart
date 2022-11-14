@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -8,6 +9,7 @@ import 'spacer.dart';
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField({
     required this.controller,
+    this.initialValue,
     required this.placeholderText,
     this.prefixIcon,
     this.suffixIcon,
@@ -15,7 +17,14 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.enableIMEPersonalizedLearning = true,
     this.maxLength = 64,
+    this.readOnly = false,
     this.keyboardType,
+    this.inputFormatters,
+    this.onChanged,
+    this.onEditingComplete,
+    this.onFieldSubmitted,
+    this.onSaved,
+    this.onTap,
     this.validator,
     this.children = const <Widget>[],
     this.focusNode,
@@ -25,6 +34,7 @@ class CustomTextFormField extends StatelessWidget {
   }
 
   final TextEditingController controller;
+  final String? initialValue;
   final String placeholderText;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
@@ -32,8 +42,15 @@ class CustomTextFormField extends StatelessWidget {
   final bool obscureText;
   final bool enableIMEPersonalizedLearning;
   final int maxLength;
+  final bool readOnly;
   final TextInputType? keyboardType;
   final String? Function(String? value)? validator;
+  final void Function(String)? onChanged;
+  final void Function()? onEditingComplete;
+  final void Function(String)? onFieldSubmitted;
+  final void Function(String?)? onSaved;
+  final void Function()? onTap;
+  final List<TextInputFormatter>? inputFormatters;
   final List<Widget> children;
   late FocusNode? focusNode;
 
@@ -43,13 +60,16 @@ class CustomTextFormField extends StatelessWidget {
       children: [
         TextFormField(
           controller: controller,
+          initialValue: initialValue,
           focusNode: focusNode,
           obscureText: obscureText,
           enableSuggestions: !obscureText,
           autocorrect: !obscureText,
           enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
           keyboardType: keyboardType,
+          inputFormatters: inputFormatters,
           maxLength: maxLength,
+          readOnly: readOnly,
           decoration: InputDecoration(
             counter: showCounter ? null : zeroSpace(),
             prefixIcon: prefixIcon,
@@ -69,7 +89,12 @@ class CustomTextFormField extends StatelessWidget {
               ),
             ),
           ),
+          onEditingComplete: onEditingComplete,
+          onFieldSubmitted: onFieldSubmitted,
+          onSaved: onSaved,
+          onTap: onTap,
           onChanged: (value) {
+            if (onChanged != null) onChanged!(value);
             if (value.isEmpty) focusNode?.unfocus();
           },
           validator: (value) {
