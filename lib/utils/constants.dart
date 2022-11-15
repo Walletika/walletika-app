@@ -89,9 +89,6 @@ class AppRegExp {
   static final RegExp uppercase = RegExp(r'[A-Z]');
   static final RegExp address = RegExp(r'0x?[0-9-a-f-A-F]{40}');
   static final RegExp balance = RegExp(r'[-+]?[0-9]*\.?[0-9]+');
-  static final RegExp username = RegExp(
-    r'^[a-zA-Z0-9][a-zA-Z0-9_.]+[a-zA-Z0-9]$',
-  );
   static final RegExp url = RegExp(
     r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?',
   );
