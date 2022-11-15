@@ -16,6 +16,10 @@ class WalletManagerController extends GetxController {
   // Process States
   final ProcessState _setFavoriteState = ProcessState();
 
+  // Local Data
+  late WalletItemModel _currentWallet;
+  late String? _password;
+
   // Event methods
   @override
   void onInit() async {
@@ -26,11 +30,23 @@ class WalletManagerController extends GetxController {
   // Getter methods
   List<WalletItemModel> get wallets => _wallets;
 
+  WalletItemModel get currentWallet => _currentWallet;
+
   int count() => _repository.count();
 
   bool usernameExists(String username) => _wallets.any(
         (wallet) => wallet.username == username,
       );
+
+  // Setter & Controller methods
+  void setCurrentWallet(String address) {
+    for (WalletItemModel wallet in _wallets) {
+      if (wallet.address == address) {
+        _currentWallet = wallet;
+        break;
+      }
+    }
+  }
 
   Future<void> walletsUpdate([String search = '']) async {
     search = search.toLowerCase();
@@ -62,6 +78,15 @@ class WalletManagerController extends GetxController {
     await walletsUpdate();
 
     return result;
+  }
+
+  Future<bool> login(String password) async {
+    final bool isValid = await _repository.login(password);
+    if (isValid) {
+      _password = password;
+    }
+
+    return isValid;
   }
 
   Future<void> setFavorite({

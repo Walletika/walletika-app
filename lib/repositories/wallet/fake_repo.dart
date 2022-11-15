@@ -66,6 +66,11 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
+  Future<bool> login(String password) async {
+    return true;
+  }
+
+  @override
   Future<void> setFavorite(String address) async {
     final WalletEngine engine = engines[address]!;
     engine.wallet.isFavorite = !engine.isFavorite();

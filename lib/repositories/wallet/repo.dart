@@ -13,5 +13,7 @@ abstract class WalletRepository {
     required String recoveryPassword,
   });
 
+  Future<bool> login(String password);
+
   Future<void> setFavorite(String address);
 }
