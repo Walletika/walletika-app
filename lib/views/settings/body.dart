@@ -4,6 +4,7 @@ import 'package:line_icons/line_icons.dart';
 
 import '../../controllers/settings/settings.dart';
 import '../../utils/constants.dart';
+import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
 
 class SettingsBody extends StatelessWidget {
@@ -46,7 +47,7 @@ class SettingsBody extends StatelessWidget {
                 trailing: Obx(() {
                   return Switch.adaptive(
                     value: _settingsController.isDarkMode,
-                    onChanged: _settingsController.darkModeUpdate,
+                    onChanged: _onDarkModeChanged,
                   );
                 }),
               ),
@@ -59,7 +60,7 @@ class SettingsBody extends StatelessWidget {
                     dropdownColor: Theme.of(context).backgroundColor,
                     underline: zeroSpace(),
                     value: _settingsController.currentLanguage,
-                    onChanged: _settingsController.languageUpdate,
+                    onChanged: _onLanguageChanged,
                     items: _settingsController.languages
                         .map((key, value) {
                           return MapEntry(
@@ -108,5 +109,27 @@ class SettingsBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _onDarkModeChanged(bool enabled) {
+    final OperationNotifier operation = OperationNotifier(
+      title: "1007@settings".tr,
+    );
+
+    _settingsController.darkModeUpdate(enabled).catchError((error) {
+      operation.error(error.toString());
+      operation.notify();
+    });
+  }
+
+  void _onLanguageChanged(String? language) {
+    final OperationNotifier operation = OperationNotifier(
+      title: "1007@settings".tr,
+    );
+
+    _settingsController.languageUpdate(language).catchError((error) {
+      operation.error(error.toString());
+      operation.notify();
+    });
   }
 }
