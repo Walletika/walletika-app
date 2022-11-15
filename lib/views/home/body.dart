@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -8,6 +9,7 @@ import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/empty_page.dart';
+import '../widgets/operation_notifier.dart';
 import '../widgets/wallet_item.dart';
 
 class HomeBody extends StatelessWidget {
@@ -34,6 +36,9 @@ class HomeBody extends StatelessWidget {
             placeholderText: "1005@global".tr,
             prefixIcon: const Icon(LineIcons.search),
             keyboardType: TextInputType.name,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(AppRegExp.lettersWithoutSpace),
+            ],
           ),
         ),
         // List view
@@ -72,12 +77,7 @@ class HomeBody extends StatelessWidget {
                   isActive: wallet.isLogged,
                   trailing: IconButton(
                     tooltip: "1008@global".tr,
-                    onPressed: () {
-                      _walletManagerController.setFavorite(
-                        search: _searchInputController.text,
-                        address: wallet.address,
-                      );
-                    },
+                    onPressed: () => _onFavoritePressed(wallet),
                     icon: Icon(
                       wallet.isFavorite ? LineIcons.starAlt : LineIcons.star,
                       color: wallet.isFavorite ? Colors.orange : null,
@@ -95,5 +95,21 @@ class HomeBody extends StatelessWidget {
   void _searchOnChanged() {
     final String text = _searchInputController.text;
     _walletManagerController.walletsUpdate(text);
+  }
+
+  void _onFavoritePressed(WalletItemModel wallet) {
+    final OperationNotifier operation = OperationNotifier(
+      title: "1004@home".tr,
+    );
+
+    _walletManagerController
+        .setFavorite(
+      search: _searchInputController.text,
+      address: wallet.address,
+    )
+        .catchError((error) {
+      operation.error(error.toString());
+      operation.notify();
+    });
   }
 }
