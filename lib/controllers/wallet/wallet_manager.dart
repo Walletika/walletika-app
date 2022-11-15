@@ -4,6 +4,7 @@ import 'package:walletika_sdk/walletika_sdk.dart';
 import '../../models/wallet.dart';
 import '../../repositories/wallet/fake_repo.dart';
 import '../../repositories/wallet/repo.dart';
+import '../../utils/process_state.dart';
 
 class WalletManagerController extends GetxController {
   // Data repository
@@ -11,6 +12,9 @@ class WalletManagerController extends GetxController {
 
   // States
   final RxList<WalletItemModel> _wallets = <WalletItemModel>[].obs;
+
+  // Process States
+  final ProcessState _setFavoriteState = ProcessState();
 
   // Event methods
   @override
@@ -64,7 +68,15 @@ class WalletManagerController extends GetxController {
     required String search,
     required String address,
   }) async {
-    await _repository.setFavorite(address);
-    await walletsUpdate(search);
+    if (!_setFavoriteState.run()) return;
+
+    try {
+      await _repository.setFavorite(address);
+      await walletsUpdate(search);
+    } catch (e) {
+      rethrow;
+    } finally {
+      _setFavoriteState.done();
+    }
   }
 }
