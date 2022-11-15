@@ -45,38 +45,54 @@ class SettingsController extends GetxController {
   Future<void> darkModeUpdate(bool enabled) async {
     if (!_darkModeUpdateState.run()) return;
 
-    await _repository.darkModeUpdate(enabled);
-    Get.changeThemeMode(_repository.theme);
-    _isDarkMode.value = enabled;
-
-    _darkModeUpdateState.done();
+    try {
+      await _repository.darkModeUpdate(enabled);
+      Get.changeThemeMode(_repository.theme);
+      _isDarkMode.value = enabled;
+    } catch (e) {
+      rethrow;
+    } finally {
+      _darkModeUpdateState.done();
+    }
   }
 
   Future<void> languageUpdate(String? language) async {
     if (!_languageUpdateState.run()) return;
 
-    await _repository.languageUpdate(language!);
-    Get.updateLocale(_repository.locale);
-    _currentLanguage.value = language;
-
-    _languageUpdateState.done();
+    try {
+      await _repository.languageUpdate(language!);
+      Get.updateLocale(_repository.locale);
+      _currentLanguage.value = language;
+    } catch (e) {
+      rethrow;
+    } finally {
+      _languageUpdateState.done();
+    }
   }
 
   Future<void> networkUpdate(String name) async {
     if (!_networkUpdateState.run()) return;
 
-    await _repository.networkUpdate(name);
-    _currentNetwork.value = name;
-
-    _networkUpdateState.done();
+    try {
+      await _repository.networkUpdate(name);
+      _currentNetwork.value = name;
+    } catch (e) {
+      rethrow;
+    } finally {
+      _networkUpdateState.done();
+    }
   }
 
   Future<void> testnetHiddenUpdate(bool enabled) async {
     if (!_testnetHiddenUpdateState.run()) return;
 
-    await _repository.testnetHiddenUpdate(enabled);
-    _isTestnetHidden.value = enabled;
-
-    _testnetHiddenUpdateState.done();
+    try {
+      await _repository.testnetHiddenUpdate(enabled);
+      _isTestnetHidden.value = enabled;
+    } catch (e) {
+      rethrow;
+    } finally {
+      _testnetHiddenUpdateState.done();
+    }
   }
 }
