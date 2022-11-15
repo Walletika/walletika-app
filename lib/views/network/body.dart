@@ -10,7 +10,7 @@ import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/dialog.dart';
 import '../widgets/item_logo.dart';
-import '../widgets/snackbar.dart';
+import '../widgets/operation_notifier.dart';
 
 class NetworkBody extends StatelessWidget {
   NetworkBody({super.key});
@@ -36,13 +36,7 @@ class NetworkBody extends StatelessWidget {
                 trailing: Obx(() {
                   return Switch.adaptive(
                     value: _settingsController.isTestnetHidden,
-                    onChanged: (value) {
-                      _settingsController
-                          .testnetHiddenUpdate(value)
-                          .then((value) {
-                        _networkManagerController.networksUpdate();
-                      });
-                    },
+                    onChanged: _onTestNetHideChanged,
                   );
                 }),
               ),
@@ -70,7 +64,7 @@ class NetworkBody extends StatelessWidget {
                 final NetworkItemModel network = networks[index];
 
                 return ListTile(
-                  onTap: () => _settingsController.networkUpdate(network.name),
+                  onTap: () => _onItemTap(network),
                   minVerticalPadding: 20.0,
                   leading: ItemLogo(
                     path: network.icon,
@@ -87,30 +81,8 @@ class NetworkBody extends StatelessWidget {
                   trailing: IconButton(
                     tooltip:
                         network.isLocked ? "1007@network".tr : "1007@global".tr,
-                    onPressed: network.isLocked
-                        ? null
-                        : () {
-                            awesomeDialog(
-                              context: context,
-                              dialogType: DialogType.warning,
-                              title: "1003@network".tr,
-                              desc: "${"1004@network".tr}\n${network.name}",
-                              btnOkText: "1007@global".tr,
-                              btnOkOnPress: () {
-                                _networkManagerController
-                                    .remove(network)
-                                    .then((value) {
-                                  modernSnackBar(
-                                    context: context,
-                                    title: "1003@network".tr,
-                                    message:
-                                        "${network.name} ${value ? "1005@network".tr : "1006@network".tr}",
-                                    isSuccess: value,
-                                  );
-                                });
-                              },
-                            ).show();
-                          },
+                    onPressed:
+                        network.isLocked ? null : () => _onRemove(network),
                     icon: Icon(
                       network.isLocked ? LineIcons.lock : LineIcons.times,
                       size: AppDecoration.iconSmallSize,
@@ -124,5 +96,54 @@ class NetworkBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _onTestNetHideChanged(bool enabled) {
+    final OperationNotifier operation = OperationNotifier(
+      title: "1007@settings".tr,
+    );
+
+    _settingsController.testnetHiddenUpdate(enabled).then((_) {
+      _networkManagerController.networksUpdate();
+    }).catchError((error) {
+      operation.error(error.toString());
+      operation.notify();
+    });
+  }
+
+  void _onItemTap(NetworkItemModel network) {
+    final OperationNotifier operation = OperationNotifier(
+      title: "1007@settings".tr,
+    );
+
+    _settingsController.networkUpdate(network.name).catchError((error) {
+      operation.error(error.toString());
+      operation.notify();
+    });
+  }
+
+  void _onRemove(NetworkItemModel network) {
+    awesomeDialog(
+      context: Get.context!,
+      dialogType: DialogType.warning,
+      title: "1003@network".tr,
+      desc: "${"1004@network".tr}\n${network.name}",
+      btnOkText: "1007@global".tr,
+      btnOkOnPress: () {
+        final OperationNotifier operation = OperationNotifier(
+          title: "1003@network".tr,
+        );
+
+        _networkManagerController.remove(network).then((isValid) {
+          isValid
+              ? operation.valid("${network.name} ${"1005@network".tr}")
+              : operation.invalid("1006@network".tr);
+          operation.notify();
+        }).catchError((error) {
+          operation.error(error.toString());
+          operation.notify();
+        });
+      },
+    ).show();
   }
 }
