@@ -1,10 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../../utils/constants.dart';
-import '../../utils/launch_url.dart';
 
 AwesomeDialog awesomeDialog({
   required BuildContext context,
@@ -56,30 +54,5 @@ AwesomeDialog awesomeDialog({
             ),
           )
         : null,
-  );
-}
-
-AwesomeDialog awesomeDialogError({
-  required BuildContext context,
-  String? title,
-  String? desc,
-  Widget? body,
-  String? btnOkText,
-  void Function()? btnOkOnPress,
-  String? btnCancelText,
-  void Function()? btnCancelOnPress,
-  bool autoDismiss = true,
-}) {
-  return awesomeDialog(
-    context: context,
-    dialogType: DialogType.error,
-    title: title,
-    desc: desc ?? "1019@global".tr,
-    body: body,
-    btnOkText: btnOkText ?? "1020@global".tr,
-    btnOkOnPress: btnOkOnPress ?? () => launchURL(AppInfo.website),
-    btnCancelText: btnCancelText,
-    btnCancelOnPress: btnCancelOnPress,
-    autoDismiss: autoDismiss,
   );
 }
