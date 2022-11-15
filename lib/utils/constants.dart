@@ -71,6 +71,7 @@ class AppPages {
   static const String network = '/settings/network';
   static const String addNetwork = '/settings/network/addNetwork';
   static const String addWallet = '/addWallet';
+  static const String login = '/login';
 
   static bool get isHome => Get.currentRoute == AppPages.home;
 }

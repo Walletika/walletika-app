@@ -71,7 +71,10 @@ class HomeBody extends StatelessWidget {
                 final WalletItemModel wallet = wallets[index];
 
                 return WalletItem(
-                  onTap: () {},
+                  onTap: () {
+                    _walletManagerController.setCurrentWallet(wallet.address);
+                    Get.toNamed(AppPages.login);
+                  },
                   username: wallet.username,
                   address: wallet.address,
                   isActive: wallet.isLogged,

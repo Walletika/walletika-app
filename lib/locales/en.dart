@@ -94,4 +94,10 @@ const Map<String, String> translator = {
   "1010@AddWallet":
       "Recommended to backup all your wallets to an external file.",
   "1011@AddWallet": "Failed to add this wallet, Please try again.",
+
+  // Login
+  "1000@login": "Login",
+  "1001@login": "Skip to View",
+  "1002@login": "Wallet Login",
+  "1003@login": "The login has been confirmed successfully",
 };
