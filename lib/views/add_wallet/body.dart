@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -8,6 +9,7 @@ import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/dialog.dart';
+import '../widgets/operation_notifier.dart';
 import '../widgets/password_field.dart';
 import '../widgets/spacer.dart';
 
@@ -45,10 +47,11 @@ class AddWalletBody extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 verticalSpace(AppDecoration.spaceMedium),
-                Text(
-                  "1001@AddWallet".tr,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
+                Center(
+                  child: SizedBox(
+                    width: AppDecoration.widgetWidth,
+                    child: Text("1001@AddWallet".tr),
+                  ),
                 ),
                 verticalSpace(),
                 CustomTextFormField(
@@ -56,19 +59,25 @@ class AddWalletBody extends StatelessWidget {
                   placeholderText: "1010@global".tr,
                   prefixIcon: const Icon(LineIcons.user),
                   keyboardType: TextInputType.name,
-                  validator: (value) {
-                    if (value != null &&
-                        _walletManagerController.usernameExists(value)) {
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(
+                      AppRegExp.lettersWithoutSpace,
+                    ),
+                  ],
+                  validator: (text) {
+                    if (text != null &&
+                        _walletManagerController.usernameExists(text)) {
                       return "1018@global".tr;
                     }
                     return null;
                   },
                 ),
-                verticalSpace(AppDecoration.spaceMedium),
-                Text(
-                  "1002@AddWallet".tr,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
+                verticalSpace(),
+                Center(
+                  child: SizedBox(
+                    width: AppDecoration.widgetWidth,
+                    child: Text("1002@AddWallet".tr),
+                  ),
                 ),
                 verticalSpace(),
                 PasswordFormField(
@@ -80,25 +89,26 @@ class AddWalletBody extends StatelessWidget {
                   controller: _confirmPassController,
                   placeholderText: "1012@global".tr,
                   enableStrengthBar: false,
-                  validator: (value) {
-                    if (value != null && value != _passwordController.text) {
+                  validator: (text) {
+                    if (text != null && text != _passwordController.text) {
                       return "1017@global".tr;
                     }
                     return null;
                   },
                 ),
-                verticalSpace(AppDecoration.spaceMedium),
-                Text(
-                  "1003@AddWallet".tr,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
+                verticalSpace(),
+                Center(
+                  child: SizedBox(
+                    width: AppDecoration.widgetWidth,
+                    child: Text("1003@AddWallet".tr),
+                  ),
                 ),
                 verticalSpace(),
                 PasswordFormField(
                   controller: _recoveryPassController,
                   placeholderText: "1013@global".tr,
-                  validator: (value) {
-                    if (value != null && value == _passwordController.text) {
+                  validator: (text) {
+                    if (text != null && text == _passwordController.text) {
                       return "1023@global".tr;
                     }
                     return null;
@@ -109,37 +119,27 @@ class AddWalletBody extends StatelessWidget {
                   controller: _confirmRPassController,
                   placeholderText: "1014@global".tr,
                   enableStrengthBar: false,
-                  validator: (value) {
-                    if (value != null &&
-                        value != _recoveryPassController.text) {
+                  validator: (text) {
+                    if (text != null && text != _recoveryPassController.text) {
                       return "1017@global".tr;
                     }
                     return null;
                   },
                 ),
-                verticalSpace(AppDecoration.spaceMedium),
-                Column(
-                  children: [
-                    SizedBox(
-                      width: AppDecoration.widgetWidth,
-                      height: AppDecoration.buttonHeightLarge,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (_formController.currentState!.validate()) {
-                            _walletManagerController
-                                .addNew(
-                                  username: _usernameController.text,
-                                  password: _passwordController.text,
-                                  recoveryPassword:
-                                      _recoveryPassController.text,
-                                )
-                                .then((value) => _onSubmit(context, value));
-                          }
-                        },
-                        child: Text("1004@AddWallet".tr),
-                      ),
+                verticalSpace(),
+                Center(
+                  child: SizedBox(
+                    width: AppDecoration.widgetWidth,
+                    height: AppDecoration.buttonHeightLarge,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_formController.currentState!.validate()) {
+                          _onAddNew();
+                        }
+                      },
+                      child: Text("1004@AddWallet".tr),
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -149,67 +149,84 @@ class AddWalletBody extends StatelessWidget {
     );
   }
 
-  void _onSubmit(BuildContext context, bool isValid) {
-    if (!isValid) {
-      awesomeDialogError(context: context).show();
-      return;
-    }
+  void _onAddNew() {
+    final OperationNotifier operation = OperationNotifier(
+      title: "1004@AddWallet".tr,
+    );
 
-    awesomeDialog(
-      context: context,
-      dialogType: DialogType.success,
-      body: Padding(
-        padding: const EdgeInsets.only(left: AppDecoration.padding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Text(
-                "1021@global".tr,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(color: AppColors.green),
-              ),
-            ),
-            verticalSpace(AppDecoration.spaceMedium),
-            Text(
-              "1005@AddWallet".tr,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Colors.red,
+    _walletManagerController
+        .addNew(
+      username: _usernameController.text,
+      password: _passwordController.text,
+      recoveryPassword: _recoveryPassController.text,
+    )
+        .then((isValid) {
+      if (isValid) {
+        Get.back();
+
+        final BuildContext context = Get.context!;
+
+        awesomeDialog(
+          context: context,
+          dialogType: DialogType.success,
+          body: Padding(
+            padding: const EdgeInsets.only(left: AppDecoration.padding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Text(
+                    "1021@global".tr,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(color: AppColors.green),
                   ),
+                ),
+                verticalSpace(),
+                Text(
+                  "1005@AddWallet".tr,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        color: Colors.red,
+                      ),
+                ),
+                verticalSpace(AppDecoration.spaceSmall),
+                Text(
+                  "1006@AddWallet".tr,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                verticalSpace(AppDecoration.spaceSmall),
+                Text(
+                  "1007@AddWallet".tr,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                verticalSpace(AppDecoration.spaceSmall),
+                Text(
+                  "1008@AddWallet".tr,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                verticalSpace(AppDecoration.spaceSmall),
+                Text(
+                  "1009@AddWallet".tr,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                verticalSpace(AppDecoration.spaceSmall),
+                Text(
+                  "1010@AddWallet".tr,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                verticalSpace(),
+              ],
             ),
-            verticalSpace(AppDecoration.spaceSmall),
-            Text(
-              "1006@AddWallet".tr,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            verticalSpace(AppDecoration.spaceSmall),
-            Text(
-              "1007@AddWallet".tr,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            verticalSpace(AppDecoration.spaceSmall),
-            Text(
-              "1008@AddWallet".tr,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            verticalSpace(AppDecoration.spaceSmall),
-            Text(
-              "1009@AddWallet".tr,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-            verticalSpace(AppDecoration.spaceSmall),
-            Text(
-              "1010@AddWallet".tr,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ],
-        ),
-      ),
-      btnCancelText: "1022@global".tr,
-    ).show().whenComplete(() {
-      Future.delayed(const Duration(milliseconds: 500), Get.back);
+          ),
+        ).show();
+      } else {
+        operation.invalid("1011@AddWallet".tr);
+        operation.notify();
+      }
+    }).catchError((error) {
+      operation.error(error.toString());
+      operation.notify();
     });
   }
 }
