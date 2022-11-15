@@ -26,7 +26,7 @@ class AppDecoration {
   static const double iconSize = 24.0;
   static const double iconSmallSize = 20.0;
   static const double dividerPadding = 20.0;
-  static const double widgetWidth = 350.0;
+  static const double widgetWidth = 300.0;
   static const double buttonHeight = 35.0;
   static const double buttonHeightLarge = 50.0;
 }
