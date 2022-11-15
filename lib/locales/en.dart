@@ -19,12 +19,13 @@ const Map<String, String> translator = {
   "1017@global": "Passwords doesn't match",
   "1018@global": "Already exists before",
   "1019@global":
-      "The operation failed, please try again or contact us to help you with this issue.",
+      "Please restart the app and try again or contact us to help you with this issue.",
   "1020@global": "Support",
   "1021@global": "Added Successfully",
   "1022@global": "I Understand",
-  "1023@global": "Don't use same password for recovery",
+  "1023@global": "Recovery password must be different",
   "1024@global": "Invalid URL",
+  "1025@global": "Error Detected",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
@@ -38,6 +39,7 @@ const Map<String, String> translator = {
   "1001@home": "No wallets have been added yet!",
   "1002@home": "Let's add your first wallet today, click on \"+\" button.",
   "1003@home": "Add a wallet",
+  "1004@home": "Wallet Favorite",
 
   // Settings
   "1000@settings": "Settings",
@@ -48,6 +50,7 @@ const Map<String, String> translator = {
       "Backup all your wallets to specific location on your system.",
   "1005@settings": "Backup My Wallets",
   "1006@settings": "Import",
+  "1007@settings": "Settings Update",
 
   // Networks
   "1000@network": "Blockchain Networks",
@@ -69,17 +72,17 @@ const Map<String, String> translator = {
   "1005@AddNetwork": "Currency Symbol",
   "1006@AddNetwork": "Block Explorer URL",
   "1007@AddNetwork": "Add Network",
-  "1008@AddNetwork":
-      "The Blockchain network has been added to your list of networks and is ready to connect.",
+  "1008@AddNetwork": "Network has been added successfully.",
+  "1009@AddNetwork": "Failed, Unable to connect to this network.",
 
   // AddWallet
   "1000@AddWallet":
       "Create a new wallet or add an existing one, your private keys and passwords are stored anywhere.",
-  "1001@AddWallet": "Username or email are sensitive to characters.",
+  "1001@AddWallet": "Username or email is sensitive to characters.",
   "1002@AddWallet":
       "Password must contain uppercase/lowercase letters, symbols and numbers.",
   "1003@AddWallet":
-      "The recovery password is important to be able to add your wallet to the app later or recover the OTP hash if you lose it.",
+      "The recovery password is important to be able to add your wallet to the app later.",
   "1004@AddWallet": "Add Wallet",
   "1005@AddWallet": "Protect Your Funds",
   "1006@AddWallet":
@@ -90,4 +93,5 @@ const Map<String, String> translator = {
       "Walletika team will never ask for your passwords or private key",
   "1010@AddWallet":
       "Recommended to backup all your wallets to an external file.",
+  "1011@AddWallet": "Failed to add this wallet, Please try again.",
 };
