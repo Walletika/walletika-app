@@ -44,7 +44,7 @@ class CustomTextFormField extends StatelessWidget {
   final int maxLength;
   final bool readOnly;
   final TextInputType? keyboardType;
-  final String? Function(String? value)? validator;
+  final String? Function(String? text)? validator;
   final void Function(String)? onChanged;
   final void Function()? onEditingComplete;
   final void Function(String)? onFieldSubmitted;
@@ -93,13 +93,13 @@ class CustomTextFormField extends StatelessWidget {
           onFieldSubmitted: onFieldSubmitted,
           onSaved: onSaved,
           onTap: onTap,
-          onChanged: (value) {
-            if (onChanged != null) onChanged!(value);
-            if (value.isEmpty) focusNode?.unfocus();
+          onChanged: (text) {
+            if (onChanged != null) onChanged!(text);
+            if (text.isEmpty) focusNode?.unfocus();
           },
-          validator: (value) {
-            if (value != null && value.isEmpty) return "1015@global".tr;
-            if (validator != null) return validator!(value);
+          validator: (text) {
+            if (text != null && text.isEmpty) return "1015@global".tr;
+            if (validator != null) return validator!(text);
             return null;
           },
         ),

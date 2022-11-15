@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_pw_validator/Resource/Strings.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:get/get.dart';
@@ -61,6 +62,9 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
         obscureText: _isObscureText,
         enableIMEPersonalizedLearning: false,
         keyboardType: TextInputType.visiblePassword,
+        inputFormatters: [
+          FilteringTextInputFormatter.allow(AppRegExp.lettersWithoutSpace),
+        ],
         prefixIcon: const Icon(LineIcons.key),
         suffixIcon: MouseRegion(
           cursor: SystemMouseCursors.click,
@@ -75,9 +79,9 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
             ),
           ),
         ),
-        validator: (value) {
+        validator: (text) {
           if (widget.enableStrengthBar && !_isValid) return "1016@global".tr;
-          if (widget.validator != null) return widget.validator!(value);
+          if (widget.validator != null) return widget.validator!(text);
           return null;
         },
         children: widget.enableStrengthBar
