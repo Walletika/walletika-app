@@ -22,8 +22,8 @@ SnackbarController modernSnackBar({
           )
         : const Icon(
             LineIcons.exclamationCircle,
-            color: Colors.orange,
-            size: 30.0,
+            color: Colors.red,
+            size: 40.0,
           );
   }
 
@@ -32,7 +32,12 @@ SnackbarController modernSnackBar({
     '',
     backgroundColor: AppColors.background3.withOpacity(0.5),
     leftBarIndicatorColor: icon?.color,
-    titleText: Text(title, style: Theme.of(context).textTheme.titleLarge),
+    titleText: Text(
+      title,
+      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+    ),
     messageText: Text(message, style: Theme.of(context).textTheme.bodyMedium),
     icon: icon,
     maxWidth: maxWidth,
