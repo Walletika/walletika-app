@@ -10,5 +10,5 @@ class ProcessState {
     return true;
   }
 
-  void finished() => _isRunning = false;
+  void done() => _isRunning = false;
 }

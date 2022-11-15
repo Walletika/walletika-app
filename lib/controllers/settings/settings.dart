@@ -49,7 +49,7 @@ class SettingsController extends GetxController {
     Get.changeThemeMode(_repository.theme);
     _isDarkMode.value = enabled;
 
-    _darkModeUpdateState.finished();
+    _darkModeUpdateState.done();
   }
 
   Future<void> languageUpdate(String? language) async {
@@ -59,7 +59,7 @@ class SettingsController extends GetxController {
     Get.updateLocale(_repository.locale);
     _currentLanguage.value = language;
 
-    _languageUpdateState.finished();
+    _languageUpdateState.done();
   }
 
   Future<void> networkUpdate(String name) async {
@@ -68,7 +68,7 @@ class SettingsController extends GetxController {
     await _repository.networkUpdate(name);
     _currentNetwork.value = name;
 
-    _networkUpdateState.finished();
+    _networkUpdateState.done();
   }
 
   Future<void> testnetHiddenUpdate(bool enabled) async {
@@ -77,6 +77,6 @@ class SettingsController extends GetxController {
     await _repository.testnetHiddenUpdate(enabled);
     _isTestnetHidden.value = enabled;
 
-    _testnetHiddenUpdateState.finished();
+    _testnetHiddenUpdateState.done();
   }
 }
