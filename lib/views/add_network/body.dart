@@ -1,4 +1,3 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -8,7 +7,7 @@ import '../../controllers/network/network_manager.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/custom_text_field.dart';
-import '../widgets/dialog.dart';
+import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
 
 class AddNetworkBody extends StatelessWidget {
@@ -42,13 +41,13 @@ class AddNetworkBody extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
-                verticalSpace(AppDecoration.spaceMedium),
+                verticalSpace(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Icon(
-                      LineIcons.exclamationTriangle,
+                      LineIcons.exclamationCircle,
                       color: Colors.orange,
                       size: 40.0,
                     ),
@@ -59,7 +58,6 @@ class AddNetworkBody extends StatelessWidget {
                         child: Text(
                           "1001@AddNetwork".tr,
                           style: Theme.of(context).textTheme.bodySmall,
-                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
@@ -73,10 +71,10 @@ class AddNetworkBody extends StatelessWidget {
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(AppRegExp.letters),
                   ],
-                  validator: (value) {
-                    if (value != null &&
+                  validator: (text) {
+                    if (text != null &&
                         _networkManagerController.networkExists(
-                          name: value,
+                          name: text,
                           rpc: _rpcController.text,
                         )) return "1018@global".tr;
 
@@ -94,8 +92,8 @@ class AddNetworkBody extends StatelessWidget {
                       AppRegExp.lettersWithoutSpace,
                     ),
                   ],
-                  validator: (value) {
-                    if (value != null && !AppRegExp.url.hasMatch(value)) {
+                  validator: (text) {
+                    if (text != null && !AppRegExp.url.hasMatch(text)) {
                       return "1024@global".tr;
                     }
                     return null;
@@ -132,37 +130,27 @@ class AddNetworkBody extends StatelessWidget {
                       AppRegExp.lettersWithoutSpace,
                     ),
                   ],
-                  validator: (value) {
-                    if (value != null && !AppRegExp.url.hasMatch(value)) {
+                  validator: (text) {
+                    if (text != null && !AppRegExp.url.hasMatch(text)) {
                       return "1024@global".tr;
                     }
                     return null;
                   },
                 ),
                 verticalSpace(),
-                Column(
-                  children: [
-                    SizedBox(
-                      width: AppDecoration.widgetWidth,
-                      height: AppDecoration.buttonHeightLarge,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (_formController.currentState!.validate()) {
-                            _networkManagerController
-                                .addNew(
-                                  name: _nameController.text,
-                                  rpc: _rpcController.text,
-                                  chainID: int.parse(_chainIDController.text),
-                                  symbol: _symbolController.text,
-                                  explorer: _explorerController.text,
-                                )
-                                .then((value) => _onSubmit(context, value));
-                          }
-                        },
-                        child: Text("1007@AddNetwork".tr),
-                      ),
+                Center(
+                  child: SizedBox(
+                    width: AppDecoration.widgetWidth,
+                    height: AppDecoration.buttonHeightLarge,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_formController.currentState!.validate()) {
+                          _onAddNew();
+                        }
+                      },
+                      child: Text("1007@AddNetwork".tr),
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -172,34 +160,27 @@ class AddNetworkBody extends StatelessWidget {
     );
   }
 
-  void _onSubmit(BuildContext context, bool isValid) {
-    if (!isValid) {
-      awesomeDialogError(context: context).show();
-      return;
-    }
+  void _onAddNew() {
+    final OperationNotifier operation = OperationNotifier(
+      title: "1007@AddNetwork".tr,
+    );
 
-    awesomeDialog(
-      context: context,
-      dialogType: DialogType.success,
-      body: Padding(
-        padding: const EdgeInsets.only(left: AppDecoration.padding),
-        child: Column(
-          children: [
-            Text(
-              "1021@global".tr,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(color: AppColors.green),
-            ),
-            verticalSpace(),
-            Text("1008@AddNetwork".tr),
-          ],
-        ),
-      ),
-      btnCancelText: "1003@global".tr,
-    ).show().whenComplete(() {
-      Future.delayed(const Duration(milliseconds: 500), Get.back);
+    _networkManagerController
+        .addNew(
+      name: _nameController.text,
+      rpc: _rpcController.text,
+      chainID: int.parse(_chainIDController.text),
+      symbol: _symbolController.text,
+      explorer: _explorerController.text,
+    )
+        .then((isValid) {
+      isValid
+          ? operation.valid("1008@AddNetwork".tr)
+          : operation.invalid("1009@AddNetwork".tr);
+      operation.notify(backScreen: isValid);
+    }).catchError((error) {
+      operation.error(error.toString());
+      operation.notify();
     });
   }
 }
