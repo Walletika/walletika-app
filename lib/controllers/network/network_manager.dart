@@ -96,9 +96,9 @@ class NetworkManagerController extends GetxController {
     }
 
     if (networkModel is NetworkModel) {
-      return await _repository.remove(networkModel).then((value) async {
-        if (value) await networksUpdate();
-        return value;
+      return await _repository.remove(networkModel).then((isValid) async {
+        if (isValid) await networksUpdate();
+        return isValid;
       });
     }
 
