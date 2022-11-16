@@ -35,10 +35,10 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.5
   get: ^4.6.5
   get_storage: ^2.0.3
   awesome_dialog: ^3.0.2
+  flutter_pw_validator: ^1.4.2
   line_icons: ^2.0.1
   url_launcher: ^6.1.6
   walletika_sdk:
