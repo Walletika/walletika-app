@@ -64,6 +64,7 @@ class AppImages {
   static const String dayIllustrations = 'assets/illustrations/day.jpg';
   static const String nightIllustrations = 'assets/illustrations/night.jpg';
   static const String walletIllustrations = 'assets/illustrations/wallet.png';
+  static const String authIllustrations = 'assets/illustrations/auth.png';
 }
 
 class AppPages {
@@ -73,6 +74,7 @@ class AppPages {
   static const String addNetwork = '/settings/network/addNetwork';
   static const String addWallet = '/addWallet';
   static const String login = '/login';
+  static const String auth = '/login/auth';
 
   static bool get isHome => Get.currentRoute == AppPages.home;
 }

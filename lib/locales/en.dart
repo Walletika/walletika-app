@@ -26,6 +26,7 @@ const Map<String, String> translator = {
   "1023@global": "Recovery password must be different",
   "1024@global": "Invalid URL",
   "1025@global": "Error Detected",
+  "1026@global": "Confirm",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
@@ -100,4 +101,11 @@ const Map<String, String> translator = {
   "1001@login": "Skip to View",
   "1002@login": "Wallet Login",
   "1003@login": "Wrong password! Please try again.",
+
+  // Auth
+  "1000@auth": "Verification Code",
+  "1001@auth": "Enter a one-time passcode from your authenticator app.",
+  "1002@auth": "I've lost my authentication code",
+  "1003@auth": "Login Auth",
+  "1004@auth": "The OTP code is wrong!",
 };

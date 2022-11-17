@@ -97,7 +97,7 @@ class LoginBody extends StatelessWidget {
         .loginValidate(_passwordController.text)
         .then((isValid) {
       if (isValid) {
-        // forward to authenticator screen
+        Get.offNamed(AppPages.auth, arguments: _authValidator);
       } else {
         _passwordController.clear();
         operation.invalid("1003@login".tr);
@@ -108,5 +108,16 @@ class LoginBody extends StatelessWidget {
       operation.error(error.toString());
       operation.notify(title: "1002@login".tr);
     });
+  }
+
+  Future<bool> _authValidator(String otpCode) async {
+    final isLogged = await _walletManagerController.login(
+      password: _passwordController.text,
+      otpCode: otpCode,
+    );
+
+    if (isLogged) Get.offNamed(AppPages.network);
+
+    return isLogged;
   }
 }
