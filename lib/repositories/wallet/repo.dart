@@ -13,7 +13,16 @@ abstract class WalletRepository {
     required String recoveryPassword,
   });
 
-  Future<bool> login(String password);
+  Future<bool> loginValidate({
+    required String address,
+    required String password,
+  });
+
+  Future<bool> login({
+    required String address,
+    required String password,
+    required String otpCode,
+  });
 
   Future<void> setFavorite(String address);
 }

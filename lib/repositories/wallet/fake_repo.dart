@@ -66,8 +66,20 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
-  Future<bool> login(String password) async {
-    return true;
+  Future<bool> loginValidate({
+    required String address,
+    required String password,
+  }) async {
+    return password == '123456789';
+  }
+
+  @override
+  Future<bool> login({
+    required String address,
+    required String password,
+    required String otpCode,
+  }) async {
+    return password == '123456789' && otpCode == '123456';
   }
 
   @override

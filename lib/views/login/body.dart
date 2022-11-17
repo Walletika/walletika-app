@@ -93,14 +93,18 @@ class LoginBody extends StatelessWidget {
       title: _walletManagerController.currentWallet.username,
     );
 
-    _walletManagerController.login(_passwordController.text).then((isValid) {
+    _walletManagerController
+        .loginValidate(_passwordController.text)
+        .then((isValid) {
       if (isValid) {
-        operation.valid("1003@login".tr);
+        // forward to authenticator screen
       } else {
-        operation.invalid("1017@global".tr);
+        _passwordController.clear();
+        operation.invalid("1003@login".tr);
+        operation.notify();
       }
-      operation.notify();
     }).catchError((error) {
+      _passwordController.clear();
       operation.error(error.toString());
       operation.notify(title: "1002@login".tr);
     });

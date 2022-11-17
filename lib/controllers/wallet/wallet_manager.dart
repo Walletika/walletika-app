@@ -18,7 +18,6 @@ class WalletManagerController extends GetxController {
 
   // Local Data
   late WalletItemModel _currentWallet;
-  late String? _password;
 
   // Event methods
   @override
@@ -80,11 +79,24 @@ class WalletManagerController extends GetxController {
     return result;
   }
 
-  Future<bool> login(String password) async {
-    final bool isValid = await _repository.login(password);
-    if (isValid) {
-      _password = password;
-    }
+  Future<bool> loginValidate(String password) async {
+    return await _repository.loginValidate(
+      address: currentWallet.address,
+      password: password,
+    );
+  }
+
+  Future<bool> login({
+    required String password,
+    required String otpCode,
+  }) async {
+    final bool isValid = await _repository.login(
+      address: currentWallet.address,
+      password: password,
+      otpCode: otpCode,
+    );
+
+    if (isValid) await walletsUpdate();
 
     return isValid;
   }

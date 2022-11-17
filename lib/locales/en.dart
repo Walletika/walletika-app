@@ -99,5 +99,5 @@ const Map<String, String> translator = {
   "1000@login": "Login",
   "1001@login": "Skip to View",
   "1002@login": "Wallet Login",
-  "1003@login": "The login has been confirmed successfully",
+  "1003@login": "Wrong password! Please try again.",
 };
