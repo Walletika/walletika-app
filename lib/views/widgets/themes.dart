@@ -55,6 +55,7 @@ ThemeData walletikaDefaultTheme = ThemeData(
     labelStyle: _secondaryTextStyle,
     filled: true,
     fillColor: AppColors.background2,
+    errorStyle: _primaryTextStyle.copyWith(color: Colors.red, fontSize: 12.0),
     prefixIconColor: AppColors.icon,
     suffixIconColor: AppColors.icon,
     counterStyle: _secondaryTextStyle,
