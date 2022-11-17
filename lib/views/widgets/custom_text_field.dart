@@ -45,10 +45,10 @@ class CustomTextFormField extends StatelessWidget {
   final bool readOnly;
   final TextInputType? keyboardType;
   final String? Function(String? text)? validator;
-  final void Function(String)? onChanged;
+  final void Function(String text)? onChanged;
   final void Function()? onEditingComplete;
-  final void Function(String)? onFieldSubmitted;
-  final void Function(String?)? onSaved;
+  final void Function(String text)? onFieldSubmitted;
+  final void Function(String? text)? onSaved;
   final void Function()? onTap;
   final List<TextInputFormatter>? inputFormatters;
   final List<Widget> children;

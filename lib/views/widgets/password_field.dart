@@ -41,7 +41,7 @@ class PasswordFormField extends StatefulWidget {
   final bool enableStrengthBar;
   final double strengthBarWidth;
   final double strengthBarHeight;
-  final String? Function(String? value)? validator;
+  final String? Function(String? text)? validator;
 
   @override
   State<PasswordFormField> createState() => _PasswordFormFieldState();
