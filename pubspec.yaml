@@ -39,6 +39,7 @@ dependencies:
   get_storage: ^2.0.3
   awesome_dialog: ^3.0.2
   flutter_pw_validator: ^1.4.2
+  pinput: ^2.2.16
   line_icons: ^2.0.1
   url_launcher: ^6.1.6
   walletika_sdk:
