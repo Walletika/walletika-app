@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/constants.dart';
 import 'address.dart';
 import 'item_logo.dart';
 
@@ -25,7 +26,7 @@ class WalletItem extends StatelessWidget {
       minVerticalPadding: 15.0,
       onTap: onTap,
       leading: ItemLogo(
-        path: 'assets/illustrations/wallet.png',
+        path: AppImages.walletIllustrations,
         isActive: isActive,
       ),
       title: Text(

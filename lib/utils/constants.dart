@@ -20,7 +20,7 @@ class AppDecoration {
   static const double paddingLarge = 50.0;
   static const double spaceSmall = 5.0;
   static const double space = 10.0;
-  static const double spaceMedium = 30.0;
+  static const double spaceMedium = 20.0;
   static const double spaceLarge = 50.0;
   static const double elevation = 20.0;
   static const double iconSize = 24.0;
@@ -63,6 +63,7 @@ class AppImages {
   static const String coinIllustrations = 'assets/illustrations/coin.png';
   static const String dayIllustrations = 'assets/illustrations/day.jpg';
   static const String nightIllustrations = 'assets/illustrations/night.jpg';
+  static const String walletIllustrations = 'assets/illustrations/wallet.png';
 }
 
 class AppPages {
