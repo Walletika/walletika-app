@@ -28,7 +28,7 @@ class LoginBody extends StatelessWidget {
           child: Form(
             key: _formController,
             child: ListView(
-              padding: const EdgeInsets.all(AppDecoration.paddingMedium),
+              padding: const EdgeInsets.all(AppDecoration.paddingBig),
               children: [
                 Image.asset(
                   AppImages.logo,
@@ -59,26 +59,26 @@ class LoginBody extends StatelessWidget {
                   enableStrengthBar: false,
                 ),
                 verticalSpace(),
-                Column(
-                  children: [
-                    SizedBox(
-                      width: AppDecoration.widgetWidth,
-                      height: AppDecoration.buttonHeightLarge,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (_formController.currentState!.validate()) {
-                            _onLogin();
-                          }
-                        },
-                        child: Text("1000@login".tr),
-                      ),
+                Center(
+                  child: SizedBox(
+                    width: AppDecoration.widgetWidth,
+                    height: AppDecoration.buttonHeightLarge,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_formController.currentState!.validate()) {
+                          _onLogin();
+                        }
+                      },
+                      child: Text("1000@login".tr),
                     ),
-                    verticalSpace(AppDecoration.spaceMedium),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text("1001@login".tr),
-                    ),
-                  ],
+                  ),
+                ),
+                verticalSpace(AppDecoration.spaceMedium),
+                Center(
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text("1001@login".tr),
+                  ),
                 ),
               ],
             ),
