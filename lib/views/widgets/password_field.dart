@@ -33,6 +33,11 @@ class PasswordFormField extends StatefulWidget {
     this.enableStrengthBar = true,
     this.strengthBarWidth = AppDecoration.widgetWidth,
     this.strengthBarHeight = 120.0,
+    this.onChanged,
+    this.onEditingComplete,
+    this.onFieldSubmitted,
+    this.onSaved,
+    this.onTap,
     this.validator,
     super.key,
   });
@@ -43,6 +48,11 @@ class PasswordFormField extends StatefulWidget {
   final double strengthBarWidth;
   final double strengthBarHeight;
   final String? Function(String? text)? validator;
+  final void Function(String text)? onChanged;
+  final void Function()? onEditingComplete;
+  final void Function(String text)? onFieldSubmitted;
+  final void Function(String? text)? onSaved;
+  final void Function()? onTap;
 
   @override
   State<PasswordFormField> createState() => _PasswordFormFieldState();
@@ -78,6 +88,11 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
             ),
           ),
         ),
+        onEditingComplete: widget.onEditingComplete,
+        onFieldSubmitted: widget.onFieldSubmitted,
+        onSaved: widget.onSaved,
+        onTap: widget.onTap,
+        onChanged: widget.onChanged,
         validator: (text) {
           if (widget.enableStrengthBar && !_isValid) return "1016@global".tr;
           if (widget.validator != null) return widget.validator!(text);
