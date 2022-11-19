@@ -41,6 +41,7 @@ class WalletikaApp extends StatelessWidget {
       themeMode: settingsService.theme,
       locale: settingsService.locale,
       translations: AppTranslator(),
+      textDirection: TextDirection.ltr,
       defaultTransition: Transition.cupertino,
       initialBinding: AppBinding(),
       initialRoute: AppPages.home,
