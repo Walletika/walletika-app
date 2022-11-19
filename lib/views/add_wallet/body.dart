@@ -40,7 +40,7 @@ class AddWalletBody extends StatelessWidget {
               cacheExtent: 1000,
               children: [
                 Text(
-                  "1000@AddWallet".tr,
+                  "1000@addWallet".tr,
                   style: Theme.of(context).textTheme.titleSmall,
                   textAlign: TextAlign.center,
                 ),
@@ -48,7 +48,7 @@ class AddWalletBody extends StatelessWidget {
                 Center(
                   child: SizedBox(
                     width: AppDecoration.widgetWidth,
-                    child: Text("1001@AddWallet".tr),
+                    child: Text("1001@addWallet".tr),
                   ),
                 ),
                 verticalSpace(),
@@ -75,7 +75,7 @@ class AddWalletBody extends StatelessWidget {
                 Center(
                   child: SizedBox(
                     width: AppDecoration.widgetWidth,
-                    child: Text("1002@AddWallet".tr),
+                    child: Text("1002@addWallet".tr),
                   ),
                 ),
                 verticalSpace(),
@@ -101,7 +101,7 @@ class AddWalletBody extends StatelessWidget {
                 Center(
                   child: SizedBox(
                     width: AppDecoration.widgetWidth,
-                    child: Text("1003@AddWallet".tr),
+                    child: Text("1003@addWallet".tr),
                   ),
                 ),
                 verticalSpace(),
@@ -136,7 +136,7 @@ class AddWalletBody extends StatelessWidget {
                     height: AppDecoration.buttonHeightLarge,
                     child: ElevatedButton(
                       onPressed: _onSubmit,
-                      child: Text("1004@AddWallet".tr),
+                      child: Text("1004@addWallet".tr),
                     ),
                   ),
                 ),
@@ -156,7 +156,7 @@ class AddWalletBody extends StatelessWidget {
 
   void _onAddNew() {
     final OperationNotifier operation = OperationNotifier(
-      title: "1004@AddWallet".tr,
+      title: "1004@addWallet".tr,
     );
 
     _walletManagerController
@@ -190,34 +190,34 @@ class AddWalletBody extends StatelessWidget {
                 ),
                 verticalSpace(AppDecoration.spaceMedium),
                 Text(
-                  "1005@AddWallet".tr,
+                  "1005@addWallet".tr,
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: Colors.red,
                       ),
                 ),
                 verticalSpace(),
                 Text(
-                  "1006@AddWallet".tr,
+                  "1006@addWallet".tr,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 Text(
-                  "1007@AddWallet".tr,
+                  "1007@addWallet".tr,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 Text(
-                  "1008@AddWallet".tr,
+                  "1008@addWallet".tr,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 Text(
-                  "1009@AddWallet".tr,
+                  "1009@addWallet".tr,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 Text(
-                  "1010@AddWallet".tr,
+                  "1010@addWallet".tr,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 verticalSpace(),
@@ -226,7 +226,7 @@ class AddWalletBody extends StatelessWidget {
           ),
         ).show();
       } else {
-        operation.invalid("1011@AddWallet".tr);
+        operation.invalid("1011@addWallet".tr);
         operation.notify();
       }
     }).catchError((error) {

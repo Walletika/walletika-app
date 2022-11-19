@@ -37,7 +37,7 @@ class AddNetworkBody extends StatelessWidget {
               cacheExtent: 1000,
               children: [
                 Text(
-                  "1000@AddNetwork".tr,
+                  "1000@addNetwork".tr,
                   style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
@@ -56,7 +56,7 @@ class AddNetworkBody extends StatelessWidget {
                       child: SizedBox(
                         width: AppDecoration.widgetWidth,
                         child: Text(
-                          "1001@AddNetwork".tr,
+                          "1001@addNetwork".tr,
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ),
@@ -66,7 +66,7 @@ class AddNetworkBody extends StatelessWidget {
                 verticalSpace(AppDecoration.spaceMedium),
                 CustomTextFormField(
                   controller: _nameController,
-                  placeholderText: "1002@AddNetwork".tr,
+                  placeholderText: "1002@addNetwork".tr,
                   keyboardType: TextInputType.name,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(AppRegExp.letters),
@@ -85,7 +85,7 @@ class AddNetworkBody extends StatelessWidget {
                 verticalSpace(AppDecoration.spaceSmall),
                 CustomTextFormField(
                   controller: _rpcController,
-                  placeholderText: "1003@AddNetwork".tr,
+                  placeholderText: "1003@addNetwork".tr,
                   maxLength: 100,
                   keyboardType: TextInputType.url,
                   inputFormatters: [
@@ -104,7 +104,7 @@ class AddNetworkBody extends StatelessWidget {
                 verticalSpace(AppDecoration.spaceSmall),
                 CustomTextFormField(
                   controller: _chainIDController,
-                  placeholderText: "1004@AddNetwork".tr,
+                  placeholderText: "1004@addNetwork".tr,
                   maxLength: 6,
                   keyboardType: TextInputType.number,
                   inputFormatters: [
@@ -115,7 +115,7 @@ class AddNetworkBody extends StatelessWidget {
                 verticalSpace(AppDecoration.spaceSmall),
                 CustomTextFormField(
                   controller: _symbolController,
-                  placeholderText: "1005@AddNetwork".tr,
+                  placeholderText: "1005@addNetwork".tr,
                   maxLength: 20,
                   keyboardType: TextInputType.name,
                   inputFormatters: [
@@ -126,7 +126,7 @@ class AddNetworkBody extends StatelessWidget {
                 verticalSpace(AppDecoration.spaceSmall),
                 CustomTextFormField(
                   controller: _explorerController,
-                  placeholderText: "1006@AddNetwork".tr,
+                  placeholderText: "1006@addNetwork".tr,
                   maxLength: 100,
                   keyboardType: TextInputType.url,
                   inputFormatters: [
@@ -149,7 +149,7 @@ class AddNetworkBody extends StatelessWidget {
                     height: AppDecoration.buttonHeightLarge,
                     child: ElevatedButton(
                       onPressed: _onSubmit,
-                      child: Text("1007@AddNetwork".tr),
+                      child: Text("1007@addNetwork".tr),
                     ),
                   ),
                 ),
@@ -169,7 +169,7 @@ class AddNetworkBody extends StatelessWidget {
 
   void _onAddNew() {
     final OperationNotifier operation = OperationNotifier(
-      title: "1007@AddNetwork".tr,
+      title: "1007@addNetwork".tr,
     );
 
     _networkManagerController
@@ -182,8 +182,8 @@ class AddNetworkBody extends StatelessWidget {
     )
         .then((isValid) {
       isValid
-          ? operation.valid("1008@AddNetwork".tr)
-          : operation.invalid("1009@AddNetwork".tr);
+          ? operation.valid("1008@addNetwork".tr)
+          : operation.invalid("1009@addNetwork".tr);
       operation.notify(backScreen: isValid);
     }).catchError((error) {
       operation.error(error.toString());

@@ -63,38 +63,38 @@ const Map<String, String> translator = {
   "1007@network": "This network is locked",
 
   // AddNetwork
-  "1000@AddNetwork": "Add a Network of Layer 2",
-  "1001@AddNetwork":
+  "1000@addNetwork": "Add a Network of Layer 2",
+  "1001@addNetwork":
       "A malicious network provider can lie about the state of the blockchain and record your network activity. Only add custom networks you trust.",
-  "1002@AddNetwork": "Network Name",
-  "1003@AddNetwork": "RPC URL",
-  "1004@AddNetwork": "Chain ID",
-  "1005@AddNetwork": "Currency Symbol",
-  "1006@AddNetwork": "Block Explorer URL",
-  "1007@AddNetwork": "Add Network",
-  "1008@AddNetwork": "Network has been added successfully.",
-  "1009@AddNetwork": "Failed, Unable to connect to this network.",
+  "1002@addNetwork": "Network Name",
+  "1003@addNetwork": "RPC URL",
+  "1004@addNetwork": "Chain ID",
+  "1005@addNetwork": "Currency Symbol",
+  "1006@addNetwork": "Block Explorer URL",
+  "1007@addNetwork": "Add Network",
+  "1008@addNetwork": "Network has been added successfully.",
+  "1009@addNetwork": "Failed, Unable to connect to this network.",
 
   // AddWallet
-  "1000@AddWallet":
+  "1000@addWallet":
       "Create a new wallet or add an existing one, your private keys and passwords are stored anywhere.",
-  "1001@AddWallet": "Username or email is sensitive to characters.",
-  "1002@AddWallet":
+  "1001@addWallet": "Username or email is sensitive to characters.",
+  "1002@addWallet":
       "Password must contain uppercase/lowercase letters, symbols and numbers.",
-  "1003@AddWallet":
+  "1003@addWallet":
       "The recovery password is important to be able to add your wallet to the app later.",
-  "1004@AddWallet": "Add Wallet",
-  "1005@AddWallet": "Protect Your Funds",
-  "1006@AddWallet":
+  "1004@addWallet": "Add Wallet",
+  "1005@addWallet": "Protect Your Funds",
+  "1006@addWallet":
       "1 - You must use the same username, password and recovery password to access your wallet later.",
-  "1007@AddWallet": "2 - Wallet information is unchangeable and unrecoverable.",
-  "1008@AddWallet":
+  "1007@addWallet": "2 - Wallet information is unchangeable and unrecoverable.",
+  "1008@addWallet":
       "3 - Never share your passwords or private key with anyone.",
-  "1009@AddWallet":
+  "1009@addWallet":
       "4 - Walletika team will never ask for your passwords or private key",
-  "1010@AddWallet":
+  "1010@addWallet":
       "5 - Recommended to backup all your wallets to an external file.",
-  "1011@AddWallet": "Failed to add this wallet, Please try again.",
+  "1011@addWallet": "Failed to add this wallet, Please try again.",
 
   // Login
   "1000@login": "Login",
