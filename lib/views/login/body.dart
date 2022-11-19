@@ -57,6 +57,7 @@ class LoginBody extends StatelessWidget {
                   controller: _passwordController,
                   placeholderText: "1011@global".tr,
                   enableStrengthBar: false,
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(),
                 Center(
@@ -64,11 +65,7 @@ class LoginBody extends StatelessWidget {
                     width: AppDecoration.widgetWidth,
                     height: AppDecoration.buttonHeightLarge,
                     child: ElevatedButton(
-                      onPressed: () {
-                        if (_formController.currentState!.validate()) {
-                          _onLogin();
-                        }
-                      },
+                      onPressed: _onSubmit,
                       child: Text("1000@login".tr),
                     ),
                   ),
@@ -86,6 +83,12 @@ class LoginBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _onSubmit() {
+    if (_formController.currentState!.validate()) {
+      _onLogin();
+    }
   }
 
   void _onLogin() {

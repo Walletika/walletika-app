@@ -69,6 +69,7 @@ class AddWalletBody extends StatelessWidget {
                     }
                     return null;
                   },
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(),
                 Center(
@@ -81,6 +82,7 @@ class AddWalletBody extends StatelessWidget {
                 PasswordFormField(
                   controller: _passwordController,
                   placeholderText: "1011@global".tr,
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(),
                 PasswordFormField(
@@ -93,6 +95,7 @@ class AddWalletBody extends StatelessWidget {
                     }
                     return null;
                   },
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(),
                 Center(
@@ -111,6 +114,7 @@ class AddWalletBody extends StatelessWidget {
                     }
                     return null;
                   },
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(),
                 PasswordFormField(
@@ -123,6 +127,7 @@ class AddWalletBody extends StatelessWidget {
                     }
                     return null;
                   },
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(),
                 Center(
@@ -130,11 +135,7 @@ class AddWalletBody extends StatelessWidget {
                     width: AppDecoration.widgetWidth,
                     height: AppDecoration.buttonHeightLarge,
                     child: ElevatedButton(
-                      onPressed: () {
-                        if (_formController.currentState!.validate()) {
-                          _onAddNew();
-                        }
-                      },
+                      onPressed: _onSubmit,
                       child: Text("1004@AddWallet".tr),
                     ),
                   ),
@@ -145,6 +146,12 @@ class AddWalletBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _onSubmit() {
+    if (_formController.currentState!.validate()) {
+      _onAddNew();
+    }
   }
 
   void _onAddNew() {

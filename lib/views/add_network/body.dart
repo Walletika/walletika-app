@@ -33,7 +33,7 @@ class AddNetworkBody extends StatelessWidget {
           child: Form(
             key: _formController,
             child: ListView(
-              padding: const EdgeInsets.all(AppDecoration.paddingMedium),
+              padding: const EdgeInsets.all(AppDecoration.paddingBig),
               cacheExtent: 1000,
               children: [
                 Text(
@@ -41,7 +41,7 @@ class AddNetworkBody extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
-                verticalSpace(),
+                verticalSpace(AppDecoration.spaceMedium),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +63,7 @@ class AddNetworkBody extends StatelessWidget {
                     ),
                   ],
                 ),
-                verticalSpace(),
+                verticalSpace(AppDecoration.spaceMedium),
                 CustomTextFormField(
                   controller: _nameController,
                   placeholderText: "1002@AddNetwork".tr,
@@ -80,6 +80,7 @@ class AddNetworkBody extends StatelessWidget {
 
                     return null;
                   },
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 CustomTextFormField(
@@ -98,6 +99,7 @@ class AddNetworkBody extends StatelessWidget {
                     }
                     return null;
                   },
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 CustomTextFormField(
@@ -108,6 +110,7 @@ class AddNetworkBody extends StatelessWidget {
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                   ],
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 CustomTextFormField(
@@ -118,6 +121,7 @@ class AddNetworkBody extends StatelessWidget {
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(AppRegExp.uppercase),
                   ],
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 CustomTextFormField(
@@ -136,6 +140,7 @@ class AddNetworkBody extends StatelessWidget {
                     }
                     return null;
                   },
+                  onEditingComplete: _onSubmit,
                 ),
                 verticalSpace(),
                 Center(
@@ -143,11 +148,7 @@ class AddNetworkBody extends StatelessWidget {
                     width: AppDecoration.widgetWidth,
                     height: AppDecoration.buttonHeightLarge,
                     child: ElevatedButton(
-                      onPressed: () {
-                        if (_formController.currentState!.validate()) {
-                          _onAddNew();
-                        }
-                      },
+                      onPressed: _onSubmit,
                       child: Text("1007@AddNetwork".tr),
                     ),
                   ),
@@ -158,6 +159,12 @@ class AddNetworkBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _onSubmit() {
+    if (_formController.currentState!.validate()) {
+      _onAddNew();
+    }
   }
 
   void _onAddNew() {
