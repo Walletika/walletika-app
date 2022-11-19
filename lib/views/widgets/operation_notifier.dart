@@ -54,28 +54,24 @@ class OperationNotifier {
         context: Get.context!,
         dialogType: DialogType.error,
         body: Padding(
-          padding: const EdgeInsets.only(left: AppDecoration.padding),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppDecoration.padding,
+          ),
           child: Column(children: [
             Text(
               title ?? this.title,
-              style: Get.theme.textTheme.titleMedium!.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              style: Get.theme.textTheme.bodyLarge,
             ),
             Text(
               "1025@global".tr,
-              style: Get.theme.textTheme.titleLarge!.copyWith(
+              style: Get.theme.textTheme.titleMedium!.copyWith(
                 color: Colors.red,
               ),
             ),
             verticalSpace(),
-            verticalSpace(),
             Text(_message!),
             verticalSpace(),
-            Text(
-              "1019@global".tr,
-              style: Get.theme.textTheme.bodySmall,
-            ),
+            Text("1019@global".tr, style: Get.theme.textTheme.labelSmall),
             verticalSpace(),
           ]),
         ),

@@ -41,7 +41,7 @@ class _PinputFormFieldState extends State<PinputFormField> {
     final defaultPinTheme = PinTheme(
       width: 40.0,
       height: 50.0,
-      textStyle: Theme.of(context).textTheme.titleLarge,
+      textStyle: Theme.of(context).textTheme.headlineSmall,
       decoration: BoxDecoration(
         color: Theme.of(context).inputDecorationTheme.fillColor,
         borderRadius: BorderRadius.circular(AppDecoration.radius),

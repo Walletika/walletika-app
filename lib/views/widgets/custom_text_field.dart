@@ -6,7 +6,7 @@ import 'package:line_icons/line_icons.dart';
 import '../../utils/constants.dart';
 import 'spacer.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   CustomTextFormField({
     required this.controller,
     this.initialValue,
@@ -29,9 +29,7 @@ class CustomTextFormField extends StatelessWidget {
     this.children = const <Widget>[],
     this.focusNode,
     super.key,
-  }) {
-    focusNode ??= FocusNode();
-  }
+  });
 
   final TextEditingController controller;
   final String? initialValue;
@@ -55,32 +53,44 @@ class CustomTextFormField extends StatelessWidget {
   late FocusNode? focusNode;
 
   @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  @override
+  void initState() {
+    widget.focusNode ??= FocusNode();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         TextFormField(
-          controller: controller,
-          initialValue: initialValue,
-          focusNode: focusNode,
-          obscureText: obscureText,
-          enableSuggestions: !obscureText,
-          autocorrect: !obscureText,
-          enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
-          keyboardType: keyboardType,
-          inputFormatters: inputFormatters,
-          maxLength: maxLength,
-          readOnly: readOnly,
+          controller: widget.controller,
+          initialValue: widget.initialValue,
+          focusNode: widget.focusNode,
+          obscureText: widget.obscureText,
+          enableSuggestions: !widget.obscureText,
+          autocorrect: !widget.obscureText,
+          enableIMEPersonalizedLearning: widget.enableIMEPersonalizedLearning,
+          keyboardType: widget.keyboardType,
+          inputFormatters: widget.inputFormatters,
+          maxLength: widget.maxLength,
+          readOnly: widget.readOnly,
+          style: Theme.of(context).textTheme.bodyLarge,
           decoration: InputDecoration(
-            counter: showCounter ? null : zeroSpace(),
-            prefixIcon: prefixIcon,
-            label: Text(placeholderText),
-            suffixIcon: suffixIcon,
+            counter: widget.showCounter ? null : zeroSpace(),
+            prefixIcon: widget.prefixIcon,
+            label: Text(widget.placeholderText),
+            suffixIcon: widget.suffixIcon,
             suffix: MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
                 onTap: () {
-                  controller.clear();
-                  focusNode?.unfocus();
+                  widget.controller.clear();
+                  widget.focusNode?.unfocus();
                 },
                 child: const Icon(
                   LineIcons.times,
@@ -89,21 +99,21 @@ class CustomTextFormField extends StatelessWidget {
               ),
             ),
           ),
-          onEditingComplete: onEditingComplete,
-          onFieldSubmitted: onFieldSubmitted,
-          onSaved: onSaved,
-          onTap: onTap,
+          onEditingComplete: widget.onEditingComplete,
+          onFieldSubmitted: widget.onFieldSubmitted,
+          onSaved: widget.onSaved,
+          onTap: widget.onTap,
           onChanged: (text) {
-            if (onChanged != null) onChanged!(text);
-            if (text.isEmpty) focusNode?.unfocus();
+            if (widget.onChanged != null) widget.onChanged!(text);
+            if (text.isEmpty) widget.focusNode?.unfocus();
           },
           validator: (text) {
             if (text != null && text.isEmpty) return "1015@global".tr;
-            if (validator != null) return validator!(text);
+            if (widget.validator != null) return widget.validator!(text);
             return null;
           },
         ),
-        ...children,
+        ...widget.children,
       ],
     );
   }

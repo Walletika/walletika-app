@@ -32,9 +32,7 @@ class WalletItem extends StatelessWidget {
       title: Text(
         username,
         softWrap: false,
-        style: Theme.of(context).textTheme.titleMedium!.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+        style: Theme.of(context).textTheme.titleMedium,
       ),
       subtitle: TextAddress(address, height: 30.0),
       trailing: trailing,

@@ -7,6 +7,7 @@ import 'package:line_icons/line_icons.dart';
 
 import '../../utils/constants.dart';
 import 'custom_text_field.dart';
+import 'spacer.dart';
 
 class PWValidatorStrings implements FlutterPwValidatorStrings {
   @override
@@ -30,7 +31,7 @@ class PasswordFormField extends StatefulWidget {
     required this.controller,
     required this.placeholderText,
     this.enableStrengthBar = true,
-    this.strengthBarWidth = 300.0,
+    this.strengthBarWidth = AppDecoration.widgetWidth,
     this.strengthBarHeight = 120.0,
     this.validator,
     super.key,
@@ -62,9 +63,7 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
         obscureText: _isObscureText,
         enableIMEPersonalizedLearning: false,
         keyboardType: TextInputType.visiblePassword,
-        inputFormatters: [
-          FilteringTextInputFormatter.allow(AppRegExp.lettersWithoutSpace),
-        ],
+        inputFormatters: [FilteringTextInputFormatter.allow(AppRegExp.letters)],
         prefixIcon: const Icon(LineIcons.key),
         suffixIcon: MouseRegion(
           cursor: SystemMouseCursors.click,
@@ -86,11 +85,12 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
         },
         children: widget.enableStrengthBar
             ? [
+                verticalSpace(AppDecoration.spaceSmall),
                 FlutterPwValidator(
                   controller: widget.controller,
                   width: widget.strengthBarWidth,
                   height: widget.strengthBarHeight,
-                  defaultColor: Theme.of(context).iconTheme.color!,
+                  defaultColor: AppColors.font2,
                   successColor: AppColors.green,
                   failureColor: Colors.orange,
                   minLength: 10,

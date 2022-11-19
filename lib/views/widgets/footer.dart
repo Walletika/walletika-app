@@ -26,7 +26,7 @@ class MainFooter extends StatelessWidget {
                   child: TextAddress(AppInfo.donateAddress),
                 ),
                 VerticalDivider(
-                  color: Theme.of(context).textTheme.titleSmall!.color,
+                  color: Theme.of(context).textTheme.bodyMedium!.color,
                   width: 5.0,
                   indent: 12.0,
                   endIndent: 12.0,

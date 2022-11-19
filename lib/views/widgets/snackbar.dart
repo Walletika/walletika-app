@@ -22,7 +22,7 @@ SnackbarController modernSnackBar({
           )
         : const Icon(
             LineIcons.exclamationCircle,
-            color: Colors.red,
+            color: Colors.orange,
             size: 40.0,
           );
   }
@@ -30,18 +30,27 @@ SnackbarController modernSnackBar({
   return Get.snackbar(
     '',
     '',
-    backgroundColor: AppColors.background3.withOpacity(0.5),
+    backgroundColor: Colors.black87,
     leftBarIndicatorColor: icon?.color,
+    barBlur: 0,
     titleText: Text(
       title,
-      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-            fontWeight: FontWeight.bold,
+      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+            color: icon?.color ?? Colors.white,
           ),
     ),
-    messageText: Text(message, style: Theme.of(context).textTheme.bodyMedium),
+    messageText: Text(
+      message,
+      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            color: icon?.color ?? Colors.white,
+          ),
+    ),
     icon: icon,
     maxWidth: maxWidth,
-    padding: const EdgeInsets.all(AppDecoration.padding),
+    padding: const EdgeInsets.symmetric(
+      horizontal: AppDecoration.paddingMedium,
+      vertical: AppDecoration.padding,
+    ),
     margin: const EdgeInsets.all(AppDecoration.margin),
     borderRadius: AppDecoration.radius,
     onTap: onTap,
