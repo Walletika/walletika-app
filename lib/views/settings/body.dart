@@ -30,79 +30,130 @@ class SettingsBody extends StatelessWidget {
         }),
         // Content
         Container(
-          padding: const EdgeInsets.all(AppDecoration.padding),
           color: Theme.of(context).backgroundColor.withOpacity(0.7),
           child: ListView(
+            padding: const EdgeInsets.all(AppDecoration.paddingBig),
             children: [
-              ListTile(
-                leading: const Icon(LineIcons.cog),
-                horizontalTitleGap: 0,
-                title: Text(
-                  "1000@settings".tr,
-                  style: Theme.of(context).textTheme.titleLarge,
+              Row(
+                children: [
+                  const Icon(LineIcons.cog),
+                  horizontalSpace(),
+                  Text(
+                    "1000@settings".tr,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ],
+              ),
+              verticalSpace(AppDecoration.spaceMedium),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "1001@settings".tr,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  Obx(() {
+                    return Switch.adaptive(
+                      value: _settingsController.isDarkMode,
+                      onChanged: _onDarkModeChanged,
+                    );
+                  }),
+                ],
+              ),
+              verticalSpace(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "1002@settings".tr,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  Obx(() {
+                    return DropdownButton(
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      icon: const Icon(Icons.arrow_drop_down_rounded),
+                      borderRadius: BorderRadius.circular(AppDecoration.radius),
+                      dropdownColor: Theme.of(context).backgroundColor,
+                      underline: zeroSpace(),
+                      value: _settingsController.currentLanguage,
+                      onChanged: _onLanguageChanged,
+                      items: _settingsController.languages
+                          .map((key, value) {
+                            return MapEntry(
+                              key,
+                              DropdownMenuItem(value: key, child: Text(value)),
+                            );
+                          })
+                          .values
+                          .toList(),
+                    );
+                  }),
+                ],
+              ),
+              verticalSpace(),
+              InkWell(
+                onTap: () => Get.toNamed(AppPages.network),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "1003@settings".tr,
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                          verticalSpace(AppDecoration.spaceSmall),
+                          Obx(() {
+                            return Text(
+                              _settingsController.currentNetwork,
+                              style: Theme.of(context).textTheme.labelMedium,
+                            );
+                          }),
+                        ],
+                      ),
+                    ),
+                    const Icon(LineIcons.angleRight),
+                  ],
                 ),
               ),
-              ListTile(
-                title: Text("1001@settings".tr),
-                trailing: Obx(() {
-                  return Switch.adaptive(
-                    value: _settingsController.isDarkMode,
-                    onChanged: _onDarkModeChanged,
-                  );
-                }),
-              ),
-              ListTile(
-                title: Text("1002@settings".tr),
-                trailing: Obx(() {
-                  return DropdownButton(
-                    icon: const Icon(LineIcons.angleRight),
-                    borderRadius: BorderRadius.circular(AppDecoration.radius),
-                    dropdownColor: Theme.of(context).backgroundColor,
-                    underline: zeroSpace(),
-                    value: _settingsController.currentLanguage,
-                    onChanged: _onLanguageChanged,
-                    items: _settingsController.languages
-                        .map((key, value) {
-                          return MapEntry(
-                            key,
-                            DropdownMenuItem(value: key, child: Text(value)),
-                          );
-                        })
-                        .values
-                        .toList(),
-                  );
-                }),
-              ),
-              ListTile(
-                onTap: () => Get.toNamed(AppPages.network),
-                title: Text("1003@settings".tr),
-                subtitle: Obx(() => Text(_settingsController.currentNetwork)),
-                trailing: const Icon(LineIcons.angleRight),
-              ),
+              verticalSpace(),
               const Divider(
                 indent: AppDecoration.dividerPadding,
                 endIndent: AppDecoration.dividerPadding,
               ),
-              ListTile(
-                title: Text("1004@settings".tr),
-                subtitle: ButtonBar(
-                  children: [
-                    SizedBox(
-                      height: AppDecoration.buttonHeight,
+              verticalSpace(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "1004@settings".tr,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  verticalSpace(AppDecoration.spaceBig),
+                  Center(
+                    child: SizedBox(
+                      width: AppDecoration.widgetWidth,
+                      height: AppDecoration.buttonHeightLarge,
                       child: ElevatedButton(
                         onPressed: () {},
                         child: Text("1005@settings".tr),
                       ),
                     ),
-                    SizedBox(
-                      height: AppDecoration.buttonHeight,
+                  ),
+                  verticalSpace(),
+                  Center(
+                    child: SizedBox(
+                      width: AppDecoration.widgetWidth,
+                      height: AppDecoration.buttonHeightLarge,
                       child: ElevatedButton(
                         onPressed: () {},
                         child: Text("1006@settings".tr),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),
