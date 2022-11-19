@@ -28,7 +28,7 @@ class AuthBody extends StatelessWidget {
           child: Form(
             key: _formController,
             child: ListView(
-              padding: const EdgeInsets.all(AppDecoration.paddingMedium),
+              padding: const EdgeInsets.all(AppDecoration.paddingBig),
               children: [
                 Image.asset(
                   AppImages.authIllustrations,
@@ -41,21 +41,18 @@ class AuthBody extends StatelessWidget {
                 Text(
                   "${_walletManagerController.currentWallet.username}\n${"1000@auth".tr}",
                   softWrap: false,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.center,
                 ),
                 verticalSpace(),
                 Text(
                   "1001@auth".tr,
-                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                        fontSize: 16.0,
-                      ),
+                  style: Theme.of(context).textTheme.labelMedium,
                   textAlign: TextAlign.center,
                 ),
                 verticalSpace(AppDecoration.spaceMedium),
                 PinputFormField(
                   controller: _pinputController,
-                  autofocus: true,
                   onCompleted: (text) => _onConfirm(),
                 ),
                 Center(
