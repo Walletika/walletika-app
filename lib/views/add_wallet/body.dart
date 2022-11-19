@@ -36,17 +36,15 @@ class AddWalletBody extends StatelessWidget {
           child: Form(
             key: _formController,
             child: ListView(
-              padding: const EdgeInsets.all(AppDecoration.paddingMedium),
+              padding: const EdgeInsets.all(AppDecoration.paddingBig),
               cacheExtent: 1000,
               children: [
                 Text(
                   "1000@AddWallet".tr,
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: Theme.of(context).textTheme.titleSmall,
                   textAlign: TextAlign.center,
                 ),
-                verticalSpace(AppDecoration.spaceMedium),
+                verticalSpace(AppDecoration.spaceBig),
                 Center(
                   child: SizedBox(
                     width: AppDecoration.widgetWidth,
@@ -177,43 +175,43 @@ class AddWalletBody extends StatelessWidget {
                 Center(
                   child: Text(
                     "1021@global".tr,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: AppColors.green),
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          fontFamily: AppFonts.medium,
+                          color: AppColors.green,
+                        ),
                   ),
                 ),
-                verticalSpace(),
+                verticalSpace(AppDecoration.spaceMedium),
                 Text(
                   "1005@AddWallet".tr,
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         color: Colors.red,
                       ),
                 ),
-                verticalSpace(AppDecoration.spaceSmall),
+                verticalSpace(),
                 Text(
                   "1006@AddWallet".tr,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 Text(
                   "1007@AddWallet".tr,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 Text(
                   "1008@AddWallet".tr,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 Text(
                   "1009@AddWallet".tr,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 Text(
                   "1010@AddWallet".tr,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.labelSmall,
                 ),
                 verticalSpace(),
               ],
