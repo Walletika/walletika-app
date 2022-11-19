@@ -21,7 +21,7 @@ const Map<String, String> translator = {
   "1019@global":
       "Please restart the app and try again or contact us to help you with this issue.",
   "1020@global": "Support",
-  "1021@global": "Added Successfully",
+  "1021@global": "Completed Successfully",
   "1022@global": "I Understand",
   "1023@global": "Recovery password must be different",
   "1024@global": "Invalid URL",
@@ -50,7 +50,7 @@ const Map<String, String> translator = {
   "1004@settings":
       "Backup all your wallets to specific location on your system.",
   "1005@settings": "Backup My Wallets",
-  "1006@settings": "Import",
+  "1006@settings": "Import External File",
   "1007@settings": "Settings Update",
 
   // Networks
@@ -87,13 +87,14 @@ const Map<String, String> translator = {
   "1004@AddWallet": "Add Wallet",
   "1005@AddWallet": "Protect Your Funds",
   "1006@AddWallet":
-      "You must use the same username, password and recovery password to access your wallet later.",
-  "1007@AddWallet": "Wallet information is unchangeable and unrecoverable.",
-  "1008@AddWallet": "Never share your passwords or private key with anyone.",
+      "1 - You must use the same username, password and recovery password to access your wallet later.",
+  "1007@AddWallet": "2 - Wallet information is unchangeable and unrecoverable.",
+  "1008@AddWallet":
+      "3 - Never share your passwords or private key with anyone.",
   "1009@AddWallet":
-      "Walletika team will never ask for your passwords or private key",
+      "4 - Walletika team will never ask for your passwords or private key",
   "1010@AddWallet":
-      "Recommended to backup all your wallets to an external file.",
+      "5 - Recommended to backup all your wallets to an external file.",
   "1011@AddWallet": "Failed to add this wallet, Please try again.",
 
   // Login

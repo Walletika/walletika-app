@@ -16,11 +16,13 @@ class AppDecoration {
   static const double radius = 10.0;
   static const double margin = 10.0;
   static const double padding = 10.0;
-  static const double paddingMedium = 30.0;
+  static const double paddingMedium = 20.0;
+  static const double paddingBig = 30.0;
   static const double paddingLarge = 50.0;
   static const double spaceSmall = 5.0;
   static const double space = 10.0;
   static const double spaceMedium = 20.0;
+  static const double spaceBig = 30.0;
   static const double spaceLarge = 50.0;
   static const double elevation = 20.0;
   static const double iconSize = 24.0;
@@ -55,7 +57,11 @@ class AppColors {
 }
 
 class AppFonts {
-  static const String normal = 'Segoe UI';
+  static const String normal = 'Roboto';
+  static const String light = 'Roboto Light';
+  static const String medium = 'Roboto Medium';
+  static const String bold = 'Roboto Bold';
+  static const String black = 'Roboto Black';
 }
 
 class AppImages {
