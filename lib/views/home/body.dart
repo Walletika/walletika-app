@@ -27,9 +27,10 @@ class HomeBody extends StatelessWidget {
       children: [
         // Search input
         ContainerWithShadow(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppDecoration.paddingMedium,
-            vertical: AppDecoration.padding,
+          padding: const EdgeInsets.only(
+            left: AppDecoration.paddingMedium,
+            right: AppDecoration.paddingMedium,
+            bottom: AppDecoration.padding,
           ),
           child: CustomTextFormField(
             controller: _searchInputController,
@@ -37,7 +38,7 @@ class HomeBody extends StatelessWidget {
             prefixIcon: const Icon(LineIcons.search),
             keyboardType: TextInputType.name,
             inputFormatters: [
-              FilteringTextInputFormatter.allow(AppRegExp.lettersWithoutSpace),
+              FilteringTextInputFormatter.allow(AppRegExp.letters),
             ],
           ),
         ),
@@ -62,6 +63,7 @@ class HomeBody extends StatelessWidget {
 
             // Data view
             return ListView.separated(
+              padding: const EdgeInsets.only(bottom: AppDecoration.spaceLarge),
               separatorBuilder: (context, index) => const Divider(
                 indent: AppDecoration.dividerPadding,
                 endIndent: AppDecoration.dividerPadding,
