@@ -25,20 +25,33 @@ class NetworkBody extends StatelessWidget {
       children: [
         // Header
         ContainerWithShadow(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppDecoration.paddingMedium,
+            vertical: AppDecoration.padding,
+          ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "1000@network".tr,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              ListTile(
-                title: Text("1002@network".tr),
-                trailing: Obx(() {
-                  return Switch.adaptive(
-                    value: _settingsController.isTestnetHidden,
-                    onChanged: _onTestNetHideChanged,
-                  );
-                }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Text(
+                      "1002@network".tr,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  ),
+                  Obx(() {
+                    return Switch.adaptive(
+                      value: _settingsController.isTestnetHidden,
+                      onChanged: _onTestNetHideChanged,
+                    );
+                  }),
+                ],
               ),
             ],
           ),
@@ -55,6 +68,7 @@ class NetworkBody extends StatelessWidget {
             }
 
             return ListView.separated(
+              padding: const EdgeInsets.only(bottom: AppDecoration.spaceLarge),
               separatorBuilder: (context, index) => const Divider(
                 indent: AppDecoration.dividerPadding,
                 endIndent: AppDecoration.dividerPadding,
@@ -73,11 +87,13 @@ class NetworkBody extends StatelessWidget {
                   title: Text(
                     network.symbol,
                     softWrap: false,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  subtitle: Text(network.name, softWrap: false),
+                  subtitle: Text(
+                    network.name,
+                    softWrap: false,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
                   trailing: IconButton(
                     tooltip:
                         network.isLocked ? "1007@network".tr : "1007@global".tr,
