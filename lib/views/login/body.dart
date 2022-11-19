@@ -109,7 +109,7 @@ class LoginBody extends StatelessWidget {
     }).catchError((error) {
       _passwordController.clear();
       operation.error(error.toString());
-      operation.notify(title: "1002@login".tr);
+      operation.notify(title: "0x6B6fccaf");
     });
   }
 

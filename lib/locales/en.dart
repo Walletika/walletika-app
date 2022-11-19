@@ -40,7 +40,6 @@ const Map<String, String> translator = {
   "1001@home": "No wallets have been added yet!",
   "1002@home": "Let's add your first wallet today, click on \"+\" button.",
   "1003@home": "Add a wallet",
-  "1004@home": "Wallet Favorite",
 
   // Settings
   "1000@settings": "Settings",
@@ -107,6 +106,5 @@ const Map<String, String> translator = {
   "1000@auth": "Verification Code",
   "1001@auth": "Enter a one-time passcode from your authenticator app.",
   "1002@auth": "I've lost my authentication code",
-  "1003@auth": "Login Auth",
-  "1004@auth": "The OTP code is wrong!",
+  "1003@auth": "The OTP code is wrong!",
 };

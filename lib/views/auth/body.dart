@@ -94,13 +94,13 @@ class AuthBody extends StatelessWidget {
     _validator(_pinputController.text).then((isValid) {
       if (!isValid) {
         _pinputController.clear();
-        operation.invalid("1004@auth".tr);
+        operation.invalid("1003@auth".tr);
         operation.notify();
       }
     }).catchError((error) {
       _pinputController.clear();
       operation.error(error.toString());
-      operation.notify(title: "1003@auth".tr);
+      operation.notify(title: "0x513bD3c4");
     });
   }
 }

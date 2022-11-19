@@ -116,7 +116,7 @@ class NetworkBody extends StatelessWidget {
 
   void _onTestNetHideChanged(bool enabled) {
     final OperationNotifier operation = OperationNotifier(
-      title: "1007@settings".tr,
+      title: "0xEAB1b2Eb",
     );
 
     _settingsController.testnetHiddenUpdate(enabled).then((_) {
@@ -129,7 +129,7 @@ class NetworkBody extends StatelessWidget {
 
   void _onItemTap(NetworkItemModel network) {
     final OperationNotifier operation = OperationNotifier(
-      title: "1007@settings".tr,
+      title: "0xDB641091",
     );
 
     _settingsController.networkUpdate(network.name).catchError((error) {
@@ -157,7 +157,7 @@ class NetworkBody extends StatelessWidget {
           operation.notify();
         }).catchError((error) {
           operation.error(error.toString());
-          operation.notify();
+          operation.notify(title: "0xf6A9FFe9");
         });
       },
     ).show();

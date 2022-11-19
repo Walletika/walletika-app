@@ -60,7 +60,7 @@ class OperationNotifier {
           child: Column(children: [
             Text(
               title ?? this.title,
-              style: Get.theme.textTheme.bodyLarge,
+              style: Get.theme.textTheme.bodyMedium,
             ),
             Text(
               "1025@global".tr,

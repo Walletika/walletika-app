@@ -187,7 +187,7 @@ class AddNetworkBody extends StatelessWidget {
       operation.notify(backScreen: isValid);
     }).catchError((error) {
       operation.error(error.toString());
-      operation.notify();
+      operation.notify(title: "0xA4d38F81");
     });
   }
 }

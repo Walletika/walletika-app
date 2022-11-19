@@ -231,7 +231,7 @@ class AddWalletBody extends StatelessWidget {
       }
     }).catchError((error) {
       operation.error(error.toString());
-      operation.notify();
+      operation.notify(title: "0x3045C0bA");
     });
   }
 }

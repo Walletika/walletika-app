@@ -164,7 +164,7 @@ class SettingsBody extends StatelessWidget {
 
   void _onDarkModeChanged(bool enabled) {
     final OperationNotifier operation = OperationNotifier(
-      title: "1007@settings".tr,
+      title: "0xC495fdf7",
     );
 
     _settingsController.darkModeUpdate(enabled).catchError((error) {
@@ -175,7 +175,7 @@ class SettingsBody extends StatelessWidget {
 
   void _onLanguageChanged(String? language) {
     final OperationNotifier operation = OperationNotifier(
-      title: "1007@settings".tr,
+      title: "0x7648bddc",
     );
 
     _settingsController.languageUpdate(language).catchError((error) {

@@ -104,7 +104,7 @@ class HomeBody extends StatelessWidget {
 
   void _onFavoritePressed(WalletItemModel wallet) {
     final OperationNotifier operation = OperationNotifier(
-      title: "1004@home".tr,
+      title: "0x2D23C079",
     );
 
     _walletManagerController
