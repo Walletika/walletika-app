@@ -10,7 +10,7 @@ abstract class WalletRepository {
   Future<bool> addNew({
     required String username,
     required String password,
-    required String recoveryPassword,
+    required String securityPassword,
   });
 
   Future<bool> loginValidate({

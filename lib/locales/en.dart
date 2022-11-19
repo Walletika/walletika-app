@@ -12,8 +12,8 @@ const Map<String, String> translator = {
   "1010@global": "Username",
   "1011@global": "Password",
   "1012@global": "Confirm Password",
-  "1013@global": "Recovery Password",
-  "1014@global": "Confirm Recovery Password",
+  "1013@global": "Security Password",
+  "1014@global": "Confirm Security Password",
   "1015@global": "Field is empty",
   "1016@global": "Password is weak",
   "1017@global": "Passwords doesn't match",
@@ -23,7 +23,7 @@ const Map<String, String> translator = {
   "1020@global": "Support",
   "1021@global": "Completed Successfully",
   "1022@global": "I Understand",
-  "1023@global": "Recovery password must be different",
+  "1023@global": "Security password must be different",
   "1024@global": "Invalid URL",
   "1025@global": "Error Detected",
   "1026@global": "Confirm",
@@ -82,18 +82,18 @@ const Map<String, String> translator = {
   "1002@addWallet":
       "Password must contain uppercase/lowercase letters, symbols and numbers.",
   "1003@addWallet":
-      "The recovery password is important to be able to add your wallet to the app later.",
+      "Security password is important to be able to add your wallet later.",
   "1004@addWallet": "Add Wallet",
   "1005@addWallet": "Protect Your Funds",
   "1006@addWallet":
-      "1 - You must use the same username, password and recovery password to access your wallet later.",
-  "1007@addWallet": "2 - Wallet information is unchangeable and unrecoverable.",
-  "1008@addWallet":
-      "3 - Never share your passwords or private key with anyone.",
+      "You must use the same username, password and security password to add this wallet later.",
+  "1007@addWallet":
+      "Wallet information is immutable and cannot be recovered if you forget it.",
+  "1008@addWallet": "Never share your password or private key with anyone.",
   "1009@addWallet":
-      "4 - Walletika team will never ask for your passwords or private key",
+      "Walletika team will never ask for your password or private key",
   "1010@addWallet":
-      "5 - Recommended to backup all your wallets to an external file.",
+      "Recommended to backup all your wallets to an external file.",
   "1011@addWallet": "Failed to add this wallet, Please try again.",
 
   // Login

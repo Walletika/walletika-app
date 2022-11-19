@@ -39,7 +39,7 @@ packages:
       name: asn1lib
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0"
+    version: "1.4.0"
   async:
     dependency: transitive
     description:
@@ -548,7 +548,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "88c183a2e6d2ebb9a0c38761c2c7b6844064ffe0"
+      resolved-ref: a57feda82725dd121763f37f5e9698f13f1e26be
       url: "https://github.com/Walletika/walletika-creator.git"
     source: git
     version: "1.0.0"
@@ -557,7 +557,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "3022739ccd33a36590fc857863c5d922252b2850"
+      resolved-ref: e0e4dc98d075b3449249897fab8a527dd99d015d
       url: "https://github.com/Walletika/walletika-sdk.git"
     source: git
     version: "2.0.0"

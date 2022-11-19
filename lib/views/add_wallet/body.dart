@@ -20,8 +20,8 @@ class AddWalletBody extends StatelessWidget {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPassController = TextEditingController();
-  final TextEditingController _recoveryPassController = TextEditingController();
-  final TextEditingController _confirmRPassController = TextEditingController();
+  final TextEditingController _securityPassController = TextEditingController();
+  final TextEditingController _confirmSPassController = TextEditingController();
   final WalletManagerController _walletManagerController =
       Get.find<WalletManagerController>();
 
@@ -106,7 +106,7 @@ class AddWalletBody extends StatelessWidget {
                 ),
                 verticalSpace(),
                 PasswordFormField(
-                  controller: _recoveryPassController,
+                  controller: _securityPassController,
                   placeholderText: "1013@global".tr,
                   validator: (text) {
                     if (text != null && text == _passwordController.text) {
@@ -118,11 +118,11 @@ class AddWalletBody extends StatelessWidget {
                 ),
                 verticalSpace(),
                 PasswordFormField(
-                  controller: _confirmRPassController,
+                  controller: _confirmSPassController,
                   placeholderText: "1014@global".tr,
                   enableStrengthBar: false,
                   validator: (text) {
-                    if (text != null && text != _recoveryPassController.text) {
+                    if (text != null && text != _securityPassController.text) {
                       return "1017@global".tr;
                     }
                     return null;
@@ -163,7 +163,7 @@ class AddWalletBody extends StatelessWidget {
         .addNew(
       username: _usernameController.text,
       password: _passwordController.text,
-      recoveryPassword: _recoveryPassController.text,
+      securityPassword: _securityPassController.text,
     )
         .then((isValid) {
       if (isValid) {
@@ -200,22 +200,22 @@ class AddWalletBody extends StatelessWidget {
                   "1006@addWallet".tr,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
-                verticalSpace(AppDecoration.spaceSmall),
+                verticalSpace(),
                 Text(
                   "1007@addWallet".tr,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
-                verticalSpace(AppDecoration.spaceSmall),
+                verticalSpace(),
                 Text(
                   "1008@addWallet".tr,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
-                verticalSpace(AppDecoration.spaceSmall),
+                verticalSpace(),
                 Text(
                   "1009@addWallet".tr,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
-                verticalSpace(AppDecoration.spaceSmall),
+                verticalSpace(),
                 Text(
                   "1010@addWallet".tr,
                   style: Theme.of(context).textTheme.labelSmall,

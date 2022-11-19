@@ -67,12 +67,12 @@ class WalletManagerController extends GetxController {
   Future<bool> addNew({
     required String username,
     required String password,
-    required String recoveryPassword,
+    required String securityPassword,
   }) async {
     final bool result = await _repository.addNew(
       username: username,
       password: password,
-      recoveryPassword: recoveryPassword,
+      securityPassword: securityPassword,
     );
     await walletsUpdate();
 

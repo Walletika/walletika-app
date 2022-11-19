@@ -32,7 +32,7 @@ class WalletFakeRepository extends WalletRepository {
             WalletModel(
               address: EthereumAddress.fromHex(address),
               username: username,
-              recoveryPassword: Uint8List(0),
+              securityPassword: Uint8List(0),
               dateCreated: DateTime.now(),
               isFavorite: i <= 2 ? true : false,
             ),
@@ -52,7 +52,7 @@ class WalletFakeRepository extends WalletRepository {
   Future<bool> addNew({
     required String username,
     required String password,
-    required String recoveryPassword,
+    required String securityPassword,
   }) async {
     final EthPrivateKey credentials = EthPrivateKey.createRandom(
       Random.secure(),
