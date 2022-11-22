@@ -18,29 +18,26 @@ class EmptyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(AppDecoration.padding),
+      padding: const EdgeInsets.all(AppDecoration.paddingMedium),
       child: Column(
         children: [
           Flexible(
-            flex: 8,
             child: Image.asset(
               illustrationPath,
               filterQuality: FilterQuality.medium,
               isAntiAlias: true,
             ),
           ),
-          Flexible(
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleLarge,
+            textAlign: TextAlign.center,
           ),
           verticalSpace(AppDecoration.spaceSmall),
-          Flexible(
-            child: Text(
-              desc,
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
+          Text(
+            desc,
+            style: Theme.of(context).textTheme.labelMedium,
+            textAlign: TextAlign.center,
           ),
         ],
       ),
