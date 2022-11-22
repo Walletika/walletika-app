@@ -6,8 +6,15 @@ class TextAddress extends StatelessWidget {
   final String data;
   final double? width;
   final double? height;
+  final MainAxisAlignment mainAxisAlignment;
 
-  const TextAddress(this.data, {this.width, this.height, super.key});
+  const TextAddress(
+    this.data, {
+    this.width,
+    this.height,
+    this.mainAxisAlignment = MainAxisAlignment.center,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +24,7 @@ class TextAddress extends StatelessWidget {
       height: height,
       softWrap: false,
       style: Theme.of(context).textTheme.labelSmall,
+      mainAxisAlignment: mainAxisAlignment,
     );
   }
 }

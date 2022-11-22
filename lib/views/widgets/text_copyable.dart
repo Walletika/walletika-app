@@ -24,6 +24,7 @@ class TextCopyable extends StatefulWidget {
   final TextWidthBasis? textWidthBasis;
   final ui.TextHeightBehavior? textHeightBehavior;
   final Color? selectionColor;
+  final MainAxisAlignment mainAxisAlignment;
 
   const TextCopyable(
     this.data, {
@@ -42,6 +43,7 @@ class TextCopyable extends StatefulWidget {
     this.textWidthBasis,
     this.textHeightBehavior,
     this.selectionColor,
+    this.mainAxisAlignment = MainAxisAlignment.center,
     super.key,
   });
 
@@ -58,6 +60,7 @@ class _TextCopyableState extends State<TextCopyable> {
       width: widget.width,
       height: widget.height,
       child: Row(
+        mainAxisAlignment: widget.mainAxisAlignment,
         children: [
           Flexible(
             child: Text(

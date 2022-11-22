@@ -45,12 +45,9 @@ class LoginBody extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
-                Center(
-                  child: TextAddress(
-                    _walletManagerController.currentWallet.address,
-                    width: AppDecoration.widgetWidth,
-                    height: 30.0,
-                  ),
+                TextAddress(
+                  _walletManagerController.currentWallet.address,
+                  height: 30.0,
                 ),
                 verticalSpace(),
                 PasswordFormField(

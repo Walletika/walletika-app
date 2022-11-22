@@ -34,7 +34,11 @@ class WalletItem extends StatelessWidget {
         softWrap: false,
         style: Theme.of(context).textTheme.titleMedium,
       ),
-      subtitle: TextAddress(address, height: 30.0),
+      subtitle: TextAddress(
+        address,
+        height: 30.0,
+        mainAxisAlignment: MainAxisAlignment.start,
+      ),
       trailing: trailing,
     );
   }
