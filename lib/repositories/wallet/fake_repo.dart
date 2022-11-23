@@ -1,6 +1,6 @@
-import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:walletika_creator/walletika_creator.dart';
 import 'package:walletika_sdk/walletika_sdk.dart';
 import 'package:web3dart/web3dart.dart';
 
@@ -47,11 +47,20 @@ class WalletFakeRepository extends WalletRepository {
     required String password,
     required String securityPassword,
   }) async {
-    final EthPrivateKey credentials = EthPrivateKey.createRandom(
-      Random.secure(),
-    );
     if (_wallets[username] == null) {
-      _wallets[username] = credentials.address.hexEip55;
+      final WalletInfoModel wallet = await walletGenerator(
+        username: username,
+        password: password,
+        securityPassword: securityPassword.codeUnits,
+        otpCode: currentOTPCode(
+          otpKeyGenerator(
+            username: username,
+            password: password,
+            securityPassword: securityPassword,
+          ),
+        ),
+      );
+      _wallets[username] = wallet.address!.hexEip55;
       return true;
     }
 

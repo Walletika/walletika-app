@@ -76,6 +76,13 @@ class WalletManagerController extends GetxController {
     );
     await walletsUpdate();
 
+    for (WalletItemModel wallet in _wallets) {
+      if (wallet.username == username) {
+        _currentWallet = wallet;
+        break;
+      }
+    }
+
     return result;
   }
 
