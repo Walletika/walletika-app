@@ -41,7 +41,7 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
     return Column(
       children: [
         ContainerWithShadow(
-          padding: const EdgeInsets.all(AppDecoration.paddingMedium),
+          padding: const EdgeInsets.all(AppDecoration.padding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -86,6 +86,7 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
         Expanded(
           child: TabBarView(
             controller: _tabController,
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               AuthFirstTabView(tabController: _tabController),
               AuthSecondTabView(tabController: _tabController),
