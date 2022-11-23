@@ -36,6 +36,8 @@ class PinputFormField extends StatefulWidget {
 }
 
 class _PinputFormFieldState extends State<PinputFormField> {
+  final FocusNode _focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -61,6 +63,7 @@ class _PinputFormFieldState extends State<PinputFormField> {
       child: Pinput(
         length: widget.length,
         controller: widget.controller,
+        focusNode: _focusNode,
         defaultPinTheme: defaultPinTheme,
         focusedPinTheme: focusedPinTheme,
         autofocus: widget.autofocus,
@@ -74,8 +77,14 @@ class _PinputFormFieldState extends State<PinputFormField> {
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         readOnly: widget.readOnly,
         errorTextStyle: Theme.of(context).inputDecorationTheme.errorStyle,
-        onCompleted: widget.onCompleted,
-        onSubmitted: widget.onSubmitted,
+        onCompleted: (text) {
+          if (widget.onCompleted != null) widget.onCompleted!(text);
+          _focusNode.unfocus();
+        },
+        onSubmitted: (text) {
+          if (widget.onSubmitted != null) widget.onSubmitted!(text);
+          _focusNode.unfocus();
+        },
         onTap: widget.onTap,
         onChanged: widget.onChanged,
         validator: (text) {

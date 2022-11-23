@@ -99,8 +99,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               ),
             ),
           ),
-          onEditingComplete: widget.onEditingComplete,
-          onFieldSubmitted: widget.onFieldSubmitted,
+          onEditingComplete: () {
+            if (widget.onEditingComplete != null) widget.onEditingComplete!();
+            widget.focusNode?.unfocus();
+          },
+          onFieldSubmitted: (text) {
+            if (widget.onFieldSubmitted != null) widget.onFieldSubmitted!(text);
+            widget.focusNode?.unfocus();
+          },
           onSaved: widget.onSaved,
           onTap: widget.onTap,
           onChanged: (text) {
