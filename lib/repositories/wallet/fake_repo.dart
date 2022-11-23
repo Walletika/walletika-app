@@ -81,7 +81,7 @@ class WalletFakeRepository extends WalletRepository {
     required String password,
     required String otpCode,
   }) async {
-    return password == '123';
+    return true;
   }
 
   @override
