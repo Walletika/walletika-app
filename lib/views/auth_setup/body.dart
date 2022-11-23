@@ -9,6 +9,7 @@ import '../widgets/spacer.dart';
 import 'first_tab.dart';
 import 'second_tab.dart';
 import 'third_tab.dart';
+import 'fourth_tab.dart';
 
 class AuthSetupBody extends StatefulWidget {
   const AuthSetupBody({super.key});
@@ -89,6 +90,7 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
               AuthFirstTabView(tabController: _tabController),
               AuthSecondTabView(tabController: _tabController),
               AuthThirdTabView(tabController: _tabController),
+              const AuthFourthabView(),
             ],
           ),
         ),
