@@ -25,7 +25,7 @@ packages:
       name: archive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.3.4"
+    version: "3.3.5"
   args:
     dependency: transitive
     description:
@@ -320,7 +320,7 @@ packages:
       name: path_provider_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.21"
+    version: "2.0.22"
   path_provider_ios:
     dependency: transitive
     description:
@@ -398,6 +398,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+  qr:
+    dependency: transitive
+    description:
+      name: qr
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
+  qr_flutter:
+    dependency: "direct main"
+    description:
+      name: qr_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.0"
   rive:
     dependency: transitive
     description:
@@ -479,14 +493,14 @@ packages:
       name: url_launcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.6"
+    version: "6.1.7"
   url_launcher_android:
     dependency: transitive
     description:
       name: url_launcher_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.21"
+    version: "6.0.22"
   url_launcher_ios:
     dependency: transitive
     description:
@@ -544,11 +558,11 @@ packages:
     source: hosted
     version: "2.1.2"
   walletika_creator:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "."
       ref: main
-      resolved-ref: a57feda82725dd121763f37f5e9698f13f1e26be
+      resolved-ref: a896217e30c582a029babb9a48c11b2cd0a4db7d
       url: "https://github.com/Walletika/walletika-creator.git"
     source: git
     version: "1.0.0"
@@ -557,7 +571,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: e0e4dc98d075b3449249897fab8a527dd99d015d
+      resolved-ref: "10461f0600b21f28039f5323122847f0e47cbc89"
       url: "https://github.com/Walletika/walletika-sdk.git"
     source: git
     version: "2.0.0"
