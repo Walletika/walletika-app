@@ -23,7 +23,6 @@ class NetworkBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Header
         ContainerWithShadow(
           padding: const EdgeInsets.symmetric(
             horizontal: AppDecoration.paddingMedium,
@@ -56,7 +55,6 @@ class NetworkBody extends StatelessWidget {
             ],
           ),
         ),
-        // List view
         Expanded(
           child: Obx(() {
             final String currentNetwork = _settingsController.currentNetwork;

@@ -29,9 +29,7 @@ class AddWalletBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Header
         const ContainerWithShadow(),
-        // List view
         Expanded(
           child: Form(
             key: _formController,

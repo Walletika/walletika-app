@@ -17,7 +17,6 @@ class SettingsBody extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        // Wallpaper image
         Obx(() {
           return Image.asset(
             _settingsController.isDarkMode
@@ -28,7 +27,6 @@ class SettingsBody extends StatelessWidget {
             fit: BoxFit.cover,
           );
         }),
-        // Content
         Container(
           color: Theme.of(context).backgroundColor.withOpacity(0.7),
           child: SafeArea(

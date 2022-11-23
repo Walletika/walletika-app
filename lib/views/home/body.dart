@@ -25,7 +25,6 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Search input
         ContainerWithShadow(
           padding: const EdgeInsets.only(
             left: AppDecoration.paddingMedium,
@@ -42,10 +41,8 @@ class HomeBody extends StatelessWidget {
             ],
           ),
         ),
-        // List view
         Expanded(
           child: Obx(() {
-            // No data view
             if (_walletManagerController.wallets.isEmpty) {
               if (_walletManagerController.count() == 0) {
                 return EmptyPage(
@@ -61,7 +58,6 @@ class HomeBody extends StatelessWidget {
             final List<WalletItemModel> wallets =
                 _walletManagerController.wallets;
 
-            // Data view
             return ListView.separated(
               padding: const EdgeInsets.only(bottom: AppDecoration.spaceLarge),
               separatorBuilder: (context, index) => const Divider(
