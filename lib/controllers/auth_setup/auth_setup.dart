@@ -68,15 +68,14 @@ class AuthSetupController extends GetxController {
 
   Future<bool> confirmation(String otpCode) async {
     final String currentCode = currentOTPCode(_otpKey);
-    final bool isValid = (currentCode == otpCode);
 
-    if (isValid) {
-      await _walletManagerController.login(
+    if (currentCode == otpCode) {
+      return await _walletManagerController.login(
         password: _password,
         otpCode: currentCode,
       );
     }
 
-    return isValid;
+    return false;
   }
 }
