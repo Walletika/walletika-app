@@ -27,6 +27,9 @@ const Map<String, String> translator = {
   "1024@global": "Invalid URL",
   "1025@global": "Error Detected",
   "1026@global": "Confirm",
+  "1027@global": "Next",
+  "1028@global": "Verify",
+  "1029@global": "Done",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
@@ -75,7 +78,7 @@ const Map<String, String> translator = {
   "1008@addNetwork": "Network has been added successfully.",
   "1009@addNetwork": "Failed, Unable to connect to this network.",
 
-  // AddWallet
+  // Add wallet
   "1000@addWallet":
       "Create a new wallet or add an existing one, your private keys and passwords are stored anywhere.",
   "1001@addWallet": "Username or email is sensitive to characters.",
@@ -95,6 +98,28 @@ const Map<String, String> translator = {
   "1010@addWallet":
       "Recommended to backup all your wallets to an external file.",
   "1011@addWallet": "Failed to add this wallet, Please try again.",
+  "1012@addWallet": "Let's setup your OTP Key.",
+
+  // Auth setup
+  "1000@authSetup": "Download App",
+  "1001@authSetup": "Verification",
+  "1002@authSetup": "Scan QR Code",
+  "1003@authSetup": "Download and install app",
+  "1004@authSetup": "Choose the authenticator application to download.",
+  "1005@authSetup": "1 - Google Authenticator",
+  "1006@authSetup": "2 - Authy",
+  "1007@authSetup": "Wallet Verification",
+  "1008@authSetup": "Confirm your wallet to generate your OTP key.",
+  "1009@authSetup": "Step 1 - Scan QR Code",
+  "1010@authSetup": "Scan this QR code in your authenticator app.",
+  "1011@authSetup":
+      "If you are unable to scan this QR code, Please enter this key manually into the app.",
+  "1012@authSetup": "Step 2 - OTP Code",
+  "1013@authSetup":
+      "Enter the 6 numbers that appear in your authenticator app.",
+  "1014@authSetup": "Congratulations, we're done!",
+  "1015@authSetup":
+      "Don't worry if you lose your OTP key, you can recover it later.",
 
   // Login
   "1000@login": "Login",

@@ -224,6 +224,13 @@ class AddWalletBody extends StatelessWidget {
               ],
             ),
           ),
+          btnOkText: "1012@addWallet".tr,
+          btnOkOnPress: () {
+            Future.delayed(
+              const Duration(milliseconds: 500),
+              () => Get.toNamed(AppPages.authSetup),
+            );
+          },
         ).show();
       } else {
         operation.invalid("1011@addWallet".tr);

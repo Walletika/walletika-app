@@ -73,7 +73,7 @@ class AuthBody extends StatelessWidget {
                 Center(
                   child: SizedBox(
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () => Get.offNamed(AppPages.authSetup),
                       child: Text("1002@auth".tr),
                     ),
                   ),

@@ -10,6 +10,11 @@ class AppInfo {
   static const String network = 'Ethereum';
   static const String donateAddress =
       '0x9BfDe70BF991697bCD8bAD287D2C46AaD662544d';
+  static const String authGooglePlay =
+      'https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en&gl=US';
+  static const String authAppStore =
+      'https://apps.apple.com/us/app/google-authenticator/id388497605';
+  static const String authAuthy = 'https://authy.com/download';
 }
 
 class AppDecoration {
@@ -66,7 +71,12 @@ class AppFonts {
 
 class AppImages {
   static const String logo = 'assets/logos/walletika.png';
+  static const String appStoreLogo = 'assets/logos/app_store.png';
+  static const String googlePlayLogo = 'assets/logos/google_play.png';
+  static const String authyLogo = 'assets/logos/authy.png';
   static const String coinIllustrations = 'assets/illustrations/coin.png';
+  static const String doneIllustrations = 'assets/illustrations/done.png';
+  static const String confirmIllustrations = 'assets/illustrations/confirm.png';
   static const String dayIllustrations = 'assets/illustrations/day.jpg';
   static const String nightIllustrations = 'assets/illustrations/night.jpg';
   static const String walletIllustrations = 'assets/illustrations/wallet.png';
@@ -81,6 +91,7 @@ class AppPages {
   static const String addWallet = '/addWallet';
   static const String login = '/login';
   static const String auth = '/login/auth';
+  static const String authSetup = '/login/auth/authSetup';
 
   static bool get isHome => Get.currentRoute == AppPages.home;
 }
