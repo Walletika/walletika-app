@@ -6,6 +6,8 @@ import '../../controllers/auth_setup/auth_setup.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/spacer.dart';
+import 'first_tab.dart';
+import 'second_tab.dart';
 
 class AuthSetupBody extends StatefulWidget {
   const AuthSetupBody({super.key});
@@ -76,6 +78,15 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
                   horizontalSpace(),
                 ]
               ]
+            ],
+          ),
+        ),
+        Expanded(
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              AuthFirstTabView(tabController: _tabController),
+              AuthSecondTabView(tabController: _tabController),
             ],
           ),
         ),
