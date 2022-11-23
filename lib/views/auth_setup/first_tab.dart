@@ -41,6 +41,7 @@ class AuthFirstTabView extends StatelessWidget {
               verticalSpace(),
               Wrap(
                 spacing: AppDecoration.space,
+                runSpacing: AppDecoration.space,
                 children: [
                   MouseRegion(
                     cursor: SystemMouseCursors.click,
