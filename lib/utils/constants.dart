@@ -81,6 +81,7 @@ class AppImages {
   static const String nightIllustrations = 'assets/illustrations/night.jpg';
   static const String walletIllustrations = 'assets/illustrations/wallet.png';
   static const String authIllustrations = 'assets/illustrations/auth.png';
+  static const String coins = 'assets/coins';
 }
 
 class AppPages {

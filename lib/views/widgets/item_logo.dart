@@ -8,7 +8,7 @@ class ItemLogo extends StatelessWidget {
     required this.path,
     required this.isActive,
     this.size = 50.0,
-    this.errorPath = 'assets/coins/unknown.png',
+    this.errorPath = '${AppImages.coins}/unknown.png',
     super.key,
   });
 
