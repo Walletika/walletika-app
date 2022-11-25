@@ -58,7 +58,7 @@ const Map<String, String> translator = {
   // Networks
   "1000@network": "Blockchain Networks",
   "1001@network": "Add a network",
-  "1002@network": "Hide / Show testnet networks",
+  "1002@network": "Hide testnet networks",
   "1003@network": "Network Remove",
   "1004@network": "Are you sure you want to remove this network?",
   "1005@network": "netwrok has been removed successfully.",

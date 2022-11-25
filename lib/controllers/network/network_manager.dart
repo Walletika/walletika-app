@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:walletika_sdk/walletika_sdk.dart';
 
 import '../../models/network.dart';
 import '../../repositories/network/fake_repo.dart';
@@ -34,32 +33,16 @@ class NetworkManagerController extends GetxController {
 
   // Setter & Controller methods
   Future<void> networksUpdate() async {
-    final List<NetworkItemModel> result = [];
-    final String currentNetwork = _settingsController.currentNetwork;
-    bool isCurrentNetworkAvailable = false;
+    final List<NetworkItemModel> result = [
+      await for (NetworkItemModel network in _repository.getAll())
+        if (!_settingsController.isTestnetHidden ||
+            !network.name.toLowerCase().contains('testnet'))
+          network
+    ];
 
-    await for (NetworkModel network in _repository.getAll()) {
-      if (_settingsController.isTestnetHidden &&
-          network.name.toLowerCase().contains('testnet')) continue;
-
-      if (!isCurrentNetworkAvailable && currentNetwork == network.name) {
-        isCurrentNetworkAvailable = true;
-      }
-
-      result.add(
-        NetworkItemModel(
-          icon: 'assets/coins/${network.symbol.toLowerCase()}.png',
-          rpc: network.rpc,
-          symbol: network.symbol,
-          name: network.name,
-          chainID: network.chainID,
-          explorer: network.explorer,
-          isLocked: network.name == AppInfo.network,
-        ),
-      );
-    }
-
-    if (!isCurrentNetworkAvailable) {
+    if (!result.any(
+      (network) => network.name == _settingsController.currentNetwork,
+    )) {
       await _settingsController.networkUpdate(AppInfo.network);
     }
 
@@ -73,35 +56,24 @@ class NetworkManagerController extends GetxController {
     required String symbol,
     required String explorer,
   }) async {
-    final bool result = await _repository.addNew(
+    final bool isValid = await _repository.addNew(
       rpc: rpc,
       name: name,
       chainID: chainID,
       symbol: symbol,
       explorer: explorer,
     );
-    await networksUpdate();
 
-    return result;
+    if (isValid) await networksUpdate();
+
+    return isValid;
   }
 
-  Future<bool> remove(NetworkItemModel item) async {
-    NetworkModel? networkModel;
+  Future<bool> remove(NetworkItemModel network) async {
+    final bool isValid = await _repository.remove(network);
 
-    await for (NetworkModel network in _repository.getAll()) {
-      if (item.name == network.name) {
-        networkModel = network;
-        break;
-      }
-    }
+    if (isValid) await networksUpdate();
 
-    if (networkModel is NetworkModel) {
-      return await _repository.remove(networkModel).then((isValid) async {
-        if (isValid) await networksUpdate();
-        return isValid;
-      });
-    }
-
-    return false;
+    return isValid;
   }
 }

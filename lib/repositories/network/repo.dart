@@ -1,7 +1,7 @@
-import 'package:walletika_sdk/walletika_sdk.dart';
+import '../../models/network.dart';
 
 abstract class NetworkRepository {
-  Stream<NetworkModel> getAll();
+  Stream<NetworkItemModel> getAll();
 
   Future<bool> addNew({
     required String rpc,
@@ -11,5 +11,5 @@ abstract class NetworkRepository {
     required String explorer,
   });
 
-  Future<bool> remove(NetworkModel network);
+  Future<bool> remove(NetworkItemModel network);
 }

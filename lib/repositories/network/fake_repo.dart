@@ -1,27 +1,60 @@
-import 'package:walletika_sdk/walletika_sdk.dart';
-
+import '../../models/network.dart';
+import '../../utils/constants.dart';
 import 'repo.dart';
 
 class NetworkFakeRepository extends NetworkRepository {
-  final List<List<String>> _networks = [
-    ['Ethereum', 'ETH'],
-    ['Ethereum ( Testnet )', 'ETH'],
-    ['Binance Smart Chain', 'BNB'],
-    ['Binance Smart Chain ( Testnet )', 'BNB'],
-    ['Polygon', 'MATIC'],
-    ['Polygon ( Testnet )', 'MATIC'],
+  final List<NetworkItemModel> _networks = [
+    NetworkItemModel(
+      icon: '${AppImages.coins}/eth.png',
+      name: 'Ethereum',
+      rpc: '',
+      chainID: 1,
+      symbol: 'ETH',
+      explorer: '',
+      isLocked: true,
+    ),
+    NetworkItemModel(
+      icon: '${AppImages.coins}/eth.png',
+      name: 'Ethereum ( Testnet )',
+      rpc: '',
+      chainID: 1,
+      symbol: 'ETH',
+      explorer: '',
+      isLocked: false,
+    ),
+    NetworkItemModel(
+      icon: '${AppImages.coins}/bnb.png',
+      name: 'Binance Smart Chain',
+      rpc: '',
+      chainID: 1,
+      symbol: 'BNB',
+      explorer: '',
+      isLocked: false,
+    ),
+    NetworkItemModel(
+      icon: '${AppImages.coins}/bnb.png',
+      name: 'Binance Smart Chain ( Testnet )',
+      rpc: '',
+      chainID: 1,
+      symbol: 'BNB',
+      explorer: '',
+      isLocked: false,
+    ),
+    NetworkItemModel(
+      icon: '${AppImages.coins}/matic.png',
+      name: 'Polygon',
+      rpc: '',
+      chainID: 1,
+      symbol: 'MATIC',
+      explorer: '',
+      isLocked: false,
+    ),
   ];
 
   @override
-  Stream<NetworkModel> getAll() async* {
-    for (List<String> network in _networks) {
-      yield NetworkModel(
-        name: network[0],
-        rpc: '',
-        chainID: 0,
-        symbol: network[1],
-        explorer: '',
-      );
+  Stream<NetworkItemModel> getAll() async* {
+    for (NetworkItemModel network in _networks) {
+      yield network;
     }
   }
 
@@ -33,18 +66,22 @@ class NetworkFakeRepository extends NetworkRepository {
     required String symbol,
     required String explorer,
   }) async {
-    _networks.add([name, symbol]);
+    _networks.add(
+      NetworkItemModel(
+        icon: '${AppImages.coins}/${symbol.toLowerCase()}.png',
+        name: name,
+        rpc: rpc,
+        chainID: chainID,
+        symbol: symbol,
+        explorer: explorer,
+        isLocked: false,
+      ),
+    );
     return true;
   }
 
   @override
-  Future<bool> remove(NetworkModel network) async {
-    for (final List<String> i in _networks) {
-      if (i[0] == network.name) {
-        return _networks.remove(i);
-      }
-    }
-
-    return false;
+  Future<bool> remove(NetworkItemModel network) async {
+    return _networks.remove(network);
   }
 }
