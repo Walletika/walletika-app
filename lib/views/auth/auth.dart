@@ -11,7 +11,7 @@ class AuthView extends StatelessWidget {
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(MainHeader.height),
-        child: MainHeader(actionsVisible: false),
+        child: MainHeader(),
       ),
       body: AuthBody(),
     );
