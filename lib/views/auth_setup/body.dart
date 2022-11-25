@@ -25,7 +25,8 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
 
   @override
   void initState() {
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController =
+        TabController(length: TabsController.totalTabs, vsync: this);
     super.initState();
   }
 
