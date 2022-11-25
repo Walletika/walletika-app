@@ -7,21 +7,21 @@ class WalletFakeRepository extends WalletRepository {
   final List<WalletViewModel> _wallets = [
     WalletViewModel(
       username: 'Wallet1',
-      address: '0x1755cceE2BCb80fb7f453afa523F2C13f024E1B5',
+      address: '0x70463907F1aEe85619D8C248352d422681E304A1',
       dateCreated: DateTime.now(),
       isFavorite: true,
       isLogged: false,
     ),
     WalletViewModel(
       username: 'Wallet2',
-      address: '0xA9e3105c94F99b570e538F012B0E4944C0C7dD58',
+      address: '0x81f4300AD8e46e2315A414DE387a23b84e9B8590',
       dateCreated: DateTime.now(),
       isFavorite: false,
       isLogged: false,
     ),
     WalletViewModel(
       username: 'Wallet3',
-      address: '0x8357648712DE4DB19BF17E27b8f10b7d16A3a5Bb',
+      address: '0x4520c0fb7aC21d52E089e49261FAC3e7424F9045',
       dateCreated: DateTime.now(),
       isFavorite: false,
       isLogged: false,
