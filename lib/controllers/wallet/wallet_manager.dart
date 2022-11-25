@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:walletika_sdk/walletika_sdk.dart';
 
 import '../../models/wallet.dart';
 import '../../repositories/wallet/fake_repo.dart';
@@ -11,13 +10,13 @@ class WalletManagerController extends GetxController {
   final WalletRepository _repository = WalletFakeRepository();
 
   // States
-  final RxList<WalletItemModel> _wallets = <WalletItemModel>[].obs;
+  final RxList<WalletViewModel> _wallets = <WalletViewModel>[].obs;
 
   // Process States
   final ProcessState _setFavoriteState = ProcessState();
 
   // Local Data
-  late WalletItemModel _currentWallet;
+  late WalletViewModel _currentWallet;
 
   // Event methods
   @override
@@ -27,9 +26,9 @@ class WalletManagerController extends GetxController {
   }
 
   // Getter methods
-  List<WalletItemModel> get wallets => _wallets;
+  List<WalletViewModel> get wallets => _wallets;
 
-  WalletItemModel get currentWallet => _currentWallet;
+  WalletViewModel get currentWallet => _currentWallet;
 
   int count() => _repository.count();
 
@@ -38,29 +37,15 @@ class WalletManagerController extends GetxController {
       );
 
   // Setter & Controller methods
-  void setCurrentWallet(String address) {
-    for (WalletItemModel wallet in _wallets) {
-      if (wallet.address == address) {
-        _currentWallet = wallet;
-        break;
-      }
-    }
-  }
-
   Future<void> walletsUpdate([String search = '']) async {
     search = search.toLowerCase();
 
     _wallets.value = [
-      await for (WalletEngine engine in _repository.getAll())
+      await for (WalletViewModel wallet in _repository.getAll())
         if (search.isEmpty ||
-            engine.username().toLowerCase().contains(search) ||
-            engine.address().hex.contains(search))
-          WalletItemModel(
-            username: engine.username(),
-            address: engine.address().hexEip55,
-            isFavorite: engine.isFavorite(),
-            isLogged: engine.isLogged(),
-          )
+            wallet.username.toLowerCase().contains(search) ||
+            wallet.address.toLowerCase().contains(search))
+          wallet
     ];
   }
 
@@ -69,28 +54,33 @@ class WalletManagerController extends GetxController {
     required String password,
     required String securityPassword,
   }) async {
-    final bool result = await _repository.addNew(
+    final bool isValid = await _repository.addNew(
       username: username,
       password: password,
       securityPassword: securityPassword,
     );
-    await walletsUpdate();
 
-    for (WalletItemModel wallet in _wallets) {
-      if (wallet.username == username) {
-        _currentWallet = wallet;
-        break;
-      }
+    if (isValid) {
+      await walletsUpdate();
+      setCurrentWallet(
+        _wallets.firstWhere((wallet) => wallet.username == username),
+      );
     }
 
-    return result;
+    return isValid;
+  }
+
+  void setCurrentWallet(WalletViewModel wallet) {
+    _currentWallet = wallet;
   }
 
   Future<bool> loginValidate(String password) async {
-    return await _repository.loginValidate(
-      address: currentWallet.address,
+    final bool isValid = await _repository.loginValidate(
+      currentWallet: _currentWallet,
       password: password,
     );
+
+    return isValid;
   }
 
   Future<bool> login({
@@ -98,7 +88,7 @@ class WalletManagerController extends GetxController {
     required String otpCode,
   }) async {
     final bool isValid = await _repository.login(
-      address: currentWallet.address,
+      currentWallet: _currentWallet,
       password: password,
       otpCode: otpCode,
     );
@@ -110,12 +100,12 @@ class WalletManagerController extends GetxController {
 
   Future<void> setFavorite({
     required String search,
-    required String address,
+    required WalletViewModel walletViewModel,
   }) async {
     if (!_setFavoriteState.run()) return;
 
     try {
-      await _repository.setFavorite(address);
+      await _repository.setFavorite(walletViewModel);
       await walletsUpdate(search);
     } catch (e) {
       rethrow;

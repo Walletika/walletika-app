@@ -1,9 +1,7 @@
-import 'package:walletika_sdk/walletika_sdk.dart';
+import '../../models/wallet.dart';
 
 abstract class WalletRepository {
-  Map<String, WalletEngine> engines = {};
-
-  Stream<WalletEngine> getAll();
+  Stream<WalletViewModel> getAll();
 
   int count();
 
@@ -14,15 +12,15 @@ abstract class WalletRepository {
   });
 
   Future<bool> loginValidate({
-    required String address,
+    required WalletViewModel currentWallet,
     required String password,
   });
 
   Future<bool> login({
-    required String address,
+    required WalletViewModel currentWallet,
     required String password,
     required String otpCode,
   });
 
-  Future<void> setFavorite(String address);
+  Future<void> setFavorite(WalletViewModel currentWallet);
 }

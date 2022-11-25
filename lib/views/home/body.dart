@@ -55,7 +55,7 @@ class HomeBody extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
 
-            final List<WalletItemModel> wallets =
+            final List<WalletViewModel> wallets =
                 _walletManagerController.wallets;
 
             return ListView.separated(
@@ -66,11 +66,11 @@ class HomeBody extends StatelessWidget {
               ),
               itemCount: wallets.length,
               itemBuilder: (context, index) {
-                final WalletItemModel wallet = wallets[index];
+                final WalletViewModel wallet = wallets[index];
 
                 return WalletItem(
                   onTap: () {
-                    _walletManagerController.setCurrentWallet(wallet.address);
+                    _walletManagerController.setCurrentWallet(wallet);
                     Get.toNamed(AppPages.login);
                   },
                   username: wallet.username,
@@ -98,7 +98,7 @@ class HomeBody extends StatelessWidget {
     _walletManagerController.walletsUpdate(text);
   }
 
-  void _onFavoritePressed(WalletItemModel wallet) {
+  void _onFavoritePressed(WalletViewModel wallet) {
     final OperationNotifier operation = OperationNotifier(
       title: "0x2D23C079",
     );
@@ -106,7 +106,7 @@ class HomeBody extends StatelessWidget {
     _walletManagerController
         .setFavorite(
       search: _searchInputController.text,
-      address: wallet.address,
+      walletViewModel: wallet,
     )
         .catchError((error) {
       operation.error(error.toString());
