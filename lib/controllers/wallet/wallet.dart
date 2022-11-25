@@ -39,14 +39,17 @@ class WalletController extends GetxController {
   // Setter & Controller methods
   Future<void> walletsUpdate([String search = '']) async {
     search = search.toLowerCase();
+    final List<WalletViewModel> result = [];
 
-    _wallets.value = [
-      await for (final WalletViewModel wallet in _repository.getAll())
-        if (search.isEmpty ||
-            wallet.username.toLowerCase().contains(search) ||
-            wallet.address.toLowerCase().contains(search))
-          wallet
-    ];
+    await for (final WalletViewModel wallet in _repository.getAll()) {
+      if (search.isEmpty ||
+          wallet.username.toLowerCase().contains(search) ||
+          wallet.address.toLowerCase().contains(search)) {
+        result.insert(wallet.isFavorite ? 0 : result.length, wallet);
+      }
+    }
+
+    _wallets.value = result;
   }
 
   Future<bool> addNew({
