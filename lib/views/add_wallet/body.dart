@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../../controllers/wallet/wallet_manager.dart';
+import '../../controllers/wallet/wallet.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/custom_text_field.dart';
@@ -22,8 +22,7 @@ class AddWalletBody extends StatelessWidget {
   final TextEditingController _confirmPassController = TextEditingController();
   final TextEditingController _securityPassController = TextEditingController();
   final TextEditingController _confirmSPassController = TextEditingController();
-  final WalletManagerController _walletManagerController =
-      Get.find<WalletManagerController>();
+  final WalletController _walletController = Get.find<WalletController>();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +61,7 @@ class AddWalletBody extends StatelessWidget {
                   ],
                   validator: (text) {
                     if (text != null &&
-                        _walletManagerController.usernameExists(text)) {
+                        _walletController.usernameExists(text)) {
                       return "1018@global".tr;
                     }
                     return null;
@@ -157,7 +156,7 @@ class AddWalletBody extends StatelessWidget {
       title: "1004@addWallet".tr,
     );
 
-    _walletManagerController
+    _walletController
         .addNew(
       username: _usernameController.text,
       password: _passwordController.text,

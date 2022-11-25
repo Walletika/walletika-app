@@ -2,12 +2,11 @@ import 'package:get/get.dart';
 import 'package:walletika_creator/walletika_creator.dart';
 
 import '../../utils/constants.dart';
-import '../wallet/wallet_manager.dart';
+import '../wallet/wallet.dart';
 
 class AuthSetupController extends GetxController {
   // Data repository
-  final WalletManagerController _walletManagerController =
-      Get.find<WalletManagerController>();
+  final WalletController _walletController = Get.find<WalletController>();
 
   // States
   final RxInt _currentTabIndex = 0.obs;
@@ -20,9 +19,9 @@ class AuthSetupController extends GetxController {
   // Getter methods
   int get currentTabIndex => _currentTabIndex.value;
 
-  String get address => _walletManagerController.currentWallet.address;
+  String get address => _walletController.currentWallet.address;
 
-  String get username => _walletManagerController.currentWallet.username;
+  String get username => _walletController.currentWallet.username;
 
   String get otpKey => _otpKey;
 
@@ -70,7 +69,7 @@ class AuthSetupController extends GetxController {
     final String currentCode = currentOTPCode(_otpKey);
 
     if (currentCode == otpCode) {
-      return await _walletManagerController.login(
+      return await _walletController.login(
         password: _password,
         otpCode: currentCode,
       );

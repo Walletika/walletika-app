@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../../controllers/wallet/wallet_manager.dart';
+import '../../controllers/wallet/wallet.dart';
 import '../../models/wallet.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
@@ -18,8 +18,7 @@ class HomeBody extends StatelessWidget {
   }
 
   final TextEditingController _searchInputController = TextEditingController();
-  final WalletManagerController _walletManagerController =
-      Get.find<WalletManagerController>();
+  final WalletController _walletController = Get.find<WalletController>();
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +42,8 @@ class HomeBody extends StatelessWidget {
         ),
         Expanded(
           child: Obx(() {
-            if (_walletManagerController.wallets.isEmpty) {
-              if (_walletManagerController.count() == 0) {
+            if (_walletController.wallets.isEmpty) {
+              if (_walletController.count() == 0) {
                 return EmptyPage(
                   illustrationPath: AppImages.coinIllustrations,
                   title: "1001@home".tr,
@@ -55,8 +54,7 @@ class HomeBody extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
 
-            final List<WalletViewModel> wallets =
-                _walletManagerController.wallets;
+            final List<WalletViewModel> wallets = _walletController.wallets;
 
             return ListView.separated(
               padding: const EdgeInsets.only(bottom: AppDecoration.spaceLarge),
@@ -70,7 +68,7 @@ class HomeBody extends StatelessWidget {
 
                 return WalletItem(
                   onTap: () {
-                    _walletManagerController.setCurrentWallet(wallet);
+                    _walletController.setCurrentWallet(wallet);
                     Get.toNamed(AppPages.login);
                   },
                   username: wallet.username,
@@ -95,7 +93,7 @@ class HomeBody extends StatelessWidget {
 
   void _searchOnChanged() {
     final String text = _searchInputController.text;
-    _walletManagerController.walletsUpdate(text);
+    _walletController.walletsUpdate(text);
   }
 
   void _onFavoritePressed(WalletViewModel wallet) {
@@ -103,7 +101,7 @@ class HomeBody extends StatelessWidget {
       title: "0x2D23C079",
     );
 
-    _walletManagerController
+    _walletController
         .setFavorite(
       search: _searchInputController.text,
       walletViewModel: wallet,

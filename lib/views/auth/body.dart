@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/wallet/wallet_manager.dart';
+import '../../controllers/wallet/wallet.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/operation_notifier.dart';
@@ -13,8 +13,7 @@ class AuthBody extends StatelessWidget {
 
   final GlobalKey<FormState> _formController = GlobalKey<FormState>();
   final TextEditingController _pinputController = TextEditingController();
-  final WalletManagerController _walletManagerController =
-      Get.find<WalletManagerController>();
+  final WalletController _walletController = Get.find<WalletController>();
   final Future<bool> Function(String otpCode) _validator = Get.arguments;
 
   @override
@@ -37,7 +36,7 @@ class AuthBody extends StatelessWidget {
                 ),
                 verticalSpace(),
                 Text(
-                  "${_walletManagerController.currentWallet.username}\n${"1000@auth".tr}",
+                  "${_walletController.currentWallet.username}\n${"1000@auth".tr}",
                   softWrap: false,
                   style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.center,
@@ -86,7 +85,7 @@ class AuthBody extends StatelessWidget {
 
   void _onConfirm() {
     final OperationNotifier operation = OperationNotifier(
-      title: _walletManagerController.currentWallet.username,
+      title: _walletController.currentWallet.username,
     );
 
     _validator(_pinputController.text).then((isValid) {

@@ -5,7 +5,7 @@ import '../../repositories/wallet/fake_repo.dart';
 import '../../repositories/wallet/repo.dart';
 import '../../utils/process_state.dart';
 
-class WalletManagerController extends GetxController {
+class WalletController extends GetxController {
   // Data repository
   final WalletRepository _repository = WalletFakeRepository();
 

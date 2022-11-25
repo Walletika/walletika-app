@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/wallet/wallet_manager.dart';
+import '../../controllers/wallet/wallet.dart';
 import '../../utils/constants.dart';
 import '../widgets/address.dart';
 import '../widgets/container.dart';
@@ -14,8 +14,7 @@ class LoginBody extends StatelessWidget {
 
   final GlobalKey<FormState> _formController = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
-  final WalletManagerController _walletManagerController =
-      Get.find<WalletManagerController>();
+  final WalletController _walletController = Get.find<WalletController>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +36,14 @@ class LoginBody extends StatelessWidget {
                 ),
                 verticalSpace(),
                 Text(
-                  _walletManagerController.currentWallet.username,
+                  _walletController.currentWallet.username,
                   softWrap: false,
                   style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 TextAddress(
-                  _walletManagerController.currentWallet.address,
+                  _walletController.currentWallet.address,
                   height: 30.0,
                 ),
                 verticalSpace(),
@@ -88,12 +87,10 @@ class LoginBody extends StatelessWidget {
 
   void _onLogin() {
     final OperationNotifier operation = OperationNotifier(
-      title: _walletManagerController.currentWallet.username,
+      title: _walletController.currentWallet.username,
     );
 
-    _walletManagerController
-        .loginValidate(_passwordController.text)
-        .then((isValid) {
+    _walletController.loginValidate(_passwordController.text).then((isValid) {
       if (isValid) {
         Get.offNamed(AppPages.auth, arguments: _authValidator);
       } else {
@@ -109,7 +106,7 @@ class LoginBody extends StatelessWidget {
   }
 
   Future<bool> _authValidator(String otpCode) async {
-    final isLogged = await _walletManagerController.login(
+    final isLogged = await _walletController.login(
       password: _passwordController.text,
       otpCode: otpCode,
     );
