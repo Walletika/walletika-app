@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../../controllers/auth_setup/auth_setup.dart';
+import '../../controllers/auth_setup/tabs.dart';
 import '../../utils/constants.dart';
 import '../widgets/address.dart';
 import '../widgets/operation_notifier.dart';
@@ -16,6 +17,7 @@ class AuthSecondTabView extends StatelessWidget {
   final GlobalKey<FormState> _formController = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _securityPassController = TextEditingController();
+  final TabsController _tabsController = Get.find<TabsController>();
   final AuthSetupController _authSetupController =
       Get.find<AuthSetupController>();
 
@@ -29,7 +31,7 @@ class AuthSecondTabView extends StatelessWidget {
           Row(children: [
             IconButton(
               onPressed: () {
-                tabController.animateTo(_authSetupController.toPreviousTab());
+                tabController.animateTo(_tabsController.toPreviousTab());
               },
               icon: const Icon(LineIcons.angleLeft),
             ),
@@ -105,7 +107,7 @@ class AuthSecondTabView extends StatelessWidget {
       _passwordController.clear();
       _securityPassController.clear();
       if (isValid) {
-        tabController.animateTo(_authSetupController.toNextTab());
+        tabController.animateTo(_tabsController.toNextTab());
       } else {
         operation.invalid("1003@login".tr);
         operation.notify();

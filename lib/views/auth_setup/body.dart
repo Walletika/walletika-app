@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../../controllers/auth_setup/auth_setup.dart';
+import '../../controllers/auth_setup/tabs.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/spacer.dart';
@@ -21,8 +21,7 @@ class AuthSetupBody extends StatefulWidget {
 class _AuthSetupBodyState extends State<AuthSetupBody>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  final AuthSetupController _authSetupController =
-      Get.find<AuthSetupController>();
+  final TabsController _tabsController = Get.find<TabsController>();
 
   @override
   void initState() {
@@ -50,14 +49,14 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
                   flex: 3,
                   child: Obx(() {
                     final bool isCompleted =
-                        _authSetupController.currentTabIndex > index;
+                        _tabsController.currentTabIndex > index;
 
                     return Column(
                       children: [
                         Text(
                           tabs[index],
                           textAlign: TextAlign.center,
-                          style: _authSetupController.currentTabIndex == index
+                          style: _tabsController.currentTabIndex == index
                               ? Theme.of(context).textTheme.bodySmall!.copyWith(
                                     fontFamily: AppFonts.bold,
                                   )

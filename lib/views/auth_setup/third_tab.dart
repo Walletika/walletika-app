@@ -4,6 +4,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../controllers/auth_setup/auth_setup.dart';
+import '../../controllers/auth_setup/tabs.dart';
 import '../../utils/constants.dart';
 import '../widgets/address.dart';
 import '../widgets/operation_notifier.dart';
@@ -16,6 +17,7 @@ class AuthThirdTabView extends StatelessWidget {
   final TabController tabController;
   final GlobalKey<FormState> _formController = GlobalKey<FormState>();
   final TextEditingController _pinputController = TextEditingController();
+  final TabsController _tabsController = Get.find<TabsController>();
   final AuthSetupController _authSetupController =
       Get.find<AuthSetupController>();
 
@@ -29,7 +31,7 @@ class AuthThirdTabView extends StatelessWidget {
           Row(children: [
             IconButton(
               onPressed: () {
-                tabController.animateTo(_authSetupController.toPreviousTab());
+                tabController.animateTo(_tabsController.toPreviousTab());
               },
               icon: const Icon(LineIcons.angleLeft),
             ),
@@ -112,7 +114,7 @@ class AuthThirdTabView extends StatelessWidget {
     _authSetupController.confirmation(_pinputController.text).then((isValid) {
       _pinputController.clear();
       if (isValid) {
-        tabController.animateTo(_authSetupController.toNextTab());
+        tabController.animateTo(_tabsController.toNextTab());
       } else {
         operation.invalid("1003@auth".tr);
         operation.notify();

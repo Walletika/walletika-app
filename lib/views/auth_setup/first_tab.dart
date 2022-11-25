@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/auth_setup/auth_setup.dart';
+import '../../controllers/auth_setup/tabs.dart';
 import '../../utils/constants.dart';
 import '../../utils/launch_url.dart';
 import '../widgets/spacer.dart';
@@ -10,8 +10,7 @@ class AuthFirstTabView extends StatelessWidget {
   AuthFirstTabView({required this.tabController, super.key});
 
   final TabController tabController;
-  final AuthSetupController _authSetupController =
-      Get.find<AuthSetupController>();
+  final TabsController _tabsController = Get.find<TabsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +97,7 @@ class AuthFirstTabView extends StatelessWidget {
             height: AppDecoration.buttonHeightLarge,
             child: ElevatedButton(
               onPressed: () {
-                tabController.animateTo(_authSetupController.toNextTab());
+                tabController.animateTo(_tabsController.toNextTab());
               },
               child: Text("1027@global".tr),
             ),
