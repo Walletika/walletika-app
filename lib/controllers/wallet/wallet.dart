@@ -41,7 +41,7 @@ class WalletController extends GetxController {
     search = search.toLowerCase();
 
     _wallets.value = [
-      await for (WalletViewModel wallet in _repository.getAll())
+      await for (final WalletViewModel wallet in _repository.getAll())
         if (search.isEmpty ||
             wallet.username.toLowerCase().contains(search) ||
             wallet.address.toLowerCase().contains(search))

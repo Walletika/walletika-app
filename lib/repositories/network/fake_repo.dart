@@ -53,7 +53,7 @@ class NetworkFakeRepository extends NetworkRepository {
 
   @override
   Stream<NetworkItemModel> getAll() async* {
-    for (NetworkItemModel network in _networks) {
+    for (final NetworkItemModel network in _networks) {
       yield network;
     }
   }

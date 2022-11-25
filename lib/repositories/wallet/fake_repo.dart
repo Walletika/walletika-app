@@ -30,7 +30,7 @@ class WalletFakeRepository extends WalletRepository {
 
   @override
   Stream<WalletViewModel> getAll() async* {
-    for (WalletViewModel wallet in _wallets) {
+    for (final WalletViewModel wallet in _wallets) {
       yield wallet;
     }
   }
