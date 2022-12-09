@@ -24,7 +24,7 @@ class WalletItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      minVerticalPadding: 15.0,
+      minVerticalPadding: 20.0,
       onTap: onTap,
       leading: Image.asset(
         AppImages.walletIllustrations,
@@ -50,7 +50,7 @@ class WalletItem extends StatelessWidget {
       ),
       subtitle: TextAddress(
         address,
-        height: 30.0,
+        height: 22.0,
         mainAxisAlignment: MainAxisAlignment.start,
       ),
       trailing: trailing,
