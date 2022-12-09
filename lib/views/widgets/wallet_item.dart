@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/constants.dart';
+import 'active_status.dart';
 import 'address.dart';
-import 'item_logo.dart';
+import 'spacer.dart';
 
 class WalletItem extends StatelessWidget {
   const WalletItem({
@@ -25,14 +26,27 @@ class WalletItem extends StatelessWidget {
     return ListTile(
       minVerticalPadding: 15.0,
       onTap: onTap,
-      leading: ItemLogo(
-        path: AppImages.walletIllustrations,
-        isActive: isActive,
+      leading: Image.asset(
+        AppImages.walletIllustrations,
+        width: 50.0,
+        height: 50.0,
+        isAntiAlias: true,
+        filterQuality: FilterQuality.medium,
       ),
-      title: Text(
-        username,
-        softWrap: false,
-        style: Theme.of(context).textTheme.titleMedium,
+      title: Row(
+        children: [
+          Text(
+            username,
+            softWrap: false,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          ...isActive
+              ? [
+                  horizontalSpace(),
+                  ActiveStatus(isActive: isActive),
+                ]
+              : []
+        ],
       ),
       subtitle: TextAddress(
         address,
