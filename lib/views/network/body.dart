@@ -83,10 +83,13 @@ class NetworkBody extends StatelessWidget {
                   title: Row(
                     children: [
                       Flexible(
-                        child: Text(
-                          network.name,
-                          softWrap: false,
-                          style: Theme.of(context).textTheme.titleMedium,
+                        child: SizedBox(
+                          height: 22.0,
+                          child: Text(
+                            network.name,
+                            softWrap: false,
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
                         ),
                       ),
                       ...currentNetwork == network.name
@@ -104,7 +107,7 @@ class NetworkBody extends StatelessWidget {
                   subtitle: Text(
                     network.rpc,
                     softWrap: false,
-                    style: Theme.of(context).textTheme.labelMedium,
+                    style: Theme.of(context).textTheme.labelSmall,
                   ),
                   trailing: IconButton(
                     tooltip:
