@@ -7,7 +7,7 @@ class NetworkFakeRepository extends NetworkRepository {
     NetworkItemModel(
       icon: '${AppImages.coins}/eth.png',
       name: 'Ethereum',
-      rpc: '',
+      rpc: 'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
       chainID: 1,
       symbol: 'ETH',
       explorer: '',
@@ -15,8 +15,8 @@ class NetworkFakeRepository extends NetworkRepository {
     ),
     NetworkItemModel(
       icon: '${AppImages.coins}/eth.png',
-      name: 'Ethereum ( Testnet )',
-      rpc: '',
+      name: 'Goerli Ethereum ( Testnet )',
+      rpc: 'https://goerli.infura.io/v3/',
       chainID: 1,
       symbol: 'ETH',
       explorer: '',
@@ -25,7 +25,7 @@ class NetworkFakeRepository extends NetworkRepository {
     NetworkItemModel(
       icon: '${AppImages.coins}/bnb.png',
       name: 'Binance Smart Chain',
-      rpc: '',
+      rpc: 'https://bsc-dataseed1.binance.org',
       chainID: 1,
       symbol: 'BNB',
       explorer: '',
@@ -34,7 +34,7 @@ class NetworkFakeRepository extends NetworkRepository {
     NetworkItemModel(
       icon: '${AppImages.coins}/bnb.png',
       name: 'Binance Smart Chain ( Testnet )',
-      rpc: '',
+      rpc: 'https://data-seed-prebsc-1-s1.binance.org:8545',
       chainID: 1,
       symbol: 'BNB',
       explorer: '',
@@ -43,7 +43,7 @@ class NetworkFakeRepository extends NetworkRepository {
     NetworkItemModel(
       icon: '${AppImages.coins}/matic.png',
       name: 'Polygon',
-      rpc: '',
+      rpc: 'https://polygon-mainnet.infura.io',
       chainID: 1,
       symbol: 'MATIC',
       explorer: '',
