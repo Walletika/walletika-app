@@ -1,4 +1,6 @@
-import 'package:walletika_creator/walletika_creator.dart';
+import 'dart:convert';
+
+import 'package:walletika_sdk/walletika_sdk.dart';
 
 import '../../models/wallet.dart';
 import 'repo.dart';
@@ -44,24 +46,18 @@ class WalletFakeRepository extends WalletRepository {
     required String password,
     required String securityPassword,
   }) async {
-    final WalletInfoModel wallet = await walletGenerator(
+    final WalletGeneratorInfo? wallet = await walletGenerator(
       username: username,
       password: password,
-      securityPassword: securityPassword.codeUnits,
-      otpCode: currentOTPCode(
-        otpKeyGenerator(
-          username: username,
-          password: password,
-          securityPassword: securityPassword,
-        ),
-      ),
+      securityPassword: utf8.encoder.convert(securityPassword),
+      createNew: true,
     );
 
-    if (wallet.isValid) {
+    if (wallet != null) {
       _wallets.add(
         WalletViewModel(
           username: username,
-          address: wallet.address!.hexEip55,
+          address: wallet.address.hexEip55,
           dateCreated: DateTime.now(),
           isFavorite: false,
           isLogged: false,

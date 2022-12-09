@@ -1,5 +1,7 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
-import 'package:walletika_creator/walletika_creator.dart';
+import 'package:walletika_sdk/walletika_sdk.dart';
 
 import '../../utils/constants.dart';
 import '../wallet/wallet.dart';
@@ -33,14 +35,14 @@ class AuthSetupController extends GetxController {
       securityPassword: securityPassword,
     );
 
-    final WalletInfoModel wallet = await walletGenerator(
+    final WalletGeneratorInfo? wallet = await walletGenerator(
       username: username,
       password: password,
-      securityPassword: securityPassword.codeUnits,
-      otpCode: currentOTPCode(key),
+      securityPassword: utf8.encoder.convert(securityPassword),
+      createNew: true,
     );
 
-    if (wallet.isValid && wallet.address!.hexEip55 == address) {
+    if (wallet != null && wallet.address.hexEip55 == address) {
       _password = password;
       _otpKey = key;
       return true;
