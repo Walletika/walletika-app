@@ -1,5 +1,14 @@
 name: walletika
 description: A new Flutter project.
+homepage: https://github.com/walletika
+repository: https://github.com/walletika/walletika-app
+issue_tracker: https://github.com/walletika/walletika-app/issues
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  windows:
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -32,34 +41,31 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   get: ^4.6.5
   get_storage: ^2.0.3
-  awesome_dialog: ^3.0.2
-  flutter_pw_validator: ^1.4.2
-  pinput: ^2.2.16
-  line_icons: ^2.0.1
-  url_launcher: ^6.1.6
-  qr_flutter: ^4.0.0
-  walletika_creator:
-    git:
-      url: https://github.com/Walletika/walletika-creator.git
-      ref: main
+  url_launcher: ^6.1.7
   walletika_sdk:
     git:
       url: https://github.com/Walletika/walletika-sdk.git
       ref: main
-  web3dart:
+  walletika_api:
     git:
-      url: https://github.com/MahmoudKhalid/web3dart.git
+      url: https://github.com/Walletika/walletika-api.git
       ref: main
+
+  # Fixed version
+  awesome_dialog: 3.0.2
+  flutter_pw_validator: 1.5.0
+  pinput: 2.2.16
+  line_icons: 2.0.1
+  qr_flutter: 4.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.10.0
+  flutter_launcher_icons: ^0.11.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
