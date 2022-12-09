@@ -11,6 +11,7 @@ import '../widgets/container.dart';
 import '../widgets/dialog.dart';
 import '../widgets/item_logo.dart';
 import '../widgets/operation_notifier.dart';
+import '../widgets/spacer.dart';
 
 class NetworkBody extends StatelessWidget {
   NetworkBody({super.key});
@@ -78,14 +79,25 @@ class NetworkBody extends StatelessWidget {
                 return ListTile(
                   onTap: () => _onItemTap(network),
                   minVerticalPadding: 20.0,
-                  leading: ItemLogo(
-                    path: network.icon,
-                    isActive: currentNetwork == network.name,
-                  ),
-                  title: Text(
-                    network.symbol,
-                    softWrap: false,
-                    style: Theme.of(context).textTheme.titleMedium,
+                  leading: ItemLogo(path: network.icon),
+                  title: Row(
+                    children: [
+                      Text(
+                        network.symbol,
+                        softWrap: false,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      ...currentNetwork == network.name
+                          ? [
+                              horizontalSpace(),
+                              const Icon(
+                                Icons.check,
+                                size: AppDecoration.iconSmallSize,
+                                color: AppColors.green,
+                              ),
+                            ]
+                          : [],
+                    ],
                   ),
                   subtitle: Text(
                     network.name,
