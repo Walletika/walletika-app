@@ -5,14 +5,12 @@ import '../../utils/constants.dart';
 class ItemLogo extends StatelessWidget {
   const ItemLogo({
     required this.path,
-    required this.isActive,
-    this.size = 50.0,
+    this.size = 40.0,
     this.errorPath = '${AppImages.coins}/unknown.png',
     super.key,
   });
 
   final String path;
-  final bool isActive;
   final double? size;
   final String? errorPath;
 
