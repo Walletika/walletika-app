@@ -1,7 +1,7 @@
 import '../../models/network.dart';
 
 abstract class NetworkRepository {
-  Stream<NetworkItemModel> getAll();
+  Future<List<NetworkItemModel>> getAll(bool mainnetOnly);
 
   Future<bool> addNew({
     required String rpc,

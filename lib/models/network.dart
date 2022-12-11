@@ -1,5 +1,5 @@
 class NetworkItemModel {
-  final String icon;
+  final String imageURL;
   final String rpc;
   final String symbol;
   final String name;
@@ -8,7 +8,7 @@ class NetworkItemModel {
   final bool isLocked;
 
   NetworkItemModel({
-    required this.icon,
+    required this.imageURL,
     required this.rpc,
     required this.symbol,
     required this.name,

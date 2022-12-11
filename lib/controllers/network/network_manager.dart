@@ -33,12 +33,9 @@ class NetworkManagerController extends GetxController {
 
   // Setter & Controller methods
   Future<void> networksUpdate() async {
-    final List<NetworkItemModel> result = [
-      await for (final NetworkItemModel network in _repository.getAll())
-        if (!_settingsController.isTestnetHidden ||
-            !network.name.toLowerCase().contains('testnet'))
-          network
-    ];
+    final List<NetworkItemModel> result = await _repository.getAll(
+      _settingsController.isTestnetHidden,
+    );
 
     if (!result.any(
       (network) => network.name == _settingsController.currentNetwork,
