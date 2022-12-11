@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:walletika_api/walletika_api.dart';
 
 import 'controllers/dependencies.dart';
 import 'locales/locales.dart';
@@ -24,6 +25,7 @@ void main() async {
 
 Future<void> initServices() async {
   await GetStorage.init(AppInfo.name);
+  await WalletikaAPI.init('key');
   await Get.putAsync(() => SettingsService().init());
 }
 
