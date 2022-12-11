@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.walletika" "\0"
-            VALUE "FileDescription", "walletika" "\0"
+            VALUE "CompanyName", "Walletika" "\0"
+            VALUE "FileDescription", "Walletika decentralized wallet" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "walletika" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.walletika. All rights reserved." "\0"
-            VALUE "OriginalFilename", "walletika.exe" "\0"
-            VALUE "ProductName", "walletika" "\0"
+            VALUE "InternalName", "Walletika" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 Walletika. All rights reserved." "\0"
+            VALUE "OriginalFilename", "Walletika.exe" "\0"
+            VALUE "ProductName", "Walletika" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
