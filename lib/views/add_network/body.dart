@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../../controllers/network/network_manager.dart';
+import '../../controllers/network/network.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/custom_text_field.dart';
@@ -19,8 +19,7 @@ class AddNetworkBody extends StatelessWidget {
   final TextEditingController _chainIDController = TextEditingController();
   final TextEditingController _symbolController = TextEditingController();
   final TextEditingController _explorerController = TextEditingController();
-  final NetworkManagerController _networkManagerController =
-      Get.find<NetworkManagerController>();
+  final NetworkController _networkController = Get.find<NetworkController>();
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +70,7 @@ class AddNetworkBody extends StatelessWidget {
                   ],
                   validator: (text) {
                     if (text != null &&
-                        _networkManagerController.networkExists(
+                        _networkController.networkExists(
                           name: text,
                           rpc: _rpcController.text,
                         )) return "1018@global".tr;
@@ -170,7 +169,7 @@ class AddNetworkBody extends StatelessWidget {
       title: "1007@addNetwork".tr,
     );
 
-    _networkManagerController
+    _networkController
         .addNew(
       name: _nameController.text,
       rpc: _rpcController.text,

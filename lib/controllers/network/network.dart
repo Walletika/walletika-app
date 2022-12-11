@@ -6,7 +6,7 @@ import '../../repositories/network/repo.dart';
 import '../../utils/constants.dart';
 import '../settings/settings.dart';
 
-class NetworkManagerController extends GetxController {
+class NetworkController extends GetxController {
   // Data repository
   final NetworkRepository _repository = NetworkFakeRepository();
 

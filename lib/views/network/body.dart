@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../../controllers/network/network_manager.dart';
+import '../../controllers/network/network.dart';
 import '../../controllers/settings/settings.dart';
 import '../../models/network.dart';
 import '../../utils/constants.dart';
@@ -17,8 +17,7 @@ class NetworkBody extends StatelessWidget {
   NetworkBody({super.key});
 
   final SettingsController _settingsController = Get.find<SettingsController>();
-  final NetworkManagerController _networkManagerController =
-      Get.find<NetworkManagerController>();
+  final NetworkController _networkController = Get.find<NetworkController>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +58,7 @@ class NetworkBody extends StatelessWidget {
         Expanded(
           child: Obx(() {
             final String currentNetwork = _settingsController.currentNetwork;
-            final List<NetworkItemModel> networks =
-                _networkManagerController.networks;
+            final List<NetworkItemModel> networks = _networkController.networks;
 
             if (networks.isEmpty) {
               return const Center(child: CircularProgressIndicator());
@@ -135,7 +133,7 @@ class NetworkBody extends StatelessWidget {
     );
 
     _settingsController.testnetHiddenUpdate(enabled).then((_) {
-      _networkManagerController.networksUpdate();
+      _networkController.networksUpdate();
     }).catchError((error) {
       operation.error(error.toString());
       operation.notify();
@@ -165,7 +163,7 @@ class NetworkBody extends StatelessWidget {
           title: "1003@network".tr,
         );
 
-        _networkManagerController.remove(network).then((isValid) {
+        _networkController.remove(network).then((isValid) {
           isValid
               ? operation.valid("${network.name} ${"1005@network".tr}")
               : operation.invalid("1006@network".tr);
