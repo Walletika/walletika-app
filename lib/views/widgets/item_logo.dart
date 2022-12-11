@@ -1,38 +1,33 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants.dart';
 
 class ItemLogo extends StatelessWidget {
   const ItemLogo({
-    required this.path,
+    required this.imageURL,
     this.size = 40.0,
-    this.errorPath = '${AppImages.coins}/unknown.png',
     super.key,
   });
 
-  final String path;
-  final double? size;
-  final String? errorPath;
+  final String imageURL;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      path,
+    return CachedNetworkImage(
+      imageUrl: imageURL,
+      placeholder: (c, u) => const CircularProgressIndicator.adaptive(),
+      errorWidget: (c, u, e) => Image.asset(
+        AppImages.unknownCoinIllustrations,
+        width: size,
+        height: size,
+        isAntiAlias: true,
+        filterQuality: FilterQuality.medium,
+      ),
       width: size,
       height: size,
-      isAntiAlias: true,
       filterQuality: FilterQuality.medium,
-      errorBuilder: errorPath != null
-          ? (context, error, stackTrace) {
-              return Image.asset(
-                errorPath!,
-                width: size,
-                height: size,
-                isAntiAlias: true,
-                filterQuality: FilterQuality.medium,
-              );
-            }
-          : null,
     );
   }
 }

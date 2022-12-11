@@ -79,7 +79,7 @@ class NetworkBody extends StatelessWidget {
                 return ListTile(
                   onTap: () => _onItemTap(network),
                   minVerticalPadding: 20.0,
-                  leading: ItemLogo(path: network.icon),
+                  leading: ItemLogo(imageURL: network.imageURL),
                   title: Row(
                     children: [
                       Flexible(
