@@ -680,7 +680,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: ea57c945e08e74813597ebb67a5146fa1f38a2bd
+      resolved-ref: ae678c249cdb87a914ed9f0ccc080157be201131
       url: "https://github.com/Walletika/walletika-sdk.git"
     source: git
     version: "3.0.0"
