@@ -32,9 +32,10 @@ class SettingsService extends GetxService {
 
   Future<SettingsService> init() async {
     _storage = GetStorage(
-      AppInfo.name,
+      "Settings",
       await getApplicationSupportDirectory().then((dir) => dir.path),
     );
+    await _storage.initStorage;
 
     _isDarkMode = _storage.read(_darkModeKey) ?? false;
     _currentLanguage =
