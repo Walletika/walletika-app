@@ -46,6 +46,7 @@ dependencies:
   get: ^4.6.5
   get_storage: ^2.0.3
   url_launcher: ^6.1.7
+  cached_network_image: ^3.2.3
   walletika_sdk:
     git:
       url: https://github.com/Walletika/walletika-sdk.git
@@ -93,7 +94,6 @@ flutter:
   assets:
     - assets/logos/
     - assets/illustrations/
-    - assets/coins/
 
   fonts:
     - family: Roboto
