@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:walletika_api/walletika_api.dart';
 
 import 'controllers/dependencies.dart';
@@ -25,7 +26,10 @@ void main() async {
 
 Future<void> initServices() async {
   await GetStorage.init(AppInfo.name);
-  await WalletikaAPI.init('key');
+  await WalletikaAPI.init(
+    'key',
+    directory: await getApplicationSupportDirectory().then((dir) => dir.path),
+  );
   await Get.putAsync(() => SettingsService().init());
 }
 
