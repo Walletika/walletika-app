@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/auth_setup/tabs.dart';
+import '../../controllers/tabs/tabs.dart';
 import '../../utils/constants.dart';
 import '../../utils/launch_url.dart';
 import '../widgets/spacer.dart';

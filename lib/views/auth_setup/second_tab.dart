@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../../controllers/auth_setup/auth_setup.dart';
-import '../../controllers/auth_setup/tabs.dart';
+import '../../controllers/tabs/tabs.dart';
 import '../../utils/constants.dart';
 import '../widgets/address.dart';
 import '../widgets/operation_notifier.dart';

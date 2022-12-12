@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
-import '../../controllers/auth_setup/tabs.dart';
+import '../../controllers/tabs/tabs.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/spacer.dart';
@@ -25,8 +25,10 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
 
   @override
   void initState() {
-    _tabController =
-        TabController(length: TabsController.totalTabs, vsync: this);
+    _tabController = TabController(
+      length: _tabsController.totalTabs,
+      vsync: this,
+    );
     super.initState();
   }
 
