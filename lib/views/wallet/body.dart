@@ -10,6 +10,7 @@ import '../../utils/constants.dart';
 import '../../utils/currency_format.dart';
 import '../widgets/spacer.dart';
 import 'coins_tab.dart';
+import 'transactions_tab.dart';
 
 class WalletBody extends StatefulWidget {
   const WalletBody({super.key});
@@ -221,7 +222,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
               controller: _tabController,
               children: [
                 CoinsTabView(),
-                Text(''),
+                TransactionsTabView(),
               ],
             ),
           ),

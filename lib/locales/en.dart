@@ -31,6 +31,7 @@ const Map<String, String> translator = {
   "1028@global": "Verify",
   "1029@global": "Done",
   "1030@global": "Menu",
+  "1031@global": "View on block explorer",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
