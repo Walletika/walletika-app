@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../locales/locales.dart';
 import '../../services/settings.dart';
 import '../../utils/process_state.dart';
+import '../wallet/wallet.dart';
 
 class SettingsController extends GetxController {
   // Data repository
@@ -19,6 +20,9 @@ class SettingsController extends GetxController {
   final ProcessState _languageUpdateState = ProcessState();
   final ProcessState _networkUpdateState = ProcessState();
   final ProcessState _testnetHiddenUpdateState = ProcessState();
+
+  // Local data
+  final WalletController _walletController = Get.find<WalletController>();
 
   // Event methods
   @override
@@ -75,6 +79,7 @@ class SettingsController extends GetxController {
 
     try {
       await _repository.networkUpdate(name);
+      _walletController.tokensUpdate();
       _currentNetwork.value = name;
     } catch (e) {
       rethrow;

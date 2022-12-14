@@ -7,8 +7,8 @@ import 'wallet/wallet.dart';
 class AppBinding extends Bindings {
   @override
   void dependencies() {
+    Get.put(WalletController(), permanent: true);
     Get.put(SettingsController(), permanent: true);
     Get.put(NetworkController(), permanent: true);
-    Get.put(WalletController(), permanent: true);
   }
 }
