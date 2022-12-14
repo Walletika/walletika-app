@@ -195,15 +195,54 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                           ),
                         ),
                       ),
-                      child: Text(
-                        "1005@wallet".tr,
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium!
-                            .copyWith(
-                              fontFamily: AppFonts.medium,
-                              color: tabIndex == 1 ? AppColors.highlight : null,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              "1005@wallet".tr,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium!
+                                  .copyWith(
+                                    fontFamily: AppFonts.medium,
+                                    color: tabIndex == 1
+                                        ? AppColors.highlight
+                                        : null,
+                                  ),
                             ),
+                          ),
+                          horizontalSpace(),
+                          Obx(() {
+                            final int count =
+                                _walletController.transactions.length;
+
+                            return Container(
+                              width: 25.0,
+                              height: 15.0,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: tabIndex == 1
+                                    ? AppColors.highlight
+                                    : AppColors.font2,
+                                borderRadius: BorderRadius.circular(
+                                  AppDecoration.radius,
+                                ),
+                              ),
+                              child: Text(
+                                count >= 50 ? '+50' : count.toString(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(
+                                      fontFamily: AppFonts.light,
+                                      fontSize: 10.0,
+                                      color: Colors.white,
+                                    ),
+                              ),
+                            );
+                          }),
+                        ],
                       ),
                     ),
                   ),
