@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:walletika/models/token.dart';
 import 'package:walletika_sdk/walletika_sdk.dart';
 
 import '../../models/wallet.dart';
@@ -28,6 +29,53 @@ class WalletFakeRepository extends WalletRepository {
       isFavorite: false,
       isLogged: false,
     )
+  ];
+
+  final List<TokenItemModel> _tokens = [
+    TokenItemModel(
+      imageURL:
+          'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
+      name: 'Ethereum',
+      address: '',
+      symbol: 'ETH',
+      changeIn24h: 0.02,
+      price: 1252.790000102,
+      balance: 15.65880001,
+      balanceInFiat: 19617.180,
+    ),
+    TokenItemModel(
+      imageURL:
+          'https://assets.coingecko.com/coins/images/325/small/Tether.png?1668148663',
+      name: 'Tether',
+      address: '',
+      symbol: 'USDT',
+      changeIn24h: -0.01,
+      price: 1.0,
+      balance: 21100.000,
+      balanceInFiat: 21100.0,
+    ),
+    TokenItemModel(
+      imageURL:
+          'https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579',
+      name: 'Bitcoin',
+      address: '',
+      symbol: 'BTC',
+      changeIn24h: 1.7,
+      price: 17033.42,
+      balance: 0.50000001,
+      balanceInFiat: 8516.71,
+    ),
+    TokenItemModel(
+      imageURL:
+          'https://assets.coingecko.com/coins/images/11939/small/shiba.png?1622619446',
+      name: 'Shiba Inu',
+      address: '',
+      symbol: 'SHIB',
+      changeIn24h: -0.2,
+      price: 0.00000889,
+      balance: 10000000,
+      balanceInFiat: 88.11,
+    ),
   ];
 
   @override
@@ -91,5 +139,10 @@ class WalletFakeRepository extends WalletRepository {
   @override
   Future<void> setFavorite(WalletViewModel currentWallet) async {
     currentWallet.isFavorite = !currentWallet.isFavorite;
+  }
+
+  @override
+  Future<List<TokenItemModel>> tokens(WalletViewModel currentWallet) async {
+    return _tokens;
   }
 }

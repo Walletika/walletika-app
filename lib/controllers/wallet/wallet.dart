@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../models/token.dart';
 import '../../models/wallet.dart';
 import '../../repositories/wallet/fake_repo.dart';
 import '../../repositories/wallet/repo.dart';
@@ -11,6 +12,8 @@ class WalletController extends GetxController {
 
   // States
   final RxList<WalletViewModel> _wallets = <WalletViewModel>[].obs;
+  final RxList<TokenItemModel> _tokens = <TokenItemModel>[].obs;
+  final RxDouble _totalBalance = 0.0.obs;
 
   // Process States
   final ProcessState _setFavoriteState = ProcessState();
@@ -27,6 +30,10 @@ class WalletController extends GetxController {
 
   // Getter methods
   List<WalletViewModel> get wallets => _wallets;
+
+  List<TokenItemModel> get tokens => _tokens;
+
+  double get totalBalance => _totalBalance.value;
 
   WalletViewModel get currentWallet => _currentWallet;
 
@@ -74,7 +81,14 @@ class WalletController extends GetxController {
   }
 
   void setCurrentWallet(WalletViewModel wallet) {
+    try {
+      if (wallet == _currentWallet) return;
+    } catch (_) {
+      // skip
+    }
+
     _currentWallet = wallet;
+    tokensUpdate();
   }
 
   Future<bool> loginValidate(String password) async {
@@ -115,5 +129,20 @@ class WalletController extends GetxController {
     } finally {
       _setFavoriteState.done();
     }
+  }
+
+  Future<void> tokensUpdate() async {
+    try {
+      _tokens.value = await _repository.tokens(_currentWallet);
+    } catch (_) {
+      return;
+    }
+
+    double balance = 0;
+    for (final TokenItemModel token in _tokens) {
+      balance += token.balanceInFiat ?? 0;
+    }
+
+    _totalBalance.value = balance;
   }
 }
