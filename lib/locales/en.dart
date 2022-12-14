@@ -142,4 +142,9 @@ const Map<String, String> translator = {
   "1003@wallet": "Stake",
   "1004@wallet": "Coins",
   "1005@wallet": "Transactions",
+  "1006@wallet": "Wallet Details",
+  "1007@wallet": "Add Token",
+  "1008@wallet": "View at Explorer",
+  "1009@wallet": "Remove Wallet",
+  "1010@wallet": "Lock",
 };

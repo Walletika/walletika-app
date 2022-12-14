@@ -51,10 +51,30 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            IconButton(
-              onPressed: () {},
+            PopupMenuButton(
               tooltip: "1030@global".tr,
-              icon: const Icon(LineIcons.verticalEllipsis),
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  onTap: () {},
+                  child: Text("1006@wallet".tr),
+                ),
+                PopupMenuItem(
+                  onTap: () {},
+                  child: Text("1007@wallet".tr),
+                ),
+                PopupMenuItem(
+                  onTap: () {},
+                  child: Text("1008@wallet".tr),
+                ),
+                PopupMenuItem(
+                  onTap: () {},
+                  child: Text("1009@wallet".tr),
+                ),
+                PopupMenuItem(
+                  onTap: () {},
+                  child: Text("1010@wallet".tr),
+                ),
+              ],
             ),
           ],
         ),
@@ -135,7 +155,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
         verticalSpace(AppDecoration.spaceBig),
         Container(
           decoration: BoxDecoration(
-            color: Theme.of(context).inputDecorationTheme.fillColor,
+            color: Theme.of(context).popupMenuTheme.color,
             borderRadius: const BorderRadius.vertical(
               top: Radius.circular(30.0),
             ),
@@ -255,7 +275,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
         Expanded(
           child: Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).inputDecorationTheme.fillColor,
+              color: Theme.of(context).popupMenuTheme.color,
             ),
             child: TabBarView(
               controller: _tabController,

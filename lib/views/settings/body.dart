@@ -69,11 +69,11 @@ class SettingsBody extends StatelessWidget {
                     ),
                     Obx(() {
                       return DropdownButton(
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        style: Theme.of(context).popupMenuTheme.textStyle,
                         icon: const Icon(Icons.arrow_drop_down_rounded),
                         borderRadius:
                             BorderRadius.circular(AppDecoration.radius),
-                        dropdownColor: Theme.of(context).backgroundColor,
+                        dropdownColor: Theme.of(context).popupMenuTheme.color,
                         underline: zeroSpace(),
                         value: _settingsController.currentLanguage,
                         onChanged: _onLanguageChanged,

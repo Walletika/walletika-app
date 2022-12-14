@@ -108,6 +108,13 @@ final ThemeData walletikaDefaultTheme = ThemeData(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
     ),
   ),
+  popupMenuTheme: PopupMenuThemeData(
+    color: AppColors.background2,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppDecoration.radius),
+    ),
+    textStyle: _textTheme.bodyMedium,
+  ),
 );
 
 final ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
@@ -162,5 +169,9 @@ final ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
   ),
   dividerTheme: walletikaDefaultTheme.dividerTheme.copyWith(
     color: Colors.white10,
+  ),
+  popupMenuTheme: walletikaDefaultTheme.popupMenuTheme.copyWith(
+    color: AppColors.background2Dark,
+    textStyle: _textTheme.bodyMedium!.copyWith(color: AppColors.fontDark),
   ),
 );
