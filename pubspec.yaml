@@ -56,6 +56,10 @@ dependencies:
     git:
       url: https://github.com/Walletika/walletika-api.git
       ref: main
+  currency_text_input_formatter:
+    git:
+      url: https://github.com/MahmoudKhalid/currency_text_input_formatter.git
+      ref: master
 
   # Fixed version
   awesome_dialog: 3.0.2

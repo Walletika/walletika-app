@@ -145,6 +145,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  currency_text_input_formatter:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: master
+      resolved-ref: "64eeea547a0f03a0c2601af50f9d98c1b0f06646"
+      url: "https://github.com/MahmoudKhalid/currency_text_input_formatter.git"
+    source: git
+    version: "2.1.8"
   dio:
     dependency: transitive
     description:
