@@ -19,7 +19,7 @@ class WalletController extends GetxController {
   final ProcessState _setFavoriteState = ProcessState();
 
   // Local Data
-  late WalletViewModel _currentWallet;
+  WalletViewModel? _currentWallet;
 
   // Event methods
   @override
@@ -35,7 +35,7 @@ class WalletController extends GetxController {
 
   double get totalBalance => _totalBalance.value;
 
-  WalletViewModel get currentWallet => _currentWallet;
+  WalletViewModel? get currentWallet => _currentWallet;
 
   int count() => _repository.count();
 
@@ -81,11 +81,7 @@ class WalletController extends GetxController {
   }
 
   void setCurrentWallet(WalletViewModel wallet) {
-    try {
-      if (wallet == _currentWallet) return;
-    } catch (_) {
-      // skip
-    }
+    if (wallet == _currentWallet) return;
 
     _currentWallet = wallet;
     tokensUpdate();
@@ -93,7 +89,7 @@ class WalletController extends GetxController {
 
   Future<bool> loginValidate(String password) async {
     final bool isValid = await _repository.loginValidate(
-      currentWallet: _currentWallet,
+      currentWallet: _currentWallet!,
       password: password,
     );
 
@@ -105,7 +101,7 @@ class WalletController extends GetxController {
     required String otpCode,
   }) async {
     final bool isValid = await _repository.login(
-      currentWallet: _currentWallet,
+      currentWallet: _currentWallet!,
       password: password,
       otpCode: otpCode,
     );
@@ -132,11 +128,10 @@ class WalletController extends GetxController {
   }
 
   Future<void> tokensUpdate() async {
-    try {
-      _tokens.value = await _repository.tokens(_currentWallet);
-    } catch (_) {
-      return;
-    }
+    if (_currentWallet == null) return;
+    print('update');
+
+    _tokens.value = await _repository.tokens(_currentWallet!);
 
     double balance = 0;
     for (final TokenItemModel token in _tokens) {

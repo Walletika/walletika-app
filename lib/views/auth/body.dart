@@ -36,7 +36,7 @@ class AuthBody extends StatelessWidget {
                 ),
                 verticalSpace(),
                 Text(
-                  "${_walletController.currentWallet.username}\n${"1000@auth".tr}",
+                  "${_walletController.currentWallet!.username}\n${"1000@auth".tr}",
                   softWrap: false,
                   style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.center,
@@ -85,7 +85,7 @@ class AuthBody extends StatelessWidget {
 
   void _onConfirm() {
     final OperationNotifier operation = OperationNotifier(
-      title: _walletController.currentWallet.username,
+      title: _walletController.currentWallet!.username,
     );
 
     _validator(_pinputController.text).then((isValid) {

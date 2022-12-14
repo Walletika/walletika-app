@@ -36,14 +36,14 @@ class LoginBody extends StatelessWidget {
                 ),
                 verticalSpace(),
                 Text(
-                  _walletController.currentWallet.username,
+                  _walletController.currentWallet!.username,
                   softWrap: false,
                   style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 TextAddress(
-                  _walletController.currentWallet.address,
+                  _walletController.currentWallet!.address,
                   height: 30.0,
                 ),
                 verticalSpace(),
@@ -87,7 +87,7 @@ class LoginBody extends StatelessWidget {
 
   void _onLogin() {
     final OperationNotifier operation = OperationNotifier(
-      title: _walletController.currentWallet.username,
+      title: _walletController.currentWallet!.username,
     );
 
     _walletController.loginValidate(_passwordController.text).then((isValid) {

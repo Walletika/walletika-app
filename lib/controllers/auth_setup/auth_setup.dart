@@ -15,9 +15,9 @@ class AuthSetupController extends GetxController {
   late String _otpKey;
 
   // Getter methods
-  String get address => _walletController.currentWallet.address;
+  String get address => _walletController.currentWallet!.address;
 
-  String get username => _walletController.currentWallet.username;
+  String get username => _walletController.currentWallet!.username;
 
   String get otpKey => _otpKey;
 
