@@ -1,4 +1,5 @@
 import '../../models/token.dart';
+import '../../models/transaction.dart';
 import '../../models/wallet.dart';
 
 abstract class WalletRepository {
@@ -26,4 +27,8 @@ abstract class WalletRepository {
   Future<void> setFavorite(WalletViewModel currentWallet);
 
   Future<List<TokenItemModel>> tokens(WalletViewModel currentWallet);
+
+  Future<List<TransactionItemModel>> transactions(
+    WalletViewModel currentWallet,
+  );
 }

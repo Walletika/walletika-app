@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../models/token.dart';
+import '../../models/transaction.dart';
 import '../../models/wallet.dart';
 import '../../repositories/wallet/fake_repo.dart';
 import '../../repositories/wallet/repo.dart';
@@ -13,6 +14,8 @@ class WalletController extends GetxController {
   // States
   final RxList<WalletViewModel> _wallets = <WalletViewModel>[].obs;
   final RxList<TokenItemModel> _tokens = <TokenItemModel>[].obs;
+  final RxList<TransactionItemModel> _transactions =
+      <TransactionItemModel>[].obs;
   final RxDouble _totalBalance = 0.0.obs;
 
   // Process States
@@ -32,6 +35,8 @@ class WalletController extends GetxController {
   List<WalletViewModel> get wallets => _wallets;
 
   List<TokenItemModel> get tokens => _tokens;
+
+  List<TransactionItemModel> get transactions => _transactions;
 
   double get totalBalance => _totalBalance.value;
 
@@ -85,6 +90,7 @@ class WalletController extends GetxController {
 
     _currentWallet = wallet;
     tokensUpdate();
+    transactionsUpdate();
   }
 
   Future<bool> loginValidate(String password) async {
@@ -129,7 +135,6 @@ class WalletController extends GetxController {
 
   Future<void> tokensUpdate() async {
     if (_currentWallet == null) return;
-    print('update');
 
     _tokens.value = await _repository.tokens(_currentWallet!);
 
@@ -139,5 +144,12 @@ class WalletController extends GetxController {
     }
 
     _totalBalance.value = balance;
+  }
+
+  Future<void> transactionsUpdate() async {
+    if (_currentWallet == null) return;
+    _transactions.value = await _repository.transactions(_currentWallet!).then(
+          (transactions) => transactions.reversed.take(50).toList(),
+        );
   }
 }

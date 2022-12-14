@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:walletika/models/token.dart';
 import 'package:walletika_sdk/walletika_sdk.dart';
 
+import '../../models/token.dart';
+import '../../models/transaction.dart';
 import '../../models/wallet.dart';
 import 'repo.dart';
 
@@ -78,6 +79,33 @@ class WalletFakeRepository extends WalletRepository {
     ),
   ];
 
+  final List<TransactionItemModel> _transactions = [
+    TransactionItemModel(
+      txHash:
+          '0x8bba8468ef5c5ba9cecbc78d2071569c5d7b5a2abe4c76c66850f66ff483130c',
+      txHashURL:
+          'https://ropsten.etherscan.io/tx/0x8bba8468ef5c5ba9cecbc78d2071569c5d7b5a2abe4c76c66850f66ff483130c',
+      imageURL:
+          'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
+      functionName: 'transfer',
+      date: DateTime.now(),
+      symbol: 'ETH',
+      amount: 0.132,
+    ),
+    TransactionItemModel(
+      txHash:
+          '0x5fe8e0956305179e16a7de319cbe376092327de763219dd7d3cd03178c8a2b0d',
+      txHashURL:
+          'https://ropsten.etherscan.io/tx/0x5fe8e0956305179e16a7de319cbe376092327de763219dd7d3cd03178c8a2b0d',
+      imageURL:
+          'https://assets.coingecko.com/coins/images/325/small/Tether.png?1668148663',
+      functionName: 'transfer',
+      date: DateTime.now(),
+      symbol: 'USDT',
+      amount: 5450.0,
+    ),
+  ];
+
   @override
   Stream<WalletViewModel> getAll() async* {
     for (final WalletViewModel wallet in _wallets) {
@@ -144,5 +172,12 @@ class WalletFakeRepository extends WalletRepository {
   @override
   Future<List<TokenItemModel>> tokens(WalletViewModel currentWallet) async {
     return _tokens;
+  }
+
+  @override
+  Future<List<TransactionItemModel>> transactions(
+    WalletViewModel currentWallet,
+  ) async {
+    return _transactions;
   }
 }
