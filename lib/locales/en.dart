@@ -30,6 +30,7 @@ const Map<String, String> translator = {
   "1027@global": "Next",
   "1028@global": "Verify",
   "1029@global": "Done",
+  "1030@global": "Menu",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
@@ -132,4 +133,12 @@ const Map<String, String> translator = {
   "1001@auth": "Enter a one-time passcode from your authenticator app.",
   "1002@auth": "I've lost my authentication code",
   "1003@auth": "The OTP code is wrong!",
+
+  // Wallet
+  "1000@wallet": "Total Balance",
+  "1001@wallet": "Send",
+  "1002@wallet": "Receive",
+  "1003@wallet": "Stake",
+  "1004@wallet": "Coins",
+  "1005@wallet": "Transactions",
 };

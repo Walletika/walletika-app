@@ -15,6 +15,7 @@ import 'views/auth/auth.dart';
 import 'views/network/network.dart';
 import 'views/settings/settings.dart';
 import 'views/add_wallet/add_wallet.dart';
+import 'views/wallet/wallet.dart';
 import 'views/widgets/themes.dart';
 
 void main() async {
@@ -59,6 +60,7 @@ class WalletikaApp extends StatelessWidget {
         GetPage(name: AppPages.login, page: () => const LoginView()),
         GetPage(name: AppPages.auth, page: () => const AuthView()),
         GetPage(name: AppPages.authSetup, page: () => AuthSetupView()),
+        GetPage(name: AppPages.wallet, page: () => WalletView()),
       ],
     );
   }

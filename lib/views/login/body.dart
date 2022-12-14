@@ -67,7 +67,7 @@ class LoginBody extends StatelessWidget {
                 verticalSpace(AppDecoration.spaceMedium),
                 Center(
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => Get.offNamed(AppPages.wallet),
                     child: Text("1001@login".tr),
                   ),
                 ),
@@ -111,7 +111,7 @@ class LoginBody extends StatelessWidget {
       otpCode: otpCode,
     );
 
-    if (isLogged) Get.offNamed(AppPages.network);
+    if (isLogged) Get.offNamed(AppPages.wallet);
 
     return isLogged;
   }
