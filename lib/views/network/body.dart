@@ -61,7 +61,7 @@ class NetworkBody extends StatelessWidget {
             final List<NetworkItemModel> networks = _networkController.networks;
 
             if (networks.isEmpty) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator.adaptive());
             }
 
             return ListView.separated(

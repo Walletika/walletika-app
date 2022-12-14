@@ -51,7 +51,7 @@ class HomeBody extends StatelessWidget {
                 );
               }
 
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator.adaptive());
             }
 
             final List<WalletViewModel> wallets = _walletController.wallets;

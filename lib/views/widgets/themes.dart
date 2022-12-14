@@ -136,9 +136,18 @@ final ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
     headlineSmall: _textTheme.headlineSmall!.copyWith(
       color: AppColors.fontDark,
     ),
-    titleLarge: _textTheme.titleLarge!.copyWith(color: AppColors.fontDark),
-    titleMedium: _textTheme.titleMedium!.copyWith(color: AppColors.fontDark),
-    titleSmall: _textTheme.titleSmall!.copyWith(color: AppColors.fontDark),
+    titleLarge: _textTheme.titleLarge!.copyWith(
+      fontFamily: AppFonts.medium,
+      color: AppColors.fontDark,
+    ),
+    titleMedium: _textTheme.titleMedium!.copyWith(
+      fontFamily: AppFonts.medium,
+      color: AppColors.fontDark,
+    ),
+    titleSmall: _textTheme.titleSmall!.copyWith(
+      fontFamily: AppFonts.medium,
+      color: AppColors.fontDark,
+    ),
     bodyLarge: _textTheme.bodyLarge!.copyWith(color: AppColors.fontDark),
     bodyMedium: _textTheme.bodyMedium!.copyWith(color: AppColors.fontDark),
     bodySmall: _textTheme.bodySmall!.copyWith(color: AppColors.fontDark),
