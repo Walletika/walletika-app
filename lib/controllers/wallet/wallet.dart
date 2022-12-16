@@ -48,6 +48,10 @@ class WalletController extends GetxController {
         (wallet) => wallet.username == username,
       );
 
+  bool tokenExists(String contractAddress) => _tokens.any(
+        (token) => token.address == contractAddress,
+      );
+
   // Setter & Controller methods
   Future<void> walletsUpdate([String search = '']) async {
     search = search.toLowerCase();
@@ -144,6 +148,11 @@ class WalletController extends GetxController {
     }
 
     _totalBalance.value = balance;
+  }
+
+  Future<void> addToken(TokenItemModel token) async {
+    await _repository.addToken(token);
+    await tokensUpdate();
   }
 
   Future<void> transactionsUpdate() async {

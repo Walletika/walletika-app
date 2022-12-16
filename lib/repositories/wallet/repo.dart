@@ -28,6 +28,8 @@ abstract class WalletRepository {
 
   Future<List<TokenItemModel>> tokens(WalletViewModel currentWallet);
 
+  Future<void> addToken(TokenItemModel token);
+
   Future<List<TransactionItemModel>> transactions(
     WalletViewModel currentWallet,
   );

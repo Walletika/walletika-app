@@ -171,13 +171,18 @@ class WalletFakeRepository extends WalletRepository {
 
   @override
   Future<List<TokenItemModel>> tokens(WalletViewModel currentWallet) async {
-    return _tokens;
+    return _tokens.map((token) => token).toList();
+  }
+
+  @override
+  Future<void> addToken(TokenItemModel token) async {
+    _tokens.add(token);
   }
 
   @override
   Future<List<TransactionItemModel>> transactions(
     WalletViewModel currentWallet,
   ) async {
-    return _transactions;
+    return _transactions.map((transaction) => transaction).toList();
   }
 }
