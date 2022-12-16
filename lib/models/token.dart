@@ -10,6 +10,7 @@ class TokenItemModel {
   final double? price;
   final double? balance;
   final double? balanceInFiat;
+  final int? decimals;
 
   TokenItemModel({
     required this.imageURL,
@@ -21,6 +22,7 @@ class TokenItemModel {
     this.price,
     this.balance,
     this.balanceInFiat,
+    this.decimals,
   });
 
   String get changeIn24hAsPercentage {
@@ -39,6 +41,6 @@ class TokenItemModel {
   }
 
   String get balanceInFiatAsCurrency {
-    return convertToFiatFormat(value: balanceInFiat, symbol: faitSymbol);
+    return '≈${convertToFiatFormat(value: balanceInFiat, symbol: faitSymbol)}';
   }
 }

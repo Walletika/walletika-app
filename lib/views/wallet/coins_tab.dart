@@ -70,7 +70,7 @@ class CoinsTabView extends StatelessWidget {
                       ),
                 ),
                 Text(
-                  '≈${token.balanceInFiatAsCurrency}',
+                  token.balanceInFiatAsCurrency,
                   style: Theme.of(context).textTheme.labelSmall!.copyWith(
                         fontFamily: AppFonts.medium,
                       ),

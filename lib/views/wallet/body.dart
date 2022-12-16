@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_icons/line_icons.dart';
 
 import '../../controllers/tabs/tabs.dart';
 import '../../controllers/wallet/wallet.dart';
@@ -11,6 +10,15 @@ import '../../utils/currency_format.dart';
 import '../widgets/spacer.dart';
 import 'coins_tab.dart';
 import 'transactions_tab.dart';
+import 'add_token.dart';
+
+enum MenuProperties {
+  walletDetails,
+  addToken,
+  viewAtExplorer,
+  removeWallet,
+  lock
+}
 
 class WalletBody extends StatefulWidget {
   const WalletBody({super.key});
@@ -53,25 +61,30 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
           children: [
             PopupMenuButton(
               tooltip: "1030@global".tr,
+              onSelected: (value) {
+                if (value == MenuProperties.addToken) {
+                  _bottomSheet(const AddTokenBottomSheet());
+                }
+              },
               itemBuilder: (context) => [
                 PopupMenuItem(
-                  onTap: () {},
+                  value: MenuProperties.walletDetails,
                   child: Text("1006@wallet".tr),
                 ),
                 PopupMenuItem(
-                  onTap: () {},
+                  value: MenuProperties.addToken,
                   child: Text("1007@wallet".tr),
                 ),
                 PopupMenuItem(
-                  onTap: () {},
+                  value: MenuProperties.viewAtExplorer,
                   child: Text("1008@wallet".tr),
                 ),
                 PopupMenuItem(
-                  onTap: () {},
+                  value: MenuProperties.removeWallet,
                   child: Text("1009@wallet".tr),
                 ),
                 PopupMenuItem(
-                  onTap: () {},
+                  value: MenuProperties.lock,
                   child: Text("1010@wallet".tr),
                 ),
               ],
@@ -287,6 +300,18 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
           ),
         ),
       ],
+    );
+  }
+
+  void _bottomSheet(Widget widget) {
+    Get.bottomSheet(
+      widget,
+      backgroundColor: Theme.of(context).backgroundColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(30.0),
+        ),
+      ),
     );
   }
 }

@@ -67,7 +67,7 @@ const Map<String, String> translator = {
   "1006@network": "netwrok removal failed.",
   "1007@network": "This network is locked",
 
-  // AddNetwork
+  // Add network
   "1000@addNetwork": "Add a Network of Layer 2",
   "1001@addNetwork":
       "A malicious network provider can lie about the state of the blockchain and record your network activity. Only add custom networks you trust.",
@@ -147,4 +147,12 @@ const Map<String, String> translator = {
   "1008@wallet": "View at Explorer",
   "1009@wallet": "Remove Wallet",
   "1010@wallet": "Lock",
+
+  // Add token
+  "1000@addToken": "Paste Contract Address",
+  "1001@addToken":
+      "Make sure you use the correct contract address that you trust.",
+  "1003@addToken": "( 0x ) Contract Address",
+  "1004@addToken":
+      "Token unavailable, Please make sure the address is correct.",
 };
