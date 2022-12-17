@@ -24,6 +24,8 @@ abstract class WalletRepository {
     required String otpCode,
   });
 
+  Future<String?> getPrivateKey(String otpCode);
+
   Future<void> setFavorite(WalletViewModel currentWallet);
 
   Future<List<TokenItemModel>> tokens(WalletViewModel currentWallet);

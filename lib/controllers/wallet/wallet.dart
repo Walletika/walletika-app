@@ -121,6 +121,10 @@ class WalletController extends GetxController {
     return isValid;
   }
 
+  Future<String?> getPrivateKey(String otpCode) async {
+    return _repository.getPrivateKey(otpCode);
+  }
+
   Future<void> setFavorite({
     required String search,
     required WalletViewModel walletViewModel,
