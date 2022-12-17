@@ -7,6 +7,7 @@ import 'controllers/dependencies.dart';
 import 'locales/locales.dart';
 import 'services/settings.dart';
 import 'utils/constants.dart';
+import 'views/account_details/account_details.dart';
 import 'views/add_network/add_network.dart';
 import 'views/auth_setup/auth_setup.dart';
 import 'views/home/home.dart';
@@ -61,6 +62,10 @@ class WalletikaApp extends StatelessWidget {
         GetPage(name: AppPages.auth, page: () => const AuthView()),
         GetPage(name: AppPages.authSetup, page: () => AuthSetupView()),
         GetPage(name: AppPages.wallet, page: () => WalletView()),
+        GetPage(
+          name: AppPages.accountDetails,
+          page: () => const AccountDetailsView(),
+        ),
       ],
     );
   }

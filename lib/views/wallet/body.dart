@@ -13,7 +13,7 @@ import 'transactions_tab.dart';
 import 'add_token.dart';
 
 enum MenuProperties {
-  walletDetails,
+  accountDetails,
   addToken,
   viewAtExplorer,
   removeWallet,
@@ -62,13 +62,15 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
             PopupMenuButton(
               tooltip: "1030@global".tr,
               onSelected: (value) {
-                if (value == MenuProperties.addToken) {
+                if (value == MenuProperties.accountDetails) {
+                  Get.toNamed(AppPages.accountDetails);
+                } else if (value == MenuProperties.addToken) {
                   _bottomSheet(const AddTokenBottomSheet());
                 }
               },
               itemBuilder: (context) => [
                 PopupMenuItem(
-                  value: MenuProperties.walletDetails,
+                  value: MenuProperties.accountDetails,
                   child: Text("1006@wallet".tr),
                 ),
                 PopupMenuItem(

@@ -32,6 +32,9 @@ const Map<String, String> translator = {
   "1029@global": "Done",
   "1030@global": "Menu",
   "1031@global": "View on block explorer",
+  "1032@global": "Access Denied",
+  "1033@global": "Account login is required to access this feature",
+  "1034@global": "Confirmed Successfully",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
@@ -142,7 +145,7 @@ const Map<String, String> translator = {
   "1003@wallet": "Stake",
   "1004@wallet": "Coins",
   "1005@wallet": "Transactions",
-  "1006@wallet": "Wallet Details",
+  "1006@wallet": "Account Details",
   "1007@wallet": "Add Token",
   "1008@wallet": "View at Explorer",
   "1009@wallet": "Remove Wallet",
@@ -155,4 +158,9 @@ const Map<String, String> translator = {
   "1003@addToken": "( 0x ) Contract Address",
   "1004@addToken":
       "Token unavailable, Please make sure the address is correct.",
+
+  // Account details
+  "1000@accountDetails":
+      "Warning: Never disclose this key. Anyone with your private keys can steal any assets held in your account.",
+  "1001@accountDetails": "Show Private Key",
 };
