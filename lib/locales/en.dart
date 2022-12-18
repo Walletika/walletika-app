@@ -33,8 +33,9 @@ const Map<String, String> translator = {
   "1030@global": "Menu",
   "1031@global": "View on block explorer",
   "1032@global": "Access Denied",
-  "1033@global": "Account login is required to access this feature",
+  "1033@global": "Account login is required to access this feature.",
   "1034@global": "Confirmed Successfully",
+  "1035@global": "Connected",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
