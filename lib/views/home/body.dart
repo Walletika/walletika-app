@@ -25,10 +25,9 @@ class HomeBody extends StatelessWidget {
     return Column(
       children: [
         ContainerWithShadow(
-          padding: const EdgeInsets.only(
-            left: AppDecoration.paddingMedium,
-            right: AppDecoration.paddingMedium,
-            bottom: AppDecoration.padding,
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppDecoration.paddingMedium,
+            vertical: AppDecoration.padding,
           ),
           child: CustomTextFormField(
             controller: _searchInputController,
@@ -42,7 +41,9 @@ class HomeBody extends StatelessWidget {
         ),
         Expanded(
           child: Obx(() {
-            if (_walletController.wallets.isEmpty) {
+            final List<WalletViewModel> wallets = _walletController.wallets;
+
+            if (wallets.isEmpty) {
               if (_walletController.count() == 0) {
                 return EmptyPage(
                   illustrationPath: AppImages.coinIllustrations,
@@ -53,8 +54,6 @@ class HomeBody extends StatelessWidget {
 
               return const Center(child: CircularProgressIndicator.adaptive());
             }
-
-            final List<WalletViewModel> wallets = _walletController.wallets;
 
             return ListView.separated(
               padding: const EdgeInsets.only(bottom: AppDecoration.spaceLarge),
@@ -67,18 +66,13 @@ class HomeBody extends StatelessWidget {
                 final WalletViewModel wallet = wallets[index];
 
                 return WalletItem(
-                  onTap: () {
-                    _walletController.setCurrentWallet(wallet);
-                    Get.toNamed(
-                      wallet.isLogged ? AppPages.wallet : AppPages.login,
-                    );
-                  },
+                  onTap: () => _walletOnTap(wallet),
                   username: wallet.username,
                   address: wallet.address,
                   isActive: wallet.isLogged,
                   trailing: IconButton(
                     tooltip: "1008@global".tr,
-                    onPressed: () => _onFavoritePressed(wallet),
+                    onPressed: () => _favoriteOnPressed(wallet),
                     icon: Icon(
                       wallet.isFavorite ? LineIcons.starAlt : LineIcons.star,
                       color: wallet.isFavorite ? Colors.orange : null,
@@ -98,7 +92,12 @@ class HomeBody extends StatelessWidget {
     _walletController.walletsUpdate(text);
   }
 
-  void _onFavoritePressed(WalletViewModel wallet) {
+  void _walletOnTap(WalletViewModel wallet) {
+    _walletController.setCurrentWallet(wallet);
+    Get.toNamed(wallet.isLogged ? AppPages.wallet : AppPages.login);
+  }
+
+  void _favoriteOnPressed(WalletViewModel wallet) {
     final OperationNotifier operation = OperationNotifier(
       title: "0x2D23C079",
     );
