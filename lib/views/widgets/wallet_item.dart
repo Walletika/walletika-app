@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/constants.dart';
 import 'active_status.dart';
@@ -43,7 +44,7 @@ class WalletItem extends StatelessWidget {
           ...isActive
               ? [
                   horizontalSpace(),
-                  ActiveStatus(isActive: isActive),
+                  ActiveStatus(isActive: isActive, tooltip: "1035@global".tr),
                 ]
               : []
         ],
