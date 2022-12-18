@@ -51,7 +51,6 @@ class OperationNotifier {
 
     if (_isError) {
       awesomeDialog(
-        context: Get.context!,
         dialogType: DialogType.error,
         body: Padding(
           padding: const EdgeInsets.symmetric(
@@ -80,7 +79,6 @@ class OperationNotifier {
       ).show();
     } else {
       modernSnackBar(
-        context: Get.context!,
         title: title ?? this.title,
         message: _message!,
         isSuccess: _isValid,
