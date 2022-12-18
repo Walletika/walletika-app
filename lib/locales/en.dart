@@ -57,7 +57,7 @@ const Map<String, String> translator = {
   "1003@settings": "Current blockchain network",
   "1004@settings":
       "Backup all your wallets to specific location on your system.",
-  "1005@settings": "Backup My Wallets",
+  "1005@settings": "Backup",
   "1006@settings": "Import External File",
   "1007@settings": "Settings Update",
 
