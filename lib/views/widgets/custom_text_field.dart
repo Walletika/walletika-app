@@ -64,13 +64,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   }
 
   @override
-  void dispose() {
-    widget.controller.dispose();
-    widget.focusNode?.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
