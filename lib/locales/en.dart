@@ -72,7 +72,7 @@ const Map<String, String> translator = {
   "1007@network": "This network is locked",
 
   // Add network
-  "1000@addNetwork": "Add a Network of Layer 2",
+  "1000@addNetwork": "Add a Network",
   "1001@addNetwork":
       "A malicious network provider can lie about the state of the blockchain and record your network activity. Only add custom networks you trust.",
   "1002@addNetwork": "Network Name",
