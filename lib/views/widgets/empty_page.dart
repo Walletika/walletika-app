@@ -8,12 +8,14 @@ class EmptyPage extends StatelessWidget {
     required this.illustrationPath,
     required this.title,
     required this.desc,
+    this.actions,
     super.key,
   });
 
   final String illustrationPath;
   final String title;
   final String desc;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,7 @@ class EmptyPage extends StatelessWidget {
             style: Theme.of(context).textTheme.labelMedium,
             textAlign: TextAlign.center,
           ),
+          ...actions ?? [],
         ],
       ),
     );
