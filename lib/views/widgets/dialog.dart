@@ -35,8 +35,8 @@ AwesomeDialog awesomeDialog({
             height: AppDecoration.buttonHeight,
             child: ElevatedButton(
               onPressed: () {
+                if (autoDismiss) Get.back();
                 if (btnOkOnPress != null) btnOkOnPress();
-                if (autoDismiss) Navigator.pop(Get.context!);
               },
               child: Text(btnOkText),
             ),
@@ -47,8 +47,8 @@ AwesomeDialog awesomeDialog({
             height: AppDecoration.buttonHeight,
             child: ElevatedButton(
               onPressed: () {
+                if (autoDismiss) Get.back();
                 if (btnCancelOnPress != null) btnCancelOnPress();
-                if (autoDismiss) Navigator.pop(Get.context!);
               },
               child: Text(btnCancelText),
             ),
