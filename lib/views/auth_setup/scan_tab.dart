@@ -11,8 +11,8 @@ import '../widgets/operation_notifier.dart';
 import '../widgets/pin_field.dart';
 import '../widgets/spacer.dart';
 
-class AuthThirdTabView extends StatelessWidget {
-  AuthThirdTabView({required this.tabController, super.key});
+class AuthScanTabView extends StatelessWidget {
+  AuthScanTabView({required this.tabController, super.key});
 
   final TabController tabController;
   final GlobalKey<FormState> _formController = GlobalKey<FormState>();
@@ -26,20 +26,25 @@ class AuthThirdTabView extends StatelessWidget {
     return Form(
       key: _formController,
       child: ListView(
-        padding: const EdgeInsets.all(AppDecoration.paddingBig),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppDecoration.paddingMedium,
+          vertical: AppDecoration.paddingBig,
+        ),
         children: [
-          Row(children: [
-            IconButton(
-              onPressed: () {
-                tabController.animateTo(_tabsController.toPreviousTab());
-              },
-              icon: const Icon(LineIcons.angleLeft),
-            ),
-          ]),
-          Text(
-            "1009@authSetup".tr,
-            style: Theme.of(context).textTheme.titleLarge,
-            textAlign: TextAlign.center,
+          Stack(
+            alignment: AlignmentDirectional.centerStart,
+            children: [
+              IconButton(
+                onPressed: _backOnPressed,
+                icon: const Icon(LineIcons.angleLeft),
+              ),
+              Center(
+                child: Text(
+                  "1009@authSetup".tr,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+            ],
           ),
           verticalSpace(),
           Text(
@@ -47,26 +52,25 @@ class AuthThirdTabView extends StatelessWidget {
             style: Theme.of(context).textTheme.labelMedium,
             textAlign: TextAlign.center,
           ),
+          verticalSpace(),
           Center(
             child: QrImage(
               data: _authSetupController.otpKeyFormat,
-              size: 200.0,
+              size: 150.0,
               padding: const EdgeInsets.all(AppDecoration.paddingMedium),
               foregroundColor: Theme.of(context).textTheme.bodyMedium!.color,
               version: QrVersions.auto,
               gapless: false,
             ),
           ),
+          verticalSpace(),
           Text(
             "1011@authSetup".tr,
             style: Theme.of(context).textTheme.bodySmall,
             textAlign: TextAlign.center,
           ),
-          TextAddress(
-            _authSetupController.otpKey,
-            height: 30.0,
-          ),
-          verticalSpace(),
+          TextAddress(_authSetupController.otpKey, height: 30.0),
+          verticalSpace(AppDecoration.spaceMedium),
           const Divider(),
           verticalSpace(AppDecoration.spaceMedium),
           Text(
@@ -100,13 +104,17 @@ class AuthThirdTabView extends StatelessWidget {
     );
   }
 
+  void _backOnPressed() {
+    tabController.animateTo(_tabsController.toPreviousTab());
+  }
+
   void _onSubmit() {
     if (_formController.currentState!.validate()) {
-      _onConfirm();
+      _confirm();
     }
   }
 
-  void _onConfirm() {
+  void _confirm() {
     final OperationNotifier operation = OperationNotifier(
       title: _authSetupController.username,
     );

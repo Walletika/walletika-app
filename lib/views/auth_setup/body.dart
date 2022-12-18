@@ -6,10 +6,10 @@ import '../../controllers/tabs/tabs.dart';
 import '../../utils/constants.dart';
 import '../widgets/container.dart';
 import '../widgets/spacer.dart';
-import 'first_tab.dart';
-import 'second_tab.dart';
-import 'third_tab.dart';
-import 'fourth_tab.dart';
+import 'download_tab.dart';
+import 'verification_tab.dart';
+import 'scan_tab.dart';
+import 'finish_tab.dart';
 
 class AuthSetupBody extends StatefulWidget {
   const AuthSetupBody({super.key});
@@ -43,7 +43,12 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
     return Column(
       children: [
         ContainerWithShadow(
-          padding: const EdgeInsets.all(AppDecoration.padding),
+          padding: const EdgeInsets.only(
+            top: AppDecoration.padding,
+            left: AppDecoration.padding,
+            right: AppDecoration.padding,
+            bottom: AppDecoration.paddingMedium,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -90,10 +95,10 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
             controller: _tabController,
             physics: const NeverScrollableScrollPhysics(),
             children: [
-              AuthFirstTabView(tabController: _tabController),
-              AuthSecondTabView(tabController: _tabController),
-              AuthThirdTabView(tabController: _tabController),
-              const AuthFourthabView(),
+              AuthDownloadTabView(tabController: _tabController),
+              AuthVerificationTabView(tabController: _tabController),
+              AuthScanTabView(tabController: _tabController),
+              const AuthFinishTabView(),
             ],
           ),
         ),
