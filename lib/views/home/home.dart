@@ -18,16 +18,12 @@ class HomeView extends StatelessWidget {
       ),
       body: HomeBody(),
       floatingActionButton: FloatingActionButton(
-        onPressed: _onAddWalletClicked,
+        onPressed: () => Get.toNamed(AppPages.addWallet),
         tooltip: "1003@home".tr,
         elevation: AppDecoration.elevation,
         child: const Icon(LineIcons.plus),
       ),
       resizeToAvoidBottomInset: false,
     );
-  }
-
-  void _onAddWalletClicked() {
-    Get.toNamed(AppPages.addWallet);
   }
 }
