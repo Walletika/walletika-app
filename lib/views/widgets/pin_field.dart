@@ -39,6 +39,13 @@ class _PinputFormFieldState extends State<PinputFormField> {
   final FocusNode _focusNode = FocusNode();
 
   @override
+  void dispose() {
+    widget.controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
       width: 40.0,
