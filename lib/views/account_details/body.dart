@@ -1,7 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../controllers/wallet/wallet.dart';
@@ -10,6 +9,7 @@ import '../widgets/address.dart';
 import '../widgets/dialog.dart';
 import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
+import '../widgets/warning.dart';
 
 class AccountDetailsBody extends StatelessWidget {
   AccountDetailsBody({super.key});
@@ -19,7 +19,7 @@ class AccountDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(AppDecoration.paddingBig),
+      padding: const EdgeInsets.all(AppDecoration.paddingMedium),
       children: [
         Text(
           "1006@wallet".tr,
@@ -42,46 +42,24 @@ class AccountDetailsBody extends StatelessWidget {
         Text(
           _walletController.currentWallet!.username,
           softWrap: false,
-          style: Theme.of(context).textTheme.titleSmall,
+          style: Theme.of(context).textTheme.titleMedium,
           textAlign: TextAlign.center,
         ),
-        TextAddress(
-          _walletController.currentWallet!.address,
-          height: 30.0,
-        ),
-        verticalSpace(),
+        TextAddress(_walletController.currentWallet!.address),
+        verticalSpace(AppDecoration.spaceMedium),
         const Divider(
           indent: AppDecoration.dividerPadding,
           endIndent: AppDecoration.dividerPadding,
         ),
         verticalSpace(AppDecoration.spaceMedium),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              LineIcons.exclamationTriangle,
-              color: Colors.orange,
-              size: 40.0,
-            ),
-            horizontalSpace(),
-            Flexible(
-              child: SizedBox(
-                width: AppDecoration.widgetWidth,
-                child: Text(
-                  "1000@accountDetails".tr,
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-              ),
-            ),
-          ],
-        ),
+        WarningText(text: "1000@accountDetails".tr),
         verticalSpace(AppDecoration.spaceMedium),
         Center(
           child: SizedBox(
             width: AppDecoration.widgetWidth,
             height: AppDecoration.buttonHeightLarge,
             child: ElevatedButton(
-              onPressed: _onPrivateKeyClicked,
+              onPressed: _privateKeyOnPressed,
               child: Text("1001@accountDetails".tr),
             ),
           ),
@@ -90,7 +68,7 @@ class AccountDetailsBody extends StatelessWidget {
     );
   }
 
-  void _onPrivateKeyClicked() {
+  void _privateKeyOnPressed() {
     final OperationNotifier operation = OperationNotifier(
       title: "1032@global".tr,
     );
@@ -111,12 +89,10 @@ class AccountDetailsBody extends StatelessWidget {
     Get.back();
 
     awesomeDialog(
-      context: Get.context!,
       dialogType: DialogType.success,
       body: Padding(
-        padding: const EdgeInsets.only(left: AppDecoration.padding),
+        padding: const EdgeInsets.symmetric(horizontal: AppDecoration.padding),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "1034@global".tr,
@@ -126,27 +102,14 @@ class AccountDetailsBody extends StatelessWidget {
                   ),
             ),
             verticalSpace(AppDecoration.spaceMedium),
-            Row(
-              children: [
-                const Icon(
-                  LineIcons.exclamationTriangle,
-                  color: Colors.orange,
-                  size: 40.0,
-                ),
-                horizontalSpace(),
-                Flexible(
-                  child: SizedBox(
-                    width: AppDecoration.widgetWidth,
-                    child: Text(
-                      "1000@accountDetails".tr,
-                      style: Theme.of(Get.context!).textTheme.bodySmall,
-                    ),
-                  ),
-                ),
-              ],
+            WarningText(text: "1000@accountDetails".tr),
+            verticalSpace(AppDecoration.spaceMedium),
+            Text(
+              "1002@accountDetails".tr,
+              style: Theme.of(Get.context!).textTheme.titleSmall,
             ),
+            TextAddress(key, width: AppDecoration.widgetWidth),
             verticalSpace(),
-            TextAddress(key, width: AppDecoration.widgetWidth, height: 30.0),
           ],
         ),
       ),

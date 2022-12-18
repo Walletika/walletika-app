@@ -164,4 +164,5 @@ const Map<String, String> translator = {
   "1000@accountDetails":
       "Warning: Never disclose this key. Anyone with your private keys can steal any assets held in your account.",
   "1001@accountDetails": "Show Private Key",
+  "1002@accountDetails": "Private Key",
 };
