@@ -51,7 +51,6 @@ class WalletItem extends StatelessWidget {
       ),
       subtitle: TextAddress(
         address,
-        height: 22.0,
         mainAxisAlignment: MainAxisAlignment.start,
       ),
       trailing: trailing,
