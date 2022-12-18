@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../controllers/wallet/wallet.dart';
 import '../../utils/constants.dart';
 import '../widgets/address.dart';
-import '../widgets/container.dart';
 import '../widgets/operation_notifier.dart';
 import '../widgets/password_field.dart';
 import '../widgets/spacer.dart';
@@ -18,74 +17,67 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const ContainerWithShadow(),
-        Expanded(
-          child: Form(
-            key: _formController,
-            child: ListView(
-              padding: const EdgeInsets.all(AppDecoration.paddingBig),
-              children: [
-                Image.asset(
-                  AppImages.logo,
-                  width: 100.0,
-                  height: 100.0,
-                  filterQuality: FilterQuality.medium,
-                  isAntiAlias: true,
-                ),
-                verticalSpace(),
-                Text(
-                  _walletController.currentWallet!.username,
-                  softWrap: false,
-                  style: Theme.of(context).textTheme.titleLarge,
-                  textAlign: TextAlign.center,
-                ),
-                verticalSpace(AppDecoration.spaceSmall),
-                TextAddress(
-                  _walletController.currentWallet!.address,
-                  height: 30.0,
-                ),
-                verticalSpace(),
-                PasswordFormField(
-                  controller: _passwordController,
-                  placeholderText: "1011@global".tr,
-                  enableStrengthBar: false,
-                  onEditingComplete: _onSubmit,
-                ),
-                verticalSpace(),
-                Center(
-                  child: SizedBox(
-                    width: AppDecoration.widgetWidth,
-                    height: AppDecoration.buttonHeightLarge,
-                    child: ElevatedButton(
-                      onPressed: _onSubmit,
-                      child: Text("1000@login".tr),
-                    ),
-                  ),
-                ),
-                verticalSpace(AppDecoration.spaceMedium),
-                Center(
-                  child: TextButton(
-                    onPressed: () => Get.offNamed(AppPages.wallet),
-                    child: Text("1001@login".tr),
-                  ),
-                ),
-              ],
+    return Form(
+      key: _formController,
+      child: ListView(
+        padding: const EdgeInsets.all(AppDecoration.paddingMedium),
+        children: [
+          Image.asset(
+            AppImages.logo,
+            width: 100.0,
+            height: 100.0,
+            filterQuality: FilterQuality.medium,
+            isAntiAlias: true,
+          ),
+          verticalSpace(),
+          Text(
+            _walletController.currentWallet!.username,
+            softWrap: false,
+            style: Theme.of(context).textTheme.titleLarge,
+            textAlign: TextAlign.center,
+          ),
+          verticalSpace(AppDecoration.spaceSmall),
+          TextAddress(
+            _walletController.currentWallet!.address,
+            height: 30.0,
+          ),
+          verticalSpace(),
+          PasswordFormField(
+            controller: _passwordController,
+            placeholderText: "1011@global".tr,
+            enableStrengthBar: false,
+            onEditingComplete: _onSubmit,
+          ),
+          verticalSpace(),
+          Center(
+            child: SizedBox(
+              width: AppDecoration.widgetWidth,
+              height: AppDecoration.buttonHeightLarge,
+              child: ElevatedButton(
+                onPressed: _onSubmit,
+                child: Text("1000@login".tr),
+              ),
             ),
           ),
-        ),
-      ],
+          verticalSpace(AppDecoration.spaceMedium),
+          Center(
+            child: TextButton(
+              onPressed: () => Get.offNamed(AppPages.wallet),
+              child: Text("1001@login".tr),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   void _onSubmit() {
     if (_formController.currentState!.validate()) {
-      _onLogin();
+      _login();
     }
   }
 
-  void _onLogin() {
+  void _login() {
     final OperationNotifier operation = OperationNotifier(
       title: _walletController.currentWallet!.username,
     );
