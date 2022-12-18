@@ -76,7 +76,7 @@ class _AddTokenBottomSheetState extends State<AddTokenBottomSheet> {
               placeholderText: "1003@addToken".tr,
               maxLength: 42,
               keyboardType: TextInputType.name,
-              onChanged: _onChanged,
+              onChanged: _contractOnChanged,
               inputFormatters: [
                 FilteringTextInputFormatter.allow(AppRegExp.address),
               ],
@@ -146,7 +146,7 @@ class _AddTokenBottomSheetState extends State<AddTokenBottomSheet> {
     );
   }
 
-  void _onChanged(String text) {
+  void _contractOnChanged(String text) {
     if (_formController.currentState!.validate()) {
       _addTokenController.search(text);
     }

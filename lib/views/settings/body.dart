@@ -45,7 +45,7 @@ class SettingsBody extends StatelessWidget {
                 trailing: Obx(() {
                   return Switch.adaptive(
                     value: _settingsController.isDarkMode,
-                    onChanged: _onDarkModeChanged,
+                    onChanged: _darkModeOnChanged,
                   );
                 }),
               ),
@@ -62,7 +62,7 @@ class SettingsBody extends StatelessWidget {
                     dropdownColor: Theme.of(context).popupMenuTheme.color,
                     underline: zeroSpace(),
                     value: _settingsController.currentLanguage,
-                    onChanged: _onLanguageChanged,
+                    onChanged: _languageOnChanged,
                     items: _settingsController.languages
                         .map((key, value) {
                           return MapEntry(
@@ -132,7 +132,7 @@ class SettingsBody extends StatelessWidget {
     );
   }
 
-  void _onDarkModeChanged(bool enabled) {
+  void _darkModeOnChanged(bool enabled) {
     final OperationNotifier operation = OperationNotifier(
       title: "0xC495fdf7",
     );
@@ -143,7 +143,7 @@ class SettingsBody extends StatelessWidget {
     });
   }
 
-  void _onLanguageChanged(String? language) {
+  void _languageOnChanged(String? language) {
     final OperationNotifier operation = OperationNotifier(
       title: "0x7648bddc",
     );

@@ -82,7 +82,7 @@ class _TextCopyableState extends State<TextCopyable> {
           ),
           IconButton(
             padding: EdgeInsets.zero,
-            onPressed: _onCopyClicked,
+            onPressed: _copyOnPressed,
             tooltip: isCopied ? "1001@global".tr : "1000@global".tr,
             icon: Icon(
               isCopied ? Icons.check_rounded : Icons.copy_rounded,
@@ -95,7 +95,7 @@ class _TextCopyableState extends State<TextCopyable> {
     );
   }
 
-  Future<void> _onCopyClicked() async {
+  Future<void> _copyOnPressed() async {
     if (isCopied) return;
 
     await Clipboard.setData(ClipboardData(text: widget.data));

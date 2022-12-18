@@ -47,7 +47,7 @@ class NetworkBody extends StatelessWidget {
                   Obx(() {
                     return Switch.adaptive(
                       value: _settingsController.isTestnetHidden,
-                      onChanged: _onTestNetHideChanged,
+                      onChanged: _testNetHideOnChanged,
                     );
                   }),
                 ],
@@ -75,7 +75,7 @@ class NetworkBody extends StatelessWidget {
                 final NetworkItemModel network = networks[index];
 
                 return ListTile(
-                  onTap: () => _onItemTap(network),
+                  onTap: () => _networkOnTap(network),
                   minVerticalPadding: 20.0,
                   leading: ItemLogo(imageURL: network.imageURL),
                   title: Row(
@@ -110,8 +110,9 @@ class NetworkBody extends StatelessWidget {
                   trailing: IconButton(
                     tooltip:
                         network.isLocked ? "1007@network".tr : "1007@global".tr,
-                    onPressed:
-                        network.isLocked ? null : () => _onRemove(network),
+                    onPressed: network.isLocked
+                        ? null
+                        : () => _removeOnPressed(network),
                     icon: Icon(
                       network.isLocked ? LineIcons.lock : LineIcons.times,
                       size: AppDecoration.iconSmallSize,
@@ -127,7 +128,7 @@ class NetworkBody extends StatelessWidget {
     );
   }
 
-  void _onTestNetHideChanged(bool enabled) {
+  void _testNetHideOnChanged(bool enabled) {
     final OperationNotifier operation = OperationNotifier(
       title: "0xEAB1b2Eb",
     );
@@ -140,7 +141,7 @@ class NetworkBody extends StatelessWidget {
     });
   }
 
-  void _onItemTap(NetworkItemModel network) {
+  void _networkOnTap(NetworkItemModel network) {
     final OperationNotifier operation = OperationNotifier(
       title: "0xDB641091",
     );
@@ -151,7 +152,7 @@ class NetworkBody extends StatelessWidget {
     });
   }
 
-  void _onRemove(NetworkItemModel network) {
+  void _removeOnPressed(NetworkItemModel network) {
     awesomeDialog(
       dialogType: DialogType.warning,
       title: "1003@network".tr,
