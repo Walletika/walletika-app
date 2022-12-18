@@ -25,44 +25,48 @@ class MainHeader extends StatelessWidget {
     return AppBar(
       toolbarHeight: height,
       backgroundColor: backgroundTransparent ? Colors.transparent : null,
-      leadingWidth: backButtonVisible ? 105.0 : 60.0,
-      leading: Row(
+      leadingWidth: 15.0,
+      leading: zeroSpace(),
+      title: Row(
         children: [
-          horizontalSpace(15.0),
-          backButtonVisible
-              ? IconButton(
-                  onPressed: Get.back,
-                  tooltip: "1003@global".tr,
-                  icon: const Icon(LineIcons.angleLeft),
-                )
-              : zeroSpace(),
-          brandVisible
-              ? GestureDetector(
-                  onTap: () => Get.until((route) => AppPages.isHome),
-                  child: MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: Tooltip(
-                      message: "1000@home".tr,
-                      child: Image.asset(
-                        AppImages.logo,
-                        width: 40.0,
-                        filterQuality: FilterQuality.medium,
-                        isAntiAlias: true,
+          ...backButtonVisible
+              ? [
+                  IconButton(
+                    onPressed: Get.back,
+                    tooltip: "1003@global".tr,
+                    icon: const Icon(LineIcons.angleLeft),
+                  )
+                ]
+              : [],
+          ...brandVisible
+              ? [
+                  GestureDetector(
+                    onTap: () => Get.until((route) => AppPages.isHome),
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: Tooltip(
+                        message: "1000@home".tr,
+                        child: Image.asset(
+                          AppImages.logo,
+                          width: 40.0,
+                          filterQuality: FilterQuality.medium,
+                          isAntiAlias: true,
+                        ),
                       ),
                     ),
                   ),
-                )
-              : zeroSpace(),
+                  horizontalSpace(),
+                  Flexible(
+                    child: Text(
+                      AppInfo.name,
+                      softWrap: false,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                  ),
+                ]
+              : [],
         ],
       ),
-      title: brandVisible
-          ? Text(
-              AppInfo.name,
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                    fontFamily: AppFonts.bold,
-                  ),
-            )
-          : null,
       actions: actionsVisible
           ? [
               IconButton(
