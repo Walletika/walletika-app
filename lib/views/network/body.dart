@@ -94,7 +94,7 @@ class NetworkBody extends StatelessWidget {
                           ? [
                               horizontalSpace(),
                               const Icon(
-                                Icons.check,
+                                Icons.check_rounded,
                                 size: AppDecoration.iconSmallSize,
                                 color: AppColors.green,
                               ),
@@ -153,7 +153,6 @@ class NetworkBody extends StatelessWidget {
 
   void _onRemove(NetworkItemModel network) {
     awesomeDialog(
-      context: Get.context!,
       dialogType: DialogType.warning,
       title: "1003@network".tr,
       desc: "${"1004@network".tr}\n${network.name}",
