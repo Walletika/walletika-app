@@ -1,11 +1,11 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../../utils/constants.dart';
 
 AwesomeDialog awesomeDialog({
-  required BuildContext context,
   double? width = 500.0,
   DialogType dialogType = DialogType.noHeader,
   String? title,
@@ -18,9 +18,9 @@ AwesomeDialog awesomeDialog({
   bool autoDismiss = true,
 }) {
   return AwesomeDialog(
-    context: context,
+    context: Get.context!,
     width: width,
-    dialogBackgroundColor: Theme.of(context).backgroundColor,
+    dialogBackgroundColor: Theme.of(Get.context!).backgroundColor,
     padding: const EdgeInsets.all(AppDecoration.padding),
     dialogType: dialogType,
     animType: AnimType.rightSlide,
@@ -36,7 +36,7 @@ AwesomeDialog awesomeDialog({
             child: ElevatedButton(
               onPressed: () {
                 if (btnOkOnPress != null) btnOkOnPress();
-                if (autoDismiss) Navigator.pop(context);
+                if (autoDismiss) Navigator.pop(Get.context!);
               },
               child: Text(btnOkText),
             ),
@@ -48,7 +48,7 @@ AwesomeDialog awesomeDialog({
             child: ElevatedButton(
               onPressed: () {
                 if (btnCancelOnPress != null) btnCancelOnPress();
-                if (autoDismiss) Navigator.pop(context);
+                if (autoDismiss) Navigator.pop(Get.context!);
               },
               child: Text(btnCancelText),
             ),

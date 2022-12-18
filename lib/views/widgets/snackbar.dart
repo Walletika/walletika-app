@@ -5,7 +5,6 @@ import 'package:line_icons/line_icons.dart';
 import '../../utils/constants.dart';
 
 SnackbarController modernSnackBar({
-  required BuildContext context,
   required String title,
   required String message,
   Icon? icon,
@@ -13,17 +12,17 @@ SnackbarController modernSnackBar({
   double maxWidth = 500.0,
   void Function(GetSnackBar)? onTap,
 }) {
-  if (icon == null && isSuccess is bool) {
+  if (isSuccess != null) {
     icon = isSuccess
         ? const Icon(
-            LineIcons.check,
+            Icons.check_rounded,
             color: AppColors.green,
             size: 30.0,
           )
         : const Icon(
-            LineIcons.exclamationCircle,
+            LineIcons.exclamationTriangle,
             color: Colors.orange,
-            size: 40.0,
+            size: 30.0,
           );
   }
 
@@ -35,13 +34,13 @@ SnackbarController modernSnackBar({
     barBlur: 0,
     titleText: Text(
       title,
-      style: Theme.of(context).textTheme.titleSmall!.copyWith(
+      style: Theme.of(Get.context!).textTheme.titleSmall!.copyWith(
             color: icon?.color ?? Colors.white,
           ),
     ),
     messageText: Text(
       message,
-      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+      style: Theme.of(Get.context!).textTheme.bodySmall!.copyWith(
             color: icon?.color ?? Colors.white,
           ),
     ),
