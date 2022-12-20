@@ -29,103 +29,109 @@ class SettingsBody extends StatelessWidget {
         }),
         Container(
           color: Theme.of(context).backgroundColor.withOpacity(0.7),
-          child: ListView(
-            children: [
-              ListTile(
-                title: Text(
-                  "1000@settings".tr,
-                  style: Theme.of(context).textTheme.titleLarge,
+          child: SafeArea(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDecoration.padding,
+                vertical: AppDecoration.paddingBig,
+              ),
+              children: [
+                ListTile(
+                  title: Text(
+                    "1000@settings".tr,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                 ),
-              ),
-              ListTile(
-                title: Text(
-                  "1001@settings".tr,
-                  style: Theme.of(context).textTheme.bodyLarge,
+                ListTile(
+                  title: Text(
+                    "1001@settings".tr,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  trailing: Obx(() {
+                    return Switch.adaptive(
+                      value: _settingsController.isDarkMode,
+                      onChanged: _darkModeOnChanged,
+                    );
+                  }),
                 ),
-                trailing: Obx(() {
-                  return Switch.adaptive(
-                    value: _settingsController.isDarkMode,
-                    onChanged: _darkModeOnChanged,
-                  );
-                }),
-              ),
-              ListTile(
-                title: Text(
-                  "1002@settings".tr,
-                  style: Theme.of(context).textTheme.bodyLarge,
+                ListTile(
+                  title: Text(
+                    "1002@settings".tr,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  trailing: Obx(() {
+                    return DropdownButton(
+                      style: Theme.of(context).popupMenuTheme.textStyle,
+                      icon: const Icon(Icons.arrow_drop_down_rounded),
+                      borderRadius: BorderRadius.circular(AppDecoration.radius),
+                      dropdownColor: Theme.of(context).popupMenuTheme.color,
+                      underline: zeroSpace(),
+                      value: _settingsController.currentLanguage,
+                      onChanged: _languageOnChanged,
+                      items: _settingsController.languages
+                          .map((key, value) {
+                            return MapEntry(
+                              key,
+                              DropdownMenuItem(value: key, child: Text(value)),
+                            );
+                          })
+                          .values
+                          .toList(),
+                    );
+                  }),
                 ),
-                trailing: Obx(() {
-                  return DropdownButton(
-                    style: Theme.of(context).popupMenuTheme.textStyle,
-                    icon: const Icon(Icons.arrow_drop_down_rounded),
-                    borderRadius: BorderRadius.circular(AppDecoration.radius),
-                    dropdownColor: Theme.of(context).popupMenuTheme.color,
-                    underline: zeroSpace(),
-                    value: _settingsController.currentLanguage,
-                    onChanged: _languageOnChanged,
-                    items: _settingsController.languages
-                        .map((key, value) {
-                          return MapEntry(
-                            key,
-                            DropdownMenuItem(value: key, child: Text(value)),
-                          );
-                        })
-                        .values
-                        .toList(),
-                  );
-                }),
-              ),
-              ListTile(
-                onTap: () => Get.toNamed(AppPages.network),
-                title: Text(
-                  "1003@settings".tr,
-                  style: Theme.of(context).textTheme.titleSmall,
+                ListTile(
+                  onTap: () => Get.toNamed(AppPages.network),
+                  title: Text(
+                    "1003@settings".tr,
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                  subtitle: Obx(() {
+                    return Text(
+                      _settingsController.currentNetwork,
+                      style: Theme.of(context).textTheme.labelMedium,
+                    );
+                  }),
+                  trailing: const Icon(LineIcons.angleRight),
                 ),
-                subtitle: Obx(() {
-                  return Text(
-                    _settingsController.currentNetwork,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  );
-                }),
-                trailing: const Icon(LineIcons.angleRight),
-              ),
-              verticalSpace(),
-              const Divider(
-                indent: AppDecoration.dividerPadding,
-                endIndent: AppDecoration.dividerPadding,
-              ),
-              verticalSpace(),
-              ListTile(
-                title: Text(
-                  "1004@settings".tr,
-                  style: Theme.of(context).textTheme.bodyLarge,
+                verticalSpace(),
+                const Divider(
+                  indent: AppDecoration.dividerPadding,
+                  endIndent: AppDecoration.dividerPadding,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(AppDecoration.padding),
-                child: Wrap(
-                  alignment: WrapAlignment.end,
-                  spacing: AppDecoration.space,
-                  runSpacing: AppDecoration.space,
-                  children: [
-                    SizedBox(
-                      height: AppDecoration.buttonHeight,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text("1005@settings".tr),
+                verticalSpace(),
+                ListTile(
+                  title: Text(
+                    "1004@settings".tr,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(AppDecoration.padding),
+                  child: Wrap(
+                    alignment: WrapAlignment.end,
+                    spacing: AppDecoration.space,
+                    runSpacing: AppDecoration.space,
+                    children: [
+                      SizedBox(
+                        height: AppDecoration.buttonHeight,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text("1005@settings".tr),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: AppDecoration.buttonHeight,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text("1006@settings".tr),
+                      SizedBox(
+                        height: AppDecoration.buttonHeight,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text("1006@settings".tr),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

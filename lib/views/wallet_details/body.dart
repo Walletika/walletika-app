@@ -19,7 +19,10 @@ class WalletDetailsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(AppDecoration.paddingMedium),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppDecoration.paddingMedium,
+        vertical: AppDecoration.paddingBig,
+      ),
       children: [
         Text(
           "1006@wallet".tr,

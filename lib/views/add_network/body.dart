@@ -25,7 +25,10 @@ class AddNetworkBody extends StatelessWidget {
     return Form(
       key: _formController,
       child: ListView(
-        padding: const EdgeInsets.all(AppDecoration.paddingMedium),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppDecoration.paddingMedium,
+          vertical: AppDecoration.paddingBig,
+        ),
         cacheExtent: 1000,
         children: [
           Text(

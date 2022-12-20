@@ -20,7 +20,10 @@ class AuthBody extends StatelessWidget {
     return Form(
       key: _formController,
       child: ListView(
-        padding: const EdgeInsets.all(AppDecoration.paddingMedium),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppDecoration.paddingMedium,
+          vertical: AppDecoration.paddingBig,
+        ),
         children: [
           Image.asset(
             AppImages.authIllustrations,
