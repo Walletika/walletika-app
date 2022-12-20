@@ -10,9 +10,9 @@ import '../../utils/currency_format.dart';
 import '../widgets/spacer.dart';
 import 'coins_tab.dart';
 import 'transactions_tab.dart';
-import 'add_token.dart';
+import '../add_token/add_token.dart';
 
-enum MenuProperties {
+enum MenuOptions {
   accountDetails,
   addToken,
   viewAtExplorer,
@@ -55,54 +55,52 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+        Stack(
+          alignment: AlignmentDirectional.centerEnd,
           children: [
+            Center(
+              child: Text(
+                _walletController.currentWallet!.username,
+                softWrap: false,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ),
             PopupMenuButton(
               tooltip: "1030@global".tr,
-              onSelected: (value) {
-                if (value == MenuProperties.accountDetails) {
-                  Get.toNamed(AppPages.accountDetails);
-                } else if (value == MenuProperties.addToken) {
-                  _bottomSheet(const AddTokenBottomSheet());
-                }
-              },
+              onSelected: _menuOnSelected,
               itemBuilder: (context) => [
                 PopupMenuItem(
-                  value: MenuProperties.accountDetails,
+                  value: MenuOptions.accountDetails,
                   child: Text("1006@wallet".tr),
                 ),
                 PopupMenuItem(
-                  value: MenuProperties.addToken,
+                  value: MenuOptions.addToken,
                   child: Text("1007@wallet".tr),
                 ),
                 PopupMenuItem(
-                  value: MenuProperties.viewAtExplorer,
+                  value: MenuOptions.viewAtExplorer,
                   child: Text("1008@wallet".tr),
                 ),
                 PopupMenuItem(
-                  value: MenuProperties.removeWallet,
+                  value: MenuOptions.removeWallet,
                   child: Text("1009@wallet".tr),
                 ),
                 PopupMenuItem(
-                  value: MenuProperties.lock,
+                  value: MenuOptions.lock,
                   child: Text("1010@wallet".tr),
                 ),
               ],
             ),
           ],
         ),
-        Text(
-          _walletController.currentWallet!.username,
-          softWrap: false,
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
         verticalSpace(),
         Text(
           "1000@wallet".tr,
           softWrap: false,
           style: Theme.of(context).textTheme.labelSmall,
+          textAlign: TextAlign.center,
         ),
         Obx(() {
           return Text(
@@ -112,62 +110,65 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
             ),
             softWrap: false,
             style: Theme.of(context).textTheme.headlineLarge,
+            textAlign: TextAlign.center,
           );
         }),
-        verticalSpace(AppDecoration.spaceMedium),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(
-              child: SizedBox(
-                height: AppDecoration.buttonHeight,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.horizontal(
-                        left: Radius.circular(AppDecoration.radius),
+        Padding(
+          padding: const EdgeInsets.all(AppDecoration.paddingMedium),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                child: SizedBox(
+                  height: AppDecoration.buttonHeight,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.horizontal(
+                          left: Radius.circular(AppDecoration.radius),
+                        ),
                       ),
                     ),
+                    child: Text("1001@wallet".tr),
                   ),
-                  child: Text("1001@wallet".tr),
                 ),
               ),
-            ),
-            Flexible(
-              child: SizedBox(
-                height: AppDecoration.buttonHeight,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    shape: const RoundedRectangleBorder(),
+              Flexible(
+                child: SizedBox(
+                  height: AppDecoration.buttonHeight,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(),
+                    ),
+                    child: Text("1002@wallet".tr),
                   ),
-                  child: Text("1002@wallet".tr),
                 ),
               ),
-            ),
-            Flexible(
-              child: SizedBox(
-                height: AppDecoration.buttonHeight,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.horizontal(
-                        right: Radius.circular(AppDecoration.radius),
+              Flexible(
+                child: SizedBox(
+                  height: AppDecoration.buttonHeight,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.horizontal(
+                          right: Radius.circular(AppDecoration.radius),
+                        ),
                       ),
                     ),
+                    child: Text("1003@wallet".tr),
                   ),
-                  child: Text("1003@wallet".tr),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-        verticalSpace(AppDecoration.spaceBig),
+        verticalSpace(),
         Container(
           decoration: BoxDecoration(
             color: Theme.of(context).popupMenuTheme.color,
@@ -303,6 +304,18 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
         ),
       ],
     );
+  }
+
+  void _menuOnSelected(MenuOptions value) {
+    switch (value) {
+      case MenuOptions.accountDetails:
+        Get.toNamed(AppPages.accountDetails);
+        break;
+      case MenuOptions.addToken:
+        _bottomSheet(const AddTokenView());
+        break;
+      default:
+    }
   }
 
   void _bottomSheet(Widget widget) {

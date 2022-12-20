@@ -15,7 +15,7 @@ class WalletView extends StatelessWidget {
     return const Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(MainHeader.height),
-        child: MainHeader(),
+        child: MainHeader(backgroundTransparent: true),
       ),
       body: WalletBody(),
     );

@@ -151,6 +151,7 @@ const Map<String, String> translator = {
   "1008@wallet": "View at Explorer",
   "1009@wallet": "Remove Wallet",
   "1010@wallet": "Lock",
+  "1011@wallet": "You have no transactions",
 
   // Add token
   "1000@addToken": "Paste Contract Address",

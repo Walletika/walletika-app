@@ -7,6 +7,7 @@ import '../../models/transaction.dart';
 import '../../utils/constants.dart';
 import '../../utils/launch_url.dart';
 import '../widgets/address.dart';
+import '../widgets/empty_page.dart';
 import '../widgets/item_logo.dart';
 import '../widgets/spacer.dart';
 
@@ -22,7 +23,10 @@ class TransactionsTabView extends StatelessWidget {
           _walletController.transactions;
 
       if (transactions.isEmpty) {
-        return const Center(child: CircularProgressIndicator.adaptive());
+        return EmptyPage(
+          illustrationPath: AppImages.emptyIllustrations,
+          title: "1011@wallet".tr,
+        );
       }
 
       return ListView.separated(
@@ -48,7 +52,6 @@ class TransactionsTabView extends StatelessWidget {
               children: [
                 TextAddress(
                   transaction.txHash,
-                  height: 22.0,
                   mainAxisAlignment: MainAxisAlignment.start,
                 ),
                 Text(
