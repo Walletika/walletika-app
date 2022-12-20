@@ -159,7 +159,7 @@ const Map<String, String> translator = {
   "1001@addToken": "Paste ( 0x ) Contract Address",
   "1002@addToken":
       "Token unavailable, Please make sure the address is correct.",
-  "1003@addToken": "Token added successfully.",
+  "1003@addToken": "Token has been added successfully.",
 
   // Wallet details
   "1000@walletDetails":

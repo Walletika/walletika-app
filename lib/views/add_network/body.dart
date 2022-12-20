@@ -137,7 +137,7 @@ class AddNetworkBody extends StatelessWidget {
 
   void _addNetwork() {
     final OperationNotifier operation = OperationNotifier(
-      title: "1007@addNetwork".tr,
+      title: _nameController.text,
     );
 
     _networkController
