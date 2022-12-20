@@ -70,7 +70,11 @@ class OperationNotifier {
             verticalSpace(),
             Text(_message!),
             verticalSpace(),
-            Text("1019@global".tr, style: Get.theme.textTheme.labelSmall),
+            Text(
+              "1019@global".tr,
+              style: Get.theme.textTheme.labelSmall,
+              textAlign: TextAlign.center,
+            ),
             verticalSpace(),
           ]),
         ),
