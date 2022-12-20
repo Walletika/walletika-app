@@ -75,6 +75,7 @@ class AppImages {
   static const String googlePlayLogo = 'assets/logos/google_play.png';
   static const String authyLogo = 'assets/logos/authy.png';
   static const String coinIllustrations = 'assets/illustrations/coin.png';
+  static const String emptyIllustrations = 'assets/illustrations/empty.png';
   static const String doneIllustrations = 'assets/illustrations/done.png';
   static const String confirmIllustrations = 'assets/illustrations/confirm.png';
   static const String dayIllustrations = 'assets/illustrations/day.jpg';
