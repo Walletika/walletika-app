@@ -5,16 +5,16 @@ import 'spacer.dart';
 
 class EmptyPage extends StatelessWidget {
   const EmptyPage({
-    required this.illustrationPath,
-    required this.title,
-    required this.desc,
+    this.illustrationPath,
+    this.title,
+    this.desc,
     this.actions,
     super.key,
   });
 
-  final String illustrationPath;
-  final String title;
-  final String desc;
+  final String? illustrationPath;
+  final String? title;
+  final String? desc;
   final List<Widget>? actions;
 
   @override
@@ -23,24 +23,36 @@ class EmptyPage extends StatelessWidget {
       padding: const EdgeInsets.all(AppDecoration.paddingMedium),
       child: Column(
         children: [
-          Flexible(
-            child: Image.asset(
-              illustrationPath,
-              filterQuality: FilterQuality.medium,
-              isAntiAlias: true,
-            ),
-          ),
-          Text(
-            title,
-            style: Theme.of(context).textTheme.titleLarge,
-            textAlign: TextAlign.center,
-          ),
+          ...illustrationPath != null
+              ? [
+                  Flexible(
+                    child: Image.asset(
+                      illustrationPath!,
+                      filterQuality: FilterQuality.medium,
+                      isAntiAlias: true,
+                    ),
+                  )
+                ]
+              : [],
+          ...title != null
+              ? [
+                  Text(
+                    title!,
+                    style: Theme.of(context).textTheme.titleLarge,
+                    textAlign: TextAlign.center,
+                  )
+                ]
+              : [],
           verticalSpace(AppDecoration.spaceSmall),
-          Text(
-            desc,
-            style: Theme.of(context).textTheme.labelMedium,
-            textAlign: TextAlign.center,
-          ),
+          ...desc != null
+              ? [
+                  Text(
+                    desc!,
+                    style: Theme.of(context).textTheme.labelMedium,
+                    textAlign: TextAlign.center,
+                  )
+                ]
+              : [],
           ...actions ?? [],
         ],
       ),
