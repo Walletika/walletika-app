@@ -33,7 +33,7 @@ const Map<String, String> translator = {
   "1030@global": "Menu",
   "1031@global": "View on block explorer",
   "1032@global": "Access Denied",
-  "1033@global": "Account login is required to access this feature.",
+  "1033@global": "Wallet login is required to access this feature.",
   "1034@global": "Confirmed Successfully",
   "1035@global": "Connected",
 
@@ -146,7 +146,7 @@ const Map<String, String> translator = {
   "1003@wallet": "Stake",
   "1004@wallet": "Coins",
   "1005@wallet": "Transactions",
-  "1006@wallet": "Account Details",
+  "1006@wallet": "Wallet Details",
   "1007@wallet": "Add Token",
   "1008@wallet": "View at Explorer",
   "1009@wallet": "Remove Wallet",
@@ -161,9 +161,9 @@ const Map<String, String> translator = {
       "Token unavailable, Please make sure the address is correct.",
   "1003@addToken": "Token added successfully.",
 
-  // Account details
-  "1000@accountDetails":
-      "Warning: Never disclose this key. Anyone with your private keys can steal any assets held in your account.",
-  "1001@accountDetails": "Show Private Key",
-  "1002@accountDetails": "Private Key",
+  // Wallet details
+  "1000@walletDetails":
+      "Warning: Never disclose this key. Anyone with your private keys can steal any assets held in your wallet.",
+  "1001@walletDetails": "Show Private Key",
+  "1002@walletDetails": "Private Key",
 };

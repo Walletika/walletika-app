@@ -12,13 +12,7 @@ import 'coins_tab.dart';
 import 'transactions_tab.dart';
 import '../add_token/add_token.dart';
 
-enum MenuOptions {
-  accountDetails,
-  addToken,
-  viewAtExplorer,
-  removeWallet,
-  lock
-}
+enum MenuOptions { walletDetails, addToken, viewAtExplorer, removeWallet, lock }
 
 class WalletBody extends StatefulWidget {
   const WalletBody({super.key});
@@ -72,7 +66,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
               onSelected: _menuOnSelected,
               itemBuilder: (context) => [
                 PopupMenuItem(
-                  value: MenuOptions.accountDetails,
+                  value: MenuOptions.walletDetails,
                   child: Text("1006@wallet".tr),
                 ),
                 PopupMenuItem(
@@ -308,8 +302,8 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
 
   void _menuOnSelected(MenuOptions value) {
     switch (value) {
-      case MenuOptions.accountDetails:
-        Get.toNamed(AppPages.accountDetails);
+      case MenuOptions.walletDetails:
+        Get.toNamed(AppPages.walletDetails);
         break;
       case MenuOptions.addToken:
         _bottomSheet(const AddTokenView());

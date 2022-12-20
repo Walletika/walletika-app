@@ -11,8 +11,8 @@ import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
 import '../widgets/warning.dart';
 
-class AccountDetailsBody extends StatelessWidget {
-  AccountDetailsBody({super.key});
+class WalletDetailsBody extends StatelessWidget {
+  WalletDetailsBody({super.key});
 
   final WalletController _walletController = Get.find<WalletController>();
 
@@ -52,7 +52,7 @@ class AccountDetailsBody extends StatelessWidget {
           endIndent: AppDecoration.dividerPadding,
         ),
         verticalSpace(AppDecoration.spaceMedium),
-        WarningText(text: "1000@accountDetails".tr),
+        WarningText(text: "1000@walletDetails".tr),
         verticalSpace(AppDecoration.spaceMedium),
         Center(
           child: SizedBox(
@@ -60,7 +60,7 @@ class AccountDetailsBody extends StatelessWidget {
             height: AppDecoration.buttonHeightLarge,
             child: ElevatedButton(
               onPressed: _privateKeyOnPressed,
-              child: Text("1001@accountDetails".tr),
+              child: Text("1001@walletDetails".tr),
             ),
           ),
         ),
@@ -102,10 +102,10 @@ class AccountDetailsBody extends StatelessWidget {
                   ),
             ),
             verticalSpace(AppDecoration.spaceMedium),
-            WarningText(text: "1000@accountDetails".tr),
+            WarningText(text: "1000@walletDetails".tr),
             verticalSpace(AppDecoration.spaceMedium),
             Text(
-              "1002@accountDetails".tr,
+              "1002@walletDetails".tr,
               style: Theme.of(Get.context!).textTheme.titleSmall,
             ),
             TextAddress(key, width: AppDecoration.widgetWidth),

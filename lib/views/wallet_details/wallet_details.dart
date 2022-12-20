@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../widgets/header.dart';
 import 'body.dart';
 
-class AccountDetailsView extends StatelessWidget {
-  const AccountDetailsView({super.key});
+class WalletDetailsView extends StatelessWidget {
+  const WalletDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class AccountDetailsView extends StatelessWidget {
         preferredSize: Size.fromHeight(MainHeader.height),
         child: MainHeader(),
       ),
-      body: AccountDetailsBody(),
+      body: WalletDetailsBody(),
     );
   }
 }
