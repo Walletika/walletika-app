@@ -41,6 +41,10 @@ class SettingsBody extends StatelessWidget {
                     "1000@settings".tr,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
+                  subtitle: Text(
+                    "${"1008@settings".tr}: ${AppInfo.version}",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
                 ),
                 ListTile(
                   title: Text(

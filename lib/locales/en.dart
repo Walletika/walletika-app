@@ -60,6 +60,7 @@ const Map<String, String> translator = {
   "1005@settings": "Backup",
   "1006@settings": "Import External File",
   "1007@settings": "Settings Update",
+  "1008@settings": "Software version",
 
   // Networks
   "1000@network": "Blockchain Networks",
