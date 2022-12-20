@@ -80,6 +80,7 @@ class SettingsController extends GetxController {
     try {
       await _repository.networkUpdate(name);
       _walletController.tokensUpdate();
+      _walletController.transactionsUpdate();
       _currentNetwork.value = name;
     } catch (e) {
       rethrow;
