@@ -159,6 +159,14 @@ class WalletController extends GetxController {
     await tokensUpdate();
   }
 
+  Future<bool> removeToken(TokenItemModel token) async {
+    final bool isValid = await _repository.removeToken(token);
+
+    if (isValid) await tokensUpdate();
+
+    return isValid;
+  }
+
   Future<void> transactionsUpdate() async {
     if (_currentWallet == null) return;
     _transactions.value = await _repository.transactions(_currentWallet!).then(

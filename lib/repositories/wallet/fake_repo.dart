@@ -198,6 +198,11 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
+  Future<bool> removeToken(TokenItemModel token) async {
+    return _tokens.remove(token);
+  }
+
+  @override
   Future<List<TransactionItemModel>> transactions(
     WalletViewModel currentWallet,
   ) async {
