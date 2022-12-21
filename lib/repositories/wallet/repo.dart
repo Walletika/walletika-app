@@ -37,4 +37,6 @@ abstract class WalletRepository {
   Future<List<TransactionItemModel>> transactions(
     WalletViewModel currentWallet,
   );
+
+  String explorerURL(String address);
 }

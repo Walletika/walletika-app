@@ -44,6 +44,10 @@ class WalletController extends GetxController {
 
   int count() => _repository.count();
 
+  String currentWalletExplorerURL() {
+    return _repository.explorerURL(currentWallet!.address);
+  }
+
   bool usernameExists(String username) => _wallets.any(
         (wallet) => wallet.username == username,
       );

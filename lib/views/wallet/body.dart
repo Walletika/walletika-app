@@ -7,6 +7,7 @@ import '../../controllers/tabs/tabs.dart';
 import '../../controllers/wallet/wallet.dart';
 import '../../utils/constants.dart';
 import '../../utils/currency_format.dart';
+import '../../utils/launch_url.dart';
 import '../widgets/spacer.dart';
 import 'coins_tab.dart';
 import 'transactions_tab.dart';
@@ -307,6 +308,9 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
         break;
       case MenuOptions.addToken:
         _bottomSheet(const AddTokenView());
+        break;
+      case MenuOptions.viewAtExplorer:
+        launchURL(_walletController.currentWalletExplorerURL());
         break;
       default:
     }

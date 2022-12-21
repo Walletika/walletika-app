@@ -208,4 +208,9 @@ class WalletFakeRepository extends WalletRepository {
   ) async {
     return _transactions.map((transaction) => transaction).toList();
   }
+
+  @override
+  String explorerURL(String address) {
+    return "https://etherscan.io/address/$address";
+  }
 }
