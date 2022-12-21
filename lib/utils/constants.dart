@@ -97,6 +97,7 @@ class AppPages {
   static const String authSetup = '/login/auth/authSetup';
   static const String wallet = '/login/auth/wallet';
   static const String walletDetails = '/login/auth/wallet/walletDetails';
+  static const String depsoit = '/login/auth/wallet/depsoit';
 
   static bool get isHome => Get.currentRoute == AppPages.home;
 }

@@ -116,7 +116,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                 child: SizedBox(
                   height: AppDecoration.buttonHeight,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed(AppPages.depsoit),
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       shape: const RoundedRectangleBorder(

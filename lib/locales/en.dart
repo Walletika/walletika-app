@@ -142,8 +142,8 @@ const Map<String, String> translator = {
 
   // Wallet
   "1000@wallet": "Total Balance",
-  "1001@wallet": "Send",
-  "1002@wallet": "Receive",
+  "1001@wallet": "Deposit",
+  "1002@wallet": "Withdraw",
   "1003@wallet": "Stake",
   "1004@wallet": "Coins",
   "1005@wallet": "Transactions",
@@ -173,4 +173,10 @@ const Map<String, String> translator = {
       "Warning: Never disclose this key. Anyone with your private keys can steal any assets held in your wallet.",
   "1001@walletDetails": "Show Private Key",
   "1002@walletDetails": "Private Key",
+
+  // Dposit
+  "1000@deposit":
+      "Scan the code on the withdrawal page of the trading platform app or wallet app.",
+  "1001@deposit": "or Copy your deposit address",
+  "1002@deposit": "Make sure the sender is on the same network.",
 };
