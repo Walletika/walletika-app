@@ -156,6 +156,11 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
+  Future<bool> remove(WalletViewModel wallet) async {
+    return _wallets.remove(wallet);
+  }
+
+  @override
   Future<bool> loginValidate({
     required WalletViewModel currentWallet,
     required String password,

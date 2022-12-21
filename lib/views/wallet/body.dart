@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +9,8 @@ import '../../controllers/wallet/wallet.dart';
 import '../../utils/constants.dart';
 import '../../utils/currency_format.dart';
 import '../../utils/launch_url.dart';
+import '../widgets/dialog.dart';
+import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
 import 'coins_tab.dart';
 import 'transactions_tab.dart';
@@ -312,8 +315,40 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
       case MenuOptions.viewAtExplorer:
         launchURL(_walletController.currentWalletExplorerURL());
         break;
+      case MenuOptions.removeWallet:
+        _removeOnSelected();
+        break;
       default:
     }
+  }
+
+  void _removeOnSelected() {
+    awesomeDialog(
+      dialogType: DialogType.warning,
+      title: "1009@wallet".tr,
+      desc: "1018@wallet".tr,
+      btnOkText: "1007@global".tr,
+      btnOkOnPress: () => _removeWallet(),
+    ).show();
+  }
+
+  void _removeWallet() {
+    final OperationNotifier operation = OperationNotifier(
+      title: _walletController.currentWallet!.username,
+    );
+
+    _walletController.removeCurrentWallet().then((isValid) {
+      if (isValid) {
+        operation.valid("1019@wallet".tr);
+        operation.notify(backScreen: true);
+      } else {
+        operation.invalid("1020@wallet".tr);
+        operation.notify();
+      }
+    }).catchError((error) {
+      operation.error(error.toString());
+      operation.notify(title: "0x518705F0");
+    });
   }
 
   void _bottomSheet(Widget widget) {

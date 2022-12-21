@@ -93,6 +93,14 @@ class WalletController extends GetxController {
     return isValid;
   }
 
+  Future<bool> removeCurrentWallet() async {
+    final bool isValid = await _repository.remove(currentWallet!);
+
+    if (isValid) await walletsUpdate();
+
+    return isValid;
+  }
+
   void setCurrentWallet(WalletViewModel wallet) {
     if (wallet == _currentWallet) return;
 
