@@ -40,7 +40,6 @@ class TransactionsTabView extends StatelessWidget {
 
           return ListTile(
             minVerticalPadding: 15.0,
-            onTap: () {},
             leading: ItemLogo(imageURL: transaction.imageURL),
             title: Text(
               transaction.functionName,
@@ -74,11 +73,14 @@ class TransactionsTabView extends StatelessWidget {
                 verticalSpace(AppDecoration.spaceSmall),
                 Tooltip(
                   message: "1031@global".tr,
-                  child: GestureDetector(
-                    onTap: () {
-                      launchURL(transaction.txHashURL);
-                    },
-                    child: const Icon(LineIcons.alternateExternalLink),
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: () {
+                        launchURL(transaction.txHashURL);
+                      },
+                      child: const Icon(LineIcons.alternateExternalLink),
+                    ),
                   ),
                 ),
               ],
