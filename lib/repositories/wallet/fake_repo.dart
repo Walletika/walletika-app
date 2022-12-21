@@ -36,8 +36,8 @@ class WalletFakeRepository extends WalletRepository {
     TokenItemModel(
       imageURL:
           'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
+      explorerURL: "https://etherscan.io",
       name: 'Ethereum',
-      address: '',
       symbol: 'ETH',
       changeIn24h: 0.02,
       price: 1252.790000102,
@@ -47,35 +47,44 @@ class WalletFakeRepository extends WalletRepository {
     TokenItemModel(
       imageURL:
           'https://assets.coingecko.com/coins/images/325/small/Tether.png?1668148663',
+      explorerURL:
+          "https://etherscan.io/token/0xdAC17F958D2ee523a2206206994597C13D831ec7",
       name: 'Tether',
-      address: '',
+      address: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
       symbol: 'USDT',
       changeIn24h: -0.01,
       price: 1.0,
       balance: 21100.000,
       balanceInFiat: 21100.0,
+      decimals: 6,
     ),
     TokenItemModel(
       imageURL:
           'https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579',
+      explorerURL:
+          "https://etherscan.io/token/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
       name: 'Bitcoin',
-      address: '',
+      address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
       symbol: 'BTC',
       changeIn24h: 1.7,
       price: 17033.42,
       balance: 0.50000001,
       balanceInFiat: 8516.71,
+      decimals: 18,
     ),
     TokenItemModel(
       imageURL:
           'https://assets.coingecko.com/coins/images/11939/small/shiba.png?1622619446',
+      explorerURL:
+          "https://etherscan.io/token/0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
       name: 'Shiba Inu',
-      address: '',
+      address: '0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE',
       symbol: 'SHIB',
       changeIn24h: -0.2,
       price: 0.00000889,
       balance: 10000000,
       balanceInFiat: 88.11,
+      decimals: 18,
     ),
   ];
 
