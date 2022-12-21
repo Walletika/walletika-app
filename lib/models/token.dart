@@ -2,26 +2,28 @@ import '../utils/currency_format.dart';
 
 class TokenItemModel {
   final String imageURL;
+  final String explorerURL;
   final String name;
-  final String address;
   final String symbol;
   final String faitSymbol;
   final double? changeIn24h;
   final double? price;
   final double? balance;
   final double? balanceInFiat;
+  final String? address;
   final int? decimals;
 
   TokenItemModel({
     required this.imageURL,
+    required this.explorerURL,
     required this.name,
-    required this.address,
     required this.symbol,
     this.faitSymbol = '\$',
     this.changeIn24h,
     this.price,
     this.balance,
     this.balanceInFiat,
+    this.address,
     this.decimals,
   });
 
