@@ -26,6 +26,8 @@ abstract class WalletRepository {
     required String otpCode,
   });
 
+  Future<void> logout(WalletViewModel currentWallet);
+
   Future<String?> getPrivateKey(String otpCode);
 
   Future<void> setFavorite(WalletViewModel currentWallet);

@@ -133,6 +133,11 @@ class WalletController extends GetxController {
     return isValid;
   }
 
+  Future<void> logout() async {
+    await _repository.logout(_currentWallet!);
+    await walletsUpdate();
+  }
+
   Future<String?> getPrivateKey(String otpCode) async {
     return _repository.getPrivateKey(otpCode);
   }

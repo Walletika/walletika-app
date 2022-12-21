@@ -179,6 +179,11 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
+  Future<void> logout(WalletViewModel currentWallet) async {
+    currentWallet.isLogged = false;
+  }
+
+  @override
   Future<String?> getPrivateKey(String otpCode) async {
     if (otpCode == '123456') {
       return '0x78db9d2cb8c82cbc30bdcb8bab00c3ebedf88332cf6e85f543d295843754386f';

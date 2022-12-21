@@ -318,7 +318,9 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
       case MenuOptions.removeWallet:
         _removeOnSelected();
         break;
-      default:
+      case MenuOptions.lock:
+        _lockOnSelected();
+        break;
     }
   }
 
@@ -348,6 +350,19 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
     }).catchError((error) {
       operation.error(error.toString());
       operation.notify(title: "0x518705F0");
+    });
+  }
+
+  void _lockOnSelected() {
+    final OperationNotifier operation = OperationNotifier(
+      title: "0xe634FCdd",
+    );
+
+    _walletController.logout().then((_) {
+      Get.back();
+    }).catchError((error) {
+      operation.error(error.toString());
+      operation.notify();
     });
   }
 
