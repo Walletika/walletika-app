@@ -156,23 +156,25 @@ class NetworkBody extends StatelessWidget {
     awesomeDialog(
       dialogType: DialogType.warning,
       title: "1003@network".tr,
-      desc: "${"1004@network".tr}\n${network.name}",
+      desc: "${"1004@network".tr} ( ${network.name} )",
       btnOkText: "1007@global".tr,
-      btnOkOnPress: () {
-        final OperationNotifier operation = OperationNotifier(
-          title: "1003@network".tr,
-        );
-
-        _networkController.remove(network).then((isValid) {
-          isValid
-              ? operation.valid("${network.name} ${"1005@network".tr}")
-              : operation.invalid("1006@network".tr);
-          operation.notify();
-        }).catchError((error) {
-          operation.error(error.toString());
-          operation.notify(title: "0xf6A9FFe9");
-        });
-      },
+      btnOkOnPress: () => _removeNetwork(network),
     ).show();
+  }
+
+  void _removeNetwork(NetworkItemModel network) {
+    final OperationNotifier operation = OperationNotifier(
+      title: network.name,
+    );
+
+    _networkController.remove(network).then((isValid) {
+      isValid
+          ? operation.valid("1005@network".tr)
+          : operation.invalid("1006@network".tr);
+      operation.notify();
+    }).catchError((error) {
+      operation.error(error.toString());
+      operation.notify(title: "0xf6A9FFe9");
+    });
   }
 }
