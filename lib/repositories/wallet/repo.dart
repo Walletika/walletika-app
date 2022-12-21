@@ -13,7 +13,7 @@ abstract class WalletRepository {
     required String securityPassword,
   });
 
-  Future<bool> remove(WalletViewModel wallet);
+  Future<bool> remove(WalletViewModel currentWallet);
 
   Future<bool> loginValidate({
     required WalletViewModel currentWallet,

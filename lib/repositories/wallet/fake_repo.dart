@@ -156,8 +156,8 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
-  Future<bool> remove(WalletViewModel wallet) async {
-    return _wallets.remove(wallet);
+  Future<bool> remove(WalletViewModel currentWallet) async {
+    return _wallets.remove(currentWallet);
   }
 
   @override
