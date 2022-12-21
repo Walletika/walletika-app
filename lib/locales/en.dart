@@ -68,8 +68,8 @@ const Map<String, String> translator = {
   "1002@network": "Hide testnet networks",
   "1003@network": "Network Remove",
   "1004@network": "Are you sure you want to remove this network?",
-  "1005@network": "netwrok has been removed successfully.",
-  "1006@network": "netwrok removal failed.",
+  "1005@network": "Netwrok has been removed successfully.",
+  "1006@network": "Netwrok removal failed.",
   "1007@network": "This network is locked",
 
   // Add network
