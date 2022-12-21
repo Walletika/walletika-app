@@ -28,7 +28,9 @@ AwesomeDialog awesomeDialog({
     showCloseIcon: true,
     closeIcon: const Icon(LineIcons.times),
     title: title,
+    titleTextStyle: Theme.of(Get.context!).textTheme.titleSmall,
     desc: desc,
+    descTextStyle: Theme.of(Get.context!).textTheme.bodyMedium,
     body: body,
     btnOk: btnOkText is String
         ? SizedBox(
