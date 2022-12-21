@@ -153,6 +153,12 @@ const Map<String, String> translator = {
   "1009@wallet": "Remove Wallet",
   "1010@wallet": "Lock",
   "1011@wallet": "You have no transactions",
+  "1012@wallet": "Coin Details",
+  "1013@wallet": "Decimals",
+  "1014@wallet": "Coin Remove",
+  "1015@wallet": "Are you sure you want to remove this coin?",
+  "1016@wallet": "Token has been removed successfully.",
+  "1017@wallet": "Token removal failed.",
 
   // Add token
   "1000@addToken":
