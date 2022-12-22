@@ -25,6 +25,8 @@ class AddWalletBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Form(
       key: _formController,
       child: ListView(
@@ -36,7 +38,7 @@ class AddWalletBody extends StatelessWidget {
         children: [
           Text(
             "1000@addWallet".tr,
-            style: Theme.of(context).textTheme.titleSmall,
+            style: textTheme.titleSmall,
             textAlign: TextAlign.center,
           ),
           verticalSpace(AppDecoration.spaceBig),
@@ -156,63 +158,7 @@ class AddWalletBody extends StatelessWidget {
     )
         .then((isValid) {
       if (isValid) {
-        Get.back();
-
-        awesomeDialog(
-          dialogType: DialogType.success,
-          body: Padding(
-            padding: const EdgeInsets.only(left: AppDecoration.padding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Text(
-                    "1021@global".tr,
-                    style: Theme.of(Get.context!).textTheme.bodyLarge!.copyWith(
-                          fontFamily: AppFonts.medium,
-                          color: AppColors.green,
-                        ),
-                  ),
-                ),
-                verticalSpace(AppDecoration.spaceMedium),
-                Text(
-                  "1005@addWallet".tr,
-                  style: Theme.of(Get.context!).textTheme.bodyLarge!.copyWith(
-                        color: Colors.red,
-                      ),
-                ),
-                verticalSpace(),
-                Text(
-                  "1006@addWallet".tr,
-                  style: Theme.of(Get.context!).textTheme.labelSmall,
-                ),
-                verticalSpace(),
-                Text(
-                  "1007@addWallet".tr,
-                  style: Theme.of(Get.context!).textTheme.labelSmall,
-                ),
-                verticalSpace(),
-                Text(
-                  "1008@addWallet".tr,
-                  style: Theme.of(Get.context!).textTheme.labelSmall,
-                ),
-                verticalSpace(),
-                Text(
-                  "1009@addWallet".tr,
-                  style: Theme.of(Get.context!).textTheme.labelSmall,
-                ),
-                verticalSpace(),
-                Text(
-                  "1010@addWallet".tr,
-                  style: Theme.of(Get.context!).textTheme.labelSmall,
-                ),
-                verticalSpace(),
-              ],
-            ),
-          ),
-          btnOkText: "1012@addWallet".tr,
-          btnOkOnPress: () => Get.toNamed(AppPages.authSetup),
-        ).show();
+        _onCompleted();
       } else {
         operation.invalid("1011@addWallet".tr);
         operation.notify();
@@ -221,5 +167,50 @@ class AddWalletBody extends StatelessWidget {
       operation.error(error.toString());
       operation.notify(title: "0x3045C0bA");
     });
+  }
+
+  void _onCompleted() {
+    Get.back();
+
+    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
+
+    awesomeDialog(
+      dialogType: DialogType.success,
+      body: Padding(
+        padding: const EdgeInsets.only(left: AppDecoration.padding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Text(
+                "1021@global".tr,
+                style: textTheme.bodyLarge!.copyWith(
+                  fontFamily: AppFonts.medium,
+                  color: AppColors.green,
+                ),
+              ),
+            ),
+            verticalSpace(AppDecoration.spaceMedium),
+            Text(
+              "1005@addWallet".tr,
+              style: textTheme.bodyLarge!.copyWith(color: Colors.red),
+            ),
+            verticalSpace(),
+            Text("1006@addWallet".tr, style: textTheme.labelSmall),
+            verticalSpace(),
+            Text("1007@addWallet".tr, style: textTheme.labelSmall),
+            verticalSpace(),
+            Text("1008@addWallet".tr, style: textTheme.labelSmall),
+            verticalSpace(),
+            Text("1009@addWallet".tr, style: textTheme.labelSmall),
+            verticalSpace(),
+            Text("1010@addWallet".tr, style: textTheme.labelSmall),
+            verticalSpace(),
+          ],
+        ),
+      ),
+      btnOkText: "1012@addWallet".tr,
+      btnOkOnPress: () => Get.toNamed(AppPages.authSetup),
+    ).show();
   }
 }
