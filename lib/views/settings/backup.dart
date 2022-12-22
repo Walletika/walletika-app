@@ -203,7 +203,7 @@ class BackupView {
         verticalSpace(AppDecoration.spaceSmall),
         Text(
           outputPath,
-          style: textTheme.labelMedium,
+          style: textTheme.labelSmall,
           textAlign: TextAlign.center,
         ),
         verticalSpace(AppDecoration.spaceMedium),
