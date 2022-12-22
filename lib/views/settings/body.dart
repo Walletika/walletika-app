@@ -6,11 +6,13 @@ import '../../controllers/settings/settings.dart';
 import '../../utils/constants.dart';
 import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
+import 'backup.dart';
 
 class SettingsBody extends StatelessWidget {
   SettingsBody({super.key});
 
   final SettingsController _settingsController = Get.find<SettingsController>();
+  final BackupView _backupView = BackupView();
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +122,7 @@ class SettingsBody extends StatelessWidget {
                       SizedBox(
                         height: AppDecoration.buttonHeight,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: _backupView.backupOnPressed,
                           child: Text("1005@settings".tr),
                         ),
                       ),
