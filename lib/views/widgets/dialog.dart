@@ -16,6 +16,10 @@ AwesomeDialog awesomeDialog({
   String? btnCancelText,
   void Function()? btnCancelOnPress,
   bool autoDismiss = true,
+  bool showCloseIcon = true,
+  bool dismissOnBackKeyPress = true,
+  bool dismissOnTouchOutside = true,
+  void Function(DismissType)? onDismissCallback,
 }) {
   return AwesomeDialog(
     context: Get.context!,
@@ -25,7 +29,10 @@ AwesomeDialog awesomeDialog({
     dialogType: dialogType,
     animType: AnimType.rightSlide,
     headerAnimationLoop: false,
-    showCloseIcon: true,
+    showCloseIcon: showCloseIcon,
+    dismissOnBackKeyPress: dismissOnBackKeyPress,
+    dismissOnTouchOutside: dismissOnTouchOutside,
+    onDismissCallback: onDismissCallback,
     closeIcon: const Icon(LineIcons.times),
     title: title,
     titleTextStyle: Theme.of(Get.context!).textTheme.titleSmall,
