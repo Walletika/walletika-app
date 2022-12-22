@@ -42,5 +42,11 @@ abstract class WalletRepository {
     WalletViewModel currentWallet,
   );
 
+  Future<String> backup({
+    required String directory,
+    String? password,
+    required void Function(int value) progressCallback,
+  });
+
   String explorerURL(String address);
 }

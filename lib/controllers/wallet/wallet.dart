@@ -17,6 +17,7 @@ class WalletController extends GetxController {
   final RxList<TransactionItemModel> _transactions =
       <TransactionItemModel>[].obs;
   final RxDouble _totalBalance = 0.0.obs;
+  final RxInt _progressValue = 0.obs;
 
   // Process States
   final ProcessState _setFavoriteState = ProcessState();
@@ -39,6 +40,8 @@ class WalletController extends GetxController {
   List<TransactionItemModel> get transactions => _transactions;
 
   double get totalBalance => _totalBalance.value;
+
+  int get progressValue => _progressValue.value;
 
   WalletViewModel? get currentWallet => _currentWallet;
 
@@ -189,5 +192,18 @@ class WalletController extends GetxController {
     _transactions.value = await _repository.transactions(_currentWallet!).then(
           (transactions) => transactions.reversed.take(50).toList(),
         );
+  }
+
+  Future<String> backup({
+    required String directory,
+    String? password,
+  }) async {
+    _progressValue.value = 0;
+
+    return await _repository.backup(
+      directory: directory,
+      password: password,
+      progressCallback: (value) => _progressValue.value = value,
+    );
   }
 }

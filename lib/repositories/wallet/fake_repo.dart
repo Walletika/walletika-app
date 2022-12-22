@@ -220,6 +220,20 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
+  Future<String> backup({
+    required String directory,
+    String? password,
+    required void Function(int value) progressCallback,
+  }) async {
+    for (int i = 0; i < 100; i++) {
+      await Future.delayed(const Duration(milliseconds: 50));
+      progressCallback(i);
+    }
+
+    return '$directory\\walletika.backup.aes';
+  }
+
+  @override
   String explorerURL(String address) {
     return "https://etherscan.io/address/$address";
   }
