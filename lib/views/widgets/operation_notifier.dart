@@ -10,7 +10,7 @@ import 'spacer.dart';
 
 class OperationNotifier {
   OperationNotifier({
-    required this.title,
+    this.title,
     this.args,
   });
 
@@ -18,7 +18,7 @@ class OperationNotifier {
   bool _isError = false;
   String? _message;
 
-  final String title;
+  final String? title;
   final Map<String, dynamic>? args;
 
   bool get isValid => _isValid;
@@ -58,7 +58,7 @@ class OperationNotifier {
           ),
           child: Column(children: [
             Text(
-              title ?? this.title,
+              title ?? this.title!,
               style: Get.theme.textTheme.bodyMedium,
             ),
             Text(
@@ -84,7 +84,7 @@ class OperationNotifier {
     } else {
       modernSnackBar(
         title: title ?? this.title,
-        message: _message!,
+        message: _message,
         isSuccess: _isValid,
       );
     }
