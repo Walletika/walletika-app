@@ -69,8 +69,12 @@ const Map<String, String> translator = {
   "1013@settings": "Set your backup protection password",
   "1014@settings":
       "Warning: If you lose the protection password, you will never be able to import the backup file.",
-  "1015@settings": "Please wait, Backup in progressing...",
+  "1015@settings": "Please wait, Operation in progressing...",
   "1016@settings": "Backup file saved in",
+  "1017@settings": "Backup file has been imported successfully.",
+  "1018@settings": "The backup protection password is wrong.",
+  "1019@settings":
+      "Save this file in a safe place and don't share it with anyone.",
 
   // Networks
   "1000@network": "Blockchain Networks",
