@@ -21,6 +21,8 @@ class BackupView {
   String? _directory;
 
   void backupOnPressed() {
+    if (Get.isSnackbarOpen) return;
+
     FilePicker.platform.getDirectoryPath(lockParentWindow: true).then((result) {
       _directory = result;
 
@@ -133,10 +135,10 @@ class BackupView {
   }
 
   void _defaultPasswordOnPressed() {
-    _start(null);
+    _start();
   }
 
-  void _start(String? password) {
+  void _start([String? password]) {
     Get.back();
 
     final TextTheme textTheme = Theme.of(Get.context!).textTheme;
@@ -165,19 +167,14 @@ class BackupView {
   }
 
   void _backup(String? password) {
-    final OperationNotifier operation = OperationNotifier(
-      title: "0xa8eB426A",
-    );
+    final OperationNotifier operation = OperationNotifier();
 
     _walletController
-        .backup(
-          directory: _directory!,
-          password: password,
-        )
+        .backup(directory: _directory!, password: password)
         .then((outputPath) => _onCompleted(outputPath))
         .catchError((error) {
       operation.error(error.toString());
-      operation.notify(backScreen: true);
+      operation.notify(title: "0xa8eB426A", backScreen: true);
     });
   }
 
@@ -206,6 +203,8 @@ class BackupView {
           style: textTheme.labelSmall,
           textAlign: TextAlign.center,
         ),
+        verticalSpace(AppDecoration.spaceMedium),
+        WarningText(text: "1019@settings".tr),
         verticalSpace(AppDecoration.spaceMedium),
       ]),
     ).show();
