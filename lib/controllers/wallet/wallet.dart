@@ -206,4 +206,17 @@ class WalletController extends GetxController {
       progressCallback: (value) => _progressValue.value = value,
     );
   }
+
+  Future<void> import({
+    required String path,
+    String? password,
+  }) async {
+    _progressValue.value = 0;
+
+    await _repository.import(
+      path: path,
+      password: password,
+      progressCallback: (value) => _progressValue.value = value,
+    );
+  }
 }

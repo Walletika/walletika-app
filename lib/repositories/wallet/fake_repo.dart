@@ -234,6 +234,22 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
+  Future<void> import({
+    required String path,
+    String? password,
+    required void Function(int value) progressCallback,
+  }) async {
+    if (password == null || password != '123') {
+      throw Exception("the key doesn't match");
+    }
+
+    for (int i = 0; i < 100; i++) {
+      await Future.delayed(const Duration(milliseconds: 50));
+      progressCallback(i);
+    }
+  }
+
+  @override
   String explorerURL(String address) {
     return "https://etherscan.io/address/$address";
   }

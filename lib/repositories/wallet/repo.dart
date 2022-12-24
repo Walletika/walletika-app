@@ -48,5 +48,11 @@ abstract class WalletRepository {
     required void Function(int value) progressCallback,
   });
 
+  Future<void> import({
+    required String path,
+    String? password,
+    required void Function(int value) progressCallback,
+  });
+
   String explorerURL(String address);
 }
