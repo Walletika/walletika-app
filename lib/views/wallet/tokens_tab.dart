@@ -25,6 +25,7 @@ class TokensTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       final List<TokenItemModel> tokens = _walletController.tokens;
+      final bool visible = _walletController.isBalanceVisible;
 
       if (tokens.isEmpty) {
         return const Center(child: CircularProgressIndicator.adaptive());
@@ -49,7 +50,7 @@ class TokensTabView extends StatelessWidget {
               style: Theme.of(context).textTheme.titleSmall,
             ),
             subtitle: Text(
-              token.balanceAsCurrency,
+              visible ? token.balanceAsCurrency : AppDecoration.invisibleText,
               softWrap: false,
               style: Theme.of(context).textTheme.labelMedium,
             ),
@@ -79,7 +80,9 @@ class TokensTabView extends StatelessWidget {
                       ),
                 ),
                 Text(
-                  token.balanceInFiatAsCurrency,
+                  visible
+                      ? token.balanceInFiatAsCurrency
+                      : AppDecoration.invisibleText,
                   style: Theme.of(context).textTheme.labelSmall!.copyWith(
                         fontFamily: AppFonts.medium,
                       ),

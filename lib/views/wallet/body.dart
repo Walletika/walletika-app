@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import '../../controllers/tabs/tabs.dart';
 import '../../controllers/wallet/wallet.dart';
@@ -107,14 +108,31 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
           textAlign: TextAlign.center,
         ),
         Obx(() {
-          return Text(
-            convertToFiatFormat(
-              value: _walletController.totalBalance,
-              symbol: '\$',
-            ),
-            softWrap: false,
-            style: Theme.of(context).textTheme.headlineLarge,
-            textAlign: TextAlign.center,
+          final bool visible = _walletController.isBalanceVisible;
+
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                visible
+                    ? convertToFiatFormat(
+                        value: _walletController.totalBalance,
+                        symbol: '\$',
+                      )
+                    : AppDecoration.invisibleText,
+                softWrap: false,
+                style: Theme.of(context).textTheme.headlineLarge,
+                textAlign: TextAlign.center,
+              ),
+              IconButton(
+                onPressed: () => _walletController.balanceVisible(!visible),
+                tooltip: "1021@wallet".tr,
+                icon: Icon(
+                  visible ? LineIcons.eyeSlash : LineIcons.eye,
+                  size: AppDecoration.iconSmallSize,
+                ),
+              ),
+            ],
           );
         }),
         Padding(

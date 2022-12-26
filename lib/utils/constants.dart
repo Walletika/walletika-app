@@ -36,6 +36,7 @@ class AppDecoration {
   static const double widgetWidth = 300.0;
   static const double buttonHeight = 35.0;
   static const double buttonHeightLarge = 50.0;
+  static const String invisibleText = '******';
 }
 
 class AppColors {

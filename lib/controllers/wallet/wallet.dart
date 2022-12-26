@@ -17,6 +17,7 @@ class WalletController extends GetxController {
       <TransactionItemModel>[].obs;
   final RxDouble _totalBalance = 0.0.obs;
   final RxInt _progressValue = 0.obs;
+  final RxBool _isBalanceVisible = true.obs;
 
   // Local Data
   WalletItemModel? _currentWallet;
@@ -38,6 +39,8 @@ class WalletController extends GetxController {
   double get totalBalance => _totalBalance.value;
 
   int get progressValue => _progressValue.value;
+
+  bool get isBalanceVisible => _isBalanceVisible.value;
 
   WalletItemModel? get currentWallet => _currentWallet;
 
@@ -210,4 +213,6 @@ class WalletController extends GetxController {
       progressCallback: (value) => _progressValue.value = value,
     );
   }
+
+  void balanceVisible(bool state) => _isBalanceVisible.value = state;
 }
