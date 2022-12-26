@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 
 import '../../locales/locales.dart';
 import '../../services/settings.dart';
-import '../../utils/process_state.dart';
 import '../wallet/wallet.dart';
 
 class SettingsController extends GetxController {
@@ -14,12 +13,6 @@ class SettingsController extends GetxController {
   late RxString _currentLanguage;
   late RxString _currentNetwork;
   late RxBool _isTestnetHidden;
-
-  // Process States
-  final ProcessState _darkModeUpdateState = ProcessState();
-  final ProcessState _languageUpdateState = ProcessState();
-  final ProcessState _networkUpdateState = ProcessState();
-  final ProcessState _testnetHiddenUpdateState = ProcessState();
 
   // Local data
   final WalletController _walletController = Get.find<WalletController>();
@@ -47,58 +40,26 @@ class SettingsController extends GetxController {
 
   // Setter & Controller methods
   Future<void> darkModeUpdate(bool enabled) async {
-    if (!_darkModeUpdateState.run()) return;
-
-    try {
-      await _repository.darkModeUpdate(enabled);
-      Get.changeThemeMode(_repository.theme);
-      _isDarkMode.value = enabled;
-    } catch (e) {
-      rethrow;
-    } finally {
-      _darkModeUpdateState.done();
-    }
+    await _repository.darkModeUpdate(enabled);
+    Get.changeThemeMode(_repository.theme);
+    _isDarkMode.value = enabled;
   }
 
   Future<void> languageUpdate(String? language) async {
-    if (!_languageUpdateState.run()) return;
-
-    try {
-      await _repository.languageUpdate(language!);
-      Get.updateLocale(_repository.locale);
-      _currentLanguage.value = language;
-    } catch (e) {
-      rethrow;
-    } finally {
-      _languageUpdateState.done();
-    }
+    await _repository.languageUpdate(language!);
+    Get.updateLocale(_repository.locale);
+    _currentLanguage.value = language;
   }
 
   Future<void> networkUpdate(String name) async {
-    if (!_networkUpdateState.run()) return;
-
-    try {
-      await _repository.networkUpdate(name);
-      _walletController.tokensUpdate();
-      _walletController.transactionsUpdate();
-      _currentNetwork.value = name;
-    } catch (e) {
-      rethrow;
-    } finally {
-      _networkUpdateState.done();
-    }
+    await _repository.networkUpdate(name);
+    _walletController.tokensUpdate();
+    _walletController.transactionsUpdate();
+    _currentNetwork.value = name;
   }
 
   Future<void> testnetHiddenUpdate(bool enabled) async {
-    if (!_testnetHiddenUpdateState.run()) return;
-
-    try {
-      await _repository.testnetHiddenUpdate(enabled);
-      _isTestnetHidden.value = enabled;
-    } catch (e) {
-      rethrow;
-    } finally {
-      _testnetHiddenUpdateState.done();
-    }
+    await _repository.testnetHiddenUpdate(enabled);
+    _isTestnetHidden.value = enabled;
   }
 }

@@ -5,7 +5,6 @@ import '../../models/transaction.dart';
 import '../../models/wallet.dart';
 import '../../repositories/wallet/fake_repo.dart';
 import '../../repositories/wallet/repo.dart';
-import '../../utils/process_state.dart';
 
 class WalletController extends GetxController {
   // Data repository
@@ -18,9 +17,6 @@ class WalletController extends GetxController {
       <TransactionItemModel>[].obs;
   final RxDouble _totalBalance = 0.0.obs;
   final RxInt _progressValue = 0.obs;
-
-  // Process States
-  final ProcessState _setFavoriteState = ProcessState();
 
   // Local Data
   WalletItemModel? _currentWallet;
@@ -149,16 +145,8 @@ class WalletController extends GetxController {
     required String search,
     required WalletItemModel wallet,
   }) async {
-    if (!_setFavoriteState.run()) return;
-
-    try {
-      await _repository.setFavorite(wallet);
-      await walletsUpdate(search);
-    } catch (e) {
-      rethrow;
-    } finally {
-      _setFavoriteState.done();
-    }
+    await _repository.setFavorite(wallet);
+    await walletsUpdate(search);
   }
 
   Future<void> tokensUpdate() async {
