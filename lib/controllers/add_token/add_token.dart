@@ -19,8 +19,14 @@ class AddTokenController extends GetxController {
 
   Future<bool> search(String contractAddress) async {
     _isSearching.value = true;
-    _token.value = await _repository.search(contractAddress);
-    _isSearching.value = false;
+
+    try {
+      _token.value = await _repository.search(contractAddress);
+    } catch (_) {
+      rethrow;
+    } finally {
+      _isSearching.value = false;
+    }
 
     return _token.value != null;
   }
