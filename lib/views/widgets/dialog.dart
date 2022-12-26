@@ -21,6 +21,8 @@ AwesomeDialog awesomeDialog({
   bool dismissOnTouchOutside = true,
   void Function(DismissType)? onDismissCallback,
 }) {
+  if (Get.isSnackbarOpen) Get.closeCurrentSnackbar();
+
   return AwesomeDialog(
     context: Get.context!,
     width: width,

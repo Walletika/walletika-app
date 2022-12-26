@@ -46,7 +46,7 @@ class OperationNotifier {
     void Function()? onInvalid,
     void Function()? onError,
   }) async {
-    if (isRunning) return;
+    if (isRunning || Get.isSnackbarOpen) return;
 
     _state = OperationState.running;
 
