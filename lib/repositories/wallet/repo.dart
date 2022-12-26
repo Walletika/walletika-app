@@ -13,33 +13,42 @@ abstract class WalletRepository {
     required String securityPassword,
   });
 
-  Future<bool> remove(WalletViewModel currentWallet);
+  Future<bool> remove(WalletViewModel wallet);
 
   Future<bool> loginValidate({
-    required WalletViewModel currentWallet,
+    required WalletViewModel wallet,
     required String password,
   });
 
   Future<bool> login({
-    required WalletViewModel currentWallet,
+    required WalletViewModel wallet,
     required String password,
     required String otpCode,
   });
 
-  Future<void> logout(WalletViewModel currentWallet);
+  Future<void> logout(WalletViewModel wallet);
 
-  Future<String?> getPrivateKey(String otpCode);
+  Future<String?> getPrivateKey({
+    required WalletViewModel wallet,
+    required String otpCode,
+  });
 
-  Future<void> setFavorite(WalletViewModel currentWallet);
+  Future<void> setFavorite(WalletViewModel wallet);
 
-  Future<List<TokenItemModel>> tokens(WalletViewModel currentWallet);
+  Future<List<TokenItemModel>> tokens(WalletViewModel wallet);
 
-  Future<void> addToken(TokenItemModel token);
+  Future<void> addToken({
+    required WalletViewModel wallet,
+    required TokenItemModel token,
+  });
 
-  Future<bool> removeToken(TokenItemModel token);
+  Future<bool> removeToken({
+    required WalletViewModel wallet,
+    required TokenItemModel token,
+  });
 
   Future<List<TransactionItemModel>> transactions(
-    WalletViewModel currentWallet,
+    WalletViewModel wallet,
   );
 
   Future<String> backup({
@@ -48,7 +57,7 @@ abstract class WalletRepository {
     required void Function(int value) progressCallback,
   });
 
-  Future<void> import({
+  Future<bool> import({
     required String path,
     String? password,
     required void Function(int value) progressCallback,

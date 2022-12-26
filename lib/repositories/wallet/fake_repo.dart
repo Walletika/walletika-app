@@ -156,65 +156,70 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
-  Future<bool> remove(WalletViewModel currentWallet) async {
-    return _wallets.remove(currentWallet);
+  Future<bool> remove(WalletViewModel wallet) async {
+    return _wallets.remove(wallet);
   }
 
   @override
   Future<bool> loginValidate({
-    required WalletViewModel currentWallet,
+    required WalletViewModel wallet,
     required String password,
   }) async {
-    return password == '123';
-  }
-
-  @override
-  Future<bool> login({
-    required WalletViewModel currentWallet,
-    required String password,
-    required String otpCode,
-  }) async {
-    currentWallet.isLogged = true;
     return true;
   }
 
   @override
-  Future<void> logout(WalletViewModel currentWallet) async {
-    currentWallet.isLogged = false;
+  Future<bool> login({
+    required WalletViewModel wallet,
+    required String password,
+    required String otpCode,
+  }) async {
+    wallet.isLogged = true;
+    return true;
   }
 
   @override
-  Future<String?> getPrivateKey(String otpCode) async {
-    if (otpCode == '123456') {
-      return '0x78db9d2cb8c82cbc30bdcb8bab00c3ebedf88332cf6e85f543d295843754386f';
-    }
-
-    return null;
+  Future<void> logout(WalletViewModel wallet) async {
+    wallet.isLogged = false;
   }
 
   @override
-  Future<void> setFavorite(WalletViewModel currentWallet) async {
-    currentWallet.isFavorite = !currentWallet.isFavorite;
+  Future<String?> getPrivateKey({
+    required WalletViewModel wallet,
+    required String otpCode,
+  }) async {
+    return '0x78db9d2cb8c82cbc30bdcb8bab00c3ebedf88332cf6e85f543d295843754386f';
   }
 
   @override
-  Future<List<TokenItemModel>> tokens(WalletViewModel currentWallet) async {
+  Future<void> setFavorite(WalletViewModel wallet) async {
+    wallet.isFavorite = !wallet.isFavorite;
+  }
+
+  @override
+  Future<List<TokenItemModel>> tokens(WalletViewModel wallet) async {
     return _tokens.map((token) => token).toList();
   }
 
   @override
-  Future<void> addToken(TokenItemModel token) async {
+  Future<void> addToken({
+    required WalletViewModel wallet,
+    required TokenItemModel token,
+  }) async {
     _tokens.add(token);
   }
 
   @override
-  Future<bool> removeToken(TokenItemModel token) async {
+  Future<bool> removeToken({
+    required WalletViewModel wallet,
+    required TokenItemModel token,
+  }) async {
     return _tokens.remove(token);
   }
 
   @override
   Future<List<TransactionItemModel>> transactions(
-    WalletViewModel currentWallet,
+    WalletViewModel wallet,
   ) async {
     return _transactions.map((transaction) => transaction).toList();
   }
@@ -234,19 +239,19 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
-  Future<void> import({
+  Future<bool> import({
     required String path,
     String? password,
     required void Function(int value) progressCallback,
   }) async {
-    if (password == null || password != '123') {
-      throw Exception("the key doesn't match");
-    }
+    if (password == null) return false;
 
     for (int i = 0; i < 100; i++) {
       await Future.delayed(const Duration(milliseconds: 50));
       progressCallback(i);
     }
+
+    return true;
   }
 
   @override

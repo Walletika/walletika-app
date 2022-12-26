@@ -114,7 +114,7 @@ class WalletController extends GetxController {
 
   Future<bool> loginValidate(String password) async {
     final bool isValid = await _repository.loginValidate(
-      currentWallet: _currentWallet!,
+      wallet: _currentWallet!,
       password: password,
     );
 
@@ -126,7 +126,7 @@ class WalletController extends GetxController {
     required String otpCode,
   }) async {
     final bool isValid = await _repository.login(
-      currentWallet: _currentWallet!,
+      wallet: _currentWallet!,
       password: password,
       otpCode: otpCode,
     );
@@ -142,7 +142,7 @@ class WalletController extends GetxController {
   }
 
   Future<String?> getPrivateKey(String otpCode) async {
-    return _repository.getPrivateKey(otpCode);
+    return _repository.getPrivateKey(wallet: _currentWallet!, otpCode: otpCode);
   }
 
   Future<void> setFavorite({
@@ -175,12 +175,15 @@ class WalletController extends GetxController {
   }
 
   Future<void> addToken(TokenItemModel token) async {
-    await _repository.addToken(token);
+    await _repository.addToken(wallet: _currentWallet!, token: token);
     await tokensUpdate();
   }
 
   Future<bool> removeToken(TokenItemModel token) async {
-    final bool isValid = await _repository.removeToken(token);
+    final bool isValid = await _repository.removeToken(
+      wallet: _currentWallet!,
+      token: token,
+    );
 
     if (isValid) await tokensUpdate();
 
@@ -207,13 +210,13 @@ class WalletController extends GetxController {
     );
   }
 
-  Future<void> import({
+  Future<bool> import({
     required String path,
     String? password,
   }) async {
     _progressValue.value = 0;
 
-    await _repository.import(
+    return _repository.import(
       path: path,
       password: password,
       progressCallback: (value) => _progressValue.value = value,
