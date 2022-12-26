@@ -131,6 +131,10 @@ class WalletFakeRepository extends WalletRepository {
     required String password,
     required String securityPassword,
   }) async {
+    if (username == 'error') throw Exception("Error");
+
+    if (username == 'failed') return false;
+
     final WalletGeneratorInfo? wallet = await walletGenerator(
       username: username,
       password: password,
@@ -157,6 +161,10 @@ class WalletFakeRepository extends WalletRepository {
 
   @override
   Future<bool> remove(WalletViewModel wallet) async {
+    if (wallet.username.contains('error')) throw Exception("Error");
+
+    if (wallet.username.contains('failed')) return false;
+
     return _wallets.remove(wallet);
   }
 
@@ -165,6 +173,10 @@ class WalletFakeRepository extends WalletRepository {
     required WalletViewModel wallet,
     required String password,
   }) async {
+    if (password == 'error') throw Exception("Error");
+
+    if (password == 'failed') return false;
+
     return true;
   }
 
@@ -174,12 +186,18 @@ class WalletFakeRepository extends WalletRepository {
     required String password,
     required String otpCode,
   }) async {
+    if (otpCode == '111111') throw Exception("Error");
+
+    if (otpCode == '222222') return false;
+
     wallet.isLogged = true;
     return true;
   }
 
   @override
   Future<void> logout(WalletViewModel wallet) async {
+    if (wallet.username.contains('error')) throw Exception("Error");
+
     wallet.isLogged = false;
   }
 
@@ -188,11 +206,17 @@ class WalletFakeRepository extends WalletRepository {
     required WalletViewModel wallet,
     required String otpCode,
   }) async {
+    if (otpCode == '111111') throw Exception("Error");
+
+    if (otpCode == '222222') return null;
+
     return '0x78db9d2cb8c82cbc30bdcb8bab00c3ebedf88332cf6e85f543d295843754386f';
   }
 
   @override
   Future<void> setFavorite(WalletViewModel wallet) async {
+    if (wallet.username.contains('error')) throw Exception("Error");
+
     wallet.isFavorite = !wallet.isFavorite;
   }
 
@@ -206,6 +230,8 @@ class WalletFakeRepository extends WalletRepository {
     required WalletViewModel wallet,
     required TokenItemModel token,
   }) async {
+    if (wallet.username.contains('error')) throw Exception("Error");
+
     _tokens.add(token);
   }
 
@@ -214,6 +240,10 @@ class WalletFakeRepository extends WalletRepository {
     required WalletViewModel wallet,
     required TokenItemModel token,
   }) async {
+    if (wallet.username.contains('error')) throw Exception("Error");
+
+    if (wallet.username.contains('failed')) return false;
+
     return _tokens.remove(token);
   }
 
@@ -230,6 +260,10 @@ class WalletFakeRepository extends WalletRepository {
     String? password,
     required void Function(int value) progressCallback,
   }) async {
+    if (password != null && password.contains('error')) {
+      throw Exception("Error");
+    }
+
     for (int i = 0; i < 100; i++) {
       await Future.delayed(const Duration(milliseconds: 50));
       progressCallback(i);
@@ -244,7 +278,9 @@ class WalletFakeRepository extends WalletRepository {
     String? password,
     required void Function(int value) progressCallback,
   }) async {
-    if (password == null) return false;
+    if (password == 'error') throw Exception("Error");
+
+    if (password == 'failed' || password == null) return false;
 
     for (int i = 0; i < 100; i++) {
       await Future.delayed(const Duration(milliseconds: 50));
