@@ -7,6 +7,9 @@ class AddTokenFakeRepository extends AddTokenRepository {
     await Future.delayed(const Duration(seconds: 5));
 
     if (contractAddress.toLowerCase() ==
+        '0x4fabb145d64652a948d72533023f6e7a623c7c51') throw Exception("Error");
+
+    if (contractAddress.toLowerCase() ==
         '0x4fabb145d64652a948d72533023f6e7a623c7c53') {
       return TokenItemModel(
         imageURL:
