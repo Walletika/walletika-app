@@ -74,6 +74,10 @@ class NetworkFakeRepository extends NetworkRepository {
     required String symbol,
     required String explorer,
   }) async {
+    if (name == 'error') throw Exception("Error");
+
+    if (name == 'failed') return false;
+
     _networks.add(
       NetworkItemModel(
         imageURL:
@@ -93,6 +97,10 @@ class NetworkFakeRepository extends NetworkRepository {
 
   @override
   Future<bool> remove(NetworkItemModel network) async {
+    if (network.name == 'Goerli Ethereum ( Testnet )') throw Exception("Error");
+
+    if (network.name == 'Binance Smart Chain') return false;
+
     return _networks.remove(network);
   }
 }
