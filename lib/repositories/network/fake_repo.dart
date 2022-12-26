@@ -82,7 +82,7 @@ class NetworkFakeRepository extends NetworkRepository {
       NetworkItemModel(
         imageURL:
             await WalletikaAPI.getCoinImage(CoinEntry(symbol: symbol)).then(
-          (coin) => coin.imageURL,
+          (token) => token.imageURL,
         ),
         name: name,
         rpc: rpc,

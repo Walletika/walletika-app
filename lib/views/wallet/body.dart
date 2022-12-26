@@ -12,7 +12,7 @@ import '../../utils/launch_url.dart';
 import '../widgets/dialog.dart';
 import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
-import 'coins_tab.dart';
+import 'tokens_tab.dart';
 import 'transactions_tab.dart';
 import '../add_token/add_token.dart';
 
@@ -300,7 +300,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
             child: TabBarView(
               controller: _tabController,
               children: [
-                CoinsTabView(),
+                TokensTabView(),
                 TransactionsTabView(),
               ],
             ),

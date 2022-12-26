@@ -13,8 +13,8 @@ import '../widgets/item_logo.dart';
 import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
 
-class CoinsTabView extends StatelessWidget {
-  CoinsTabView({super.key});
+class TokensTabView extends StatelessWidget {
+  TokensTabView({super.key});
 
   final WalletController _walletController = Get.find<WalletController>();
   final OperationNotifier _removeOperation = OperationNotifier(
