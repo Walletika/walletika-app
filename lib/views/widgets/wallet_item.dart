@@ -36,10 +36,12 @@ class WalletItem extends StatelessWidget {
       ),
       title: Row(
         children: [
-          Text(
-            username,
-            softWrap: false,
-            style: Theme.of(context).textTheme.titleMedium,
+          Flexible(
+            child: Text(
+              username,
+              softWrap: false,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
           ),
           ...isActive
               ? [
