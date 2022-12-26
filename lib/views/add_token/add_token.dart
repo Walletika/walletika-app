@@ -25,6 +25,12 @@ class _AddTokenViewState extends State<AddTokenView> {
   final TextEditingController _contractController = TextEditingController();
   final WalletController _walletController = Get.find<WalletController>();
   final AddTokenController _addTokenController = Get.put(AddTokenController());
+  final OperationNotifier _searchOperation = OperationNotifier(
+    id: "0xbFbA1D5e",
+  );
+  final OperationNotifier _addTokenOperation = OperationNotifier(
+    id: "0xd08A50Ae",
+  );
 
   @override
   void dispose() {
@@ -109,37 +115,19 @@ class _AddTokenViewState extends State<AddTokenView> {
 
   void _contractOnChanged(String text) {
     if (_formController.currentState!.validate()) {
-      _search(text);
+      _searchOperation.run(
+        callback: () => _addTokenController.search(text),
+        invalidMessage: "1002@addToken".tr,
+      );
     }
   }
 
-  void _search(String text) {
-    final OperationNotifier operation = OperationNotifier(
-      title: "1007@wallet".tr,
-    );
-
-    _addTokenController.search(text).then((isValid) {
-      if (!isValid) {
-        operation.invalid("1002@addToken".tr);
-        operation.notify();
-      }
-    }).catchError((error) {
-      operation.error(error.toString());
-      operation.notify(title: "0xbFbA1D5e");
-    });
-  }
-
   void _addTokenOnPressed(TokenItemModel token) {
-    final OperationNotifier operation = OperationNotifier(
+    _addTokenOperation.run(
+      callback: () => _walletController.addToken(token).then((_) => true),
       title: token.name,
+      validMessage: "1003@addToken".tr,
+      closeScreenWhenValid: true,
     );
-
-    _walletController.addToken(token).then((_) {
-      operation.valid("1003@addToken".tr);
-      operation.notify(backScreen: true);
-    }).catchError((error) {
-      operation.error(error.toString());
-      operation.notify(title: "0xd08A50Ae");
-    });
   }
 }

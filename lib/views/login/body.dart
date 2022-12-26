@@ -14,6 +14,9 @@ class LoginBody extends StatelessWidget {
   final GlobalKey<FormState> _formController = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
   final WalletController _walletController = Get.find<WalletController>();
+  final OperationNotifier _loginOperation = OperationNotifier(
+    id: "0x6B6fccaf",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -78,23 +81,13 @@ class LoginBody extends StatelessWidget {
   }
 
   void _login() {
-    final OperationNotifier operation = OperationNotifier(
-      title: _walletController.currentWallet!.username,
+    _loginOperation.run(
+      callback: () => _walletController.loginValidate(_passwordController.text),
+      invalidMessage: "1003@login".tr,
+      onValid: () => Get.offNamed(AppPages.auth, arguments: _authValidator),
+      onInvalid: _passwordController.clear,
+      onError: _passwordController.clear,
     );
-
-    _walletController.loginValidate(_passwordController.text).then((isValid) {
-      if (isValid) {
-        Get.offNamed(AppPages.auth, arguments: _authValidator);
-      } else {
-        _passwordController.clear();
-        operation.invalid("1003@login".tr);
-        operation.notify();
-      }
-    }).catchError((error) {
-      _passwordController.clear();
-      operation.error(error.toString());
-      operation.notify(title: "0x6B6fccaf");
-    });
   }
 
   Future<bool> _authValidator(String otpCode) async {

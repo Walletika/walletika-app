@@ -17,6 +17,9 @@ class CoinsTabView extends StatelessWidget {
   CoinsTabView({super.key});
 
   final WalletController _walletController = Get.find<WalletController>();
+  final OperationNotifier _removeOperation = OperationNotifier(
+    id: "0x5CE297A6",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -152,19 +155,11 @@ class CoinsTabView extends StatelessWidget {
   }
 
   void _removeToken(TokenItemModel token) {
-    final OperationNotifier operation = OperationNotifier(
+    _removeOperation.run(
+      callback: () => _walletController.removeToken(token),
       title: token.name,
+      validMessage: "1016@wallet".tr,
+      invalidMessage: "1017@wallet".tr,
     );
-
-    _walletController.removeToken(token).then((isValid) {
-      isValid
-          ? operation.valid("1016@wallet".tr)
-          : operation.invalid("1017@wallet".tr);
-
-      operation.notify();
-    }).catchError((error) {
-      operation.error(error.toString());
-      operation.notify(title: "0x5CE297A6");
-    });
   }
 }

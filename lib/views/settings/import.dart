@@ -14,6 +14,9 @@ class ImportView {
   final GlobalKey<FormState> _formController = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
   final WalletController _walletController = Get.find<WalletController>();
+  final OperationNotifier _importOperation = OperationNotifier(
+    id: "0x90a6cfe1",
+  );
 
   String? _filePath;
 
@@ -60,32 +63,20 @@ class ImportView {
       ]),
     ).show();
 
-    _import(password);
-  }
-
-  void _import(String? password) {
-    final OperationNotifier operation = OperationNotifier();
-
-    _walletController.import(path: _filePath!, password: password).then((_) {
-      operation.valid("1017@settings".tr);
-      operation.notify(backScreen: true);
-    }).catchError((error) {
-      final String errorText = error.toString();
-
-      if (errorText == "Exception: the key doesn't match") {
-        if (password == null) {
-          _specificPasswordOnPressed();
-          return;
-        }
-
-        operation.invalid("1018@settings".tr);
-        operation.notify(backScreen: true);
-        return;
-      }
-
-      operation.error(errorText);
-      operation.notify(title: "0x90a6cfe1", backScreen: true);
-    });
+    _importOperation.run(
+      callback: () => _walletController.import(
+        path: _filePath!,
+        password: password,
+      ),
+      validMessage: "1017@settings".tr,
+      invalidMessage: password == null ? null : "1018@settings".tr,
+      closeScreenWhenValid: true,
+      closeScreenWhenInvalid: true,
+      closeScreenWhenError: true,
+      onInvalid: () {
+        if (password == null) _specificPasswordOnPressed();
+      },
+    );
   }
 
   void _specificPasswordOnPressed() {

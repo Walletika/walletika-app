@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../controllers/network/network.dart';
 import '../../utils/constants.dart';
+import '../../utils/launch_url.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
@@ -19,6 +20,9 @@ class AddNetworkBody extends StatelessWidget {
   final TextEditingController _symbolController = TextEditingController();
   final TextEditingController _explorerController = TextEditingController();
   final NetworkController _networkController = Get.find<NetworkController>();
+  final OperationNotifier _addNetworkOperation = OperationNotifier(
+    id: "0xA4d38F81",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +54,7 @@ class AddNetworkBody extends StatelessWidget {
               if (text != null &&
                   _networkController.networkExists(
                     name: text,
-                    rpc: _rpcController.text,
+                    rpc: urlCorrection(url: _rpcController.text),
                   )) return "1018@global".tr;
 
               return null;
@@ -131,31 +135,19 @@ class AddNetworkBody extends StatelessWidget {
 
   void _onSubmit() {
     if (_formController.currentState!.validate()) {
-      _addNetwork();
+      _addNetworkOperation.run(
+        callback: () => _networkController.addNew(
+          name: _nameController.text,
+          rpc: urlCorrection(url: _rpcController.text),
+          chainID: int.parse(_chainIDController.text),
+          symbol: _symbolController.text,
+          explorer: urlCorrection(url: _explorerController.text),
+        ),
+        title: _nameController.text,
+        validMessage: "1008@addNetwork".tr,
+        invalidMessage: "1009@addNetwork".tr,
+        closeScreenWhenValid: true,
+      );
     }
-  }
-
-  void _addNetwork() {
-    final OperationNotifier operation = OperationNotifier(
-      title: _nameController.text,
-    );
-
-    _networkController
-        .addNew(
-      name: _nameController.text,
-      rpc: _rpcController.text,
-      chainID: int.parse(_chainIDController.text),
-      symbol: _symbolController.text,
-      explorer: _explorerController.text,
-    )
-        .then((isValid) {
-      isValid
-          ? operation.valid("1008@addNetwork".tr)
-          : operation.invalid("1009@addNetwork".tr);
-      operation.notify(backScreen: isValid);
-    }).catchError((error) {
-      operation.error(error.toString());
-      operation.notify(title: "0xA4d38F81");
-    });
   }
 }

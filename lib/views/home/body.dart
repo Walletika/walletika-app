@@ -19,6 +19,9 @@ class HomeBody extends StatelessWidget {
 
   final TextEditingController _searchInputController = TextEditingController();
   final WalletController _walletController = Get.find<WalletController>();
+  final OperationNotifier _favoriteOperation = OperationNotifier(
+    id: "0x2D23C079",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -98,18 +101,13 @@ class HomeBody extends StatelessWidget {
   }
 
   void _favoriteOnPressed(WalletViewModel wallet) {
-    final OperationNotifier operation = OperationNotifier(
-      title: "0x2D23C079",
+    _favoriteOperation.run(
+      callback: () => _walletController
+          .setFavorite(
+            search: _searchInputController.text,
+            walletViewModel: wallet,
+          )
+          .then((_) => true),
     );
-
-    _walletController
-        .setFavorite(
-      search: _searchInputController.text,
-      walletViewModel: wallet,
-    )
-        .catchError((error) {
-      operation.error(error.toString());
-      operation.notify();
-    });
   }
 }

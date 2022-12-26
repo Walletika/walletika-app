@@ -17,6 +17,9 @@ class BackupView {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPassController = TextEditingController();
   final WalletController _walletController = Get.find<WalletController>();
+  final OperationNotifier _backupOperation = OperationNotifier(
+    id: "0xa8eB426A",
+  );
 
   String? _directory;
 
@@ -163,19 +166,21 @@ class BackupView {
       ]),
     ).show();
 
-    _backup(password);
+    _backupOperation.run(
+      callback: () => _backupCallback(password),
+      closeScreenWhenError: true,
+    );
   }
 
-  void _backup(String? password) {
-    final OperationNotifier operation = OperationNotifier();
+  Future<bool> _backupCallback(String? password) async {
+    final String outputPath = await _walletController.backup(
+      directory: _directory!,
+      password: password,
+    );
 
-    _walletController
-        .backup(directory: _directory!, password: password)
-        .then((outputPath) => _onCompleted(outputPath))
-        .catchError((error) {
-      operation.error(error.toString());
-      operation.notify(title: "0xa8eB426A", backScreen: true);
-    });
+    _onCompleted(outputPath);
+
+    return true;
   }
 
   void _onCompleted(String outputPath) {

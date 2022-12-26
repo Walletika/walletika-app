@@ -18,6 +18,15 @@ class NetworkBody extends StatelessWidget {
 
   final SettingsController _settingsController = Get.find<SettingsController>();
   final NetworkController _networkController = Get.find<NetworkController>();
+  final OperationNotifier _testNetHiddenOperation = OperationNotifier(
+    id: "0xEAB1b2Eb",
+  );
+  final OperationNotifier _networkTapOperation = OperationNotifier(
+    id: "0xDB641091",
+  );
+  final OperationNotifier _removeOperation = OperationNotifier(
+    id: "0xf6A9FFe9",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -129,27 +138,20 @@ class NetworkBody extends StatelessWidget {
   }
 
   void _testNetHideOnChanged(bool enabled) {
-    final OperationNotifier operation = OperationNotifier(
-      title: "0xEAB1b2Eb",
+    _testNetHiddenOperation.run(
+      callback: () => _settingsController.testnetHiddenUpdate(enabled).then(
+            (_) => true,
+          ),
+      onValid: _networkController.networksUpdate,
     );
-
-    _settingsController.testnetHiddenUpdate(enabled).then((_) {
-      _networkController.networksUpdate();
-    }).catchError((error) {
-      operation.error(error.toString());
-      operation.notify();
-    });
   }
 
   void _networkOnTap(NetworkItemModel network) {
-    final OperationNotifier operation = OperationNotifier(
-      title: "0xDB641091",
+    _networkTapOperation.run(
+      callback: () => _settingsController.networkUpdate(network.name).then(
+            (_) => true,
+          ),
     );
-
-    _settingsController.networkUpdate(network.name).catchError((error) {
-      operation.error(error.toString());
-      operation.notify();
-    });
   }
 
   void _removeOnPressed(NetworkItemModel network) {
@@ -163,18 +165,11 @@ class NetworkBody extends StatelessWidget {
   }
 
   void _removeNetwork(NetworkItemModel network) {
-    final OperationNotifier operation = OperationNotifier(
+    _removeOperation.run(
+      callback: () => _networkController.remove(network),
       title: network.name,
+      validMessage: "1005@network".tr,
+      invalidMessage: "1006@network".tr,
     );
-
-    _networkController.remove(network).then((isValid) {
-      isValid
-          ? operation.valid("1005@network".tr)
-          : operation.invalid("1006@network".tr);
-      operation.notify();
-    }).catchError((error) {
-      operation.error(error.toString());
-      operation.notify(title: "0xf6A9FFe9");
-    });
   }
 }

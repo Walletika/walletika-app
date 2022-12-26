@@ -15,6 +15,12 @@ class SettingsBody extends StatelessWidget {
   final SettingsController _settingsController = Get.find<SettingsController>();
   final BackupView _backupView = BackupView();
   final ImportView _importView = ImportView();
+  final OperationNotifier _darkModeOperation = OperationNotifier(
+    id: "0xC495fdf7",
+  );
+  final OperationNotifier _languageOperation = OperationNotifier(
+    id: "0x7648bddc",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -147,24 +153,18 @@ class SettingsBody extends StatelessWidget {
   }
 
   void _darkModeOnChanged(bool enabled) {
-    final OperationNotifier operation = OperationNotifier(
-      title: "0xC495fdf7",
+    _darkModeOperation.run(
+      callback: () => _settingsController.darkModeUpdate(enabled).then(
+            (_) => true,
+          ),
     );
-
-    _settingsController.darkModeUpdate(enabled).catchError((error) {
-      operation.error(error.toString());
-      operation.notify();
-    });
   }
 
   void _languageOnChanged(String? language) {
-    final OperationNotifier operation = OperationNotifier(
-      title: "0x7648bddc",
+    _languageOperation.run(
+      callback: () => _settingsController.languageUpdate(language).then(
+            (_) => true,
+          ),
     );
-
-    _settingsController.languageUpdate(language).catchError((error) {
-      operation.error(error.toString());
-      operation.notify();
-    });
   }
 }

@@ -22,6 +22,9 @@ class AddWalletBody extends StatelessWidget {
   final TextEditingController _securityPassController = TextEditingController();
   final TextEditingController _confirmSPassController = TextEditingController();
   final WalletController _walletController = Get.find<WalletController>();
+  final OperationNotifier _addWalletOperation = OperationNotifier(
+    id: "0x3045C0bA",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -141,32 +144,16 @@ class AddWalletBody extends StatelessWidget {
 
   void _onSubmit() {
     if (_formController.currentState!.validate()) {
-      _addWallet();
+      _addWalletOperation.run(
+        callback: () => _walletController.addNew(
+          username: _usernameController.text,
+          password: _passwordController.text,
+          securityPassword: _securityPassController.text,
+        ),
+        invalidMessage: "1011@addWallet".tr,
+        onValid: _onCompleted,
+      );
     }
-  }
-
-  void _addWallet() {
-    final OperationNotifier operation = OperationNotifier(
-      title: "1004@addWallet".tr,
-    );
-
-    _walletController
-        .addNew(
-      username: _usernameController.text,
-      password: _passwordController.text,
-      securityPassword: _securityPassController.text,
-    )
-        .then((isValid) {
-      if (isValid) {
-        _onCompleted();
-      } else {
-        operation.invalid("1011@addWallet".tr);
-        operation.notify();
-      }
-    }).catchError((error) {
-      operation.error(error.toString());
-      operation.notify(title: "0x3045C0bA");
-    });
   }
 
   void _onCompleted() {

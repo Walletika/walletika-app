@@ -20,6 +20,9 @@ class AuthVerificationTabView extends StatelessWidget {
   final TabsController _tabsController = Get.find<TabsController>();
   final AuthSetupController _authSetupController =
       Get.find<AuthSetupController>();
+  final OperationNotifier _verifyOperation = OperationNotifier(
+    id: "0xBECEb73F",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -95,34 +98,21 @@ class AuthVerificationTabView extends StatelessWidget {
 
   void _onSubmit() {
     if (_formController.currentState!.validate()) {
-      _verify();
+      _verifyOperation.run(
+        callback: () => _authSetupController.verification(
+          password: _passwordController.text,
+          securityPassword: _securityPassController.text,
+        ),
+        invalidMessage: "1003@login".tr,
+        onValid: () => tabController.animateTo(_tabsController.toNextTab()),
+        onInvalid: _fieldsClear,
+        onError: _fieldsClear,
+      );
     }
   }
 
-  void _verify() {
-    final OperationNotifier operation = OperationNotifier(
-      title: _authSetupController.username,
-    );
-
-    _authSetupController
-        .verification(
-      password: _passwordController.text,
-      securityPassword: _securityPassController.text,
-    )
-        .then((isValid) {
-      _passwordController.clear();
-      _securityPassController.clear();
-      if (isValid) {
-        tabController.animateTo(_tabsController.toNextTab());
-      } else {
-        operation.invalid("1003@login".tr);
-        operation.notify();
-      }
-    }).catchError((error) {
-      _passwordController.clear();
-      _securityPassController.clear();
-      operation.error(error.toString());
-      operation.notify(title: "0xBECEb73F");
-    });
+  void _fieldsClear() {
+    _passwordController.clear();
+    _securityPassController.clear();
   }
 }

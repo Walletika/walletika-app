@@ -20,6 +20,9 @@ class AuthScanTabView extends StatelessWidget {
   final TabsController _tabsController = Get.find<TabsController>();
   final AuthSetupController _authSetupController =
       Get.find<AuthSetupController>();
+  final OperationNotifier _confirmOperation = OperationNotifier(
+    id: "0xFA8BD5Ec",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -110,27 +113,15 @@ class AuthScanTabView extends StatelessWidget {
 
   void _onSubmit() {
     if (_formController.currentState!.validate()) {
-      _confirm();
+      _confirmOperation.run(
+        callback: () => _authSetupController.confirmation(
+          _pinputController.text,
+        ),
+        invalidMessage: "1003@auth".tr,
+        onValid: () => tabController.animateTo(_tabsController.toNextTab()),
+        onInvalid: _pinputController.clear,
+        onError: _pinputController.clear,
+      );
     }
-  }
-
-  void _confirm() {
-    final OperationNotifier operation = OperationNotifier(
-      title: _authSetupController.username,
-    );
-
-    _authSetupController.confirmation(_pinputController.text).then((isValid) {
-      _pinputController.clear();
-      if (isValid) {
-        tabController.animateTo(_tabsController.toNextTab());
-      } else {
-        operation.invalid("1003@auth".tr);
-        operation.notify();
-      }
-    }).catchError((error) {
-      _pinputController.clear();
-      operation.error(error.toString());
-      operation.notify(title: "0xFA8BD5Ec");
-    });
   }
 }

@@ -33,7 +33,7 @@ const Map<String, String> translator = {
   "1030@global": "Menu",
   "1031@global": "View on block explorer",
   "1032@global": "Access Denied",
-  "1033@global": "Wallet login is required to access this feature.",
+  "1033@global": "Login is required to access this feature.",
   "1034@global": "Confirmed Successfully",
   "1035@global": "Connected",
 
@@ -97,7 +97,8 @@ const Map<String, String> translator = {
   "1006@addNetwork": "Block Explorer URL",
   "1007@addNetwork": "Add Network",
   "1008@addNetwork": "Network has been added successfully.",
-  "1009@addNetwork": "Failed, Unable to connect to this network.",
+  "1009@addNetwork":
+      "Network unable to connect, Make sure it is the correct rpc and chain id of network.",
 
   // Add wallet
   "1000@addWallet":

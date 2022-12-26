@@ -15,6 +15,7 @@ class WalletDetailsBody extends StatelessWidget {
   WalletDetailsBody({super.key});
 
   final WalletController _walletController = Get.find<WalletController>();
+  final OperationNotifier _privateKeyOperation = OperationNotifier(id: '');
 
   @override
   Widget build(BuildContext context) {
@@ -72,16 +73,12 @@ class WalletDetailsBody extends StatelessWidget {
   }
 
   void _privateKeyOnPressed() {
-    final OperationNotifier operation = OperationNotifier(
+    _privateKeyOperation.run(
+      callback: () async => _walletController.currentWallet!.isLogged,
       title: "1032@global".tr,
+      invalidMessage: "1033@global".tr,
+      onValid: () => Get.toNamed(AppPages.auth, arguments: _authValidator),
     );
-
-    if (_walletController.currentWallet!.isLogged) {
-      Get.toNamed(AppPages.auth, arguments: _authValidator);
-    } else {
-      operation.invalid("1033@global".tr);
-      operation.notify();
-    }
   }
 
   Future<bool> _authValidator(String otpCode) async {

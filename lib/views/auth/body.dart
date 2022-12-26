@@ -14,6 +14,9 @@ class AuthBody extends StatelessWidget {
   final TextEditingController _pinputController = TextEditingController();
   final WalletController _walletController = Get.find<WalletController>();
   final Future<bool> Function(String otpCode) _validator = Get.arguments;
+  final OperationNotifier _confirmOperation = OperationNotifier(
+    id: "0x513bD3c4",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -87,25 +90,12 @@ class AuthBody extends StatelessWidget {
 
   void _onSubmit() {
     if (_formController.currentState!.validate()) {
-      _confirm();
+      _confirmOperation.run(
+        callback: () => _validator(_pinputController.text),
+        invalidMessage: "1003@auth".tr,
+        onInvalid: _pinputController.clear,
+        onError: _pinputController.clear,
+      );
     }
-  }
-
-  void _confirm() {
-    final OperationNotifier operation = OperationNotifier(
-      title: _walletController.currentWallet!.username,
-    );
-
-    _validator(_pinputController.text).then((isValid) {
-      if (!isValid) {
-        _pinputController.clear();
-        operation.invalid("1003@auth".tr);
-        operation.notify();
-      }
-    }).catchError((error) {
-      _pinputController.clear();
-      operation.error(error.toString());
-      operation.notify(title: "0x513bD3c4");
-    });
   }
 }

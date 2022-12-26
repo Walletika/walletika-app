@@ -30,6 +30,12 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
   late TabController _tabController;
   final TabsController _tabsController = Get.find<TabsController>();
   final WalletController _walletController = Get.find<WalletController>();
+  final OperationNotifier _removeOperation = OperationNotifier(
+    id: "0x518705F0",
+  );
+  final OperationNotifier _logoutOperation = OperationNotifier(
+    id: "0xe634FCdd",
+  );
 
   @override
   void initState() {
@@ -335,35 +341,20 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
   }
 
   void _removeWallet() {
-    final OperationNotifier operation = OperationNotifier(
+    _removeOperation.run(
+      callback: () => _walletController.removeCurrentWallet(),
       title: _walletController.currentWallet!.username,
+      validMessage: "1019@wallet".tr,
+      invalidMessage: "1020@wallet".tr,
+      closeScreenWhenValid: true,
     );
-
-    _walletController.removeCurrentWallet().then((isValid) {
-      if (isValid) {
-        operation.valid("1019@wallet".tr);
-        operation.notify(backScreen: true);
-      } else {
-        operation.invalid("1020@wallet".tr);
-        operation.notify();
-      }
-    }).catchError((error) {
-      operation.error(error.toString());
-      operation.notify(title: "0x518705F0");
-    });
   }
 
   void _lockOnSelected() {
-    final OperationNotifier operation = OperationNotifier(
-      title: "0xe634FCdd",
+    _logoutOperation.run(
+      callback: () => _walletController.logout().then((_) => true),
+      onValid: Get.back,
     );
-
-    _walletController.logout().then((_) {
-      Get.back();
-    }).catchError((error) {
-      operation.error(error.toString());
-      operation.notify();
-    });
   }
 
   void _bottomSheet(Widget widget) {
