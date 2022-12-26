@@ -74,7 +74,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                 child: Text(
                   _walletController.currentWallet!.username,
                   softWrap: false,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
             ),

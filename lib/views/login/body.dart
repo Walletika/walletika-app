@@ -39,7 +39,7 @@ class LoginBody extends StatelessWidget {
           Text(
             _walletController.currentWallet!.username,
             softWrap: false,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: Theme.of(context).textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),
           verticalSpace(AppDecoration.spaceSmall),

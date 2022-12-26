@@ -58,7 +58,7 @@ class AuthVerificationTabView extends StatelessWidget {
           verticalSpace(AppDecoration.spaceMedium),
           Text(
             _authSetupController.username,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: Theme.of(context).textTheme.titleMedium,
             textAlign: TextAlign.center,
           ),
           TextAddress(_authSetupController.address),
