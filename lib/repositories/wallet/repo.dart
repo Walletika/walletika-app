@@ -3,7 +3,7 @@ import '../../models/transaction.dart';
 import '../../models/wallet.dart';
 
 abstract class WalletRepository {
-  Stream<WalletViewModel> getAll();
+  Stream<WalletItemModel> getAll();
 
   int count();
 
@@ -13,43 +13,41 @@ abstract class WalletRepository {
     required String securityPassword,
   });
 
-  Future<bool> remove(WalletViewModel wallet);
+  Future<bool> remove(WalletItemModel wallet);
 
   Future<bool> loginValidate({
-    required WalletViewModel wallet,
+    required WalletItemModel wallet,
     required String password,
   });
 
   Future<bool> login({
-    required WalletViewModel wallet,
+    required WalletItemModel wallet,
     required String password,
     required String otpCode,
   });
 
-  Future<void> logout(WalletViewModel wallet);
+  Future<void> logout(WalletItemModel wallet);
 
   Future<String?> getPrivateKey({
-    required WalletViewModel wallet,
+    required WalletItemModel wallet,
     required String otpCode,
   });
 
-  Future<void> setFavorite(WalletViewModel wallet);
+  Future<void> setFavorite(WalletItemModel wallet);
 
-  Future<List<TokenItemModel>> tokens(WalletViewModel wallet);
+  Future<List<TokenItemModel>> tokens(WalletItemModel wallet);
 
   Future<void> addToken({
-    required WalletViewModel wallet,
+    required WalletItemModel wallet,
     required TokenItemModel token,
   });
 
   Future<bool> removeToken({
-    required WalletViewModel wallet,
+    required WalletItemModel wallet,
     required TokenItemModel token,
   });
 
-  Future<List<TransactionItemModel>> transactions(
-    WalletViewModel wallet,
-  );
+  Future<List<TransactionItemModel>> transactions(WalletItemModel wallet);
 
   Future<String> backup({
     required String directory,

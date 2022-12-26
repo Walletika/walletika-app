@@ -12,7 +12,7 @@ class WalletController extends GetxController {
   final WalletRepository _repository = WalletFakeRepository();
 
   // States
-  final RxList<WalletViewModel> _wallets = <WalletViewModel>[].obs;
+  final RxList<WalletItemModel> _wallets = <WalletItemModel>[].obs;
   final RxList<TokenItemModel> _tokens = <TokenItemModel>[].obs;
   final RxList<TransactionItemModel> _transactions =
       <TransactionItemModel>[].obs;
@@ -23,7 +23,7 @@ class WalletController extends GetxController {
   final ProcessState _setFavoriteState = ProcessState();
 
   // Local Data
-  WalletViewModel? _currentWallet;
+  WalletItemModel? _currentWallet;
 
   // Event methods
   @override
@@ -33,7 +33,7 @@ class WalletController extends GetxController {
   }
 
   // Getter methods
-  List<WalletViewModel> get wallets => _wallets;
+  List<WalletItemModel> get wallets => _wallets;
 
   List<TokenItemModel> get tokens => _tokens;
 
@@ -43,7 +43,7 @@ class WalletController extends GetxController {
 
   int get progressValue => _progressValue.value;
 
-  WalletViewModel? get currentWallet => _currentWallet;
+  WalletItemModel? get currentWallet => _currentWallet;
 
   int count() => _repository.count();
 
@@ -62,9 +62,9 @@ class WalletController extends GetxController {
   // Setter & Controller methods
   Future<void> walletsUpdate([String search = '']) async {
     search = search.toLowerCase();
-    final List<WalletViewModel> result = [];
+    final List<WalletItemModel> result = [];
 
-    await for (final WalletViewModel wallet in _repository.getAll()) {
+    await for (final WalletItemModel wallet in _repository.getAll()) {
       if (search.isEmpty ||
           wallet.username.toLowerCase().contains(search) ||
           wallet.address.toLowerCase().contains(search)) {
@@ -104,7 +104,7 @@ class WalletController extends GetxController {
     return isValid;
   }
 
-  void setCurrentWallet(WalletViewModel wallet) {
+  void setCurrentWallet(WalletItemModel wallet) {
     if (wallet == _currentWallet) return;
 
     _currentWallet = wallet;
@@ -147,12 +147,12 @@ class WalletController extends GetxController {
 
   Future<void> setFavorite({
     required String search,
-    required WalletViewModel walletViewModel,
+    required WalletItemModel wallet,
   }) async {
     if (!_setFavoriteState.run()) return;
 
     try {
-      await _repository.setFavorite(walletViewModel);
+      await _repository.setFavorite(wallet);
       await walletsUpdate(search);
     } catch (e) {
       rethrow;

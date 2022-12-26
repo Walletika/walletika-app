@@ -44,7 +44,7 @@ class HomeBody extends StatelessWidget {
         ),
         Expanded(
           child: Obx(() {
-            final List<WalletViewModel> wallets = _walletController.wallets;
+            final List<WalletItemModel> wallets = _walletController.wallets;
 
             if (wallets.isEmpty) {
               if (_walletController.count() == 0) {
@@ -66,7 +66,7 @@ class HomeBody extends StatelessWidget {
               ),
               itemCount: wallets.length,
               itemBuilder: (context, index) {
-                final WalletViewModel wallet = wallets[index];
+                final WalletItemModel wallet = wallets[index];
 
                 return WalletItem(
                   onTap: () => _walletOnTap(wallet),
@@ -95,17 +95,17 @@ class HomeBody extends StatelessWidget {
     _walletController.walletsUpdate(text);
   }
 
-  void _walletOnTap(WalletViewModel wallet) {
+  void _walletOnTap(WalletItemModel wallet) {
     _walletController.setCurrentWallet(wallet);
     Get.toNamed(wallet.isLogged ? AppPages.wallet : AppPages.login);
   }
 
-  void _favoriteOnPressed(WalletViewModel wallet) {
+  void _favoriteOnPressed(WalletItemModel wallet) {
     _favoriteOperation.run(
       callback: () => _walletController
           .setFavorite(
             search: _searchInputController.text,
-            walletViewModel: wallet,
+            wallet: wallet,
           )
           .then((_) => true),
     );

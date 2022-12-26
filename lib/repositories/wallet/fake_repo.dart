@@ -8,22 +8,22 @@ import '../../models/wallet.dart';
 import 'repo.dart';
 
 class WalletFakeRepository extends WalletRepository {
-  final List<WalletViewModel> _wallets = [
-    WalletViewModel(
+  final List<WalletItemModel> _wallets = [
+    WalletItemModel(
       username: 'Wallet1',
       address: '0x70463907F1aEe85619D8C248352d422681E304A1',
       dateCreated: DateTime.now(),
       isFavorite: true,
       isLogged: false,
     ),
-    WalletViewModel(
+    WalletItemModel(
       username: 'Wallet2',
       address: '0x81f4300AD8e46e2315A414DE387a23b84e9B8590',
       dateCreated: DateTime.now(),
       isFavorite: false,
       isLogged: false,
     ),
-    WalletViewModel(
+    WalletItemModel(
       username: 'Wallet3',
       address: '0x4520c0fb7aC21d52E089e49261FAC3e7424F9045',
       dateCreated: DateTime.now(),
@@ -116,8 +116,8 @@ class WalletFakeRepository extends WalletRepository {
   ];
 
   @override
-  Stream<WalletViewModel> getAll() async* {
-    for (final WalletViewModel wallet in _wallets) {
+  Stream<WalletItemModel> getAll() async* {
+    for (final WalletItemModel wallet in _wallets) {
       yield wallet;
     }
   }
@@ -144,7 +144,7 @@ class WalletFakeRepository extends WalletRepository {
 
     if (wallet != null) {
       _wallets.add(
-        WalletViewModel(
+        WalletItemModel(
           username: username,
           address: wallet.address.hexEip55,
           dateCreated: DateTime.now(),
@@ -160,7 +160,7 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
-  Future<bool> remove(WalletViewModel wallet) async {
+  Future<bool> remove(WalletItemModel wallet) async {
     if (wallet.username.contains('error')) throw Exception("Error");
 
     if (wallet.username.contains('failed')) return false;
@@ -170,7 +170,7 @@ class WalletFakeRepository extends WalletRepository {
 
   @override
   Future<bool> loginValidate({
-    required WalletViewModel wallet,
+    required WalletItemModel wallet,
     required String password,
   }) async {
     if (password == 'error') throw Exception("Error");
@@ -182,7 +182,7 @@ class WalletFakeRepository extends WalletRepository {
 
   @override
   Future<bool> login({
-    required WalletViewModel wallet,
+    required WalletItemModel wallet,
     required String password,
     required String otpCode,
   }) async {
@@ -195,7 +195,7 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
-  Future<void> logout(WalletViewModel wallet) async {
+  Future<void> logout(WalletItemModel wallet) async {
     if (wallet.username.contains('error')) throw Exception("Error");
 
     wallet.isLogged = false;
@@ -203,7 +203,7 @@ class WalletFakeRepository extends WalletRepository {
 
   @override
   Future<String?> getPrivateKey({
-    required WalletViewModel wallet,
+    required WalletItemModel wallet,
     required String otpCode,
   }) async {
     if (otpCode == '111111') throw Exception("Error");
@@ -214,20 +214,20 @@ class WalletFakeRepository extends WalletRepository {
   }
 
   @override
-  Future<void> setFavorite(WalletViewModel wallet) async {
+  Future<void> setFavorite(WalletItemModel wallet) async {
     if (wallet.username.contains('error')) throw Exception("Error");
 
     wallet.isFavorite = !wallet.isFavorite;
   }
 
   @override
-  Future<List<TokenItemModel>> tokens(WalletViewModel wallet) async {
+  Future<List<TokenItemModel>> tokens(WalletItemModel wallet) async {
     return _tokens.map((token) => token).toList();
   }
 
   @override
   Future<void> addToken({
-    required WalletViewModel wallet,
+    required WalletItemModel wallet,
     required TokenItemModel token,
   }) async {
     if (wallet.username.contains('error')) throw Exception("Error");
@@ -237,7 +237,7 @@ class WalletFakeRepository extends WalletRepository {
 
   @override
   Future<bool> removeToken({
-    required WalletViewModel wallet,
+    required WalletItemModel wallet,
     required TokenItemModel token,
   }) async {
     if (wallet.username.contains('error')) throw Exception("Error");
@@ -249,7 +249,7 @@ class WalletFakeRepository extends WalletRepository {
 
   @override
   Future<List<TransactionItemModel>> transactions(
-    WalletViewModel wallet,
+    WalletItemModel wallet,
   ) async {
     return _transactions.map((transaction) => transaction).toList();
   }

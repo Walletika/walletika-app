@@ -1,11 +1,11 @@
-class WalletViewModel {
+class WalletItemModel {
   final String username;
   final String address;
   final DateTime dateCreated;
   bool isFavorite;
   bool isLogged;
 
-  WalletViewModel({
+  WalletItemModel({
     required this.username,
     required this.address,
     required this.dateCreated,
