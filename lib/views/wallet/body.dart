@@ -65,11 +65,17 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
         Stack(
           alignment: AlignmentDirectional.centerEnd,
           children: [
-            Center(
-              child: Text(
-                _walletController.currentWallet!.username,
-                softWrap: false,
-                style: Theme.of(context).textTheme.titleLarge,
+            Padding(
+              padding: const EdgeInsets.only(
+                left: AppDecoration.spaceMedium,
+                right: AppDecoration.spaceBig,
+              ),
+              child: Center(
+                child: Text(
+                  _walletController.currentWallet!.username,
+                  softWrap: false,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
               ),
             ),
             PopupMenuButton(
