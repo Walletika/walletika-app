@@ -28,6 +28,8 @@ SnackbarController modernSnackBar({
 
   final TextTheme textTheme = Theme.of(Get.context!).textTheme;
 
+  if (Get.isSnackbarOpen) Get.closeCurrentSnackbar();
+
   return Get.rawSnackbar(
     backgroundColor: Colors.black87,
     leftBarIndicatorColor: icon?.color,
@@ -36,10 +38,9 @@ SnackbarController modernSnackBar({
     snackPosition: SnackPosition.TOP,
     borderRadius: AppDecoration.radius,
     margin: const EdgeInsets.all(AppDecoration.margin),
-    padding: EdgeInsets.symmetric(
+    padding: const EdgeInsets.symmetric(
       horizontal: AppDecoration.paddingMedium,
-      vertical:
-          title != null ? AppDecoration.padding : AppDecoration.paddingMedium,
+      vertical: 12.0,
     ),
     icon: icon,
     titleText: title != null
@@ -53,7 +54,7 @@ SnackbarController modernSnackBar({
     messageText: message != null
         ? Text(
             message,
-            style: textTheme.bodySmall!.copyWith(
+            style: textTheme.bodyMedium!.copyWith(
               color: icon?.color ?? Colors.white,
             ),
           )
