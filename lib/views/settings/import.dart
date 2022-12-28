@@ -23,13 +23,7 @@ class ImportView {
   void importOnPressed() {
     if (Get.isSnackbarOpen) return;
 
-    FilePicker.platform
-        .pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['aes'],
-      lockParentWindow: true,
-    )
-        .then((result) {
+    FilePicker.platform.pickFiles(lockParentWindow: true).then((result) {
       _filePath = result?.paths.first;
 
       if (_filePath == null) return;
