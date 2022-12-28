@@ -126,7 +126,7 @@ class TokensTabView extends StatelessWidget {
                 ]
               : [],
           TextButton.icon(
-            onPressed: () => launchURL(token.explorerURL),
+            onPressed: () => _explorerOnPressed(token.explorerURL),
             icon: const Icon(LineIcons.alternateExternalLink),
             label: Text("1008@wallet".tr),
           ),
@@ -143,6 +143,11 @@ class TokensTabView extends StatelessWidget {
         ],
       ),
     ).show();
+  }
+
+  void _explorerOnPressed(String url) {
+    Get.back();
+    launchURL(url);
   }
 
   void _removeOnPressed(TokenItemModel token) {

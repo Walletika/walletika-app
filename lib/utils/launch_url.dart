@@ -1,13 +1,22 @@
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../views/widgets/operation_notifier.dart';
+
 Future<void> launchURL(String url) async {
+  final OperationNotifier operation = OperationNotifier(id: "0xeA152Fbc");
   Uri uri = Uri.parse(url);
 
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri);
-  } else {
-    throw Exception("Could not launch $url");
-  }
+  return operation.run(
+    callback: () async {
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+        return true;
+      }
+
+      throw Exception("${"1036@global".tr}: $url");
+    },
+  );
 }
 
 String urlCorrection({required String url, String protocol = 'http'}) {
