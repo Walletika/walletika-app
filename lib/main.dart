@@ -27,11 +27,11 @@ void main() async {
 }
 
 Future<void> initServices() async {
+  await Get.putAsync(() => SettingsService().init(), permanent: true);
   await WalletikaAPI.init(
     'key',
     directory: await getApplicationSupportDirectory().then((dir) => dir.path),
   );
-  await Get.putAsync(() => SettingsService().init(), permanent: true);
 }
 
 class WalletikaApp extends StatelessWidget {
