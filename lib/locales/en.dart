@@ -36,6 +36,7 @@ const Map<String, String> translator = {
   "1033@global": "Login is required to access this feature.",
   "1034@global": "Confirmed Successfully",
   "1035@global": "Connected",
+  "1036@global": "Could not launch this URL",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
@@ -63,7 +64,7 @@ const Map<String, String> translator = {
   "1008@settings": "Software version",
   "1009@settings": "Do you want to set a specific password?",
   "1010@settings":
-      "Note: The backup file will be protected with AES encryption anyway.",
+      "Note: In all cases, the backup file will be protected with AES encryption.",
   "1011@settings": "Yes, Set a Password",
   "1012@settings": "No, Backup Now",
   "1013@settings": "Set your backup protection password",
@@ -163,7 +164,7 @@ const Map<String, String> translator = {
   "1004@wallet": "Coins",
   "1005@wallet": "Transactions",
   "1006@wallet": "Wallet Details",
-  "1007@wallet": "Add Token",
+  "1007@wallet": "Add Coin",
   "1008@wallet": "View at Explorer",
   "1009@wallet": "Remove Wallet",
   "1010@wallet": "Lock",
@@ -172,8 +173,8 @@ const Map<String, String> translator = {
   "1013@wallet": "Decimals",
   "1014@wallet": "Coin Remove",
   "1015@wallet": "Are you sure you want to remove this coin?",
-  "1016@wallet": "Token has been removed successfully.",
-  "1017@wallet": "Token removal failed.",
+  "1016@wallet": "Coin has been removed successfully.",
+  "1017@wallet": "Coin removal failed.",
   "1018@wallet": "Are you sure you want to remove current wallet?",
   "1019@wallet": "Wallet has been removed successfully.",
   "1020@wallet": "Wallet removal failed.",
@@ -183,9 +184,8 @@ const Map<String, String> translator = {
   "1000@addToken":
       "Make sure you use the correct contract address that you trust.",
   "1001@addToken": "Paste ( 0x ) Contract Address",
-  "1002@addToken":
-      "Token unavailable, Please make sure the address is correct.",
-  "1003@addToken": "Token has been added successfully.",
+  "1002@addToken": "Coin unavailable, Please make sure the address is correct.",
+  "1003@addToken": "Coin has been added successfully.",
 
   // Wallet details
   "1000@walletDetails":
