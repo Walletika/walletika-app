@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:window_manager/window_manager.dart';
 
 import '../../models/token.dart';
 import '../../models/transaction.dart';
@@ -197,7 +198,7 @@ class WalletController extends GetxController {
     return await _repository.backup(
       directory: directory,
       password: password,
-      progressCallback: (value) => _progressValue.value = value,
+      progressCallback: _progressCallback,
     );
   }
 
@@ -210,9 +211,14 @@ class WalletController extends GetxController {
     return _repository.import(
       path: path,
       password: password,
-      progressCallback: (value) => _progressValue.value = value,
+      progressCallback: _progressCallback,
     );
   }
 
   void balanceVisible(bool state) => _isBalanceVisible.value = state;
+
+  void _progressCallback(value) {
+    windowManager.setProgressBar(value / 100);
+    _progressValue.value = value;
+  }
 }
