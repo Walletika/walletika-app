@@ -15,6 +15,8 @@ class AppInfo {
   static const String authAppStore =
       'https://apps.apple.com/us/app/google-authenticator/id388497605';
   static const String authAuthy = 'https://authy.com/download';
+  static final bool isDesktop = GetPlatform.isDesktop;
+  static final bool isAndroid = GetPlatform.isAndroid;
 }
 
 class AppDecoration {

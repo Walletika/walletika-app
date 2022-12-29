@@ -7,6 +7,7 @@ import 'controllers/dependencies.dart';
 import 'locales/locales.dart';
 import 'services/settings.dart';
 import 'utils/constants.dart';
+import 'utils/desktop_window.dart';
 import 'views/deposit/deposit.dart';
 import 'views/wallet_details/wallet_details.dart';
 import 'views/add_network/add_network.dart';
@@ -23,6 +24,8 @@ import 'views/widgets/themes.dart';
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized() is implemented by GetStorage
   await initServices();
+  await initDesktopWindow();
+
   runApp(WalletikaApp());
 }
 
