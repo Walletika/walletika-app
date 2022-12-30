@@ -30,7 +30,7 @@ class NetworkBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
+    final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Column(
       children: [
@@ -66,8 +66,6 @@ class NetworkBody extends StatelessWidget {
             if (networks.isEmpty) {
               return const Center(child: CircularProgressIndicator.adaptive());
             }
-
-            final TextTheme textTheme = Theme.of(Get.context!).textTheme;
 
             return ListView.separated(
               padding: const EdgeInsets.only(bottom: AppDecoration.spaceLarge),

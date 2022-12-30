@@ -20,7 +20,7 @@ class AuthBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
+    final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Form(
       key: _formController,
