@@ -19,6 +19,8 @@ class WalletDetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return ListView(
       padding: const EdgeInsets.symmetric(
         horizontal: AppDecoration.paddingMedium,
@@ -28,7 +30,7 @@ class WalletDetailsBody extends StatelessWidget {
         Text(
           "1006@wallet".tr,
           softWrap: false,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: textTheme.titleSmall,
           textAlign: TextAlign.center,
         ),
         verticalSpace(),
@@ -37,7 +39,7 @@ class WalletDetailsBody extends StatelessWidget {
             data: _walletController.currentWallet!.address,
             size: 150.0,
             padding: const EdgeInsets.all(AppDecoration.paddingMedium),
-            foregroundColor: Theme.of(context).textTheme.bodyMedium!.color,
+            foregroundColor: textTheme.bodyMedium!.color,
             version: QrVersions.auto,
             gapless: false,
           ),
@@ -46,7 +48,7 @@ class WalletDetailsBody extends StatelessWidget {
         Text(
           _walletController.currentWallet!.username,
           softWrap: false,
-          style: Theme.of(context).textTheme.titleMedium,
+          style: textTheme.bodyLarge!.copyWith(fontFamily: AppFonts.bold),
           textAlign: TextAlign.center,
         ),
         TextAddress(_walletController.currentWallet!.address),
@@ -88,6 +90,8 @@ class WalletDetailsBody extends StatelessWidget {
 
     Get.back();
 
+    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
+
     awesomeDialog(
       dialogType: DialogType.success,
       body: Padding(
@@ -96,18 +100,12 @@ class WalletDetailsBody extends StatelessWidget {
           children: [
             Text(
               "1034@global".tr,
-              style: Theme.of(Get.context!).textTheme.bodyLarge!.copyWith(
-                    fontFamily: AppFonts.medium,
-                    color: AppColors.green,
-                  ),
+              style: textTheme.bodyMedium!.copyWith(color: AppColors.green),
             ),
             verticalSpace(AppDecoration.spaceMedium),
             WarningText(text: "1000@walletDetails".tr),
             verticalSpace(AppDecoration.spaceMedium),
-            Text(
-              "1002@walletDetails".tr,
-              style: Theme.of(Get.context!).textTheme.titleSmall,
-            ),
+            Text("1002@walletDetails".tr),
             TextAddress(key, width: AppDecoration.widgetWidth),
             verticalSpace(),
           ],
