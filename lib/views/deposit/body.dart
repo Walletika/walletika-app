@@ -15,6 +15,8 @@ class DepositBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return ListView(
       padding: const EdgeInsets.symmetric(
         horizontal: AppDecoration.paddingMedium,
@@ -23,7 +25,7 @@ class DepositBody extends StatelessWidget {
       children: [
         Text(
           "1001@wallet".tr,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: textTheme.titleSmall,
           textAlign: TextAlign.center,
         ),
         verticalSpace(AppDecoration.spaceMedium),
@@ -37,29 +39,20 @@ class DepositBody extends StatelessWidget {
           endIndent: AppDecoration.dividerPadding,
         ),
         verticalSpace(AppDecoration.spaceMedium),
-        Text(
-          "1000@deposit".tr,
-          style: Theme.of(context).textTheme.bodyLarge,
-          textAlign: TextAlign.center,
-        ),
+        Text("1000@deposit".tr, textAlign: TextAlign.center),
         verticalSpace(),
         Center(
           child: QrImage(
             data: _walletController.currentWallet!.address,
             size: 150.0,
             padding: const EdgeInsets.all(AppDecoration.paddingMedium),
-            foregroundColor: Theme.of(context).textTheme.bodyMedium!.color,
+            foregroundColor: textTheme.bodyMedium!.color,
             version: QrVersions.auto,
             gapless: false,
           ),
         ),
         verticalSpace(),
-        Text(
-          "1001@deposit".tr,
-          softWrap: false,
-          style: Theme.of(context).textTheme.bodyLarge,
-          textAlign: TextAlign.center,
-        ),
+        Text("1001@deposit".tr, softWrap: false, textAlign: TextAlign.center),
         TextAddress(_walletController.currentWallet!.address),
       ],
     );
