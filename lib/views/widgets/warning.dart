@@ -32,7 +32,10 @@ class WarningText extends StatelessWidget {
             width: AppDecoration.widgetWidth,
             child: Text(
               text,
-              style: style ?? textTheme.labelSmall,
+              style: style ??
+                  textTheme.labelSmall!.copyWith(
+                    fontSize: AppFonts.smallestSize,
+                  ),
             ),
           ),
         ),
