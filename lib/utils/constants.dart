@@ -20,7 +20,11 @@ class AppInfo {
 }
 
 class AppDecoration {
+  static const double radiusSmall = 5.0;
   static const double radius = 10.0;
+  static const double radiusMedium = 20.0;
+  static const double radiusBig = 30.0;
+  static const double radiusLarge = 50.0;
   static const double margin = 10.0;
   static const double padding = 10.0;
   static const double paddingMedium = 20.0;
@@ -70,6 +74,16 @@ class AppFonts {
   static const String medium = 'Roboto Medium';
   static const String bold = 'Roboto Bold';
   static const String black = 'Roboto Black';
+  static const double displayLargeSize = 30.0;
+  static const double displayMediumSize = 28.0;
+  static const double displaySmallSize = 26.0;
+  static const double headlineLargeSize = 24.0;
+  static const double headlineMediumSize = 22.0;
+  static const double headlineSmallSize = 20.0;
+  static const double largeSize = 18.0;
+  static const double mediumSize = 16.0;
+  static const double smallSize = 14.0;
+  static const double smallestSize = 12.0;
 }
 
 class AppImages {

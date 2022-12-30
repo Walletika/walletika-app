@@ -12,38 +12,56 @@ const TextStyle _primaryTextStyle = TextStyle(
 );
 
 final TextTheme _textTheme = TextTheme(
-  displayLarge: _primaryTextStyle.copyWith(fontSize: 30.0),
-  displayMedium: _primaryTextStyle.copyWith(fontSize: 28.0),
-  displaySmall: _primaryTextStyle.copyWith(fontSize: 26.0),
-  headlineLarge: _primaryTextStyle.copyWith(fontSize: 24.0),
-  headlineMedium: _primaryTextStyle.copyWith(fontSize: 22.0),
-  headlineSmall: _primaryTextStyle.copyWith(fontSize: 20.0),
+  displayLarge: _primaryTextStyle.copyWith(
+    fontSize: AppFonts.displayLargeSize,
+  ),
+  displayMedium: _primaryTextStyle.copyWith(
+    fontSize: AppFonts.displayMediumSize,
+  ),
+  displaySmall: _primaryTextStyle.copyWith(
+    fontSize: AppFonts.displaySmallSize,
+  ),
+  headlineLarge: _primaryTextStyle.copyWith(
+    fontSize: AppFonts.headlineLargeSize,
+  ),
+  headlineMedium: _primaryTextStyle.copyWith(
+    fontSize: AppFonts.headlineMediumSize,
+  ),
+  headlineSmall: _primaryTextStyle.copyWith(
+    fontSize: AppFonts.headlineSmallSize,
+  ),
   titleLarge: _primaryTextStyle.copyWith(
     fontFamily: AppFonts.bold,
-    fontSize: 20.0,
+    fontSize: AppFonts.headlineLargeSize,
   ),
   titleMedium: _primaryTextStyle.copyWith(
     fontFamily: AppFonts.bold,
-    fontSize: 18.0,
+    fontSize: AppFonts.headlineMediumSize,
   ),
   titleSmall: _primaryTextStyle.copyWith(
     fontFamily: AppFonts.bold,
-    fontSize: 16.0,
+    fontSize: AppFonts.headlineSmallSize,
   ),
-  bodyLarge: _primaryTextStyle.copyWith(fontSize: 16.0),
-  bodyMedium: _primaryTextStyle.copyWith(fontSize: 14.0),
-  bodySmall: _primaryTextStyle.copyWith(fontSize: 12.0),
+  bodyLarge: _primaryTextStyle.copyWith(
+    fontSize: AppFonts.largeSize,
+  ),
+  bodyMedium: _primaryTextStyle.copyWith(
+    fontSize: AppFonts.mediumSize,
+  ),
+  bodySmall: _primaryTextStyle.copyWith(
+    fontSize: AppFonts.smallSize,
+  ),
   labelLarge: _primaryTextStyle.copyWith(
     color: AppColors.font2,
-    fontSize: 16.0,
+    fontSize: AppFonts.largeSize,
   ),
   labelMedium: _primaryTextStyle.copyWith(
     color: AppColors.font2,
-    fontSize: 14.0,
+    fontSize: AppFonts.mediumSize,
   ),
   labelSmall: _primaryTextStyle.copyWith(
     color: AppColors.font2,
-    fontSize: 12.0,
+    fontSize: AppFonts.smallSize,
   ),
 );
 
@@ -68,12 +86,17 @@ final ThemeData walletikaDefaultTheme = ThemeData(
   iconTheme: _iconTheme,
   inputDecorationTheme: InputDecorationTheme(
     labelStyle: _textTheme.labelMedium,
-    errorStyle: _textTheme.bodySmall!.copyWith(color: Colors.red),
+    errorStyle: _textTheme.bodySmall!.copyWith(
+      color: Colors.red,
+      fontSize: AppFonts.smallestSize,
+    ),
     filled: true,
     fillColor: AppColors.background2,
     prefixIconColor: _iconTheme.color,
     suffixIconColor: _iconTheme.color,
-    counterStyle: _textTheme.labelSmall,
+    counterStyle: _textTheme.labelSmall!.copyWith(
+      fontSize: AppFonts.smallestSize,
+    ),
     border: UnderlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(AppDecoration.radius),
@@ -98,14 +121,18 @@ final ThemeData walletikaDefaultTheme = ThemeData(
         AppDecoration.widgetWidth,
         AppDecoration.buttonHeight,
       ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppDecoration.radiusSmall),
+      ),
     ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: ElevatedButton.styleFrom(
       textStyle: _textTheme.bodyMedium,
       padding: const EdgeInsets.symmetric(horizontal: AppDecoration.padding),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppDecoration.radiusSmall),
+      ),
     ),
   ),
   popupMenuTheme: PopupMenuThemeData(
@@ -172,6 +199,6 @@ final ThemeData walletikaDarkTheme = walletikaDefaultTheme.copyWith(
   ),
   popupMenuTheme: walletikaDefaultTheme.popupMenuTheme.copyWith(
     color: AppColors.background2Dark,
-    textStyle: _textTheme.bodyMedium!.copyWith(color: AppColors.fontDark),
+    textStyle: _textTheme.bodySmall!.copyWith(color: AppColors.fontDark),
   ),
 );
