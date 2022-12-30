@@ -24,6 +24,8 @@ class WalletItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return ListTile(
       minVerticalPadding: 20.0,
       onTap: onTap,
@@ -40,7 +42,7 @@ class WalletItem extends StatelessWidget {
             child: Text(
               username,
               softWrap: false,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: textTheme.bodyLarge!.copyWith(fontFamily: AppFonts.bold),
             ),
           ),
           ...isActive

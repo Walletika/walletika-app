@@ -16,9 +16,7 @@ class CircularProgressValueIndicator extends StatelessWidget {
       children: [
         Text(
           '$value%',
-          style: textTheme.bodyLarge!.copyWith(
-            color: AppColors.highlight,
-          ),
+          style: textTheme.bodyMedium!.copyWith(color: AppColors.highlight),
           textAlign: TextAlign.center,
         ),
         SizedBox(

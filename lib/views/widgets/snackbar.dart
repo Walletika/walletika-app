@@ -38,23 +38,24 @@ SnackbarController modernSnackBar({
     snackPosition: SnackPosition.TOP,
     borderRadius: AppDecoration.radius,
     margin: const EdgeInsets.all(AppDecoration.margin),
-    padding: const EdgeInsets.symmetric(
+    padding: EdgeInsets.symmetric(
       horizontal: AppDecoration.paddingMedium,
-      vertical: 12.0,
+      vertical: title == null ? AppDecoration.paddingMedium : 12.0,
     ),
     icon: icon,
     titleText: title != null
         ? Text(
             title,
-            style: textTheme.titleSmall!.copyWith(
+            style: textTheme.bodyMedium!.copyWith(
               color: icon?.color ?? Colors.white,
+              fontFamily: AppFonts.bold,
             ),
           )
         : null,
     messageText: message != null
         ? Text(
             message,
-            style: textTheme.bodyMedium!.copyWith(
+            style: textTheme.bodySmall!.copyWith(
               color: icon?.color ?? Colors.white,
             ),
           )

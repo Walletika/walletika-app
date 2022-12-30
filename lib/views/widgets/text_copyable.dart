@@ -7,24 +7,6 @@ import 'package:get/get.dart';
 import '../../utils/constants.dart';
 
 class TextCopyable extends StatefulWidget {
-  final String data;
-  final double? width;
-  final double? height;
-  final TextStyle? style;
-  final StrutStyle? strutStyle;
-  final TextAlign? textAlign;
-  final TextDirection? textDirection;
-  final Locale? locale;
-  final bool? softWrap;
-  final TextOverflow? overflow;
-  final double? textScaleFactor;
-  final int? maxLines;
-  final String? semanticsLabel;
-  final TextWidthBasis? textWidthBasis;
-  final ui.TextHeightBehavior? textHeightBehavior;
-  final Color? selectionColor;
-  final MainAxisAlignment mainAxisAlignment;
-
   const TextCopyable(
     this.data, {
     this.width,
@@ -45,6 +27,24 @@ class TextCopyable extends StatefulWidget {
     this.mainAxisAlignment = MainAxisAlignment.center,
     super.key,
   });
+
+  final String data;
+  final double? width;
+  final double? height;
+  final TextStyle? style;
+  final StrutStyle? strutStyle;
+  final TextAlign? textAlign;
+  final TextDirection? textDirection;
+  final Locale? locale;
+  final bool? softWrap;
+  final TextOverflow? overflow;
+  final double? textScaleFactor;
+  final int? maxLines;
+  final String? semanticsLabel;
+  final TextWidthBasis? textWidthBasis;
+  final ui.TextHeightBehavior? textHeightBehavior;
+  final Color? selectionColor;
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   State<TextCopyable> createState() => _TextCopyableState();

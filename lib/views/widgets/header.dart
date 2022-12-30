@@ -22,6 +22,8 @@ class MainHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return AppBar(
       toolbarHeight: height,
       backgroundColor: backgroundTransparent ? Colors.transparent : null,
@@ -60,7 +62,7 @@ class MainHeader extends StatelessWidget {
                     child: Text(
                       AppInfo.name,
                       softWrap: false,
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style: textTheme.titleMedium,
                     ),
                   ),
                 ]

@@ -11,6 +11,8 @@ class MainFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return SizedBox(
       height: 41.0,
       child: Column(
@@ -26,7 +28,7 @@ class MainFooter extends StatelessWidget {
                   child: TextAddress(AppInfo.donateAddress),
                 ),
                 VerticalDivider(
-                  color: Theme.of(context).textTheme.bodyMedium!.color,
+                  color: textTheme.bodyMedium!.color,
                   width: 5.0,
                   indent: 12.0,
                   endIndent: 12.0,

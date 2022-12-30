@@ -65,6 +65,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Column(
       children: [
         TextFormField(
@@ -79,7 +81,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           inputFormatters: widget.inputFormatters,
           maxLength: widget.maxLength,
           readOnly: widget.readOnly,
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: textTheme.bodyMedium,
           decoration: InputDecoration(
             counter: widget.showCounter ? null : zeroSpace(),
             prefixIcon: widget.prefixIcon,

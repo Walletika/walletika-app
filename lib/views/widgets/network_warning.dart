@@ -20,6 +20,8 @@ class NetworkWarning extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -33,11 +35,14 @@ class NetworkWarning extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                text,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      fontFamily: AppFonts.medium,
-                    ),
+              SizedBox(
+                width: AppDecoration.widgetWidth,
+                child: Text(
+                  text,
+                  style: textTheme.bodyMedium!.copyWith(
+                    fontFamily: AppFonts.medium,
+                  ),
+                ),
               ),
               MouseRegion(
                 cursor: SystemMouseCursors.click,
@@ -46,9 +51,9 @@ class NetworkWarning extends StatelessWidget {
                   child: Obx(() {
                     return Text(
                       _settingsController.currentNetwork,
-                      style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                            decoration: TextDecoration.underline,
-                          ),
+                      style: textTheme.labelSmall!.copyWith(
+                        decoration: TextDecoration.underline,
+                      ),
                     );
                   }),
                 ),

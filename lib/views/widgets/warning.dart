@@ -5,20 +5,21 @@ import '../../utils/constants.dart';
 import 'spacer.dart';
 
 class WarningText extends StatelessWidget {
-  final String text;
-  final TextStyle? style;
-
   const WarningText({
     required this.text,
     this.style,
     super.key,
   });
 
+  final String text;
+  final TextStyle? style;
+
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Icon(
           LineIcons.exclamationTriangle,
@@ -31,7 +32,7 @@ class WarningText extends StatelessWidget {
             width: AppDecoration.widgetWidth,
             child: Text(
               text,
-              style: style ?? Theme.of(context).textTheme.labelSmall,
+              style: style ?? textTheme.labelSmall,
             ),
           ),
         ),

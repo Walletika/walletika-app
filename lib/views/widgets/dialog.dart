@@ -16,11 +16,13 @@ AwesomeDialog awesomeDialog({
   String? btnCancelText,
   void Function()? btnCancelOnPress,
   bool autoDismiss = true,
-  bool showCloseIcon = true,
+  bool showCloseIcon = false,
   bool dismissOnBackKeyPress = true,
   bool dismissOnTouchOutside = true,
   void Function(DismissType)? onDismissCallback,
 }) {
+  final TextTheme textTheme = Theme.of(Get.context!).textTheme;
+
   if (Get.isSnackbarOpen) Get.closeCurrentSnackbar();
 
   return AwesomeDialog(
@@ -37,9 +39,9 @@ AwesomeDialog awesomeDialog({
     onDismissCallback: onDismissCallback,
     closeIcon: const Icon(LineIcons.times),
     title: title,
-    titleTextStyle: Theme.of(Get.context!).textTheme.titleSmall,
+    titleTextStyle: textTheme.bodyLarge!.copyWith(fontFamily: AppFonts.bold),
     desc: desc,
-    descTextStyle: Theme.of(Get.context!).textTheme.bodyMedium,
+    descTextStyle: textTheme.bodyMedium,
     body: body,
     btnOk: btnOkText is String
         ? SizedBox(

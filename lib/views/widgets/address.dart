@@ -3,11 +3,6 @@ import 'package:flutter/material.dart';
 import 'text_copyable.dart';
 
 class TextAddress extends StatelessWidget {
-  final String data;
-  final double? width;
-  final double height;
-  final MainAxisAlignment mainAxisAlignment;
-
   const TextAddress(
     this.data, {
     this.width,
@@ -16,14 +11,21 @@ class TextAddress extends StatelessWidget {
     super.key,
   });
 
+  final String data;
+  final double? width;
+  final double height;
+  final MainAxisAlignment mainAxisAlignment;
+
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return TextCopyable(
       data,
       width: width,
       height: height,
       softWrap: false,
-      style: Theme.of(context).textTheme.labelSmall,
+      style: textTheme.labelSmall,
       mainAxisAlignment: mainAxisAlignment,
     );
   }

@@ -40,10 +40,12 @@ class _PinputFormFieldState extends State<PinputFormField> {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     final defaultPinTheme = PinTheme(
       width: 40.0,
       height: 50.0,
-      textStyle: Theme.of(context).textTheme.headlineSmall,
+      textStyle: textTheme.headlineSmall,
       decoration: BoxDecoration(
         color: Theme.of(context).inputDecorationTheme.fillColor,
         borderRadius: BorderRadius.circular(AppDecoration.radius),

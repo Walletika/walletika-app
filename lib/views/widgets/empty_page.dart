@@ -19,6 +19,8 @@ class EmptyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Padding(
       padding: const EdgeInsets.all(AppDecoration.paddingMedium),
       child: Column(
@@ -38,7 +40,7 @@ class EmptyPage extends StatelessWidget {
               ? [
                   Text(
                     title!,
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: textTheme.titleSmall,
                     textAlign: TextAlign.center,
                   )
                 ]
@@ -48,7 +50,7 @@ class EmptyPage extends StatelessWidget {
               ? [
                   Text(
                     desc!,
-                    style: Theme.of(context).textTheme.labelMedium,
+                    style: textTheme.labelSmall,
                     textAlign: TextAlign.center,
                   )
                 ]

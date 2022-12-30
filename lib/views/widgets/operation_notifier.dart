@@ -100,6 +100,8 @@ class OperationNotifier {
     if (closeScreen) Get.back();
 
     if (isError) {
+      final TextTheme textTheme = Theme.of(Get.context!).textTheme;
+
       awesomeDialog(
         dialogType: DialogType.error,
         body: Padding(
@@ -108,19 +110,21 @@ class OperationNotifier {
           ),
           child: Column(
             children: [
-              Text(id, style: Get.theme.textTheme.bodyMedium),
               Text(
                 "1025@global".tr,
-                style: Get.theme.textTheme.titleMedium!.copyWith(
+                style: textTheme.bodyMedium!.copyWith(
                   color: Colors.red,
+                  fontFamily: AppFonts.medium,
                 ),
               ),
+              verticalSpace(AppDecoration.spaceSmall),
+              Text(id, style: textTheme.bodySmall),
               verticalSpace(),
-              Text(_message!),
+              Text(_message!, style: textTheme.bodySmall),
               verticalSpace(),
               Text(
                 "1019@global".tr,
-                style: Get.theme.textTheme.labelSmall,
+                style: textTheme.labelSmall,
                 textAlign: TextAlign.center,
               ),
               verticalSpace(),
