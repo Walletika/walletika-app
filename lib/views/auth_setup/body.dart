@@ -40,6 +40,8 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
       "1002@authSetup".tr,
     ];
 
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Column(
       children: [
         ContainerWithShadow(
@@ -65,10 +67,13 @@ class _AuthSetupBodyState extends State<AuthSetupBody>
                           tabs[index],
                           textAlign: TextAlign.center,
                           style: _tabsController.currentTabIndex == index
-                              ? Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    fontFamily: AppFonts.bold,
-                                  )
-                              : Theme.of(context).textTheme.labelSmall,
+                              ? textTheme.bodySmall!.copyWith(
+                                  fontFamily: AppFonts.bold,
+                                  fontSize: AppFonts.smallestSize,
+                                )
+                              : textTheme.labelSmall!.copyWith(
+                                  fontSize: AppFonts.smallestSize,
+                                ),
                         ),
                         verticalSpace(),
                         Icon(

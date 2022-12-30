@@ -26,6 +26,8 @@ class AuthScanTabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Form(
       key: _formController,
       child: ListView(
@@ -44,7 +46,7 @@ class AuthScanTabView extends StatelessWidget {
               Center(
                 child: Text(
                   "1009@authSetup".tr,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: textTheme.titleSmall,
                 ),
               ),
             ],
@@ -52,7 +54,7 @@ class AuthScanTabView extends StatelessWidget {
           verticalSpace(),
           Text(
             "1010@authSetup".tr,
-            style: Theme.of(context).textTheme.labelMedium,
+            style: textTheme.labelMedium,
             textAlign: TextAlign.center,
           ),
           verticalSpace(),
@@ -61,7 +63,7 @@ class AuthScanTabView extends StatelessWidget {
               data: _authSetupController.otpKeyFormat,
               size: 150.0,
               padding: const EdgeInsets.all(AppDecoration.paddingMedium),
-              foregroundColor: Theme.of(context).textTheme.bodyMedium!.color,
+              foregroundColor: textTheme.bodyMedium!.color,
               version: QrVersions.auto,
               gapless: false,
             ),
@@ -69,7 +71,7 @@ class AuthScanTabView extends StatelessWidget {
           verticalSpace(),
           Text(
             "1011@authSetup".tr,
-            style: Theme.of(context).textTheme.bodySmall,
+            style: textTheme.labelSmall,
             textAlign: TextAlign.center,
           ),
           TextAddress(_authSetupController.otpKey, height: 30.0),
@@ -78,13 +80,13 @@ class AuthScanTabView extends StatelessWidget {
           verticalSpace(AppDecoration.spaceMedium),
           Text(
             "1012@authSetup".tr,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: textTheme.titleSmall,
             textAlign: TextAlign.center,
           ),
           verticalSpace(),
           Text(
             "1013@authSetup".tr,
-            style: Theme.of(context).textTheme.labelMedium,
+            style: textTheme.labelMedium,
             textAlign: TextAlign.center,
           ),
           verticalSpace(AppDecoration.spaceMedium),

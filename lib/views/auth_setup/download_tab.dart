@@ -14,6 +14,8 @@ class AuthDownloadTabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return ListView(
       padding: const EdgeInsets.symmetric(
         horizontal: AppDecoration.paddingMedium,
@@ -22,13 +24,13 @@ class AuthDownloadTabView extends StatelessWidget {
       children: [
         Text(
           "1003@authSetup".tr,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: textTheme.titleSmall,
           textAlign: TextAlign.center,
         ),
         verticalSpace(),
         Text(
           "1004@authSetup".tr,
-          style: Theme.of(context).textTheme.labelMedium,
+          style: textTheme.labelMedium,
           textAlign: TextAlign.center,
         ),
         verticalSpace(AppDecoration.spaceBig),
@@ -36,10 +38,7 @@ class AuthDownloadTabView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "1005@authSetup".tr,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
+              Text("1005@authSetup".tr),
               verticalSpace(),
               Wrap(
                 spacing: AppDecoration.space,
@@ -56,10 +55,7 @@ class AuthDownloadTabView extends StatelessWidget {
                 ],
               ),
               verticalSpace(AppDecoration.spaceBig),
-              Text(
-                "1006@authSetup".tr,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
+              Text("1006@authSetup".tr),
               verticalSpace(),
               _applicationButton(
                 logo: AppImages.authyLogo,

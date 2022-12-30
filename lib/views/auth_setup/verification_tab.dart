@@ -26,6 +26,8 @@ class AuthVerificationTabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Form(
       key: _formController,
       child: ListView(
@@ -44,21 +46,20 @@ class AuthVerificationTabView extends StatelessWidget {
               Center(
                 child: Text(
                   "1007@authSetup".tr,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: textTheme.titleSmall,
                 ),
               ),
             ],
           ),
-          verticalSpace(),
           Text(
             "1008@authSetup".tr,
-            style: Theme.of(context).textTheme.labelMedium,
+            style: textTheme.labelMedium,
             textAlign: TextAlign.center,
           ),
           verticalSpace(AppDecoration.spaceMedium),
           Text(
             _authSetupController.username,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: textTheme.bodyLarge!.copyWith(fontFamily: AppFonts.bold),
             textAlign: TextAlign.center,
           ),
           TextAddress(_authSetupController.address),
