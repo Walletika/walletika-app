@@ -162,7 +162,7 @@ class TokensTabView extends StatelessWidget {
     awesomeDialog(
       dialogType: DialogType.warning,
       title: "1014@wallet".tr,
-      desc: "${"1015@wallet".tr} ( ${token.name} )",
+      desc: "1015@wallet".tr,
       btnOkText: "1007@global".tr,
       btnOkOnPress: () => _removeToken(token),
     ).show();

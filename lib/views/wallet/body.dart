@@ -213,7 +213,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
           decoration: BoxDecoration(
             color: Theme.of(context).popupMenuTheme.color,
             borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(30.0),
+              top: Radius.circular(AppDecoration.radiusBig),
             ),
           ),
           child: Obx(() {
@@ -236,7 +236,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                       style: TextButton.styleFrom(
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
+                            topLeft: Radius.circular(AppDecoration.radiusBig),
                           ),
                         ),
                       ),
@@ -264,7 +264,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                       style: TextButton.styleFrom(
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(30.0),
+                            topRight: Radius.circular(AppDecoration.radiusBig),
                           ),
                         ),
                       ),
@@ -389,7 +389,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
       backgroundColor: Theme.of(context).backgroundColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          top: Radius.circular(30.0),
+          top: Radius.circular(AppDecoration.radiusBig),
         ),
       ),
     );

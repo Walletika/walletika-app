@@ -22,7 +22,7 @@ import 'views/wallet/wallet.dart';
 import 'views/widgets/themes.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized() is implemented by GetStorage
+  WidgetsFlutterBinding.ensureInitialized(); // is implemented by GetStorage
   await initServices();
   await initDesktopWindow();
 

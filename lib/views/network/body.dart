@@ -154,7 +154,7 @@ class NetworkBody extends StatelessWidget {
     awesomeDialog(
       dialogType: DialogType.warning,
       title: "1003@network".tr,
-      desc: "${"1004@network".tr} ( ${network.name} )",
+      desc: "1004@network".tr,
       btnOkText: "1007@global".tr,
       btnOkOnPress: () => _removeNetwork(network),
     ).show();
