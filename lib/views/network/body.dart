@@ -30,6 +30,8 @@ class NetworkBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
+
     return Column(
       children: [
         ContainerWithShadow(
@@ -40,19 +42,11 @@ class NetworkBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "1000@network".tr,
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
+              Text("1000@network".tr, style: textTheme.titleSmall),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Flexible(
-                    child: Text(
-                      "1002@network".tr,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
+                  Flexible(child: Text("1002@network".tr)),
                   Obx(() {
                     return Switch.adaptive(
                       value: _settingsController.isTestnetHidden,
@@ -72,6 +66,8 @@ class NetworkBody extends StatelessWidget {
             if (networks.isEmpty) {
               return const Center(child: CircularProgressIndicator.adaptive());
             }
+
+            final TextTheme textTheme = Theme.of(Get.context!).textTheme;
 
             return ListView.separated(
               padding: const EdgeInsets.only(bottom: AppDecoration.spaceLarge),
@@ -95,7 +91,9 @@ class NetworkBody extends StatelessWidget {
                           child: Text(
                             network.name,
                             softWrap: false,
-                            style: Theme.of(context).textTheme.titleSmall,
+                            style: textTheme.bodyMedium!.copyWith(
+                              fontFamily: AppFonts.medium,
+                            ),
                           ),
                         ),
                       ),
@@ -114,7 +112,7 @@ class NetworkBody extends StatelessWidget {
                   subtitle: Text(
                     network.rpc,
                     softWrap: false,
-                    style: Theme.of(context).textTheme.labelSmall,
+                    style: textTheme.labelSmall,
                   ),
                   trailing: IconButton(
                     tooltip:
