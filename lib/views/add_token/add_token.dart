@@ -41,6 +41,8 @@ class _AddTokenViewState extends State<AddTokenView> {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Form(
       key: _formController,
       child: ListView(
@@ -52,11 +54,11 @@ class _AddTokenViewState extends State<AddTokenView> {
           Text(
             "1007@wallet".tr,
             softWrap: false,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: textTheme.titleSmall,
             textAlign: TextAlign.center,
           ),
           verticalSpace(AppDecoration.spaceMedium),
-          WarningText(text: "1000@addToken".tr),
+          WarningText(text: "1000@addToken".tr, style: textTheme.labelSmall),
           verticalSpace(),
           CustomTextFormField(
             controller: _contractController,
@@ -91,12 +93,14 @@ class _AddTokenViewState extends State<AddTokenView> {
                 title: Text(
                   token.name,
                   softWrap: false,
-                  style: Theme.of(context).textTheme.titleSmall,
+                  style: textTheme.bodyMedium!.copyWith(
+                    fontFamily: AppFonts.medium,
+                  ),
                 ),
                 subtitle: Text(
                   token.balanceAsCurrency,
                   softWrap: false,
-                  style: Theme.of(context).textTheme.labelMedium,
+                  style: textTheme.labelSmall,
                 ),
                 trailing: IconButton(
                   onPressed: () => _addTokenOnPressed(token),
