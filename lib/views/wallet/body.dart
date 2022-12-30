@@ -59,6 +59,8 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -74,7 +76,9 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                 child: Text(
                   _walletController.currentWallet!.username,
                   softWrap: false,
-                  style: Theme.of(context).textTheme.titleSmall,
+                  style: textTheme.bodyLarge!.copyWith(
+                    fontFamily: AppFonts.bold,
+                  ),
                 ),
               ),
             ),
@@ -110,7 +114,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
         Text(
           "1000@wallet".tr,
           softWrap: false,
-          style: Theme.of(context).textTheme.labelSmall,
+          style: textTheme.labelMedium,
           textAlign: TextAlign.center,
         ),
         Obx(() {
@@ -127,7 +131,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                       )
                     : AppDecoration.invisibleText,
                 softWrap: false,
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: textTheme.headlineLarge,
                 textAlign: TextAlign.center,
               ),
               IconButton(
@@ -148,7 +152,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
             children: [
               Flexible(
                 child: SizedBox(
-                  height: AppDecoration.buttonHeight,
+                  height: AppDecoration.buttonHeightMedium,
                   child: ElevatedButton(
                     onPressed: () => Get.toNamed(AppPages.depsoit),
                     style: ElevatedButton.styleFrom(
@@ -159,26 +163,32 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                         ),
                       ),
                     ),
-                    child: Text("1001@wallet".tr),
+                    child: Text(
+                      "1001@wallet".tr,
+                      style: textTheme.bodySmall!.copyWith(color: Colors.white),
+                    ),
                   ),
                 ),
               ),
               Flexible(
                 child: SizedBox(
-                  height: AppDecoration.buttonHeight,
+                  height: AppDecoration.buttonHeightMedium,
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       shape: const RoundedRectangleBorder(),
                     ),
-                    child: Text("1002@wallet".tr),
+                    child: Text(
+                      "1002@wallet".tr,
+                      style: textTheme.bodySmall!.copyWith(color: Colors.white),
+                    ),
                   ),
                 ),
               ),
               Flexible(
                 child: SizedBox(
-                  height: AppDecoration.buttonHeight,
+                  height: AppDecoration.buttonHeightMedium,
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
@@ -189,14 +199,16 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                         ),
                       ),
                     ),
-                    child: Text("1003@wallet".tr),
+                    child: Text(
+                      "1003@wallet".tr,
+                      style: textTheme.bodySmall!.copyWith(color: Colors.white),
+                    ),
                   ),
                 ),
               ),
             ],
           ),
         ),
-        verticalSpace(),
         Container(
           decoration: BoxDecoration(
             color: Theme.of(context).popupMenuTheme.color,
@@ -230,13 +242,10 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                       ),
                       child: Text(
                         "1004@wallet".tr,
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium!
-                            .copyWith(
-                              fontFamily: AppFonts.medium,
-                              color: tabIndex == 0 ? AppColors.highlight : null,
-                            ),
+                        style: textTheme.labelSmall!.copyWith(
+                          fontFamily: AppFonts.medium,
+                          color: tabIndex == 0 ? AppColors.highlight : null,
+                        ),
                       ),
                     ),
                   ),
@@ -265,15 +274,11 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                           Flexible(
                             child: Text(
                               "1005@wallet".tr,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium!
-                                  .copyWith(
-                                    fontFamily: AppFonts.medium,
-                                    color: tabIndex == 1
-                                        ? AppColors.highlight
-                                        : null,
-                                  ),
+                              style: textTheme.labelSmall!.copyWith(
+                                fontFamily: AppFonts.medium,
+                                color:
+                                    tabIndex == 1 ? AppColors.highlight : null,
+                              ),
                             ),
                           ),
                           horizontalSpace(),
@@ -295,14 +300,11 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                               ),
                               child: Text(
                                 count >= 50 ? '+50' : count.toString(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(
-                                      fontFamily: AppFonts.light,
-                                      fontSize: 10.0,
-                                      color: Colors.white,
-                                    ),
+                                style: textTheme.bodySmall!.copyWith(
+                                  fontFamily: AppFonts.light,
+                                  fontSize: 10.0,
+                                  color: Colors.white,
+                                ),
                               ),
                             );
                           }),

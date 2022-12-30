@@ -23,6 +23,8 @@ class TokensTabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Obx(() {
       final List<TokenItemModel> tokens = _walletController.tokens;
       final bool visible = _walletController.isBalanceVisible;
@@ -47,12 +49,14 @@ class TokensTabView extends StatelessWidget {
             title: Text(
               token.name,
               softWrap: false,
-              style: Theme.of(context).textTheme.titleSmall,
+              style: textTheme.bodyMedium!.copyWith(
+                fontFamily: AppFonts.medium,
+              ),
             ),
             subtitle: Text(
               visible ? token.balanceAsCurrency : AppDecoration.invisibleText,
               softWrap: false,
-              style: Theme.of(context).textTheme.labelMedium,
+              style: textTheme.labelSmall,
             ),
             trailing: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -62,30 +66,32 @@ class TokensTabView extends StatelessWidget {
                     ? [
                         Text(
                           token.changeIn24hAsPercentage,
-                          style:
-                              Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    fontFamily: AppFonts.medium,
-                                    color: token.changeIn24h!.isNegative
-                                        ? Colors.red
-                                        : AppColors.green,
-                                  ),
+                          style: textTheme.bodySmall!.copyWith(
+                            fontFamily: AppFonts.medium,
+                            fontSize: AppFonts.smallestSize,
+                            color: token.changeIn24h!.isNegative
+                                ? Colors.red
+                                : AppColors.green,
+                          ),
                         ),
                         verticalSpace(AppDecoration.spaceSmall),
                       ]
                     : [],
                 Text(
                   token.priceAsCurrency,
-                  style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                        fontFamily: AppFonts.medium,
-                      ),
+                  style: textTheme.labelSmall!.copyWith(
+                    fontFamily: AppFonts.medium,
+                    fontSize: AppFonts.smallestSize,
+                  ),
                 ),
                 Text(
                   visible
                       ? token.balanceInFiatAsCurrency
                       : AppDecoration.invisibleText,
-                  style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                        fontFamily: AppFonts.medium,
-                      ),
+                  style: textTheme.labelSmall!.copyWith(
+                    fontFamily: AppFonts.medium,
+                    fontSize: AppFonts.smallestSize,
+                  ),
                 ),
               ],
             ),
@@ -104,7 +110,7 @@ class TokensTabView extends StatelessWidget {
           Text(
             "1012@wallet".tr,
             softWrap: false,
-            style: textTheme.titleSmall,
+            style: textTheme.bodyLarge,
           ),
           verticalSpace(AppDecoration.spaceMedium),
           ItemLogo(imageURL: token.imageURL),

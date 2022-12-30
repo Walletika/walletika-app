@@ -18,6 +18,8 @@ class TransactionsTabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Obx(() {
       final List<TransactionItemModel> transactions =
           _walletController.transactions;
@@ -44,7 +46,9 @@ class TransactionsTabView extends StatelessWidget {
             title: Text(
               transaction.functionName,
               softWrap: false,
-              style: Theme.of(context).textTheme.titleSmall,
+              style: textTheme.bodyMedium!.copyWith(
+                fontFamily: AppFonts.medium,
+              ),
             ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +60,7 @@ class TransactionsTabView extends StatelessWidget {
                 Text(
                   transaction.date.toString().split('.').first,
                   softWrap: false,
-                  style: Theme.of(context).textTheme.labelSmall,
+                  style: textTheme.labelSmall,
                 )
               ],
             ),
@@ -66,9 +70,9 @@ class TransactionsTabView extends StatelessWidget {
               children: [
                 Text(
                   transaction.amountAsCurrency,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontFamily: AppFonts.medium,
-                      ),
+                  style: textTheme.bodySmall!.copyWith(
+                    fontFamily: AppFonts.medium,
+                  ),
                 ),
                 verticalSpace(AppDecoration.spaceSmall),
                 Tooltip(
