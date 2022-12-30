@@ -85,7 +85,7 @@ final ThemeData walletikaDefaultTheme = ThemeData(
   textTheme: _textTheme,
   iconTheme: _iconTheme,
   inputDecorationTheme: InputDecorationTheme(
-    labelStyle: _textTheme.labelMedium,
+    labelStyle: _textTheme.labelSmall,
     errorStyle: _textTheme.bodySmall!.copyWith(
       color: Colors.red,
       fontSize: AppFonts.smallestSize,
@@ -140,7 +140,7 @@ final ThemeData walletikaDefaultTheme = ThemeData(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(AppDecoration.radius),
     ),
-    textStyle: _textTheme.bodyMedium,
+    textStyle: _textTheme.bodySmall,
   ),
 );
 
