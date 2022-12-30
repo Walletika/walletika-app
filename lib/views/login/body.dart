@@ -20,6 +20,8 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
+
     return Form(
       key: _formController,
       child: ListView(
@@ -39,7 +41,7 @@ class LoginBody extends StatelessWidget {
           Text(
             _walletController.currentWallet!.username,
             softWrap: false,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: textTheme.bodyLarge!.copyWith(fontFamily: AppFonts.bold),
             textAlign: TextAlign.center,
           ),
           verticalSpace(AppDecoration.spaceSmall),
