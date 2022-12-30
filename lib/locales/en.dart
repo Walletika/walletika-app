@@ -55,7 +55,7 @@ const Map<String, String> translator = {
   "1000@settings": "Settings",
   "1001@settings": "Dark mode theme",
   "1002@settings": "Primary language",
-  "1003@settings": "Current blockchain network",
+  "1003@settings": "Blockchain network",
   "1004@settings":
       "Backup all your wallets to specific location on your system.",
   "1005@settings": "Backup",
@@ -64,18 +64,18 @@ const Map<String, String> translator = {
   "1008@settings": "Software version",
   "1009@settings": "Do you want to set a specific password?",
   "1010@settings":
-      "Note: In all cases, the backup file will be protected with AES encryption.",
+      "In all cases, the backup file will be protected with AES encryption.",
   "1011@settings": "Yes, Set a Password",
   "1012@settings": "No, Backup Now",
   "1013@settings": "Set your backup protection password",
   "1014@settings":
-      "Warning: If you lose the protection password, you will never be able to import the backup file.",
+      "If you lose the protection password, you will never be able to import the backup file.",
   "1015@settings": "Please wait, Operation in progressing...",
   "1016@settings": "Backup file saved in",
   "1017@settings": "Backup file has been imported successfully.",
   "1018@settings": "The backup protection password is wrong.",
   "1019@settings":
-      "Save this file in a safe place and don't share it with anyone.",
+      "Don't share it with anyone and save this file in a safe place.",
 
   // Networks
   "1000@network": "Blockchain Networks",
@@ -121,7 +121,7 @@ const Map<String, String> translator = {
   "1010@addWallet":
       "Recommended to backup all your wallets to an external file.",
   "1011@addWallet": "Failed to add this wallet, Please try again.",
-  "1012@addWallet": "Let's setup your OTP Key.",
+  "1012@addWallet": "Let's Setup 2FA",
 
   // Auth setup
   "1000@authSetup": "Download App",
@@ -189,7 +189,7 @@ const Map<String, String> translator = {
 
   // Wallet details
   "1000@walletDetails":
-      "Warning: Never disclose this key. Anyone with your private keys can steal any assets held in your wallet.",
+      "Never disclose this key. Anyone with your private keys can steal any assets held in your wallet.",
   "1001@walletDetails": "Show Private Key",
   "1002@walletDetails": "Private Key",
 

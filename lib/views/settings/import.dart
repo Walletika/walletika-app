@@ -35,18 +35,11 @@ class ImportView {
   void _start([String? password]) {
     if (password != null) Get.back();
 
-    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
-
     awesomeDialog(
-      showCloseIcon: false,
       dismissOnBackKeyPress: false,
       dismissOnTouchOutside: false,
       body: Column(children: [
-        Text(
-          "1015@settings".tr,
-          style: textTheme.titleSmall,
-          textAlign: TextAlign.center,
-        ),
+        Text("1015@settings".tr, textAlign: TextAlign.center),
         verticalSpace(AppDecoration.spaceMedium),
         Obx(() {
           return CircularProgressValueIndicator(
@@ -76,18 +69,12 @@ class ImportView {
   void _specificPasswordOnPressed() {
     Get.back();
 
-    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
-
     awesomeDialog(
       onDismissCallback: (_) => _passwordController.clear(),
       body: Form(
         key: _formController,
         child: Column(children: [
-          Text(
-            "1013@settings".tr,
-            style: textTheme.bodyLarge,
-            textAlign: TextAlign.center,
-          ),
+          Text("1013@settings".tr, textAlign: TextAlign.center),
           verticalSpace(AppDecoration.spaceMedium),
           PasswordFormField(
             controller: _passwordController,

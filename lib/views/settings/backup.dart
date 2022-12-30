@@ -35,13 +35,9 @@ class BackupView {
 
       awesomeDialog(
         body: Column(children: [
-          Text("1005@settings".tr, style: textTheme.titleMedium),
+          Text("1005@settings".tr, style: textTheme.titleSmall),
           verticalSpace(AppDecoration.spaceMedium),
-          Text(
-            "1009@settings".tr,
-            style: textTheme.bodyLarge,
-            textAlign: TextAlign.center,
-          ),
+          Text("1009@settings".tr, textAlign: TextAlign.center),
           verticalSpace(),
           Text(
             "1010@settings".tr,
@@ -58,7 +54,10 @@ class BackupView {
                 height: AppDecoration.buttonHeight,
                 child: ElevatedButton(
                   onPressed: _specificPasswordOnPressed,
-                  child: Text("1011@settings".tr),
+                  child: Text(
+                    "1011@settings".tr,
+                    style: textTheme.bodySmall!.copyWith(color: Colors.white),
+                  ),
                 ),
               ),
               SizedBox(
@@ -66,7 +65,10 @@ class BackupView {
                 height: AppDecoration.buttonHeight,
                 child: ElevatedButton(
                   onPressed: _defaultPasswordOnPressed,
-                  child: Text("1012@settings".tr),
+                  child: Text(
+                    "1012@settings".tr,
+                    style: textTheme.bodySmall!.copyWith(color: Colors.white),
+                  ),
                 ),
               ),
             ],
@@ -80,8 +82,6 @@ class BackupView {
   void _specificPasswordOnPressed() {
     Get.back();
 
-    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
-
     awesomeDialog(
       onDismissCallback: (_) {
         _passwordController.clear();
@@ -90,11 +90,7 @@ class BackupView {
       body: Form(
         key: _formController,
         child: Column(children: [
-          Text(
-            "1013@settings".tr,
-            style: textTheme.bodyLarge,
-            textAlign: TextAlign.center,
-          ),
+          Text("1013@settings".tr, textAlign: TextAlign.center),
           verticalSpace(AppDecoration.spaceMedium),
           WarningText(text: "1014@settings".tr),
           verticalSpace(AppDecoration.spaceMedium),
@@ -144,18 +140,11 @@ class BackupView {
   void _start([String? password]) {
     Get.back();
 
-    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
-
     awesomeDialog(
-      showCloseIcon: false,
       dismissOnBackKeyPress: false,
       dismissOnTouchOutside: false,
       body: Column(children: [
-        Text(
-          "1015@settings".tr,
-          style: textTheme.titleSmall,
-          textAlign: TextAlign.center,
-        ),
+        Text("1015@settings".tr, textAlign: TextAlign.center),
         verticalSpace(AppDecoration.spaceMedium),
         Obx(() {
           return CircularProgressValueIndicator(
@@ -194,14 +183,11 @@ class BackupView {
         Center(
           child: Text(
             "1021@global".tr,
-            style: textTheme.bodyLarge!.copyWith(
-              fontFamily: AppFonts.medium,
-              color: AppColors.green,
-            ),
+            style: textTheme.bodyMedium!.copyWith(color: AppColors.green),
           ),
         ),
         verticalSpace(AppDecoration.spaceMedium),
-        Text("1016@settings".tr, style: textTheme.bodyLarge),
+        Text("1016@settings".tr),
         verticalSpace(AppDecoration.spaceSmall),
         Text(
           outputPath,
@@ -209,7 +195,7 @@ class BackupView {
           textAlign: TextAlign.center,
         ),
         verticalSpace(AppDecoration.spaceMedium),
-        WarningText(text: "1019@settings".tr),
+        WarningText(text: "1019@settings".tr, style: textTheme.labelSmall),
         verticalSpace(AppDecoration.spaceMedium),
       ]),
     ).show();

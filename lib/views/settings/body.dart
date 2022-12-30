@@ -24,6 +24,8 @@ class SettingsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -47,20 +49,14 @@ class SettingsBody extends StatelessWidget {
               ),
               children: [
                 ListTile(
-                  title: Text(
-                    "1000@settings".tr,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
+                  title: Text("1000@settings".tr, style: textTheme.titleSmall),
                   subtitle: Text(
                     "${"1008@settings".tr}: ${AppInfo.version}",
-                    style: Theme.of(context).textTheme.labelSmall,
+                    style: textTheme.labelSmall,
                   ),
                 ),
                 ListTile(
-                  title: Text(
-                    "1001@settings".tr,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
+                  title: Text("1001@settings".tr, style: textTheme.bodyMedium),
                   trailing: Obx(() {
                     return Switch.adaptive(
                       value: _settingsController.isDarkMode,
@@ -69,10 +65,7 @@ class SettingsBody extends StatelessWidget {
                   }),
                 ),
                 ListTile(
-                  title: Text(
-                    "1002@settings".tr,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
+                  title: Text("1002@settings".tr, style: textTheme.bodyMedium),
                   trailing: Obx(() {
                     return DropdownButton(
                       style: Theme.of(context).popupMenuTheme.textStyle,
@@ -96,14 +89,11 @@ class SettingsBody extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () => Get.toNamed(AppPages.network),
-                  title: Text(
-                    "1003@settings".tr,
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
+                  title: Text("1003@settings".tr, style: textTheme.bodyMedium),
                   subtitle: Obx(() {
                     return Text(
                       _settingsController.currentNetwork,
-                      style: Theme.of(context).textTheme.labelMedium,
+                      style: textTheme.labelSmall,
                     );
                   }),
                   trailing: const Icon(LineIcons.angleRight),
@@ -115,10 +105,7 @@ class SettingsBody extends StatelessWidget {
                 ),
                 verticalSpace(),
                 ListTile(
-                  title: Text(
-                    "1004@settings".tr,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
+                  title: Text("1004@settings".tr, style: textTheme.bodyMedium),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(AppDecoration.padding),
@@ -131,14 +118,24 @@ class SettingsBody extends StatelessWidget {
                         height: AppDecoration.buttonHeight,
                         child: ElevatedButton(
                           onPressed: _backupView.backupOnPressed,
-                          child: Text("1005@settings".tr),
+                          child: Text(
+                            "1005@settings".tr,
+                            style: textTheme.bodySmall!.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                       SizedBox(
                         height: AppDecoration.buttonHeight,
                         child: ElevatedButton(
                           onPressed: _importView.importOnPressed,
-                          child: Text("1006@settings".tr),
+                          child: Text(
+                            "1006@settings".tr,
+                            style: textTheme.bodySmall!.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ],
