@@ -26,6 +26,8 @@ class AddNetworkBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
+
     return Form(
       key: _formController,
       child: ListView(
@@ -37,7 +39,7 @@ class AddNetworkBody extends StatelessWidget {
         children: [
           Text(
             "1000@addNetwork".tr,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: textTheme.titleSmall,
             textAlign: TextAlign.center,
           ),
           verticalSpace(AppDecoration.spaceMedium),
