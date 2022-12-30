@@ -29,7 +29,10 @@ AwesomeDialog awesomeDialog({
     context: Get.context!,
     width: width,
     dialogBackgroundColor: Theme.of(Get.context!).backgroundColor,
-    padding: const EdgeInsets.all(AppDecoration.padding),
+    padding: const EdgeInsets.symmetric(
+      horizontal: AppDecoration.paddingMedium,
+      vertical: AppDecoration.padding,
+    ),
     dialogType: dialogType,
     animType: AnimType.rightSlide,
     headerAnimationLoop: false,

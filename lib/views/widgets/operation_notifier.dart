@@ -104,32 +104,27 @@ class OperationNotifier {
 
       awesomeDialog(
         dialogType: DialogType.error,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppDecoration.padding,
-          ),
-          child: Column(
-            children: [
-              Text(
-                "1025@global".tr,
-                style: textTheme.bodyMedium!.copyWith(
-                  color: Colors.red,
-                  fontFamily: AppFonts.medium,
-                ),
+        body: Column(
+          children: [
+            Text(
+              "1025@global".tr,
+              style: textTheme.bodyMedium!.copyWith(
+                color: Colors.red,
+                fontFamily: AppFonts.medium,
               ),
-              verticalSpace(AppDecoration.spaceSmall),
-              Text(id, style: textTheme.bodySmall),
-              verticalSpace(),
-              Text(_message!, style: textTheme.bodySmall),
-              verticalSpace(),
-              Text(
-                "1019@global".tr,
-                style: textTheme.labelSmall,
-                textAlign: TextAlign.center,
-              ),
-              verticalSpace(),
-            ],
-          ),
+            ),
+            verticalSpace(AppDecoration.spaceSmall),
+            Text(id, style: textTheme.bodySmall),
+            verticalSpace(),
+            Text(_message!, style: textTheme.bodySmall),
+            verticalSpace(),
+            Text(
+              "1019@global".tr,
+              style: textTheme.labelSmall,
+              textAlign: TextAlign.center,
+            ),
+            verticalSpace(),
+          ],
         ),
         btnOkText: "1020@global".tr,
         btnOkOnPress: () => launchURL(AppInfo.website),
