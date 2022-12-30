@@ -54,7 +54,10 @@ AwesomeDialog awesomeDialog({
                 if (autoDismiss) Get.back();
                 if (btnOkOnPress != null) btnOkOnPress();
               },
-              child: Text(btnOkText),
+              child: Text(
+                btnOkText,
+                style: textTheme.bodySmall!.copyWith(color: Colors.white),
+              ),
             ),
           )
         : null,
@@ -66,7 +69,10 @@ AwesomeDialog awesomeDialog({
                 if (autoDismiss) Get.back();
                 if (btnCancelOnPress != null) btnCancelOnPress();
               },
-              child: Text(btnCancelText),
+              child: Text(
+                btnCancelText,
+                style: textTheme.bodySmall!.copyWith(color: Colors.white),
+              ),
             ),
           )
         : null,
