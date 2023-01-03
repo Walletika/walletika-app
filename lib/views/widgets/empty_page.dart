@@ -36,6 +36,7 @@ class EmptyPage extends StatelessWidget {
                   )
                 ]
               : [],
+          verticalSpace(),
           ...title != null
               ? [
                   Text(
