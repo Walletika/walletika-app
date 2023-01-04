@@ -48,6 +48,7 @@ dependencies:
   path_provider: ^2.0.11
   url_launcher: ^6.1.7
   cached_network_image: ^3.2.3
+  intl: ^0.17.0
   walletika_sdk:
     git:
       url: https://github.com/Walletika/walletika-sdk.git
