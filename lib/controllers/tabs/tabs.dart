@@ -13,6 +13,13 @@ class TabsController extends GetxController {
   int get currentTabIndex => _currentTabIndex.value;
 
   // Setter & Controller methods
+  int setTabIndex(int index) {
+    if (_currentTabIndex.value != index && index < totalTabs) {
+      _currentTabIndex.value = index;
+    }
+    return _currentTabIndex.value;
+  }
+
   int toNextTab() {
     if (_currentTabIndex.value < totalTabs - 1) _currentTabIndex.value++;
     return _currentTabIndex.value;
