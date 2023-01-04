@@ -7,14 +7,14 @@ import 'spacer.dart';
 
 class TabButtons extends StatelessWidget {
   const TabButtons({
-    required this.tabViewController,
+    required this.tabController,
     required this.tabsController,
     required this.tabs,
     this.maxCount = 50,
     super.key,
   });
 
-  final TabController tabViewController;
+  final TabController tabController;
   final TabsController tabsController;
   final Map<String, int?> tabs;
   final int maxCount;
@@ -56,7 +56,7 @@ class TabButtons extends StatelessWidget {
                 color: Colors.transparent,
                 shape: index == currentIndex ? border : null,
                 child: TextButton(
-                  onPressed: () => tabViewController.animateTo(
+                  onPressed: () => tabController.animateTo(
                     tabsController.setTabIndex(
                       tabs.keys.toList().indexOf(tab.key),
                     ),
