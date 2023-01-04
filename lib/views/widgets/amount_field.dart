@@ -43,9 +43,7 @@ class AmountFormField extends StatelessWidget {
           : null,
       suffixIcon: showMaxButton && balance != null
           ? Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppDecoration.padding,
-              ),
+              padding: const EdgeInsets.all(AppDecoration.padding),
               child: SizedBox(
                 width: 50.0,
                 child: ElevatedButton(
