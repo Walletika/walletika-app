@@ -22,13 +22,19 @@ class AddressesBookController extends GetxController {
   // Getter methods
   List<AddressBookItemModel> get addressesBook => _addressesBook;
 
-  bool usernameExists(String username) => _addressesBook.any(
-        (addr) => addr.username == username,
-      );
+  bool usernameExists(String username) {
+    username = username.toLowerCase();
+    return _addressesBook.any(
+      (addr) => addr.username.toLowerCase() == username,
+    );
+  }
 
-  bool addressExists(String address) => _addressesBook.any(
-        (addr) => addr.address == address,
-      );
+  bool addressExists(String address) {
+    address = address.toLowerCase();
+    return _addressesBook.any(
+      (addr) => addr.address.toLowerCase() == address,
+    );
+  }
 
   // Setter & Controller methods
   Future<void> addressesBookUpdate() async {
