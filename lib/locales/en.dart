@@ -37,6 +37,13 @@ const Map<String, String> translator = {
   "1034@global": "Confirmed Successfully",
   "1035@global": "Connected",
   "1036@global": "Could not launch this URL",
+  "1037@global": "Amount",
+  "1038@global": "Max",
+  "1039@global": "Continue",
+  "1040@global": "Insufficient funds",
+  "1041@global": "Balance",
+  "1042@global": "QR Code Scan",
+  "1043@global": "Paste ( 0x ) Address",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
@@ -198,4 +205,22 @@ const Map<String, String> translator = {
       "Scan the code on the withdrawal page of the trading platform app or wallet app.",
   "1001@deposit": "or Copy your deposit address",
   "1002@deposit": "Make sure the sender is on the same network.",
+
+  // Withdraw
+  "1000@withdraw": "Send To",
+  "1001@withdraw": "Paste ( 0x ) Recipient Address",
+  "1002@withdraw": "My Wallets",
+  "1003@withdraw": "Addresses Book",
+  "1004@withdraw": "You have no wallets",
+  "1005@withdraw": "You have no addresses",
+  "1006@withdraw": "Remove Address",
+  "1007@withdraw": "Are you sure you want to remove this address?",
+  "1008@withdraw": "Address has been removed successfully.",
+  "1009@withdraw": "Address removal failed.",
+  "1010@withdraw": "Add an Address",
+  "1011@withdraw": "Add a new address to your addresses book.",
+  "1012@withdraw": "Address has been added successfully.",
+  "1013@withdraw": "Failed to add this address, Please try again.",
+  "1014@withdraw": "Add Address",
+  "1015@withdraw": "Choose a coin to withdraw",
 };

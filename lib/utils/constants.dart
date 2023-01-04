@@ -116,6 +116,7 @@ class AppPages {
   static const String wallet = '/login/auth/wallet';
   static const String walletDetails = '/login/auth/wallet/walletDetails';
   static const String depsoit = '/login/auth/wallet/depsoit';
+  static const String withdraw = '/login/auth/wallet/withdraw';
 
   static bool get isHome => Get.currentRoute == AppPages.home;
 }
@@ -133,7 +134,6 @@ class AppRegExp {
   static final RegExp lowercase = RegExp(r'[a-z]');
   static final RegExp uppercase = RegExp(r'[A-Z]');
   static final RegExp address = RegExp(r'0x?[0-9-a-f-A-F]{40}');
-  static final RegExp balance = RegExp(r'[-+]?[0-9]*\.?[0-9]+');
   static final RegExp url = RegExp(
     r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?',
   );

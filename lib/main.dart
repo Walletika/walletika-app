@@ -20,9 +20,11 @@ import 'views/settings/settings.dart';
 import 'views/add_wallet/add_wallet.dart';
 import 'views/wallet/wallet.dart';
 import 'views/widgets/themes.dart';
+import 'views/withdraw/withdraw.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // is implemented by GetStorage
+  WidgetsFlutterBinding.ensureInitialized();
+
   await initServices();
   await initDesktopWindow();
 
@@ -66,6 +68,7 @@ class WalletikaApp extends StatelessWidget {
         GetPage(name: AppPages.auth, page: () => const AuthView()),
         GetPage(name: AppPages.authSetup, page: () => AuthSetupView()),
         GetPage(name: AppPages.wallet, page: () => WalletView()),
+        GetPage(name: AppPages.withdraw, page: () => WithdrawView()),
         GetPage(
           name: AppPages.walletDetails,
           page: () => const WalletDetailsView(),
