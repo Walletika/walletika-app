@@ -13,6 +13,7 @@ import '../../utils/launch_url.dart';
 import '../widgets/dialog.dart';
 import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
+import '../widgets/tab_buttons.dart';
 import 'tokens_tab.dart';
 import 'transactions_tab.dart';
 import '../add_token/add_token.dart';
@@ -211,114 +212,16 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
             ],
           ),
         ),
-        Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).popupMenuTheme.color,
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(AppDecoration.radiusBig),
-            ),
-          ),
-          child: Obx(() {
-            final int tabIndex = _tabsController.currentTabIndex;
-            const Border border = Border(
-              bottom: BorderSide(color: AppColors.highlight, width: 3.0),
-            );
-
-            return Row(children: [
-              Expanded(
-                child: SizedBox(
-                  height: AppDecoration.buttonHeightLarge,
-                  child: Material(
-                    color: Colors.transparent,
-                    shape: tabIndex == 0 ? border : null,
-                    child: TextButton(
-                      onPressed: () => _tabController.animateTo(
-                        _tabsController.toPreviousTab(),
-                      ),
-                      style: TextButton.styleFrom(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(AppDecoration.radiusBig),
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        "1004@wallet".tr,
-                        style: textTheme.labelSmall!.copyWith(
-                          fontFamily: AppFonts.medium,
-                          color: tabIndex == 0 ? AppColors.highlight : null,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: SizedBox(
-                  height: AppDecoration.buttonHeightLarge,
-                  child: Material(
-                    color: Colors.transparent,
-                    shape: tabIndex == 1 ? border : null,
-                    child: TextButton(
-                      onPressed: () => _tabController.animateTo(
-                        _tabsController.toNextTab(),
-                      ),
-                      style: TextButton.styleFrom(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(AppDecoration.radiusBig),
-                          ),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              "1005@wallet".tr,
-                              style: textTheme.labelSmall!.copyWith(
-                                fontFamily: AppFonts.medium,
-                                color:
-                                    tabIndex == 1 ? AppColors.highlight : null,
-                              ),
-                            ),
-                          ),
-                          horizontalSpace(),
-                          Obx(() {
-                            final int count =
-                                _walletController.transactions.length;
-
-                            return Container(
-                              width: 25.0,
-                              height: 15.0,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: tabIndex == 1
-                                    ? AppColors.highlight
-                                    : AppColors.font2,
-                                borderRadius: BorderRadius.circular(
-                                  AppDecoration.radius,
-                                ),
-                              ),
-                              child: Text(
-                                count >= 50 ? '+50' : count.toString(),
-                                style: textTheme.bodySmall!.copyWith(
-                                  fontFamily: AppFonts.light,
-                                  fontSize: 10.0,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            );
-                          }),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ]);
-          }),
-        ),
+        Obx(() {
+          return TabButtons(
+            tabController: _tabController,
+            tabsController: _tabsController,
+            tabs: {
+              "1004@wallet".tr: null,
+              "1005@wallet".tr: _walletController.transactions.length,
+            },
+          );
+        }),
         const Divider(),
         Expanded(
           child: Container(
