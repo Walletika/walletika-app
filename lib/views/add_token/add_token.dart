@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -7,7 +6,7 @@ import '../../controllers/add_token/add_token.dart';
 import '../../controllers/wallet/wallet.dart';
 import '../../models/token.dart';
 import '../../utils/constants.dart';
-import '../widgets/custom_text_field.dart';
+import '../widgets/address_field.dart';
 import '../widgets/item_logo.dart';
 import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
@@ -60,15 +59,10 @@ class _AddTokenViewState extends State<AddTokenView> {
           verticalSpace(AppDecoration.spaceMedium),
           WarningText(text: "1000@addToken".tr, style: textTheme.labelSmall),
           verticalSpace(),
-          CustomTextFormField(
+          AddressFormField(
             controller: _contractController,
             placeholderText: "1001@addToken".tr,
-            maxLength: 42,
-            keyboardType: TextInputType.name,
             onChanged: _contractOnChanged,
-            inputFormatters: [
-              FilteringTextInputFormatter.allow(AppRegExp.address),
-            ],
             validator: (text) {
               if (text != null && _walletController.tokenExists(text)) {
                 return "1018@global".tr;
