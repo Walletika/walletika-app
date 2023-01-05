@@ -17,7 +17,9 @@ class AuthVerificationTabView extends StatelessWidget {
   final GlobalKey<FormState> _formController = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _securityPassController = TextEditingController();
-  final TabsController _tabsController = Get.find<TabsController>();
+  final TabsController _tabsController = Get.find<TabsController>(
+    tag: AppPages.authSetup,
+  );
   final AuthSetupController _authSetupController =
       Get.find<AuthSetupController>();
   final OperationNotifier _verifyOperation = OperationNotifier(

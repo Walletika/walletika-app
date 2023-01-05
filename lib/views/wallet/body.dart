@@ -29,7 +29,9 @@ class WalletBody extends StatefulWidget {
 class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
   late Timer _tokensUpdateTimer;
   late TabController _tabController;
-  final TabsController _tabsController = Get.find<TabsController>();
+  final TabsController _tabsController = Get.find<TabsController>(
+    tag: AppPages.wallet,
+  );
   final WalletController _walletController = Get.find<WalletController>();
   final OperationNotifier _removeOperation = OperationNotifier(
     id: "0x518705F0",

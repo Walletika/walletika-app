@@ -21,7 +21,9 @@ class AuthSetupBody extends StatefulWidget {
 class _AuthSetupBodyState extends State<AuthSetupBody>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  final TabsController _tabsController = Get.find<TabsController>();
+  final TabsController _tabsController = Get.find<TabsController>(
+    tag: AppPages.authSetup,
+  );
 
   @override
   void initState() {

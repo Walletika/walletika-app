@@ -10,7 +10,9 @@ class AuthDownloadTabView extends StatelessWidget {
   AuthDownloadTabView({required this.tabController, super.key});
 
   final TabController tabController;
-  final TabsController _tabsController = Get.find<TabsController>();
+  final TabsController _tabsController = Get.find<TabsController>(
+    tag: AppPages.authSetup,
+  );
 
   @override
   Widget build(BuildContext context) {

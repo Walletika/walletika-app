@@ -17,7 +17,9 @@ class AuthScanTabView extends StatelessWidget {
   final TabController tabController;
   final GlobalKey<FormState> _formController = GlobalKey<FormState>();
   final TextEditingController _pinputController = TextEditingController();
-  final TabsController _tabsController = Get.find<TabsController>();
+  final TabsController _tabsController = Get.find<TabsController>(
+    tag: AppPages.authSetup,
+  );
   final AuthSetupController _authSetupController =
       Get.find<AuthSetupController>();
   final OperationNotifier _confirmOperation = OperationNotifier(
