@@ -135,6 +135,15 @@ final ThemeData walletikaDefaultTheme = ThemeData(
       ),
     ),
   ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      textStyle: _textTheme.bodyMedium,
+      padding: const EdgeInsets.symmetric(horizontal: AppDecoration.padding),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppDecoration.radiusSmall),
+      ),
+    ),
+  ),
   popupMenuTheme: PopupMenuThemeData(
     color: AppColors.background2,
     shape: RoundedRectangleBorder(
