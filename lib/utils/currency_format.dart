@@ -7,7 +7,7 @@ String convertToFiatFormat({
 }) {
   if (value == null) return nullFormat;
 
-  if (value < 1000) return '$symbol${value == 0 ? '0' : value.toString()}';
+  if (value < 1) return '$symbol${value == 0 ? '0' : value.toString()}';
 
   return CurrencyTextInputFormatter(
     symbol: symbol,
