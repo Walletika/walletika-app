@@ -5,7 +5,7 @@ class TokenItemModel {
   final String explorerURL;
   final String name;
   final String symbol;
-  final String faitSymbol;
+  final String fiatSymbol;
   final double? changeIn24h;
   final double? price;
   final double? balance;
@@ -18,7 +18,7 @@ class TokenItemModel {
     required this.explorerURL,
     required this.name,
     required this.symbol,
-    this.faitSymbol = '\$',
+    this.fiatSymbol = '\$',
     this.changeIn24h,
     this.price,
     this.balance,
@@ -26,6 +26,10 @@ class TokenItemModel {
     this.address,
     this.decimals,
   });
+
+  bool get isCoin => address == null;
+
+  bool get isToken => address != null;
 
   String get changeIn24hAsPercentage {
     return '${convertToFiatFormat(
@@ -35,7 +39,7 @@ class TokenItemModel {
   }
 
   String get priceAsCurrency {
-    return convertToFiatFormat(value: price, symbol: faitSymbol);
+    return convertToFiatFormat(value: price, symbol: fiatSymbol);
   }
 
   String get balanceAsCurrency {
@@ -43,6 +47,6 @@ class TokenItemModel {
   }
 
   String get balanceInFiatAsCurrency {
-    return '≈${convertToFiatFormat(value: balanceInFiat, symbol: faitSymbol)}';
+    return '≈${convertToFiatFormat(value: balanceInFiat, symbol: fiatSymbol)}';
   }
 }
