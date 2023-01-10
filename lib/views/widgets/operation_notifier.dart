@@ -8,7 +8,9 @@ import 'dialog.dart';
 import 'snackbar.dart';
 import 'spacer.dart';
 
-enum OperationState { idle, running, valid, invalid, error }
+enum OperationState { idle, running }
+
+enum OperationResultState { valid, invalid, error }
 
 class OperationNotifier {
   OperationNotifier({
@@ -20,19 +22,22 @@ class OperationNotifier {
   final Map<String, dynamic>? args;
 
   OperationState _state = OperationState.idle;
+  OperationResultState _resultState = OperationResultState.invalid;
   String? _message;
 
   OperationState get state => _state;
+
+  OperationResultState get resultState => _resultState;
 
   bool get isIdle => _state == OperationState.idle;
 
   bool get isRunning => _state == OperationState.running;
 
-  bool get isValid => _state == OperationState.valid;
+  bool get isValid => _resultState == OperationResultState.valid;
 
-  bool get isInvalid => _state == OperationState.invalid;
+  bool get isInvalid => _resultState == OperationResultState.invalid;
 
-  bool get isError => _state == OperationState.error;
+  bool get isError => _resultState == OperationResultState.error;
 
   Future<void> run({
     required Future<bool> Function() callback,
@@ -52,42 +57,39 @@ class OperationNotifier {
 
     await callback().then((isValid) {
       if (isValid) {
+        valid(validMessage);
         if (onValid != null) onValid();
-
         if (validMessage != null) {
-          valid(validMessage);
           notify(title: title, closeScreen: closeScreenWhenValid);
         }
       } else {
+        invalid(invalidMessage);
         if (onInvalid != null) onInvalid();
-
         if (invalidMessage != null) {
-          invalid(invalidMessage);
           notify(title: title, closeScreen: closeScreenWhenInvalid);
         }
       }
     }).catchError((e) {
-      if (onError != null) onError();
-
       error(e.toString());
+      if (onError != null) onError();
       notify(closeScreen: closeScreenWhenError);
     });
 
     _reset();
   }
 
-  void valid(String message) {
-    _state = OperationState.valid;
+  void valid([String? message]) {
+    _resultState = OperationResultState.valid;
     _message = message;
   }
 
-  void invalid(String message) {
-    _state = OperationState.invalid;
+  void invalid([String? message]) {
+    _resultState = OperationResultState.invalid;
     _message = message;
   }
 
-  void error(String message) {
-    _state = OperationState.error;
+  void error([String? message]) {
+    _resultState = OperationResultState.error;
     _message = message;
   }
 
