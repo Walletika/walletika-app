@@ -31,6 +31,9 @@ class _TransactionBodyState extends State<TransactionBody> {
   final OperationNotifier _gasUpdateOperation = OperationNotifier(
     id: "0xf8b592F5",
   );
+  final OperationNotifier _confirmOperation = OperationNotifier(
+    id: "0xf7eaaE35",
+  );
 
   @override
   void initState() {
@@ -218,8 +221,9 @@ class _TransactionBodyState extends State<TransactionBody> {
               final bool isGasUpdated = _transactionController.gasUpdated;
 
               return ElevatedButton(
-                onPressed:
-                    isGasUpdated && _gasUpdateOperation.isValid ? () {} : null,
+                onPressed: isGasUpdated && _gasUpdateOperation.isValid
+                    ? _confirmOnPressed
+                    : null,
                 child: Text("1026@global".tr),
               );
             }),
@@ -253,5 +257,17 @@ class _TransactionBodyState extends State<TransactionBody> {
     }).catchError((error) {
       if (error.toString().contains('Insufficient funds')) return false;
     });
+  }
+
+  void _confirmOnPressed() {
+    _confirmOperation.run(
+      callback: _walletController.sendTransaction,
+      validMessage: "1015@transaction".tr,
+      invalidMessage: "1016@transaction".tr,
+      onValid: () => Get.offNamedUntil(
+        AppPages.wallet,
+        (route) => route.settings.name == AppPages.home,
+      ),
+    );
   }
 }

@@ -44,7 +44,7 @@ class TransactionsTabView extends StatelessWidget {
             minVerticalPadding: 15.0,
             leading: ItemLogo(imageURL: transaction.imageURL),
             title: Text(
-              transaction.functionName,
+              transaction.functionName.tr,
               softWrap: false,
               style: textTheme.bodyMedium!.copyWith(
                 fontFamily: AppFonts.medium,

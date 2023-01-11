@@ -243,4 +243,6 @@ const Map<String, String> translator = {
   "1012@transaction": "Arguments",
   "1013@transaction": "ABI",
   "1014@transaction": "Transfer",
+  "1015@transaction": "Transaction confirmed successfully.",
+  "1016@transaction": "Transaction failed to confirm.",
 };
