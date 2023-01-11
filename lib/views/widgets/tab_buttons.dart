@@ -21,7 +21,7 @@ class TabButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(Get.context!).textTheme;
+    final TextTheme textTheme = Theme.of(context).textTheme;
     const Border border = Border(
       bottom: BorderSide(color: AppColors.highlight, width: 3.0),
     );

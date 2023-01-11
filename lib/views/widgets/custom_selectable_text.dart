@@ -1,7 +1,6 @@
 import 'dart:ui' as ui show TextHeightBehavior;
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../utils/constants.dart';
 
@@ -42,7 +41,7 @@ class CustomSelectableText extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: Theme.of(Get.context!).popupMenuTheme.color,
+        color: Theme.of(context).popupMenuTheme.color,
         borderRadius: BorderRadius.circular(AppDecoration.radius),
       ),
       child: SelectableText(
