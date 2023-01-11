@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../../utils/constants.dart';
 
-void buttomSheet({
+void bottomSheet({
   required Widget widget,
   void Function()? onCompleted,
   bool isDismissible = true,
