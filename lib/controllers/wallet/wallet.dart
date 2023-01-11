@@ -219,6 +219,14 @@ class WalletController extends GetxController {
     );
   }
 
+  Future<bool> sendTransaction() async {
+    final bool isValid = await _repository.sendTransaction();
+
+    if (isValid) await transactionsUpdate();
+
+    return isValid;
+  }
+
   Future<bool> import({
     required String path,
     String? password,

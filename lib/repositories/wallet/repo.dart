@@ -58,6 +58,8 @@ abstract class WalletRepository {
 
   Future<TransactionDetailsModel> addGas();
 
+  Future<bool> sendTransaction();
+
   Future<String> backup({
     required String directory,
     String? password,

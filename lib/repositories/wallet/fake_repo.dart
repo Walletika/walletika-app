@@ -96,7 +96,7 @@ class WalletFakeRepository extends WalletRepository {
           'https://ropsten.etherscan.io/tx/0x8bba8468ef5c5ba9cecbc78d2071569c5d7b5a2abe4c76c66850f66ff483130c',
       imageURL:
           'https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880',
-      functionName: 'transfer',
+      functionName: '1014@transaction',
       date: DateTime.now(),
       symbol: 'ETH',
       amount: 0.132,
@@ -108,7 +108,7 @@ class WalletFakeRepository extends WalletRepository {
           'https://ropsten.etherscan.io/tx/0x5fe8e0956305179e16a7de319cbe376092327de763219dd7d3cd03178c8a2b0d',
       imageURL:
           'https://assets.coingecko.com/coins/images/325/small/Tether.png?1668148663',
-      functionName: 'transfer',
+      functionName: '1014@transaction',
       date: DateTime.now(),
       symbol: 'USDT',
       amount: 5450.0,
@@ -337,6 +337,25 @@ class WalletFakeRepository extends WalletRepository {
       estimatedGas: _gasValue,
       total: gasValue,
     );
+  }
+
+  @override
+  Future<bool> sendTransaction() async {
+    _transactions.add(
+      TransactionItemModel(
+        txHash:
+            '0x8bba8468ef5c5ba9cecbc78d2071569c5d7b5a2abe4c76c66850f66ff483130c',
+        txHashURL:
+            'https://ropsten.etherscan.io/tx/0x8bba8468ef5c5ba9cecbc78d2071569c5d7b5a2abe4c76c66850f66ff483130c',
+        imageURL: txDetails.token.imageURL,
+        functionName: txDetails.requestName,
+        date: DateTime.now(),
+        symbol: txDetails.token.symbol,
+        amount: txDetails.amount,
+      ),
+    );
+
+    return true;
   }
 
   @override
