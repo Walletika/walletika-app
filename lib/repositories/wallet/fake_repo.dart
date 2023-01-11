@@ -115,6 +115,9 @@ class WalletFakeRepository extends WalletRepository {
     ),
   ];
 
+  double _gasValue = 0.00051099;
+  late TransactionDetailsModel txDetails;
+
   @override
   Stream<WalletItemModel> getAll() async* {
     for (final WalletItemModel wallet in _wallets) {
@@ -252,6 +255,88 @@ class WalletFakeRepository extends WalletRepository {
     WalletItemModel wallet,
   ) async {
     return _transactions.map((transaction) => transaction).toList();
+  }
+
+  @override
+  Future<TransactionDetailsModel> transfer({
+    required WalletItemModel wallet,
+    required String recipientAddress,
+    required TokenItemModel token,
+    required double amount,
+  }) async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    double gasValue = _gasValue;
+
+    if (token.isCoin) {
+      gasValue = gasValue + amount;
+    }
+
+    txDetails = TransactionDetailsModel(
+      requestName: "1014@transaction",
+      toAddress: recipientAddress,
+      tx: {
+        'functionType': 'transfer',
+        'from': wallet.address,
+        'to': token.address ?? recipientAddress,
+        'value': token.isCoin ? amount : 0,
+        'nonce': 1,
+        'chainID': 1,
+        'data': token.isCoin
+            ? ''
+            : '0xa9059cbb00000000000000000000000070463907f1aee85619d8c248352d422681e304a10000000000000000000000000000000000000000000000000000000005f5e100',
+      },
+      abi: token.isCoin
+          ? {}
+          : {
+              'inputs': [
+                {
+                  'internalType': 'address',
+                  'name': 'recipient',
+                  'type': 'address'
+                },
+                {'internalType': 'uint256', 'name': 'amount', 'type': 'uint256'}
+              ],
+              'name': 'transfer',
+              'outputs': [
+                {'internalType': 'bool', 'name': '', 'type': 'bool'}
+              ],
+              'stateMutability': 'nonpayable',
+              'type': 'function'
+            },
+      args:
+          token.isCoin ? {} : {"recipient": recipientAddress, "amount": amount},
+      coin: _tokens.first,
+      token: token,
+      amount: amount,
+      estimatedGas: _gasValue,
+      total: gasValue,
+    );
+    return txDetails;
+  }
+
+  @override
+  Future<TransactionDetailsModel> addGas() async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    try {
+      _gasValue = double.parse(
+        (_gasValue + 0.0001).toString().substring(0, 10),
+      );
+    } catch (e) {
+      _gasValue += 0.0001;
+    }
+
+    double gasValue = _gasValue;
+
+    if (txDetails.token.isCoin) {
+      gasValue = gasValue + txDetails.amount;
+    }
+
+    return txDetails.copyWith(
+      estimatedGas: _gasValue,
+      total: gasValue,
+    );
   }
 
   @override

@@ -49,6 +49,15 @@ abstract class WalletRepository {
 
   Future<List<TransactionItemModel>> transactions(WalletItemModel wallet);
 
+  Future<TransactionDetailsModel> transfer({
+    required WalletItemModel wallet,
+    required String recipientAddress,
+    required TokenItemModel token,
+    required double amount,
+  });
+
+  Future<TransactionDetailsModel> addGas();
+
   Future<String> backup({
     required String directory,
     String? password,

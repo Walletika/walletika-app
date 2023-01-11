@@ -189,6 +189,23 @@ class WalletController extends GetxController {
         );
   }
 
+  Future<TransactionDetailsModel> transfer({
+    required String recipientAddress,
+    required TokenItemModel token,
+    required double amount,
+  }) async {
+    return _repository.transfer(
+      wallet: _currentWallet!,
+      recipientAddress: recipientAddress,
+      token: token,
+      amount: amount,
+    );
+  }
+
+  Future<TransactionDetailsModel> gasUpdate() async {
+    return _repository.addGas();
+  }
+
   Future<String> backup({
     required String directory,
     String? password,
