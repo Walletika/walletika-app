@@ -10,8 +10,10 @@ import '../../controllers/wallet/wallet.dart';
 import '../../utils/constants.dart';
 import '../../utils/currency_format.dart';
 import '../../utils/launch_url.dart';
+import '../widgets/bottom_sheet.dart';
 import '../widgets/dialog.dart';
 import '../widgets/operation_notifier.dart';
+import '../widgets/snackbar.dart';
 import '../widgets/spacer.dart';
 import '../widgets/tab_buttons.dart';
 import 'tokens_tab.dart';
@@ -177,7 +179,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
                 child: SizedBox(
                   height: AppDecoration.buttonHeightMedium,
                   child: ElevatedButton(
-                    onPressed: () => Get.toNamed(AppPages.withdraw),
+                    onPressed: _withdrawOnPressed,
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       shape: const RoundedRectangleBorder(),
@@ -247,7 +249,7 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
         Get.toNamed(AppPages.walletDetails);
         break;
       case MenuOptions.addToken:
-        _bottomSheet(const AddTokenView());
+        bottomSheet(widget: const AddTokenView());
         break;
       case MenuOptions.viewAtExplorer:
         launchURL(_walletController.currentWalletExplorerURL());
@@ -288,15 +290,16 @@ class _WalletBodyState extends State<WalletBody> with TickerProviderStateMixin {
     );
   }
 
-  void _bottomSheet(Widget widget) {
-    Get.bottomSheet(
-      widget,
-      backgroundColor: Theme.of(context).backgroundColor,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppDecoration.radiusBig),
-        ),
-      ),
+  void _withdrawOnPressed() {
+    if (_walletController.currentWallet!.isLogged) {
+      Get.toNamed(AppPages.withdraw);
+      return;
+    }
+
+    modernSnackBar(
+      title: "1032@global".tr,
+      message: "1033@global".tr,
+      isSuccess: false,
     );
   }
 }
