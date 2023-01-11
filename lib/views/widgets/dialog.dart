@@ -8,6 +8,7 @@ import '../../utils/constants.dart';
 AwesomeDialog awesomeDialog({
   double? width = 500.0,
   DialogType dialogType = DialogType.noHeader,
+  EdgeInsetsGeometry? padding,
   String? title,
   String? desc,
   Widget? body,
@@ -29,10 +30,11 @@ AwesomeDialog awesomeDialog({
     context: Get.context!,
     width: width,
     dialogBackgroundColor: Theme.of(Get.context!).backgroundColor,
-    padding: const EdgeInsets.symmetric(
-      horizontal: AppDecoration.paddingMedium,
-      vertical: AppDecoration.padding,
-    ),
+    padding: padding ??
+        const EdgeInsets.symmetric(
+          horizontal: AppDecoration.paddingMedium,
+          vertical: AppDecoration.padding,
+        ),
     dialogType: dialogType,
     animType: AnimType.rightSlide,
     headerAnimationLoop: false,
