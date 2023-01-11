@@ -4,10 +4,13 @@ String convertToFiatFormat({
   double? value,
   required String symbol,
   String nullFormat = '--',
+  bool skipSmallValue = true,
 }) {
   if (value == null) return nullFormat;
 
-  if (value < 1) return '$symbol${value == 0 ? '0' : value.toString()}';
+  if (skipSmallValue && value < 1) {
+    return '$symbol${value == 0 ? '0' : value.toString()}';
+  }
 
   return CurrencyTextInputFormatter(
     symbol: symbol,
