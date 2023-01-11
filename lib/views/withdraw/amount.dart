@@ -7,6 +7,7 @@ import '../../models/token.dart';
 import '../../utils/constants.dart';
 import '../widgets/amount_field.dart';
 import '../widgets/item_logo.dart';
+import '../widgets/operation_notifier.dart';
 import '../widgets/spacer.dart';
 
 class AmountView extends StatelessWidget {
@@ -18,6 +19,9 @@ class AmountView extends StatelessWidget {
   final TextEditingController _amountController = TextEditingController();
   final WalletController _walletController = Get.find<WalletController>();
   final WithdrawController _withdrawController = Get.find<WithdrawController>();
+  final OperationNotifier _continueOperation = OperationNotifier(
+    id: "0x8E36F724",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -91,10 +95,14 @@ class AmountView extends StatelessWidget {
             child: SizedBox(
               width: AppDecoration.widgetWidth,
               height: AppDecoration.buttonHeightLarge,
-              child: ElevatedButton(
-                onPressed: _continueOnPressed,
-                child: Text("1039@global".tr),
-              ),
+              child: Obx(() {
+                final bool isRunning = _withdrawController.isRunning;
+
+                return ElevatedButton(
+                  onPressed: isRunning ? null : _continueOnPressed,
+                  child: Text("1039@global".tr),
+                );
+              }),
             ),
           ),
         ],
@@ -109,8 +117,36 @@ class AmountView extends StatelessWidget {
 
   void _continueOnPressed() {
     if (_formController.currentState!.validate()) {
-      _withdrawController.setAmount(_amountController.text);
-      Get.back();
+      _continueOperation
+          .run(
+            callback: _continueCallback,
+            closeScreenWhenError: true,
+            onValid: () => Get.offNamed(
+              AppPages.auth,
+              arguments: _authValidator,
+            ),
+          )
+          .whenComplete(() => _withdrawController.setRunningState(false));
     }
+  }
+
+  Future<bool> _continueCallback() async {
+    _withdrawController.setRunningState(true);
+    _withdrawController.setAmount(_amountController.text);
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    return true;
+  }
+
+  Future<bool> _authValidator(String otpCode) async {
+    final String? privateKey = await _walletController.getPrivateKey(otpCode);
+
+    if (privateKey != null) {
+      Get.back();
+      return true;
+    }
+
+    return false;
   }
 }
