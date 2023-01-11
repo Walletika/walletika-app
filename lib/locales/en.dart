@@ -44,6 +44,7 @@ const Map<String, String> translator = {
   "1041@global": "Balance",
   "1042@global": "QR Code Scan",
   "1043@global": "Paste ( 0x ) Address",
+  "1044@global": "Details",
 
   // PW validator plugin
   "1000@PWValidator": "At least - character",
@@ -223,4 +224,23 @@ const Map<String, String> translator = {
   "1013@withdraw": "Failed to add this address, Please try again.",
   "1014@withdraw": "Add Address",
   "1015@withdraw": "Choose a coin to withdraw",
+
+  // Transaction
+  "1000@transaction":
+      "Ensure that the address is correct and on the same network.",
+  "1001@transaction": "To Address",
+  "1002@transaction": "Estimated gas fee",
+  "1003@transaction": "Total",
+  "1004@transaction": "(Amount + Gas fee)",
+  "1005@transaction":
+      "Insufficient funds for transaction, maybe it needs gas fee.",
+  "1006@transaction": "Transaction Details",
+  "1007@transaction": "Function Type",
+  "1008@transaction": "From",
+  "1009@transaction": "To",
+  "1010@transaction": "Data",
+  "1011@transaction": "Transaction",
+  "1012@transaction": "Arguments",
+  "1013@transaction": "ABI",
+  "1014@transaction": "Transfer",
 };

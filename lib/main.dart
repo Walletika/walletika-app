@@ -9,6 +9,7 @@ import 'services/settings.dart';
 import 'utils/constants.dart';
 import 'utils/desktop_window.dart';
 import 'views/deposit/deposit.dart';
+import 'views/transaction/transaction.dart';
 import 'views/wallet_details/wallet_details.dart';
 import 'views/add_network/add_network.dart';
 import 'views/auth_setup/auth_setup.dart';
@@ -74,6 +75,10 @@ class WalletikaApp extends StatelessWidget {
           page: () => const WalletDetailsView(),
         ),
         GetPage(name: AppPages.depsoit, page: () => const DepositView()),
+        GetPage(
+          name: AppPages.transaction,
+          page: () => const TransactionView(),
+        ),
       ],
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/transaction/transaction.dart';
 import '../../controllers/wallet/wallet.dart';
 import '../../controllers/withdraw/withdraw.dart';
 import '../../models/token.dart';
@@ -19,6 +20,8 @@ class AmountView extends StatelessWidget {
   final TextEditingController _amountController = TextEditingController();
   final WalletController _walletController = Get.find<WalletController>();
   final WithdrawController _withdrawController = Get.find<WithdrawController>();
+  final TransactionController _transactionController =
+      Get.find<TransactionController>();
   final OperationNotifier _continueOperation = OperationNotifier(
     id: "0x8E36F724",
   );
@@ -134,16 +137,24 @@ class AmountView extends StatelessWidget {
     _withdrawController.setRunningState(true);
     _withdrawController.setAmount(_amountController.text);
 
-    await Future.delayed(const Duration(seconds: 2));
-
-    return true;
+    return _walletController
+        .transfer(
+      recipientAddress: _withdrawController.toAddress!,
+      token: _withdrawController.token,
+      amount: _withdrawController.amount!,
+    )
+        .then((txDetails) {
+      _transactionController.setTransactionDetails(txDetails);
+      return true;
+    });
   }
 
   Future<bool> _authValidator(String otpCode) async {
     final String? privateKey = await _walletController.getPrivateKey(otpCode);
 
     if (privateKey != null) {
-      Get.back();
+      _transactionController.setPrivateKey(privateKey);
+      Get.offNamed(AppPages.transaction);
       return true;
     }
 

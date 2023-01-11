@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/tabs/tabs.dart';
+import '../../controllers/transaction/transaction.dart';
 import '../../controllers/withdraw/withdraw.dart';
 import '../../utils/constants.dart';
 import '../widgets/header.dart';
@@ -11,6 +12,9 @@ class WithdrawView extends StatelessWidget {
   WithdrawView({super.key});
 
   final WithdrawController withdrawController = Get.put(WithdrawController());
+  final TransactionController transactionController = Get.put(
+    TransactionController(),
+  );
   final TabsController tabsController = Get.put(
     TabsController(2),
     tag: AppPages.withdraw,
