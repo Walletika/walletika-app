@@ -106,7 +106,7 @@ class _WithdrawBodyState extends State<WithdrawBody>
 
     if (text.isNotEmpty) {
       _withdrawController.setToAddress(text);
-      buttomSheet(
+      bottomSheet(
         widget: AmountView(),
         onCompleted: _toAddressController.clear,
       );
